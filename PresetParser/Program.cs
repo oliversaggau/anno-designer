@@ -1968,7 +1968,7 @@ namespace PresetParser
                     if (guidNumber != 24794)
                     {
                         DVDataList[24794] = DVDataList[24794] + "," + guidNumber;
-                        return;
+                        // return later after adding Farmfield amount
                     }
                     if (guidNumber == 24794)
                     {
@@ -3027,13 +3027,14 @@ namespace PresetParser
                         translation = translation.FirstCharToUpper();
                     }
 
-                    if (templateName == "FarmBuilding" || templateName == "Farmfield")
+                    if (templateName == "RecipeFarm" || templateName == "FarmBuilding" || templateName == "Farmfield")
                     {
                         string fieldAmountValue = null;
                         string fieldGuidValue = null;
 
                         switch (templateName)
                         {
+                            case "RecipeFarm":
                             case "FarmBuilding":
                                 {
                                     fieldGuidValue = values["ModuleOwner"]["ConstructionOptions"]["Item"]["ModuleGUID"].InnerText;
@@ -3092,6 +3093,11 @@ namespace PresetParser
                 Console.ForegroundColor = ConsoleColor.DarkRed;
                 Console.WriteLine("---> No GUID Number found, it is set to the Identifier.");
                 Console.ForegroundColor = oldColor;
+            }
+
+            if (templateName == "RecipeFarm" && guidNumber != 24794)
+            {
+                return;
             }
 
             #endregion
