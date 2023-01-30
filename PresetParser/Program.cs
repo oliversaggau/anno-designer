@@ -1773,13 +1773,6 @@ namespace PresetParser
                 return;
             }
 
-            //Skip the 2 following mines, as those are manual added to the DVDataList
-            //1308 = second bauxit mine , 1353 = second helium mine
-            if (guidNumber == 1308 || guidNumber == 1353)
-            {
-                return;
-            }
-
             isExcludedTemplate = identifierName.Contains(PPTNList);
 
             if (string.IsNullOrEmpty(values["Standard"]?["Name"]?.InnerText))
@@ -2015,7 +2008,7 @@ namespace PresetParser
                     templateName = "FactoryBuilding7";
                 }
             }
-            if (guidNumber == 1372 || guidNumber == 1375 || guidNumber == 2399)
+            if (guidNumber == 1308 || guidNumber == 1353 || guidNumber == 2399)
             {
                 factionName = "(20) Empire of the Skies";
                 groupName = "Mining Buildings";
