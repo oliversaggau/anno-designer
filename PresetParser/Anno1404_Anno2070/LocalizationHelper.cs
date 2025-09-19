@@ -111,6 +111,7 @@ namespace PresetParser.Anno1404_Anno2070
                                     case "pol": translation = "Komin hydrotermalny"; break;
                                     case "rus": translation = "Черный курильщик"; break;
                                     case "esp": translation = "Fumador Negro"; break;
+                                    case "zht": translation = "黑煙燻器"; break;
                                     default: break;
                                 }
                             }

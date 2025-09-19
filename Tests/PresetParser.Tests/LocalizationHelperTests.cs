@@ -432,7 +432,7 @@ namespace PresetParser.Tests
         {
             // Arrange
             var basePath = "dummy";
-            var languages = new string[] { "eng", "ger", "fra", "pol", "rus", "esp", "non_existing" };
+            var languages = new string[] { "eng", "ger", "fra", "pol", "rus", "esp", "zht", "non_existing" };
             var expectedGuid = "10239";
             var expectedLocalizations = new string[] { "Black Smoker", "Black Smoker", "Convertisseur de métal", "Komin hydrotermalny", "Черный курильщик", "Fumador Negro" };
 
