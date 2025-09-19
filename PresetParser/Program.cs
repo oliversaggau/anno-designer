@@ -34,9 +34,9 @@ namespace PresetParser
         private static Dictionary<string, Dictionary<string, PathRef[]>> VersionSpecificPaths { get; set; }
         private const string BUILDING_PRESETS_VERSION = "5.1";
         // Initializing Language Directory's and Filenames
-        private static readonly string[] Languages = new[] { "eng", "ger", "fra", "pol", "rus", "esp" };
-        private static readonly string[] LanguagesFiles2205 = new[] { "english", "german", "french", "polish", "russian", "spanish" };
-        private static readonly string[] LanguagesFiles1800 = new[] { "english", "german", "french", "polish", "russian", "spanish" };
+        private static readonly string[] Languages = new[] { "eng", "ger", "fra", "pol", "rus", "esp", "zht" };
+        private static readonly string[] LanguagesFiles2205 = new[] { "english", "german", "french", "polish", "russian", "spanish", "taiwanese" };
+        private static readonly string[] LanguagesFiles1800 = new[] { "english", "german", "french", "polish", "russian", "spanish", "taiwanese" };
         // Internal Program Buildings Lists to skip double buildings
         public static List<string> annoBuildingLists = new List<string>();
         public static List<string> anno1800IconNameLists = new List<string>();
@@ -58,6 +58,7 @@ namespace PresetParser
         public static XmlDocument langDocument_polish = new XmlDocument();
         public static XmlDocument langDocument_russian = new XmlDocument();
         public static XmlDocument langDocument_spanish = new XmlDocument();
+        public static XmlDocument langDocument_taiwanese = new XmlDocument();
 
         // Information File for Duxvitae (DuxVitae-Replaced.csv)
         // For the Converter tool Anno1800SavegameVisualizer by Duxvitae i need to output a CSV file that he can use for the replaced / not added ornamentals
@@ -795,6 +796,7 @@ namespace PresetParser
                         case 3: { langDocument_polish = langDocument; break; }
                         case 4: { langDocument_russian = langDocument; break; }
                         case 5: { langDocument_spanish = langDocument; break; }
+                        case 6: { langDocument_taiwanese = langDocument; break; }
                     }
                     languageCount++;
                 }
@@ -858,6 +860,7 @@ namespace PresetParser
                         case 3: { langDocument_polish = langDocument; break; }
                         case 4: { langDocument_russian = langDocument; break; }
                         case 5: { langDocument_spanish = langDocument; break; }
+                        case 6: { langDocument_taiwanese = langDocument; break; }
                     }
                     languageCount++;
                 }
@@ -931,6 +934,7 @@ namespace PresetParser
                 buildingToAdd.Localization["pol"] = curExtraPreset.LocaPol;
                 buildingToAdd.Localization["rus"] = curExtraPreset.LocaRus;
                 buildingToAdd.Localization["esp"] = curExtraPreset.LocaEsp;
+                buildingToAdd.Localization["zht"] = curExtraPreset.LocaZht;
 
                 annoBuildingsListCount++;
 
@@ -969,6 +973,7 @@ namespace PresetParser
                 buildingToAdd.Localization["pol"] = curExtraRoad.LocaPol;
                 buildingToAdd.Localization["rus"] = curExtraRoad.LocaRus;
                 buildingToAdd.Localization["esp"] = curExtraRoad.LocaEsp;
+                buildingToAdd.Localization["zht"] = curExtraRoad.LocaZht;
 
                 annoBuildingsListCount++;
 
@@ -1007,6 +1012,7 @@ namespace PresetParser
                 buildingToAdd.Localization["pol"] = curBlockingTile.LocaPol;
                 buildingToAdd.Localization["rus"] = curBlockingTile.LocaRus;
                 buildingToAdd.Localization["esp"] = curBlockingTile.LocaEsp;
+                buildingToAdd.Localization["zht"] = curBlockingTile.LocaZht;
 
                 annoBuildingsListCount++;
 
@@ -1550,6 +1556,7 @@ namespace PresetParser
                     case 3: { langDocument = langDocument_polish; break; }
                     case 4: { langDocument = langDocument_russian; break; }
                     case 5: { langDocument = langDocument_spanish; break; }
+                    case 6: { langDocument = langDocument_taiwanese; break; }
                 }
 
                 string translation = "";
@@ -2909,6 +2916,7 @@ namespace PresetParser
                     case 3: { langDocument = langDocument_polish; break; }
                     case 4: { langDocument = langDocument_russian; break; }
                     case 5: { langDocument = langDocument_spanish; break; }
+                    case 6: { langDocument = langDocument_taiwanese; break; }
                 }
 
                 string translation = "";
