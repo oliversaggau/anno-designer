@@ -853,6 +853,15 @@ namespace PresetParser
                 }
                 #endregion
 
+                // Before the farmFieldList was filled while parsing buildings, but the order of nodes in the
+                // assets.xml has changed which lead to certain modules (FarmField) being parsed first before
+                // the owner (Farm) was parsed, so build the farmFieldList first
+                Console.WriteLine("Parsing farm fields...");
+                foreach (string path in assetPathRefs.Select(p => p.Path).Distinct())
+                {
+                    ParseFarmFields1800(BASE_PATH + path);
+                }
+
                 var PPTNFileXPath = "";
                 Console.WriteLine("Parsing buildings...");
                 foreach (PathRef p in assetPathRefs)
@@ -3036,48 +3045,29 @@ namespace PresetParser
                         {
                             case "RecipeFarm":
                             case "FarmBuilding":
-                                {
-                                    fieldGuidValue = values["ModuleOwner"]["ConstructionOptions"]["Item"]["ModuleGUID"].InnerText;
-                                    fieldAmountValue = values?["ModuleOwner"]?["ModuleLimits"]?["Main"]?["Limit"]?.InnerText;
-                                    break;
-                                };
+                                fieldGuidValue = values["ModuleOwner"]["ConstructionOptions"]["Item"]["ModuleGUID"].InnerText;
+                                break;
                             case "Farmfield":
-                                {
-                                    fieldGuidValue = values["Standard"]["GUID"].InnerText;
-                                    fieldAmountValue = "0";
-                                    break;
-                                }
+                                fieldGuidValue = values["Standard"]["GUID"].InnerText;
+                                break;
                         }
 
-                        if (fieldAmountValue != null)
+                        FarmField fieldInfo = farmFieldList1800
+                            .Where(x => string.Equals(x.FieldGuid, fieldGuidValue, StringComparison.OrdinalIgnoreCase))
+                            .FirstOrDefault();
+
+                        if (fieldInfo == null)
                         {
-                            var isFieldInfoFound = false;
-                            foreach (var curFieldInfo in farmFieldList1800)
-                            {
-                                if (string.Equals(curFieldInfo.FieldGuid, fieldGuidValue, StringComparison.OrdinalIgnoreCase))
-                                {
-                                    isFieldInfoFound = true;
-                                    fieldAmountValue = curFieldInfo.FieldAmount;
-                                    if (Convert.ToInt32(fieldAmountValue) <= 0)
-                                    {
-                                        // ERROR ? Farm without field amount found
-                                        oldColor = Console.ForegroundColor;
-                                        Console.ForegroundColor = ConsoleColor.DarkRed;
-                                        Console.WriteLine("-- > Farm field Skipped, Zero Field counter");
-                                        Console.ForegroundColor = oldColor;
-                                        return;
-                                    }
-                                    break;
-                                }
-                            }
-
-                            if (!isFieldInfoFound)
-                            {
-                                farmFieldList1800.Add(new FarmField() { FieldGuid = fieldGuidValue, FieldAmount = fieldAmountValue });
-                            }
-
-                            translation = translation + " - (" + fieldAmountValue + ")";
+                            // ERROR ? Farm without field amount found
+                            oldColor = Console.ForegroundColor;
+                            Console.ForegroundColor = ConsoleColor.DarkRed;
+                            Console.WriteLine("-- > Farm field skipped");
+                            Console.ForegroundColor = oldColor;
+                            return;
                         }
+
+                        fieldAmountValue = fieldInfo.FieldAmount;
+                        translation = translation + " - (" + fieldAmountValue + ")";
                     }
                 }
                 else
@@ -3215,6 +3205,28 @@ namespace PresetParser
             annoBuildingLists.Add(values["Standard"]["Name"].InnerText);//add building name to the list, for checking double building names usage
             anno1800IconNameLists.Add(b.IconFileName);//add Icon file to the list, for checking double icon file usage 
             buildings.Add(b); // add building data to file data
+        }
+
+        private static void ParseFarmFields1800(string filename)
+        {
+            XmlDocument assetsDocument = new XmlDocument();
+            assetsDocument.Load(filename);
+
+            string xPath = "//Asset[Values/ModuleOwner]";
+            List<XmlNode> assetNodes = assetsDocument.SelectNodes(xPath).Cast<XmlNode>().ToList();
+
+            foreach (XmlNode assetNode in assetNodes)
+            {
+                XmlElement values = assetNode["Values"];
+                XmlElement moduleOwner = values["ModuleOwner"];
+                string fieldGuidValue = moduleOwner["ConstructionOptions"]?["Item"]["ModuleGUID"].InnerText;
+                string fieldAmountValue = moduleOwner["ModuleLimits"]?["Main"]?["Limit"]?.InnerText;
+
+                if (fieldAmountValue != null)
+                {
+                    farmFieldList1800.Add(new FarmField() { FieldGuid = fieldGuidValue, FieldAmount = fieldAmountValue });
+                }
+            }
         }
 
         #endregion
