@@ -5,5 +5,7 @@
         public string FieldGuid { get; set; }
 
         public string FieldAmount { get; set; }
+
+        public string OwnerGuid { get; set; }
     }
 }

@@ -3036,29 +3036,34 @@ namespace PresetParser
                         translation = translation.FirstCharToUpper();
                     }
 
-                    if (templateName == "RecipeFarm" || templateName == "FarmBuilding" || templateName == "Farmfield")
+                    if (templateName == "RecipeFarm" || templateName == "FarmBuilding")
                     {
+                        string fieldGuidValue = values["ModuleOwner"]["ConstructionOptions"]["Item"]["ModuleGUID"].InnerText;
                         string fieldAmountValue = null;
-                        string fieldGuidValue = null;
-
-                        switch (templateName)
-                        {
-                            case "RecipeFarm":
-                            case "FarmBuilding":
-                                fieldGuidValue = values["ModuleOwner"]["ConstructionOptions"]["Item"]["ModuleGUID"].InnerText;
-                                break;
-                            case "Farmfield":
-                                fieldGuidValue = values["Standard"]["GUID"].InnerText;
-                                break;
-                        }
 
                         FarmField fieldInfo = farmFieldList1800
                             .Where(x => string.Equals(x.FieldGuid, fieldGuidValue, StringComparison.OrdinalIgnoreCase))
-                            .FirstOrDefault();
+                            .Where(x => string.Equals(x.OwnerGuid, guidName, StringComparison.OrdinalIgnoreCase))
+                            .SingleOrDefault();
 
-                        if (fieldInfo == null)
+                        if (fieldInfo != null)
                         {
-                            // ERROR ? Farm without field amount found
+                            fieldAmountValue = fieldInfo.FieldAmount;
+                            translation = translation + " - (" + fieldAmountValue + ")";
+                        }
+                    }
+                    else if (templateName == "Farmfield")
+                    {
+                        string fieldGuidValue = values["Standard"]["GUID"].InnerText;
+                        string fieldAmountValue = null;
+
+                        List<FarmField> fieldInfos = farmFieldList1800
+                            .Where(x => string.Equals(x.FieldGuid, fieldGuidValue, StringComparison.OrdinalIgnoreCase))
+                            .ToList();
+
+                        if (fieldInfos.Count == 0)
+                        {
+                            // ERROR ? Farm field without farm
                             oldColor = Console.ForegroundColor;
                             Console.ForegroundColor = ConsoleColor.DarkRed;
                             Console.WriteLine("-- > Farm field skipped");
@@ -3066,7 +3071,11 @@ namespace PresetParser
                             return;
                         }
 
-                        fieldAmountValue = fieldInfo.FieldAmount;
+                        fieldAmountValue = string.Join("/", fieldInfos
+                            .OrderBy(x => Convert.ToInt32(x.FieldAmount))
+                            .Select(x => x.FieldAmount)
+                            .Distinct());
+
                         translation = translation + " - (" + fieldAmountValue + ")";
                     }
                 }
@@ -3218,13 +3227,18 @@ namespace PresetParser
             foreach (XmlNode assetNode in assetNodes)
             {
                 XmlElement values = assetNode["Values"];
-                XmlElement moduleOwner = values["ModuleOwner"];
-                string fieldGuidValue = moduleOwner["ConstructionOptions"]?["Item"]["ModuleGUID"].InnerText;
-                string fieldAmountValue = moduleOwner["ModuleLimits"]?["Main"]?["Limit"]?.InnerText;
+                string guidValue = values["Standard"]?["GUID"]?.InnerText;
 
-                if (fieldAmountValue != null)
+                if (guidValue != null && !guidValue.Contains(ExcludeBuildingsGUID1800))
                 {
-                    farmFieldList1800.Add(new FarmField() { FieldGuid = fieldGuidValue, FieldAmount = fieldAmountValue });
+                    XmlElement moduleOwner = values["ModuleOwner"];
+                    string fieldGuidValue = moduleOwner["ConstructionOptions"]?["Item"]["ModuleGUID"].InnerText;
+                    string fieldAmountValue = moduleOwner["ModuleLimits"]?["Main"]?["Limit"]?.InnerText;
+
+                    if (fieldAmountValue != null)
+                    {
+                        farmFieldList1800.Add(new FarmField() { FieldGuid = fieldGuidValue, FieldAmount = fieldAmountValue, OwnerGuid = guidValue });
+                    }
                 }
             }
         }
