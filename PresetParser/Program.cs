@@ -1879,6 +1879,10 @@ namespace PresetParser
                 default: { groupName = templateName.FirstCharToUpper(); break; }
             }
 
+            bool isCreativeModeOrnament = values?["Building"]?["IsCreativeModeOrnament"]?.InnerText == "1";
+            // buildings from Creative Mode may have identical identifiers, so add a "CreativeMode_" prefix to prevent duplicate identifiers
+            if (isCreativeModeOrnament && !identifierName.Contains("CreativeMode")) { identifierName = "CreativeMode_" + identifierName; }
+
             if (groupName == "Farm Fields")
             {
                 if (factionName == "Moderate") { factionName = "(06) Old World Fields"; groupName = null; }
@@ -2377,6 +2381,111 @@ namespace PresetParser
 
             #endregion
 
+            #region Sorting the new Creative Mode Menu
+
+            switch (guidNumber)
+            {
+                case 12665: case 12673: case 12689: case 12666: case 12712: case 12713: case 12765: case 12769: case 12772:
+                case 12774: case 12775: case 12778:
+                    factionName = "Creative Mode"; groupName = "Ornamental Palaces";
+                    break;
+                case 12885: case 12956: case 12911: case 12954: case 12957: case 12955: case 12958: case 14202: case 14203:
+                case 14204: case 14205: case 14206: case 14207: case 14208: case 14209: case 14210: case 14211: case 14212:
+                case 14213: case 14214: case 14215: case 14216: case 14217: case 14218: case 14219: case 14220: case 14221:
+                case 14222: case 14223: case 14224: case 14225: case 14226:
+                    factionName = "Creative Mode"; groupName = "Ornamental Docklands";
+                    break;
+                case 13996: case 14176: case 14175: case 14235: case 14236: case 14248: case 14268: case 14299: case 14378:
+                case 14405: case 14413: case 14415: case 14418: case 14419:
+                    factionName = "Creative Mode"; groupName = "Ornamental Haciendas";
+                    break;
+                case 14771: case 14772: case 14773: case 14774: case 14775: case 14776: case 14777: case 14778: case 14788:
+                case 14789: case 14790: case 14791:
+                    factionName = "Creative Mode"; groupName = "Ornamental Industry";
+                    break;
+                case 14445: case 14446: case 14448: case 14452: case 14478: case 14490: case 14525: case 14586: case 13910:
+                    factionName = "Creative Mode"; groupName = "Ornamental Beaches";
+                    break;
+                case 13919: case 13920: case 13915: case 13976: case 13979: case 13990: case 13991: case 13992: case 13995:
+                    factionName = "Creative Mode"; groupName = "Ornamental Pastures";
+                    break;
+                case 13914: case 13916: case 13917: case 13928: case 13930: case 13934: case 13935: case 13940: case 13942:
+                case 13943: case 13944: case 13948: case 13957: case 14179: case 13993: case 13994: case 16233: case 16605:
+                case 16604: case 16603: case 16602:
+                    factionName = "Creative Mode"; groupName = "Ornamental Fields";
+                    break;
+                case 17913: case 13595: case 13604: case 16610: case 16611: case 16612: case 16613: case 16614: case 16615:
+                case 16616: case 16617: case 16618: case 16625: case 16626: case 16627: case 16632: case 16637: case 13592:
+                case 16638: case 16641:
+                    factionName = "Creative Mode"; groupName = "Common Animals";
+                    break;
+                case 13593: case 13596: case 13597: case 16643: case 16642: case 16644: case 16645: case 16661: case 16672:
+                case 16673: case 16674: case 16675: case 16676: case 16677: case 16678: case 16679:
+                    factionName = "Creative Mode"; groupName = "Uncommon Animals";
+                    break;
+                case 16680: case 16681: case 16682: case 16683: case 16684: case 16685: case 16686: case 16687: case 16688:
+                case 16689: case 16690: case 16692:
+                    factionName = "Creative Mode"; groupName = "Rare Animals";
+                    break;
+                case 16701: case 16706: case 16714: case 16715: case 16716: case 16717: case 16718: case 16719: case 16720:
+                case 16721: case 16722: case 16723: case 16724: case 16725: case 16737:
+                    factionName = "Creative Mode"; groupName = "Epic Animals";
+                    break;
+                case 16485: case 16738: case 16745: case 16756: case 16766: case 16767: case 16778: case 16784: case 16797:
+                case 16798: case 16799: case 16828:
+                    factionName = "Creative Mode"; groupName = "Legendary Animals";
+                    break;
+                case 16498: case 16496: case 16502: case 16503: case 16505: case 16497: case 16535:
+                    factionName = "Creative Mode"; groupName = "Deep-Sea Animals";
+                    break;
+                case 16537: case 16538: case 16590: case 16539: case 16540: case 16541: case 16544: case 16545: case 16591:
+                    factionName = "Creative Mode"; groupName = "Arctic Animals";
+                    break;
+                case 16418: case 16417: case 16416: case 16415: case 16414: case 16413: case 16412: case 16488: case 16458:
+                case 16411: case 16459: case 16464: case 16465: case 16466: case 16469: case 16470: case 16471: case 16472:
+                case 16473: case 16474: case 16475: case 16476: case 16486:
+                    factionName = "Creative Mode"; groupName = "Enbesan Animals";
+                    break;
+                case 17684: case 17685: case 17754: case 17753: case 17752: case 17757: case 17751: case 17758: case 17750:
+                case 17749: case 17759: case 17710: case 17767: case 17755: case 17765: case 17748: case 17766: case 17764:
+                case 17747: case 17762: case 17763: case 17686: case 17761: case 17760: case 17687: case 17756:
+                    factionName = "Creative Mode"; groupName = "Special Exhibits";
+                    break;
+                case 17683: case 17477: case 17503: case 17504: case 17505: case 10204:
+                    factionName = "Creative Mode"; groupName = "Sunken Exhibits";
+                    break;
+                case 17507: case 17508: case 17509: case 17510: case 10225:
+                    factionName = "Creative Mode"; groupName = "Arctic Exhibits";
+                    break;
+                case 17278: case 17289: case 17302: case 17313: case 17314: case 17315: case 17316: case 17342: case 17354:
+                case 17357:
+                    factionName = "Creative Mode"; groupName = "Enbesan Exhibits";
+                    break;
+                case 17770: case 17771: case 17772: case 17773: case 17774: case 17775: case 17776: case 17777: case 17778:
+                case 17779: case 17780: case 17781: case 17782: case 17783: case 17784: case 17785: case 17786: case 17787:
+                case 17788: case 17789: case 17875: case 17874:
+                    factionName = "Creative Mode"; groupName = "Botanical Garden Modules";
+                    break;
+                case 10244:
+                    factionName = "Creative Mode"; groupName = "(1) Old World";
+                    break;
+                case 10203:
+                    factionName = "Creative Mode"; groupName = "(2) New World";
+                    break;
+                case 10281:
+                    factionName = "Creative Mode"; groupName = "(3) Arctic";
+                    break;
+                case 10283:
+                    factionName = "Creative Mode"; groupName = "(4) Enbesa";
+                    break;
+                case 10285: case 11400: case 11399: case 11398: case 11402: case 10284: case 10202: case 10187: case 13011:
+                case 13911:
+                    factionName = "Creative Mode"; groupName = null;
+                    break;
+            }
+
+            #endregion
+
             #region Manual on Identifiers DVDatalist inserts, do not add the current building
 
             if (identifierName == "Africa_tractor_module_02 (Harvester)") { DVDataList[119026] = DVDataList[119026] + DVDataSeperator + Convert.ToString(guidNumber); return; };
@@ -2402,75 +2511,78 @@ namespace PresetParser
             // in order to get GUID's pointing to the right way for the Tool of DuxVitae
             // Also Skip Manual added GUID's to the DVDataList
             #region Add all Zoo, Museum, Botanical Modules to the DVDataLisy
-            // The code will be redone to compacter code after update 5.0 !
-            string DVreplaceName = "A7_";
-            string DVicon = null;
-            if (values["Standard"]?["IconFilename"]?.InnerText != null)
+            if (b.Faction != "Creative Mode")
             {
-                DVicon = values["Standard"]["IconFilename"].InnerText;
-            }
+                // The code will be redone to compacter code after update 5.0 !
+                string DVreplaceName = "A7_";
+                string DVicon = null;
+                if (values["Standard"]?["IconFilename"]?.InnerText != null)
+                {
+                    DVicon = values["Standard"]["IconFilename"].InnerText;
+                }
 
-            if (DVicon != null)
-            {
-                /// Split the Value <IconFilenames>innertext</IconFilenames> to get only the Name.png
-                string[] sDVIcons = DVicon.Split('/');
-                if (sDVIcons.LastOrDefault().StartsWith("icon_"))
+                if (DVicon != null)
                 {
-                    DVicon = sDVIcons.LastOrDefault().Replace("icon_", DVreplaceName);
+                    /// Split the Value <IconFilenames>innertext</IconFilenames> to get only the Name.png
+                    string[] sDVIcons = DVicon.Split('/');
+                    if (sDVIcons.LastOrDefault().StartsWith("icon_"))
+                    {
+                        DVicon = sDVIcons.LastOrDefault().Replace("icon_", DVreplaceName);
+                    }
+                    else /* Put the Replace name on front*/
+                    {
+                        DVicon = DVreplaceName + sDVIcons.LastOrDefault();
+                    }
+                    if ((DVicon == "A7_Zoo module.png") && (b.Guid != 100455))
+                    {
+                        string DVisExcludedGuidStr = Convert.ToString(b.Guid);
+                        DVDataList[100455] = DVDataList[100455] + DVDataSeperator + DVisExcludedGuidStr;
+                        return;
+                    }
+                    if ((DVicon == "A7_music_pavillion.png") && (b.Guid != 113452))
+                    {
+                        string DVisExcludedGuidStr = Convert.ToString(b.Guid);
+                        DVDataList[113452] = DVDataList[113452] + DVDataSeperator + DVisExcludedGuidStr;
+                        return;
+                    }
                 }
-                else /* Put the Replace name on front*/
-                {
-                    DVicon = DVreplaceName + sDVIcons.LastOrDefault();
-                }
-                if ((DVicon == "A7_Zoo module.png") && (b.Guid != 100455))
+                // DVDataList for the Zoo Modules that has not the Default Zoo Icon
+                if ((((b.Identifier.StartsWith("Culture_01_module_")) || ((b.Group == "CultureModule") && (b.Faction == "All Worlds") && (DVicon == "A7_general_module_01.png"))) && (b.Guid != 100455)))
                 {
                     string DVisExcludedGuidStr = Convert.ToString(b.Guid);
                     DVDataList[100455] = DVDataList[100455] + DVDataSeperator + DVisExcludedGuidStr;
                     return;
                 }
-                if ((DVicon == "A7_music_pavillion.png") && (b.Guid != 113452))
+
+                // DVDataList for the Museum Modules on part of IdentifierName
+                if ((b.Identifier.StartsWith("Culture_02_module_")) && (b.Guid != 100454))
                 {
                     string DVisExcludedGuidStr = Convert.ToString(b.Guid);
-                    DVDataList[113452] = DVDataList[113452] + DVDataSeperator + DVisExcludedGuidStr;
+                    DVDataList[100454] = DVDataList[100454] + DVDataSeperator + DVisExcludedGuidStr;
                     return;
                 }
-            }
-            // DVDataList for the Zoo Modules that has not the Default Zoo Icon
-            if ((((b.Identifier.StartsWith("Culture_01_module_")) || ((b.Group == "CultureModule") && (b.Faction == "All Worlds") && (DVicon == "A7_general_module_01.png"))) && (b.Guid != 100455)))
-            {
-                string DVisExcludedGuidStr = Convert.ToString(b.Guid);
-                DVDataList[100455] = DVDataList[100455] + DVDataSeperator + DVisExcludedGuidStr;
-                return;
-            }
 
-            // DVDataList for the Museum Modules on part of IdentifierName
-            if ((b.Identifier.StartsWith("Culture_02_module_")) && (b.Guid != 100454))
-            {
-                string DVisExcludedGuidStr = Convert.ToString(b.Guid);
-                DVDataList[100454] = DVDataList[100454] + DVDataSeperator + DVisExcludedGuidStr;
-                return;
-            }
+                // DVDataList for the Botanica Garden Modules on part of IdentifierName
+                if ((b.Identifier.StartsWith("C03_")) && (b.Guid != 111104))
+                {
+                    string DVisExcludedGuidStr = Convert.ToString(b.Guid);
+                    DVDataList[111104] = DVDataList[111104] + DVDataSeperator + DVisExcludedGuidStr;
+                    return;
+                }
 
-            // DVDataList for the Botanica Garden Modules on part of IdentifierName
-            if ((b.Identifier.StartsWith("C03_")) && (b.Guid != 111104))
-            {
-                string DVisExcludedGuidStr = Convert.ToString(b.Guid);
-                DVDataList[111104] = DVDataList[111104] + DVDataSeperator + DVisExcludedGuidStr;
-                return;
-            }
-
-            // Skip buildings that are added Manual into the DVDataList on GUID's
-            switch (b.Guid)
-            {
-                //Skipped DVDataList added
-                case 24828: { return; }
-                case 101267: { return; }
-                case 100417: { return; }
-                case 113750: { return; }
-                case 129025: { return; }
-                case 101516: { return; }
-                case 102093: { return; }
-                case 102112: { return; }
+                // Skip buildings that are added Manual into the DVDataList on GUID's
+                switch (b.Guid)
+                {
+                    //Skipped DVDataList added
+                    case 24828: { return; }
+                    case 101267: { return; }
+                    case 100417: { return; }
+                    case 113750: { return; }
+                    case 129025: { return; }
+                    case 101516: { return; }
+                    case 102093: { return; }
+                    case 102112: { return; }
+                }
             }
             #endregion
 
@@ -3291,16 +3403,16 @@ namespace PresetParser
                 {
                     //pre-arrange ones (line 651 >) made by hand, and first GUID is skipped on making the DVDataList 
                     case "A7_airship_hangar.png": if (b.Guid != 112685) { DVDataGUID2 = 112685; DVDatacounted2 = true; } break;
-                    case "A7_research_center.png": if (b.Guid != 118938) { DVDataGUID2 = 118938; DVDatacounted2 = true; } break;
+                    case "A7_research_center.png": if (b.Guid != 118938 && b.Guid != 11400) { DVDataGUID2 = 118938; DVDatacounted2 = true; } break;
                     case "A7_warehouse.png": if (b.Guid != 1010371) { DVDataGUID2 = 1010371; DVDatacounted2 = true; } break;
                     case "A7_oil_habour_01.png": if (b.Guid != 100783) { DVDataGUID2 = 100783; DVDatacounted2 = true; } break;
                     case "A7_kontor_main.png": if (b.Guid != 1010540) { DVDataGUID2 = 1010540; DVDatacounted2 = true; } break;
                     case "A7_visitor_harbour.png": if (b.Guid != 100429) { DVDataGUID2 = 100429; DVDatacounted2 = true; } break;
                     //in order of the Presets, as they are read in when the presets are created, and thus added on the first GUID at the DVDataList  
-                    case "A7_highlife_skyliner_monument.png": if (b.Guid != 403) { DVDataGUID2 = 403; DVDatacounted2 = true; } break;
+                    case "A7_highlife_skyliner_monument.png": if (b.Guid != 403 && b.Guid != 11398) { DVDataGUID2 = 403; DVDatacounted2 = true; } break;
                     case "A7_depot.png": if (b.Guid != 1010519) { DVDataGUID2 = 1010519; DVDatacounted2 = true; } break;
                     case "A7_pier.png": if (b.Guid != 100519) { DVDataGUID2 = 100519; DVDatacounted2 = true; } break;
-                    case "A7_world_fair_2.png": if (b.Guid != 1010489) { DVDataGUID2 = 1010489; DVDatacounted2 = true; } break;
+                    case "A7_world_fair_2.png": if (b.Guid != 1010489 && b.Guid != 10285) { DVDataGUID2 = 1010489; DVDatacounted2 = true; } break;
                     case "A7_botanic_garden.png": if (b.Guid != 110935) { DVDataGUID2 = 110935; DVDatacounted2 = true; } break;
                     case "A7_museum.png": if (b.Guid != 1010471) { DVDataGUID2 = 1010471; DVDatacounted2 = true; } break;
                     case "A7_zoo.png": if (b.Guid != 1010470) { DVDataGUID2 = 1010470; DVDatacounted2 = true; } break;
@@ -3316,8 +3428,8 @@ namespace PresetParser
                     case "A7_defense_tower_pucklegun.png": if (b.Guid != 1010522) { DVDataGUID2 = 1010522; DVDatacounted2 = true; } break;
                     case "A7_defense_tower_cannon.png": if (b.Guid != 1010523) { DVDataGUID2 = 1010523; DVDatacounted2 = true; } break;
                     case "A7_sail_shipyard.png": if (b.Guid != 1010520) { DVDataGUID2 = 1010520; DVDatacounted2 = true; } break;
-                    case "A7_airship_hangar_southamerica.png": if(b.Guid != 648) { DVDataGUID2 = 648; DVDatacounted2 = true; } break;
-                    case "A7_stadium.png": if (b.Guid != 6117) { DVDataGUID2 = 6117; DVDatacounted2 = true; } break;
+                    case "A7_airship_hangar_southamerica.png": if(b.Guid != 648 && b.Guid != 13911) { DVDataGUID2 = 648; DVDatacounted2 = true; } break;
+                    case "A7_stadium.png": if (b.Guid != 6117 && b.Guid != 11402) { DVDataGUID2 = 6117; DVDatacounted2 = true; } break;
                 }
             }
 
