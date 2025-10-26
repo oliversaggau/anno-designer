@@ -416,7 +416,7 @@ namespace PresetParser
                 /// only the 'Values' will skip the <template> tag that i still need
                 VersionSpecificPaths[Constants.ANNO_VERSION_1800].Add("assets", new PathRef[]
                 {
-                    // Cosmetic DLC 9/10
+                    // Cosmetic DLC 9-16
                     new PathRef("data/config/export/main/asset/assets.xml", "AssetList/Groups/Group/Groups/Group/Assets/Asset"),
                     // Base Game with DLC's
                     new PathRef("data/config/export/main/asset/assets.xml", "AssetList/Groups/Group/Groups/Group/Groups/Group/Assets/Asset"),
@@ -2296,6 +2296,48 @@ namespace PresetParser
             {
                 factionName = "Ornaments";
                 groupName = "30 Dragon Garden";
+            }
+
+            // Fiesta Pack CLDC (11)
+            if (identifierName.StartsWith("CDLC11"))
+            {
+                factionName = "Ornaments";
+                groupName = "32 Fiesta";
+            }
+
+            // National Park Pack CLDC (12)
+            if (identifierName.StartsWith("CDLC12"))
+            {
+                factionName = "Ornaments";
+                groupName = "33 National Park";
+            }
+
+            // Eldritch Pack CLDC (13)
+            if (identifierName.StartsWith("CDLC13"))
+            {
+                factionName = "Ornaments";
+                groupName = "34 Eldritch";
+            }
+
+            // Steampunk Pack CLDC (14)
+            if (identifierName.StartsWith("CDLC14"))
+            {
+                factionName = "Ornaments";
+                groupName = "35 Steampunk";
+            }
+
+            // Pirate Cove Pack CLDC (15)
+            if (identifierName.StartsWith("CDLC15"))
+            {
+                factionName = "Ornaments";
+                groupName = "36 Pirate Cove";
+            }
+
+            // End of an Era Pack CLDC (16)
+            if (identifierName.StartsWith("CDLC16"))
+            {
+                factionName = "Ornaments";
+                groupName = "37 End of an Era";
             }
 
             // Place the rest of the buildings in the right Faction > Group menu
