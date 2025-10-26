@@ -3215,7 +3215,7 @@ namespace PresetParser
                             switch (languageCount)
                             {
                                 case 0: { translation = "Railings"; break; }
-                                case 1: { translation = "Zaune"; break; }
+                                case 1: { translation = "Zaun"; break; }
                                 case 2: { translation = "Garde-corps"; break; }
                                 case 3: { translation = "Poręcze"; break; }
                                 case 4: { translation = "Ограда"; break; }
@@ -3227,7 +3227,7 @@ namespace PresetParser
                             switch (languageCount)
                             {
                                 case 0: { translation = "Railings Junction"; break; }
-                                case 1: { translation = "Zaune Verbindungsstelle"; break; }
+                                case 1: { translation = "Zaunkreuzung"; break; }
                                 case 2: { translation = "Garde-corps Jonction"; break; }
                                 case 3: { translation = "Poręcze Złącze"; break; }
                                 case 4: { translation = "Ограда (Перекресток)"; break; }
