@@ -32,7 +32,7 @@ namespace PresetParser
         public static bool isExcludedGUID = false; /*only for Anno 1800 */
 
         private static Dictionary<string, Dictionary<string, PathRef[]>> VersionSpecificPaths { get; set; }
-        private const string BUILDING_PRESETS_VERSION = "5.2";
+        private const string BUILDING_PRESETS_VERSION = "5.3";
         // Initializing Language Directory's and Filenames
         private static readonly string[] Languages = new[] { "eng", "ger", "fra", "pol", "rus", "esp" };
         private static readonly string[] LanguagesFiles2205 = new[] { "english", "german", "french", "polish", "russian", "spanish" };
@@ -2039,6 +2039,13 @@ namespace PresetParser
             {
                 case 24770: factionName = "(19) Seeds Of Change"; groupName = "Modules: Ornaments"; break;
                 case 25224: factionName = "(19) Seeds Of Change"; groupName = "Modules: Ornaments"; break;
+            }
+
+            // Place Special Ornaments
+            if (guidNumber == 30709 || guidNumber == 30710)
+            {
+                factionName = "Ornaments";
+                groupName = "11 Special Ornaments";
             }
 
             //Place all Orchards in the overall 'Orchards' tree menu 
