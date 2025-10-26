@@ -836,6 +836,18 @@ namespace PresetParser
                 DVDataList[686] = "686,A7_dam_a.png,GGJDam_01_03";
                 DVDataList[1372] = "1372,A7_bauxit.png,Mining_20_slot (Bauxite Ore Mine),1308";
                 DVDataList[1375] = "1375,A7_helium.png,Mining_21_slot (SA GasWell),1353";
+                DVDataList[102140] = "102140,A7_park_props_1x1_28.png,Park_1x1_pathend";
+                DVDataList[102141] = "102141,A7_park_props_1x1_29.png,Park_1x1_pathangle";
+                DVDataList[102142] = "102142,A7_park_props_1x1_30.png,Park_1x1_pathcrossing";
+                DVDataList[102143] = "102143,A7_park_props_1x1_31.png,Park_1x1_pathwall";
+                DVDataList[102145] = "102145,A7_park_props_1x1_05.png,Park_1x1_fenceend";
+                DVDataList[102146] = "102146,A7_cultural_props_1x1_05.png,Park_1x1_fenceangle";
+                DVDataList[102147] = "102147,A7_park_props_1x1_12.png,Park_1x1_fencecrossing";
+                DVDataList[102148] = "102148,A7_park_props_1x1_10.png,Park_1x1_fencewall";
+                DVDataList[102135] = "102135,A7_park_props_1x1_08.png,Park_1x1_hedgeend";
+                DVDataList[102136] = "102136,A7_park_props_1x1_07.png,Park_1x1_hedgeangle";
+                DVDataList[102137] = "102137,A7_park_props_1x1_11.png,Park_1x1_hedgecrossing";
+                DVDataList[102138] = "102138,A7_park_props_1x1_09.png,Park_1x1_hedgewall";
                 PPTNFile.WriteLine("This File is created with the Anno Designer Presets version: " + BUILDING_PRESETS_VERSION);
                 PPTNFile.WriteLine("-----------------------------------------------------------> TSL <-");
 
@@ -1813,10 +1825,33 @@ namespace PresetParser
             if (identifierName.Contains("DEPRECATED_"))
             {
                 oldColor = Console.ForegroundColor;
-                Console.ForegroundColor = ConsoleColor.DarkGreen;
-                identifierName = identifierName.Replace("DEPRECATED_", "");
-                Console.WriteLine("--> Removed 'DEPRECATED_' to get object still in AD: ");
-                Console.ForegroundColor = oldColor;
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                try
+                {
+                    // Do not keep duplicate deprecated ornaments, put them into DVDatalist instead
+                    switch (guidNumber)
+                    {
+                        case 102100: case 102825: { DVDataList[102140] = DVDataList[102140] + DVDataSeperator + Convert.ToString(guidNumber); Console.WriteLine("---> Building added to Replacement List (Deprecated): 102140 << " + guidNumber); return; }
+                        case 102101: case 102826: { DVDataList[102141] = DVDataList[102141] + DVDataSeperator + Convert.ToString(guidNumber); Console.WriteLine("---> Building added to Replacement List (Deprecated): 102141 << " + guidNumber); return; }
+                        case 102102: case 102827: { DVDataList[102142] = DVDataList[102142] + DVDataSeperator + Convert.ToString(guidNumber); Console.WriteLine("---> Building added to Replacement List (Deprecated): 102142 << " + guidNumber); return; }
+                        case 102103: case 102828: { DVDataList[102143] = DVDataList[102143] + DVDataSeperator + Convert.ToString(guidNumber); Console.WriteLine("---> Building added to Replacement List (Deprecated): 102143 << " + guidNumber); return; }
+                        case 102094: case 102830: case 102850: { DVDataList[102145] = DVDataList[102145] + DVDataSeperator + Convert.ToString(guidNumber); Console.WriteLine("---> Building added to Replacement List (Deprecated): 102145 << " + guidNumber); return; }
+                        case 102095: case 102831: case 102851: { DVDataList[102146] = DVDataList[102146] + DVDataSeperator + Convert.ToString(guidNumber); Console.WriteLine("---> Building added to Replacement List (Deprecated): 102146 << " + guidNumber); return; }
+                        case 102096: case 102832: case 102852: { DVDataList[102147] = DVDataList[102147] + DVDataSeperator + Convert.ToString(guidNumber); Console.WriteLine("---> Building added to Replacement List (Deprecated): 102147 << " + guidNumber); return; }
+                        case 102097: case 102833: case 102853: { DVDataList[102148] = DVDataList[102148] + DVDataSeperator + Convert.ToString(guidNumber); Console.WriteLine("---> Building added to Replacement List (Deprecated): 102148 << " + guidNumber); return; }
+                        case 102089: case 102820: case 102856: { DVDataList[102135] = DVDataList[102135] + DVDataSeperator + Convert.ToString(guidNumber); Console.WriteLine("---> Building added to Replacement List (Deprecated): 102135 << " + guidNumber); return; }
+                        case 102090: case 102821: case 102857: { DVDataList[102136] = DVDataList[102136] + DVDataSeperator + Convert.ToString(guidNumber); Console.WriteLine("---> Building added to Replacement List (Deprecated): 102136 << " + guidNumber); return; }
+                        case 102091: case 102822: case 102858: { DVDataList[102137] = DVDataList[102137] + DVDataSeperator + Convert.ToString(guidNumber); Console.WriteLine("---> Building added to Replacement List (Deprecated): 102137 << " + guidNumber); return; }
+                        case 102092: case 102823: case 102859: { DVDataList[102138] = DVDataList[102138] + DVDataSeperator + Convert.ToString(guidNumber); Console.WriteLine("---> Building added to Replacement List (Deprecated): 102138 << " + guidNumber); return; }
+                    }
+                    Console.ForegroundColor = ConsoleColor.DarkGreen;
+                    identifierName = identifierName.Replace("DEPRECATED_", "");
+                    Console.WriteLine("--> Removed 'DEPRECATED_' to get object still in AD: ");
+                }
+                finally
+                {
+                    Console.ForegroundColor = oldColor;
+                }
             }
 
             // Setting the factionname, thats the first menu after header
@@ -3501,7 +3536,10 @@ namespace PresetParser
             if ((b.Guid != 100455) && (b.Guid != 100454) && (b.Guid != 111104) && (b.Guid != 113452) &&
                 (b.Guid != 112685) && (b.Guid != 132765) && (b.Guid != 118938) && (b.Guid != 1010371) &&
                 (b.Guid != 100783) && (b.Guid != 1010540) && (b.Guid != 100429) && (b.Guid != 686) && (b.Guid != 6006) &&
-                (b.Guid != 4260) && (b.Guid != 4258) && (b.Guid!=2654) && (b.Guid != 1372) && (b.Guid != 1375))
+                (b.Guid != 4260) && (b.Guid != 4258) && (b.Guid!=2654) && (b.Guid != 1372) && (b.Guid != 1375) &&
+                (b.Guid != 102140) && (b.Guid != 102141) && (b.Guid != 102142) && (b.Guid != 102143) &&
+                (b.Guid != 102145) && (b.Guid != 102146) && (b.Guid != 102147) && (b.Guid != 102148) &&
+                (b.Guid != 102135) && (b.Guid != 102136) && (b.Guid != 102137) && (b.Guid != 102138))
             {
                 if (string.IsNullOrEmpty(DVDataList[b.Guid]))
                 {
