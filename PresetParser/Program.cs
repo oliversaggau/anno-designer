@@ -2891,8 +2891,9 @@ namespace PresetParser
                 case "A7_city_2x2_02.png": b.IconFileName = replaceName + "city_2x2_03.png"; break; // Switch to right icon
             }
 
-            isExcludedName = identifierName.IsPartOf(annoBuildingLists);
-            isExcludeIconName = b.IconFileName.IsPartOf(anno1800IconNameLists);
+            // do NOT use IsPartOf here since it would even find partial matching names/icons
+            isExcludedName = identifierName.IsMatch(annoBuildingLists);
+            isExcludeIconName = b.IconFileName.IsMatch(anno1800IconNameLists);
 
             if (isExcludedName || isExcludeIconName)
             {
@@ -3533,7 +3534,7 @@ namespace PresetParser
             ValidateIconFile(b.IconFileName, Convert.ToString(b.Guid), b.Header);
             // add building to the list
             annoBuildingsListCount++;//countup amount of buildings
-            annoBuildingLists.Add(values["Standard"]["Name"].InnerText);//add building name to the list, for checking double building names usage
+            annoBuildingLists.Add(identifierName);//add building name to the list, for checking double building names usage
             anno1800IconNameLists.Add(b.IconFileName);//add Icon file to the list, for checking double icon file usage 
             buildings.Add(b); // add building data to file data
         }
