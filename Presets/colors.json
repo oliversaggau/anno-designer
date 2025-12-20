@@ -2504,6 +2504,33 @@
 						"G": 118,
 						"B": 111
 					}
+				}, {
+					"TargetTemplate": "AqueductProducer",
+					"TargetIdentifiers": [],
+					"Color": {
+						"A": 255,
+						"R": 135,
+						"G": 206,
+						"B": 235
+					}
+				}, {
+					"TargetTemplate": "AqueductConnector",
+					"TargetIdentifiers": [],
+					"Color": {
+						"A": 255,
+						"R": 135,
+						"G": 206,
+						"B": 235
+					}
+				}, {
+					"TargetTemplate": "AqueductDistributor",
+					"TargetIdentifiers": [],
+					"Color": {
+						"A": 255,
+						"R": 135,
+						"G": 206,
+						"B": 235
+					}
 				}
 			]
 		}

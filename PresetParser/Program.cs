@@ -3824,6 +3824,22 @@ namespace PresetParser
                     groupName = model.GetGroupByRegion(associatedRegion);
                     factionName = "Warehouse";
                 }
+                else if (templateName == "AqueductProducer" || templateName == "AqueductConnector" || templateName == "AqueductDistributor")
+                {
+                    if (associatedRegion == "Roman") factionName = "(3) Equites";
+                    else if (associatedRegion == "Celtic") factionName = "(9) Nobles";
+                    groupName = "Aqueduct";
+
+                    if (templateName == "AqueductConnector")
+                    {
+                        if (!identifierName.Contains("Main"))
+                        {
+                            return;
+                        }
+
+                        identifierName = identifierName.Replace("Aqueduct MinGround Main", "").Trim();
+                    }
+                }
                 else if (associatedRegion != null)
                 {
                     factionName = model.ResolveFaction(guidName, associatedRegion);
@@ -3865,11 +3881,20 @@ namespace PresetParser
                 b.IconFileName = null;
             }
 
+            if (templateName == "AqueductConnector")
+            {
+                b.IconFileName = null;
+            }
+
             #endregion
 
             #region Set BuildBlocker of buildings
 
-            if (assetBuilding.SelectNode("Object") != null)
+            if (templateName == "AqueductConnector")
+            {
+                b.BuildBlocker = _buildingBlockProvider.CreateBuildBlocker(1, 1);
+            }
+            else if (assetBuilding.SelectNode("Object") != null)
             {
                 XmlNode variations = assetBuilding.SelectNode("Object/Variations");
                 string filename = variations?.FirstChild["Filename"]?.InnerText;
