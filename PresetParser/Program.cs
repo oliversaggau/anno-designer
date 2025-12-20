@@ -25,6 +25,7 @@ namespace PresetParser
         private static string BASE_PATH_2070 { get; set; }
         private static string BASE_PATH_2205 { get; set; }
         private static string BASE_PATH_1800 { get; set; }
+        private static string BASE_PATH_117 { get; set; }
 
         public static bool isExcludedName = false;
         public static bool isExcludeIconName = false; /*Only for Anno 1800*/
@@ -37,6 +38,7 @@ namespace PresetParser
         private static readonly string[] Languages = new[] { "eng", "ger", "fra", "pol", "rus", "esp" };
         private static readonly string[] LanguagesFiles2205 = new[] { "english", "german", "french", "polish", "russian", "spanish" };
         private static readonly string[] LanguagesFiles1800 = new[] { "english", "german", "french", "polish", "russian", "spanish" };
+        private static readonly string[] LanguagesFiles117 = new[] { "english", "german", "french", "polish", "russian", "spanish" };
         // Internal Program Buildings Lists to skip double buildings
         public static List<string> annoBuildingLists = new List<string>();
         public static List<string> anno1800IconNameLists = new List<string>();
@@ -202,14 +204,14 @@ namespace PresetParser
             bool validVersion = false;
             while (!validVersion)
             {
-                Console.Write("Please enter an Anno version (1 of: {0} {1} {2} {3}):", Constants.ANNO_VERSION_1404, Constants.ANNO_VERSION_2070, Constants.ANNO_VERSION_2205, Constants.ANNO_VERSION_1800);
+                Console.Write("Please enter an Anno version (1 of: {0} {1} {2} {3} {4}):", Constants.ANNO_VERSION_1404, Constants.ANNO_VERSION_2070, Constants.ANNO_VERSION_2205, Constants.ANNO_VERSION_1800, Constants.ANNO_VERSION_117);
                 annoVersion = Console.ReadLine();
                 if (annoVersion == "quit")
                 {
                     Environment.Exit(0);
                 }
 
-                if (annoVersion == Constants.ANNO_VERSION_1404 || annoVersion == Constants.ANNO_VERSION_2070 || annoVersion == Constants.ANNO_VERSION_2205 || annoVersion == Constants.ANNO_VERSION_1800 || annoVersion == "-ALL")
+                if (annoVersion == Constants.ANNO_VERSION_1404 || annoVersion == Constants.ANNO_VERSION_2070 || annoVersion == Constants.ANNO_VERSION_2205 || annoVersion == Constants.ANNO_VERSION_1800 || annoVersion == Constants.ANNO_VERSION_117 || annoVersion == "-ALL")
                 {
                     validVersion = true;
                 }
@@ -217,7 +219,7 @@ namespace PresetParser
                 {
                     Console.Write("Please enter an Anno version:");
                     annoVersion = Console.ReadLine();
-                    if (annoVersion == Constants.ANNO_VERSION_1404 || annoVersion == Constants.ANNO_VERSION_2070 || annoVersion == Constants.ANNO_VERSION_2205 || annoVersion == Constants.ANNO_VERSION_1800)
+                    if (annoVersion == Constants.ANNO_VERSION_1404 || annoVersion == Constants.ANNO_VERSION_2070 || annoVersion == Constants.ANNO_VERSION_2205 || annoVersion == Constants.ANNO_VERSION_1800 || annoVersion == Constants.ANNO_VERSION_117)
                     {
                         validVersion = true;
                         testVersion = true;
@@ -280,6 +282,7 @@ namespace PresetParser
                 BASE_PATH_2070 = GetBASE_PATH(Constants.ANNO_VERSION_2070);
                 BASE_PATH_2205 = GetBASE_PATH(Constants.ANNO_VERSION_2205);
                 BASE_PATH_1800 = GetBASE_PATH(Constants.ANNO_VERSION_1800);
+                BASE_PATH_117 = GetBASE_PATH(Constants.ANNO_VERSION_117);
             }
 
             if (!testVersion)
@@ -458,6 +461,25 @@ namespace PresetParser
             }
             #endregion
 
+            #region Anno 117 xPaths
+
+            if (annoVersion == Constants.ANNO_VERSION_117 || annoVersion == "-ALL")
+            {
+                Console.WriteLine();
+                Console.WriteLine("Trying to read Buildings Data from the assets.xml of Anno 117");
+                VersionSpecificPaths.Add(Constants.ANNO_VERSION_117, new Dictionary<string, PathRef[]>());
+                VersionSpecificPaths[Constants.ANNO_VERSION_117].Add("assets", new PathRef[]
+                {
+                    new PathRef("data/base/config/export/assets.xml"),
+                });
+                VersionSpecificPaths[Constants.ANNO_VERSION_117].Add("templates", new PathRef[]
+                {
+                    new PathRef("data/base/config/export/templates.xml"),
+                });
+            }
+
+            #endregion
+
             #endregion
 
             #region Prepare JSON Files
@@ -494,6 +516,12 @@ namespace PresetParser
                 Console.WriteLine("Reading RDA data from {0} for anno version {1}.", BASE_PATH_1800, Constants.ANNO_VERSION_1800);
                 BASE_PATH = BASE_PATH_1800;
                 DoAnnoPreset(Constants.ANNO_VERSION_1800, addRoads: true);
+                annoBuildingLists.Clear();
+                Console.WriteLine();
+                Console.WriteLine("----------------------------------------------");
+                Console.WriteLine("Reading RDA data from {0} for anno version {1}.", BASE_PATH_117, Constants.ANNO_VERSION_117);
+                BASE_PATH = BASE_PATH_117;
+                DoAnnoPreset(Constants.ANNO_VERSION_117, addRoads: false);
                 annoBuildingLists.Clear();
             }
             #endregion
@@ -911,6 +939,59 @@ namespace PresetParser
                     AddBlockingTiles(buildings);
                 }
             }
+            #endregion
+
+            #region Start prepare Anno 117
+
+            else if (annoVersion == Constants.ANNO_VERSION_117)
+            {
+                #region Read in Language Files
+                Console.WriteLine("Parsing language files....");
+                string languageFilePath = "data/base/config/gui/";
+                string languageFileStart = "texts_";
+
+                if (Languages.Length != LanguagesFiles117.Length)
+                {
+                    throw new InvalidOperationException("Language arrays for Anno 117 do not match!");
+                }
+
+                for (int i = 0; i < Languages.Length; i++)
+                {
+                    string languageFileName = BASE_PATH + languageFilePath + languageFileStart + LanguagesFiles117[i] + ".xml";
+                    XmlDocument langDocument = new XmlDocument();
+                    langDocument.Load(languageFileName);
+
+                    switch (Languages[i])
+                    {
+                        case "eng": { langDocument_english = langDocument; break; }
+                        case "ger": { langDocument_german = langDocument; break; }
+                        case "fra": { langDocument_french = langDocument; break; }
+                        case "pol": { langDocument_polish = langDocument; break; }
+                        case "rus": { langDocument_russian = langDocument; break; }
+                        case "esp": { langDocument_spanish = langDocument; break; }
+                    }
+                }
+                #endregion
+
+                Console.WriteLine("Loading files...");
+                PathRef assets = VersionSpecificPaths[annoVersion]["assets"].SingleOrDefault();
+                XmlDocument assetsDocument = new XmlDocument();
+                assetsDocument.Load(BASE_PATH + assets.Path);
+
+                PathRef templates = VersionSpecificPaths[annoVersion]["templates"].SingleOrDefault();
+                XmlDocument templatesDocument = new XmlDocument();
+                templatesDocument.Load(BASE_PATH + templates.Path);
+
+                Console.WriteLine("Preparing model...");
+                Anno117.Model model = new Anno117.Model(assetsDocument, templatesDocument);
+
+                Console.WriteLine("Parsing buildings...");
+                ParseAssets117(model, buildings);
+
+                // Add extra buildings to the anno version preset file
+                AddExtraPreset(annoVersion, buildings);
+            }
+
             #endregion
         }
 
@@ -3613,5 +3694,253 @@ namespace PresetParser
 
         #endregion
 
+        #region Parsing Buildings for Anno 117
+
+        private static void ParseAssets117(Anno117.Model model, List<IBuildingInfo> buildings)
+        {
+            for (int i = 0; i < model.BuildingCount; i++)
+            {
+                try
+                {
+                    Asset assetBuilding = model.GetBuilding(i);
+                    ParseBuilding117(model, assetBuilding, buildings);
+                }
+                catch (BaseAssetMissingException)
+                {
+                    var oldColor = Console.ForegroundColor;
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("--> Base asset not found, Building is skipped");
+                    Console.ForegroundColor = oldColor;
+                }
+            }
+        }
+
+        private static void ParseBuilding117(Anno117.Model model, Asset assetBuilding, List<IBuildingInfo> buildings)
+        {
+            string headerName = "(A8) Anno " + Constants.ANNO_VERSION_117;
+            string templateName = assetBuilding.TemplateName;
+            string identifierName = "";
+            string factionName = "";
+            string groupName = "";
+            int guidNumber = 0;
+
+            var oldColor = Console.ForegroundColor;
+            string guidName = assetBuilding.GetValue("Standard/GUID");
+            string profile = assetBuilding.GetValue("Object/DefaultProfile");
+
+            if (!string.IsNullOrEmpty(guidName))
+            {
+                guidNumber = Convert.ToInt32(guidName);
+            }
+
+            if (guidNumber == 0)
+            {
+                return;
+            }
+
+            if (!string.IsNullOrEmpty(profile) && profile != "0")
+            {
+                // skip third-party buildings
+                return;
+            }
+            else if (templateName.Contains("NPC") || templateName == "QuestLighthouse" || templateName.StartsWith("Pirate"))
+            {
+                // skip NPC buildings
+                return;
+            }
+            else if (templateName.Contains("ProvinceStory"))
+            {
+                // skip story buildings
+                return;
+            }
+            else if (templateName.Contains("PropObject") || templateName == "UnitCamp" || templateName == "WorkAreaSlot")
+            {
+                // skip unecessary buildings
+                return;
+            }
+
+            if (!assetBuilding.TryGetValue("Standard/Name", out identifierName))
+            {
+                oldColor = Console.ForegroundColor;
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("--> Missing Identifier Name : " + guidName + " >> " + templateName);
+                Console.ForegroundColor = oldColor;
+                return;
+            }
+            else if (identifierName.Contains("DEPRECATED"))
+            {
+                oldColor = Console.ForegroundColor;
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.WriteLine("--> Building deprecated, skipping : " + guidName);
+                Console.ForegroundColor = oldColor;
+                return;
+            }
+
+            identifierName = identifierName.FirstCharToUpper();
+            string associatedRegion = assetBuilding.GetValue("Building/AssociatedRegions");
+
+            if (string.IsNullOrEmpty(factionName))
+            {
+                if (associatedRegion != null)
+                {
+                    factionName = model.ResolveFaction(guidName, associatedRegion);
+                }
+            }
+
+            IBuildingInfo b = new BuildingInfo
+            {
+                Header = headerName,
+                Faction = factionName,
+                Group = groupName,
+                Template = templateName,
+                Identifier = identifierName,
+                Guid = guidNumber,
+            };
+
+            // print progress
+            Console.WriteLine(b.Identifier + " - " + b.Guid);
+
+            if (string.IsNullOrEmpty(factionName))
+            {
+                return; // TODO remove
+            }
+
+            #region Set IconFileName of buildings
+
+            // find icon node in values
+            const string replaceName = "A8_";
+            string pathIcon = assetBuilding.GetValue("Standard/IconFilename");
+
+            if (!string.IsNullOrEmpty(pathIcon))
+            {
+                string filename = Path.GetFileName(pathIcon);
+                if (filename.StartsWith("icon_3d_")) b.IconFileName = filename.Replace("icon_3d_", replaceName);
+                else b.IconFileName = replaceName + filename;
+            }
+            else
+            {
+                b.IconFileName = null;
+            }
+
+            #endregion
+
+            #region Set BuildBlocker of buildings
+
+            if (assetBuilding.SelectNode("Object") != null)
+            {
+                XmlNode variations = assetBuilding.SelectNode("Object/Variations");
+                string filename = variations?.FirstChild["Filename"]?.InnerText;
+
+                if (!string.IsNullOrEmpty(filename))
+                {
+                    if (!_buildingBlockProvider.GetBuildingBlocker(BASE_PATH, b, filename, Constants.ANNO_VERSION_117))
+                    {
+                        return;
+                    }
+                }
+                else
+                {
+                    oldColor = Console.ForegroundColor;
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("- BuildBlocker not found, skipping: Missing Object File (B)");
+                    Console.ForegroundColor = oldColor;
+                    return;
+                }
+            }
+            else
+            {
+                oldColor = Console.ForegroundColor;
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("- BuildBlocker not found, skipping: Object Information not found (A)");
+                Console.ForegroundColor = oldColor;
+                return;
+            }
+
+            #endregion
+
+            #region Set InfluenceRadius of buildings
+
+            if (assetBuilding.TryGetValue("FreeAreaProductivity/InfluenceRadius", out string influenceRadius))
+            {
+                // production building with free area influence radius
+                b.InfluenceRadius = Convert.ToInt32(influenceRadius);
+            }
+            else if (assetBuilding.TryGetValue("ModuleOwner/ModuleBuildRadius", out influenceRadius))
+            {
+                // farms and other module owners
+                b.InfluenceRadius = Convert.ToInt32(influenceRadius);
+            }
+
+            #endregion
+
+            #region Set InfluenceRange of buildings
+
+            b.InfluenceRange = 0;
+
+            if (assetBuilding.TryGetValue("EffectSource/StreetDistance", out influenceRadius))
+            {
+                if (templateName == "PublicServiceBuilding")
+                {
+                    // public service buildings
+                    b.InfluenceRange = Convert.ToInt32(influenceRadius);
+                }
+            }
+
+            #endregion
+
+            #region Set Localization
+
+            string lineId = assetBuilding.GetValue("Text/OasisId");
+
+            if (string.IsNullOrEmpty(lineId))
+            {
+                oldColor = Console.ForegroundColor;
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("--> Error in translation : " + guidName + " >> " + templateName + ".");
+                Console.ForegroundColor = oldColor;
+                return;
+            }
+
+            //Initialize the dictionary
+            const string textNodesPath = "/TextExport/Texts/Text";
+            b.Localization = new SerializableDictionary<string>();
+
+            foreach (string Language in Languages)
+            {
+                XmlDocument langDocument = new XmlDocument();
+                switch (Language)
+                {
+                    case "eng": { langDocument = langDocument_english; break; }
+                    case "ger": { langDocument = langDocument_german; break; }
+                    case "fra": { langDocument = langDocument_french; break; }
+                    case "pol": { langDocument = langDocument_polish; break; }
+                    case "rus": { langDocument = langDocument_russian; break; }
+                    case "esp": { langDocument = langDocument_spanish; break; }
+                }
+
+                string translation = "";
+                XmlNode translationNodes = langDocument.SelectNodes(textNodesPath)
+                    .Cast<XmlNode>().SingleOrDefault(node => node["LineId"].InnerText == lineId);
+
+                if (translationNodes != null)
+                {
+                    translation = translationNodes?["Text"]?.InnerText;
+
+                    if (translation == null)
+                    {
+                        throw new InvalidOperationException("Cannot get translation, text node not found");
+                    }
+                }
+
+                b.Localization.Dict.Add(Language, translation);
+            }
+
+            #endregion
+
+            if (!string.IsNullOrEmpty(b.IconFileName)) ValidateIconFile(b.IconFileName, Convert.ToString(b.Guid), b.Header);
+            buildings.Add(b);
+        }
+
+        #endregion
     }
 }

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Xml;
 using AnnoDesigner.Core.Models;
 using AnnoDesigner.Core.Presets.Models;
@@ -32,18 +34,72 @@ namespace PresetParser
             _ifoFileProvider = ifoFileProviderToUse ?? throw new ArgumentNullException(nameof(ifoFileProviderToUse));
         }
 
+        public SerializableDictionary<int> CreateBuildBlocker(int x, int z)
+        {
+            var result = new SerializableDictionary<int>();
+            result[X] = x;
+            result[Z] = z;
+            return result;
+        }
+
         public bool GetBuildingBlocker(string basePath, IBuildingInfo building, string variationFilename, string annoVersion)
         {
-            var ifoDocument = _ifoFileProvider.GetIfoFileContent(basePath, variationFilename);
+            var ifoDocument = _ifoFileProvider.GetIfoFileContent(basePath, variationFilename, annoVersion);
 
             if (annoVersion.Equals(Constants.ANNO_VERSION_1800, StringComparison.OrdinalIgnoreCase))
             {
                 return ParseBuildingBlockerForAnno1800(ifoDocument, building);
             }
+            else if (annoVersion.Equals(Constants.ANNO_VERSION_117, StringComparison.OrdinalIgnoreCase))
+            {
+                return ParseBuildingBlockerForAnno117(ifoDocument, building);
+            }
             else
             {
                 return ParseBuildingBlocker(ifoDocument, building, variationFilename);
             }
+        }
+
+        private bool ParseBuildingBlockerForAnno117(XmlDocument ifoDocument, IBuildingInfo building)
+        {
+            List<XmlNode> buildBlockers = ifoDocument.SelectNodes("//BuildBlocker").Cast<XmlNode>().ToList();
+
+            if (buildBlockers.Count == 0)
+            {
+                var oldColor = Console.ForegroundColor;
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("- No BuildBlocker in files - Building will be skipped");
+                Console.ForegroundColor = oldColor;
+                return false;
+            }
+
+            List<PointF> points = new List<PointF>();
+            // e.g. gates have multiple BuildBlocker, to get the outer bounds we need to process all of them
+
+            foreach (XmlNode buildBlocker in buildBlockers)
+            {
+                foreach (XmlNode position in buildBlocker.SelectNodes("./Position"))
+                {
+                    float x = position["xf"] == null ? 0 : float.Parse(position["xf"].InnerText, CultureInfo.InvariantCulture);
+                    float y = position["zf"] == null ? 0 : float.Parse(position["zf"].InnerText, CultureInfo.InvariantCulture);
+                    points.Add(new PointF(x, y));
+                }
+            }
+
+            if (points.Count % 4 != 0)
+            {
+                var oldColor = Console.ForegroundColor;
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("- Invalid BuildBlocker - Building will be skipped");
+                Console.ForegroundColor = oldColor;
+                return false;
+            }
+
+            PointF topRight = new PointF(points.Max(p => p.X), points.Max(p => p.Y));
+            PointF bottomLeft = new PointF(points.Min(p => p.X), points.Min(p => p.Y));
+            RectangleF bounds = new RectangleF(bottomLeft.X, bottomLeft.Y, topRight.X - bottomLeft.X, topRight.Y - bottomLeft.Y);
+            building.BuildBlocker = CreateBuildBlocker((int)bounds.Width, (int)bounds.Height);
+            return true;
         }
 
         private bool ParseBuildingBlockerForAnno1800(XmlDocument ifoDocument, IBuildingInfo building)
@@ -339,6 +395,5 @@ namespace PresetParser
 
             return true;
         }
-
     }
 }
