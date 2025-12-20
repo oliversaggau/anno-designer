@@ -2423,6 +2423,87 @@
 						"G": 85,
 						"B": 211
 					}
+				}, {
+					"TargetTemplate": "ResidenceBuilding",
+					"TargetIdentifiers": ["Residence Roman 01 Peasants"],
+					"Color": {
+						"A": 255,
+						"R": 228,
+						"G": 199,
+						"B": 241
+					}
+				}, {
+					"TargetTemplate": "ResidenceBuilding",
+					"TargetIdentifiers": ["Residence Roman 02 Plebeians"],
+					"Color": {
+						"A": 255,
+						"R": 209,
+						"G": 175,
+						"B": 232
+					}
+				}, {
+					"TargetTemplate": "ResidenceBuilding",
+					"TargetIdentifiers": ["Residence Roman 03 Equites"],
+					"Color": {
+						"A": 255,
+						"R": 185,
+						"G": 152,
+						"B": 221
+					}
+				}, {
+					"TargetTemplate": "ResidenceBuilding",
+					"TargetIdentifiers": ["Residence Roman 04 Patricians"],
+					"Color": {
+						"A": 255,
+						"R": 159,
+						"G": 130,
+						"B": 206
+					}
+				}, {
+					"TargetTemplate": "ResidenceBuilding",
+					"TargetIdentifiers": ["Residence Celtic 01 Tribesmen"],
+					"Color": {
+						"A": 255,
+						"R": 180,
+						"G": 217,
+						"B": 204
+					}
+				}, {
+					"TargetTemplate": "ResidenceBuilding",
+					"TargetIdentifiers": ["Residence Celtic 02 Smiths"],
+					"Color": {
+						"A": 255,
+						"R": 137,
+						"G": 192,
+						"B": 182
+					}
+				}, {
+					"TargetTemplate": "ResidenceBuilding",
+					"TargetIdentifiers": ["Residence Celtic 03 Alderman"],
+					"Color": {
+						"A": 255,
+						"R": 99,
+						"G": 166,
+						"B": 160
+					}
+				}, {
+					"TargetTemplate": "ResidenceBuilding",
+					"TargetIdentifiers": ["Residence Roman Celtic 02 Merchants"],
+					"Color": {
+						"A": 255,
+						"R": 211,
+						"G": 156,
+						"B": 131
+					}
+				}, {
+					"TargetTemplate": "ResidenceBuilding",
+					"TargetIdentifiers": ["Residence Roman Celtic 03 Nobles"],
+					"Color": {
+						"A": 255,
+						"R": 193,
+						"G": 118,
+						"B": 111
+					}
 				}
 			]
 		}

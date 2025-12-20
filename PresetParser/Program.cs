@@ -3778,10 +3778,48 @@ namespace PresetParser
 
             identifierName = identifierName.FirstCharToUpper();
             string associatedRegion = assetBuilding.GetValue("Building/AssociatedRegions");
+            Asset assetResidencePopulation = null;
 
             if (string.IsNullOrEmpty(factionName))
             {
-                if (associatedRegion != null)
+                if (templateName == "ResidenceBuilding")
+                {
+                    factionName = "Residences";
+
+                    switch (guidNumber)
+                    {
+                        case 3087:
+                        case 3141:
+                        case 3142:
+                        case 3145:
+                            groupName = "(1) Roman";
+                            break;
+                        case 6414:
+                        case 6471:
+                        case 6472:
+                            groupName = "(2) Celtic";
+                            break;
+                        case 6475:
+                        case 6514:
+                            groupName = "(3) Romano-Celtic";
+                            break;
+                    }
+
+                    if (string.IsNullOrEmpty(groupName))
+                    {
+                        oldColor = Console.ForegroundColor;
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("--> Missing Residence Group Name : " + guidName + " >> " + templateName + ".");
+                        Console.ForegroundColor = oldColor;
+                        return;
+                    }
+
+                    if (assetBuilding.TryGetValue("Residence7/PopulationLevel", out string populationGuid))
+                    {
+                        assetResidencePopulation = model.FindAsset($"//Asset[Template[text()='PopulationLevel'] and Values/Standard/GUID[text()='{populationGuid}']]");
+                    }
+                }
+                else if (associatedRegion != null)
                 {
                     factionName = model.ResolveFaction(guidName, associatedRegion);
                 }
@@ -3892,6 +3930,12 @@ namespace PresetParser
 
             string lineId = assetBuilding.GetValue("Text/OasisId");
 
+            // for residences use the population name rather than the building name
+            if (templateName == "ResidenceBuilding")
+            {
+                lineId = assetResidencePopulation.GetValue("Text/OasisId");
+            }
+
             if (string.IsNullOrEmpty(lineId))
             {
                 oldColor = Console.ForegroundColor;
@@ -3930,6 +3974,31 @@ namespace PresetParser
                     {
                         throw new InvalidOperationException("Cannot get translation, text node not found");
                     }
+
+                    #region Add tier numbers on residence buildings
+
+                    // Tier numbers 1 (all regions)
+                    if (b.Guid == 3087 || b.Guid == 6414)
+                    {
+                        translation = "(1) " + translation;
+                    }
+                    // Tier numbers 2 (all regions)
+                    if (b.Guid == 3141 || b.Guid == 6471 || b.Guid == 6475)
+                    {
+                        translation = "(2) " + translation;
+                    }
+                    // Tier numbers 3 (all regions)
+                    if (b.Guid == 3142 || b.Guid == 6472 || b.Guid == 6514)
+                    {
+                        translation = "(3) " + translation;
+                    }
+                    // Tier numbers 4 (Roman only)
+                    if (b.Guid == 3145)
+                    {
+                        translation = "(4) " + translation;
+                    }
+
+                    #endregion
                 }
 
                 b.Localization.Dict.Add(Language, translation);
