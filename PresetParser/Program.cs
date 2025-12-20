@@ -3819,6 +3819,11 @@ namespace PresetParser
                         assetResidencePopulation = model.FindAsset($"//Asset[Template[text()='PopulationLevel'] and Values/Standard/GUID[text()='{populationGuid}']]");
                     }
                 }
+                else if (templateName == "Warehouse" || templateName == "Warehouse_Marsh")
+                {
+                    groupName = model.GetGroupByRegion(associatedRegion);
+                    factionName = "Warehouse";
+                }
                 else if (associatedRegion != null)
                 {
                     factionName = model.ResolveFaction(guidName, associatedRegion);
@@ -3996,6 +4001,26 @@ namespace PresetParser
                     if (b.Guid == 3145)
                     {
                         translation = "(4) " + translation;
+                    }
+
+                    #endregion
+
+                    #region Add tier numbers on warehouses
+
+                    // Tier numbers 1 (all regions)
+                    if (b.Guid == 3310 || b.Guid == 7055)
+                    {
+                        translation = "(1) " + translation;
+                    }
+                    // Tier numbers 2 (all regions)
+                    if (b.Guid == 3311 || b.Guid == 7056)
+                    {
+                        translation = "(2) " + translation;
+                    }
+                    // Tier numbers 3 (all regions)
+                    if (b.Guid == 3312 || b.Guid == 7057)
+                    {
+                        translation = "(3) " + translation;
                     }
 
                     #endregion
