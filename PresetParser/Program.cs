@@ -3780,6 +3780,28 @@ namespace PresetParser
             string associatedRegion = assetBuilding.GetValue("Building/AssociatedRegions");
             Asset assetResidencePopulation = null;
 
+            switch (guidNumber)
+            {
+                case 3402: // Harbor Warehouse Roman
+                case 41342: // ConstructionCategory 41369
+                case 6054:
+                case 31608:
+                case 4115:
+                case 38383:
+                    factionName = "Harbor";
+                    groupName = "(1) Roman";
+                    break;
+                case 7037: // Harbor Warehouse Roman Celtic
+                case 42436: // ConstructionCategory 41339
+                case 29340:
+                case 29663:
+                case 31611:
+                case 41581:
+                    factionName = "Harbor";
+                    groupName = "(2) Celtic";
+                    break;
+            }
+
             if (string.IsNullOrEmpty(factionName))
             {
                 if (templateName == "ResidenceBuilding")
@@ -3881,7 +3903,7 @@ namespace PresetParser
                 b.IconFileName = null;
             }
 
-            if (templateName == "AqueductConnector")
+            if (templateName == "AqueductConnector" || templateName == "PolygonObject")
             {
                 b.IconFileName = null;
             }
@@ -3890,7 +3912,7 @@ namespace PresetParser
 
             #region Set BuildBlocker of buildings
 
-            if (templateName == "AqueductConnector")
+            if (templateName == "AqueductConnector" || templateName == "PolygonObject")
             {
                 b.BuildBlocker = _buildingBlockProvider.CreateBuildBlocker(1, 1);
             }
@@ -3922,6 +3944,23 @@ namespace PresetParser
                 Console.WriteLine("- BuildBlocker not found, skipping: Object Information not found (A)");
                 Console.ForegroundColor = oldColor;
                 return;
+            }
+
+            #endregion
+
+            #region Set BlockedArea and Direction for coastal buildings
+
+            // Set the BlockedArea and Direction for Coastal buildings that have a blocked area
+            // we do this by hand, as automatically is not an option for now, as the .ifo file are messy
+            // to get the <QuayArea> blocks from. Read here for the complete story why
+            // https://discord.com/channels/571011757317947406/571064812042321927/885817431136817162
+
+            switch (b.IconFileName) // via icon we can match multiple buildings with one case
+            {
+                case "A8_harbour_depot.png": { b.Direction = GridDirection.Right; break; }
+                case "A8_harbour_shipyard.png": { b.BlockedAreaLength = 4; b.Direction = GridDirection.Right; break; }
+                case "A8_harbour_trading_pier.png": { b.BlockedAreaLength = 4; b.Direction = GridDirection.Right; break; }
+                case "A8_harbour_kontor.png": { b.BlockedAreaLength = 18; b.Direction = GridDirection.Right; break; }
             }
 
             #endregion
@@ -3964,6 +4003,12 @@ namespace PresetParser
             if (templateName == "ResidenceBuilding")
             {
                 lineId = assetResidencePopulation.GetValue("Text/OasisId");
+            }
+
+            // manual override translations
+            if (b.Guid == 31611)
+            {
+                lineId = "-6902392568690598450";
             }
 
             if (string.IsNullOrEmpty(lineId))

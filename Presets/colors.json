@@ -1363,7 +1363,7 @@
 					}
 				}, {
 					"TargetTemplate": "HarborDepot",
-					"TargetIdentifiers": ["Hacienda storage module", "Harbor_01 (Depot)", "Harbor_15 (Oil Storage)"],
+					"TargetIdentifiers": ["Hacienda storage module", "Harbor_01 (Depot)", "Harbor_15 (Oil Storage)", "Harbor Depot Roman", "Harbor Depot Roman Celtic"],
 					"Color": {
 						"A": 255,
 						"R": 143,
@@ -1588,7 +1588,7 @@
 					}
 				}, {
 					"TargetTemplate": "RepairCrane",
-					"TargetIdentifiers": ["Harbor_07 (Repair Crane)"],
+					"TargetIdentifiers": ["Harbor_07 (Repair Crane)", "Harbor Repair Crane Roman", "Harbor Repair Crane Roman Celtic"],
 					"Color": {
 						"A": 255,
 						"R": 70,
@@ -2530,6 +2530,42 @@
 						"R": 135,
 						"G": 206,
 						"B": 235
+					}
+				}, {
+					"TargetTemplate": "PolygonObject",
+					"TargetIdentifiers": ["Quay Roman", "Quay Roman Celtic"],
+					"Color": {
+						"A": 255,
+						"R": 224,
+						"G": 224,
+						"B": 224
+					}
+				}, {
+					"TargetTemplate": "RecruitmentBuilding",
+					"TargetIdentifiers": ["Harbor Shipyard Roman", "Harbor Shipyard Roman Celtic"],
+					"Color": {
+						"A": 255,
+						"R": 70,
+						"G": 130,
+						"B": 180
+					}
+				}, {
+					"TargetTemplate": "HarborWarehouse",
+					"TargetIdentifiers": ["Harbor Warehouse Roman 01", "Harbor Warehouse Roman Celtic 01"],
+					"Color": {
+						"A": 255,
+						"R": 143,
+						"G": 188,
+						"B": 143
+					}
+				}, {
+					"TargetTemplate": "TradeBuilding",
+					"TargetIdentifiers": ["Harbor Pier Roman", "Harbor Pier Roman Celtic"],
+					"Color": {
+						"A": 255,
+						"R": 70,
+						"G": 130,
+						"B": 180
 					}
 				}
 			]
