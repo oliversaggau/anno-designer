@@ -20,6 +20,9 @@ namespace PresetParser
                 case Constants.ANNO_VERSION_1800:
                     result.AddRange(GetExtraPresetsForAnno1800());
                     break;
+                case Constants.ANNO_VERSION_117:
+                    result.AddRange(GetExtraPresetsForAnno117());
+                    break;
             }
 
             return result;
@@ -163,6 +166,19 @@ namespace PresetParser
             result.Add(new ExtraPreset { BuildBlockerX = 3, BuildBlockerZ = 3, Faction = "Creative Mode", Group = "(3) Arctic", Header = "(A7) Anno 1800", IconFileName = "A7_resident_Technicians.png", Identifier = "Residence_arctic_tier02", Guid = 112652, InfluenceRadius = 0, InfluenceRange = 0, Template = "ResidenceBuilding", LocaEng = "Technician Shelter", LocaGer = "Techniker-​Behausung", LocaFra = "Abri de technicien", LocaPol = "Schronienie techników", LocaRus = "Жилище техников", LocaEsp = "Refugio de técnico" });
             result.Add(new ExtraPreset { BuildBlockerX = 3, BuildBlockerZ = 3, Faction = "Creative Mode", Group = "(4) Enbesa", Header = "(A7) Anno 1800", IconFileName = "A7_resident_elder.png", Identifier = "Residence_colony02_tier02", Guid = 114437, InfluenceRadius = 0, InfluenceRange = 0, Template = "ResidenceBuilding", LocaEng = "Elder Residence", LocaGer = "Ältestenhaus", LocaFra = "Résidence d'Ancien", LocaPol = "Dom starszych", LocaRus = "Жилье старейшин", LocaEsp = "Residencia de ancianas" });
             return result;
+        }
+
+        private static IEnumerable<ExtraPreset> GetExtraPresetsForAnno117()
+        {
+            return new List<ExtraPreset>
+            {
+                // Shared buildings for tier 2 populations in Celtic region (Smiths and Mercators)
+                new ExtraPreset { BuildBlockerX = 1, BuildBlockerZ = 1, Faction = "(6) Smiths", Group = "Military", Header = "(A8) Anno 117", IconFileName = "A8_wood_wall.png", Identifier = "Military Roman Celtic Wall Wood", Guid = 54997, InfluenceRadius = 0, InfluenceRange = 0, Template = "MilitaryWall", LocaEng = "Wooden Palisade", LocaGer = "Holzpalisade", LocaFra = "Palissade en bois", LocaPol = "Drewniana palisada", LocaRus = "Деревянный палисад", LocaEsp = "Empalizada de madera" },
+                new ExtraPreset { BuildBlockerX = 3, BuildBlockerZ = 1, Faction = "(6) Smiths", Group = "Military", Header = "(A8) Anno 117", IconFileName = "A8_wood_gate.png", Identifier = "Military Roman Celtic Wall Wood Gate", Guid = 55000, InfluenceRadius = 0, InfluenceRange = 0, Template = "MilitaryGate", LocaEng = "Wooden Gate", LocaGer = "Holztor", LocaFra = "Portail en bois", LocaPol = "Drewniana brama", LocaRus = "Деревянные ворота", LocaEsp = "Puerta de madera" },
+                new ExtraPreset { BuildBlockerX = 2, BuildBlockerZ = 2, Faction = "(6) Smiths", Group = "Military", Header = "(A8) Anno 117", IconFileName = "A8_wood_archer_tower.png", Identifier = "Military Roman Celtic Tower Wood Archer", Guid = 55002, InfluenceRadius = 0, InfluenceRange = 0, Template = "MilitaryTowerUnit", LocaEng = "Wooden Archer Tower", LocaGer = "Hölzerner Schützenturm", LocaFra = "Tour d'archers en bois", LocaPol = "Drewniana wieża łucznicza", LocaRus = "Деревянная башня лучников", LocaEsp = "Torre de arqueros de madera" },
+                new ExtraPreset { BuildBlockerX = 8, BuildBlockerZ = 8, Faction = "(6) Smiths", Group = "Military", Header = "(A8) Anno 117", IconFileName = "A8_military_barracks.png", Identifier = "Military Roman Celtic Barracks", Guid = 15946, InfluenceRadius = 0, InfluenceRange = 0, Template = "RecruitmentBuilding", LocaEng = "Barracks", LocaGer = "Kaserne", LocaFra = "Caserne", LocaPol = "Koszary", LocaRus = "Казармы", LocaEsp = "Barracón" },
+                new ExtraPreset { BuildBlockerX = 7, BuildBlockerZ = 7, Faction = "(7) Mercators", Group = "Public Buildings", Header = "(A8) Anno 117", IconFileName = "A8_public_celtic_fanum.png", Identifier = "Public Roman Celtic Fanum", Guid = 6728, InfluenceRadius = 0, InfluenceRange = 36, Template = "PublicServiceBuilding", LocaEng = "Fanum", LocaGer = "Fanum", LocaFra = "Fanum", LocaPol = "Fanum", LocaRus = "фанум", LocaEsp = "fano" },
+            };
         }
     }
 }
