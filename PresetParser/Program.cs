@@ -615,7 +615,9 @@ namespace PresetParser
             var knownDuplicates = new List<string> { "Logistic_02 (Warehouse I)", "Residence_Old_World", "Residence_tier02", "Residence_tier03", "Residence_tier04",
                 "Residence_tier05", "Residence_tier05b", "Residence_New_World", "Residence_colony01_tier02", "Residence_Arctic_World", "Residence_arctic_tier02",
                 "Residence_Africa_World", "Residence_colony02_tier02", "Residence_colony01_tier03", "Public Roman Celtic Fanum", "Military Roman Celtic Wall Wood",
-                "Military Roman Celtic Wall Wood Gate", "Military Roman Celtic Tower Wood Archer", "Military Roman Celtic Barracks" };
+                "Military Roman Celtic Wall Wood Gate", "Military Roman Celtic Tower Wood Archer", "Military Roman Celtic Barracks", "Military Roman Celtic Training Grounds",
+                "Military Roman Celtic Siege Workshop", "Production Field Roman Celtic Grapes", "Production Meadow Roman Celtic Honycombs", "Production Food Roman Celtic Wine",
+                "Public Roman Celtic Theater", "Public Roman Celtic Gambling House", "Production Coast Roman Celtic Silica" };
 
             var validator = new Validator();
             (bool isValid, List<string> duplicateIdentifiers) = validator.CheckForUniqueIdentifiers(buildingsToCheck, knownDuplicates);
@@ -4037,6 +4039,7 @@ namespace PresetParser
                 case "A8_murex_snails_goods.png": { b.Direction = GridDirection.Right; break; }
                 case "A8_cockles_goods.png": { b.Direction = GridDirection.Right; break; }
                 case "A8_samphire_goods.png": { b.Direction = GridDirection.Right; break; }
+                case "A8_seashells_goods.png": { b.Direction = GridDirection.Right; break; }
             }
 
             #endregion
