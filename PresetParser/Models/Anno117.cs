@@ -121,6 +121,7 @@ namespace PresetParser.Models
                     case "1496": return "(2) Plebeians";
                     case "1497": return "(3) Equites";
                     case "1500": return "(5) Waders";
+                    case "1501": return "(6) Smiths";
                     default: return null;
                 }
             }
