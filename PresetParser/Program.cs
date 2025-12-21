@@ -4036,6 +4036,7 @@ namespace PresetParser
                 case "A8_silica_goods.png": { b.Direction = GridDirection.Right; break; }
                 case "A8_murex_snails_goods.png": { b.Direction = GridDirection.Right; break; }
                 case "A8_cockles_goods.png": { b.Direction = GridDirection.Right; break; }
+                case "A8_samphire_goods.png": { b.Direction = GridDirection.Right; break; }
             }
 
             #endregion
