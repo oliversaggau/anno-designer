@@ -3881,6 +3881,19 @@ namespace PresetParser
                 }
             }
 
+            if (templateName == "Production" || templateName == "Production Area")
+            {
+                groupName = "Production Buildings";
+            }
+            else if (templateName == "Production Field")
+            {
+                groupName = "Farm Buildings";
+            }
+            else if (templateName == "PublicServiceBuilding")
+            {
+                groupName = "Public Buildings";
+            }
+
             IBuildingInfo b = new BuildingInfo
             {
                 Header = headerName,
@@ -3974,6 +3987,7 @@ namespace PresetParser
                 case "A8_harbour_shipyard.png": { b.BlockedAreaLength = 4; b.Direction = GridDirection.Right; break; }
                 case "A8_harbour_trading_pier.png": { b.BlockedAreaLength = 4; b.Direction = GridDirection.Right; break; }
                 case "A8_harbour_kontor.png": { b.BlockedAreaLength = 18; b.Direction = GridDirection.Right; break; }
+                case "A8_sardines_goods.png": { b.Direction = GridDirection.Right; break; }
             }
 
             #endregion

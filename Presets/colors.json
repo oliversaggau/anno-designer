@@ -2675,6 +2675,78 @@
 						"G": 130,
 						"B": 180
 					}
+				}, {
+					"TargetTemplate": "Production Area",
+					"TargetIdentifiers": ["Production Forest Roman Wood"],
+					"Color": {
+						"A": 255,
+						"R": 128,
+						"G": 128,
+						"B": 0
+					}
+				}, {
+					"TargetTemplate": "Production",
+					"TargetIdentifiers": ["Production Construction Roman Timber"],
+					"Color": {
+						"A": 255,
+						"R": 186,
+						"G": 85,
+						"B": 211
+					}
+				}, {
+					"TargetTemplate": "Production",
+					"TargetIdentifiers": ["Production Coast Roman Sardines"],
+					"Color": {
+						"A": 255,
+						"R": 70,
+						"G": 130,
+						"B": 180
+					}
+				}, {
+					"TargetTemplate": "Production",
+					"TargetIdentifiers": ["Production Food Roman Porridge"],
+					"Color": {
+						"A": 255,
+						"R": 0,
+						"G": 128,
+						"B": 0
+					}
+				}, {
+					"TargetTemplate": "Production",
+					"TargetIdentifiers": ["Production Fashion Roman Hats", "Production Fashion Roman Tunics"],
+					"Color": {
+						"A": 255,
+						"R": 106,
+						"G": 90,
+						"B": 205
+					}
+				}, {
+					"TargetTemplate": "Production Field",
+					"TargetIdentifiers": ["Production Field Roman Oats", "Production Field Roman Hemp"],
+					"Color": {
+						"A": 255,
+						"R": 255,
+						"G": 165,
+						"B": 0
+					}
+				}, {
+					"TargetTemplate": "Production Field",
+					"TargetIdentifiers": ["Production Pasture Roman Sheep"],
+					"Color": {
+						"A": 255,
+						"R": 173,
+						"G": 255,
+						"B": 47
+					}
+				}, {
+					"TargetTemplate": "PublicServiceBuilding",
+					"TargetIdentifiers": ["Public Roman Market", "Public Roman Tavern"],
+					"Color": {
+						"A": 255,
+						"R": 255,
+						"G": 218,
+						"B": 185
+					}
 				}
 			]
 		}
