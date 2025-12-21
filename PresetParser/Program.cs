@@ -3895,11 +3895,11 @@ namespace PresetParser
                 }
             }
 
-            if (templateName == "Production" || templateName == "Production Area")
+            if (templateName == "Production" || templateName == "Production Area" || templateName == "Production Marsh")
             {
                 groupName = "Production Buildings";
             }
-            else if (templateName == "Production Field")
+            else if (templateName == "Production Field" || templateName == "Production Marsh Pasture")
             {
                 groupName = "Farm Buildings";
             }
@@ -4032,6 +4032,8 @@ namespace PresetParser
                 case "A8_sardines_goods.png": { b.Direction = GridDirection.Right; break; }
                 case "A8_mackerels_goods.png": { b.Direction = GridDirection.Right; break; }
                 case "A8_salt_goods.png": { b.Direction = GridDirection.Right; break; }
+                case "A8_silica_goods.png": { b.Direction = GridDirection.Right; break; }
+                case "A8_murex_snails_goods.png": { b.Direction = GridDirection.Right; break; }
             }
 
             #endregion
