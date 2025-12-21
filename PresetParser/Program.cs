@@ -3895,7 +3895,7 @@ namespace PresetParser
                 }
             }
 
-            if (templateName == "Production" || templateName == "Production Area" || templateName == "Production Marsh")
+            if (templateName == "Production" || templateName == "Production Area" || templateName == "Production Marsh" || templateName == "Production Marsh Area")
             {
                 groupName = "Production Buildings";
             }
@@ -4034,6 +4034,7 @@ namespace PresetParser
                 case "A8_salt_goods.png": { b.Direction = GridDirection.Right; break; }
                 case "A8_silica_goods.png": { b.Direction = GridDirection.Right; break; }
                 case "A8_murex_snails_goods.png": { b.Direction = GridDirection.Right; break; }
+                case "A8_cockles_goods.png": { b.Direction = GridDirection.Right; break; }
             }
 
             #endregion
