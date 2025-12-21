@@ -118,6 +118,7 @@ namespace PresetParser.Models
                 switch (populationLevel)
                 {
                     case "1499": return "(1) Liberti";
+                    case "1496": return "(2) Plebeians";
                     default: return null;
                 }
             }

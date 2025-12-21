@@ -1750,7 +1750,7 @@
 					}
 				}, {
 					"TargetTemplate": "SlotFactoryBuilding7",
-					"TargetIdentifiers": ["Factory_11 (Clay Pit)", "Mining_01 (Coal Mine)", "Mining_02 (Iron Mine)", "Mining_04 (Zinc Mine)", "Mining_05 (Copper Mine)", "Mining_06 (Cement Mine)", "Mining_08 (Gold Ore Mine)"],
+					"TargetIdentifiers": ["Factory_11 (Clay Pit)", "Mining_01 (Coal Mine)", "Mining_02 (Iron Mine)", "Mining_04 (Zinc Mine)", "Mining_05 (Copper Mine)", "Mining_06 (Cement Mine)", "Mining_08 (Gold Ore Mine)", "Production Mountain Roman Iron Ore"],
 					"Color": {
 						"A": 255,
 						"R": 139,
@@ -1759,7 +1759,7 @@
 					}
 				}, {
 					"TargetTemplate": "SlotFactoryBuilding7",
-					"TargetIdentifiers": ["River_colony02_01 (Clay Harvester)", "River_colony02_02 (Paper Mill)"],
+					"TargetIdentifiers": ["River_colony02_01 (Clay Harvester)", "River_colony02_02 (Paper Mill)", "Production River Roman Clay", "Production Ingredient Roman Flour"],
 					"Color": {
 						"A": 255,
 						"R": 70,
@@ -2677,7 +2677,7 @@
 					}
 				}, {
 					"TargetTemplate": "Production Area",
-					"TargetIdentifiers": ["Production Forest Roman Wood"],
+					"TargetIdentifiers": ["Production Forest Roman Wood", "Production Forest Roman Resin"],
 					"Color": {
 						"A": 255,
 						"R": 128,
@@ -2686,7 +2686,7 @@
 					}
 				}, {
 					"TargetTemplate": "Production",
-					"TargetIdentifiers": ["Production Construction Roman Timber"],
+					"TargetIdentifiers": ["Production Construction Roman Timber", "Production Chemical Roman Leather", "Production Chemical Roman Fat", "Production Heavy Roman Iron", "Production Military Roman Weapons", "Production Military Roman Ropes", "Production Military Roman Sails", "Production Military Roman Armor"],
 					"Color": {
 						"A": 255,
 						"R": 186,
@@ -2695,7 +2695,7 @@
 					}
 				}, {
 					"TargetTemplate": "Production",
-					"TargetIdentifiers": ["Production Coast Roman Sardines"],
+					"TargetIdentifiers": ["Production Coast Roman Sardines", "Production Coast Roman Mackerels", "Production Coast Roman Salt"],
 					"Color": {
 						"A": 255,
 						"R": 70,
@@ -2704,7 +2704,7 @@
 					}
 				}, {
 					"TargetTemplate": "Production",
-					"TargetIdentifiers": ["Production Food Roman Porridge"],
+					"TargetIdentifiers": ["Production Food Roman Porridge", "Production Food Roman Bread", "Production Food Roman Garum", "Production Household Roman Olive Oil"],
 					"Color": {
 						"A": 255,
 						"R": 0,
@@ -2713,7 +2713,7 @@
 					}
 				}, {
 					"TargetTemplate": "Production",
-					"TargetIdentifiers": ["Production Fashion Roman Hats", "Production Fashion Roman Tunics"],
+					"TargetIdentifiers": ["Production Fashion Roman Hats", "Production Fashion Roman Tunics", "Production Fashion Roman Sandals", "Production Fashion Roman Soap", "Production Household Roman Amphorae"],
 					"Color": {
 						"A": 255,
 						"R": 106,
@@ -2722,7 +2722,7 @@
 					}
 				}, {
 					"TargetTemplate": "Production Field",
-					"TargetIdentifiers": ["Production Field Roman Oats", "Production Field Roman Hemp"],
+					"TargetIdentifiers": ["Production Field Roman Oats", "Production Field Roman Hemp", "Production Field Roman Wheat", "Production Field Roman Lavender"],
 					"Color": {
 						"A": 255,
 						"R": 255,
@@ -2731,7 +2731,7 @@
 					}
 				}, {
 					"TargetTemplate": "Production Field",
-					"TargetIdentifiers": ["Production Pasture Roman Sheep"],
+					"TargetIdentifiers": ["Production Pasture Roman Sheep", "Production Pasture Roman Pigs"],
 					"Color": {
 						"A": 255,
 						"R": 173,
@@ -2740,12 +2740,84 @@
 					}
 				}, {
 					"TargetTemplate": "PublicServiceBuilding",
-					"TargetIdentifiers": ["Public Roman Market", "Public Roman Tavern"],
+					"TargetIdentifiers": ["Public Roman Market", "Public Roman Tavern", "Public Roman Sanctuary", "Public Roman Grammaticus"],
 					"Color": {
 						"A": 255,
 						"R": 255,
 						"G": 218,
 						"B": 185
+					}
+				}, {
+					"TargetTemplate": "Production Area",
+					"TargetIdentifiers": ["Production Forest Roman Charcoal"],
+					"Color": {
+						"A": 255,
+						"R": 139,
+						"G": 69,
+						"B": 19
+					}
+				}, {
+					"TargetTemplate": "Production",
+					"TargetIdentifiers": ["Production Construction Roman Tiles"],
+					"Color": {
+						"A": 255,
+						"R": 139,
+						"G": 69,
+						"B": 19
+					}
+				}, {
+					"TargetTemplate": "MilitaryGate",
+					"TargetIdentifiers": ["Military Roman Wall Wood Gate"],
+					"Color": {
+						"A": 255,
+						"R": 184,
+						"G": 134,
+						"B": 11
+					}
+				}, {
+					"TargetTemplate": "MilitaryWall",
+					"TargetIdentifiers": ["Military Roman Wall Wood"],
+					"Color": {
+						"A": 255,
+						"R": 184,
+						"G": 134,
+						"B": 11
+					}
+				}, {
+					"TargetTemplate": "MilitaryTowerUnit",
+					"TargetIdentifiers": ["Military Roman Tower Wood Archer"],
+					"Color": {
+						"A": 255,
+						"R": 184,
+						"G": 134,
+						"B": 11
+					}
+				}, {
+					"TargetTemplate": "RecruitmentBuilding",
+					"TargetIdentifiers": ["Military Roman Barracks"],
+					"Color": {
+						"A": 255,
+						"R": 184,
+						"G": 134,
+						"B": 11
+					}
+				}, {
+					"TargetTemplate": "VillaUrban",
+					"TargetIdentifiers": ["Villa 01 Roman"],
+					"Color": {
+						"A": 255,
+						"R": 128,
+						"G": 0,
+						"B": 128
+					}
+				}, {
+					"TargetTemplate": "GuestHouse",
+					"TargetIdentifiers": ["Villa 01 Roman Guesthouse"],
+					"Color": {
+						"A": 255,
+						"R": 128,
+						"G": 0,
+						"B": 128
 					}
 				}
 			]

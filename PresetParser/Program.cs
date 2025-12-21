@@ -3780,6 +3780,14 @@ namespace PresetParser
             string associatedRegion = assetBuilding.GetValue("Building/AssociatedRegions");
             Asset assetResidencePopulation = null;
 
+            if (templateName == "MilitaryWall")
+            {
+                if (identifierName.Contains("Bridge") || identifierName.Contains("Crossing"))
+                {
+                    return;
+                }
+            }
+
             switch (guidNumber)
             {
                 case 3402: // Harbor Warehouse Roman
@@ -3875,6 +3883,12 @@ namespace PresetParser
                     if (identifierName.Contains("Shrine")) factionName = "Shrines";
                     else factionName = "Public Buildings";
                 }
+                else if (templateName == "GuestHouse")
+                {
+                    string ownerGuid = model.FindAsset($"//Asset[Values/Villa/GuestHouse[text()='{guidNumber}']]").GetValue("Standard/GUID");
+                    factionName = model.ResolveFaction(ownerGuid, associatedRegion);
+                    groupName = "Special Buildings";
+                }
                 else if (associatedRegion != null)
                 {
                     factionName = model.ResolveFaction(guidName, associatedRegion);
@@ -3892,6 +3906,23 @@ namespace PresetParser
             else if (templateName == "PublicServiceBuilding")
             {
                 groupName = "Public Buildings";
+            }
+            else if (templateName == "SlotFactoryBuilding7")
+            {
+                if (identifierName.Contains("Mountain")) groupName = "Mining Buildings";
+                else groupName = "River Buildings";
+            }
+            else if (templateName == "RecruitmentBuilding")
+            {
+                if (identifierName.Contains("Military")) groupName = "Military";
+            }
+            else if (templateName == "MilitaryGate" || templateName == "MilitaryWall" || templateName == "MilitaryTowerUnit")
+            {
+                groupName = "Military";
+            }
+            else if (templateName == "VillaUrban")
+            {
+                groupName = "Special Buildings";
             }
 
             IBuildingInfo b = new BuildingInfo
@@ -3942,6 +3973,17 @@ namespace PresetParser
             {
                 b.BuildBlocker = _buildingBlockProvider.CreateBuildBlocker(1, 1);
             }
+            // Set the BuildBlocker for walls and gates by hand, as automatically is not an option for now,
+            // as the .ifo file are messy to get the <BuildBlocker> for walls and gates. Read here for the complete
+            // story why https://discord.com/channels/571011757317947406/571011757317947410/1452402060988256499
+            else if (templateName == "MilitaryGate")
+            {
+                b.BuildBlocker = _buildingBlockProvider.CreateBuildBlocker(3, 1);
+            }
+            else if (templateName == "MilitaryWall")
+            {
+                b.BuildBlocker = _buildingBlockProvider.CreateBuildBlocker(1, 1);
+            }
             else if (assetBuilding.SelectNode("Object") != null)
             {
                 XmlNode variations = assetBuilding.SelectNode("Object/Variations");
@@ -3988,6 +4030,8 @@ namespace PresetParser
                 case "A8_harbour_trading_pier.png": { b.BlockedAreaLength = 4; b.Direction = GridDirection.Right; break; }
                 case "A8_harbour_kontor.png": { b.BlockedAreaLength = 18; b.Direction = GridDirection.Right; break; }
                 case "A8_sardines_goods.png": { b.Direction = GridDirection.Right; break; }
+                case "A8_mackerels_goods.png": { b.Direction = GridDirection.Right; break; }
+                case "A8_salt_goods.png": { b.Direction = GridDirection.Right; break; }
             }
 
             #endregion
@@ -4003,6 +4047,14 @@ namespace PresetParser
             {
                 // farms and other module owners
                 b.InfluenceRadius = Convert.ToInt32(influenceRadius);
+            }
+            else if (assetBuilding.TryGetValue("EffectSource/RadiusDistance", out influenceRadius))
+            {
+                if (templateName == "VillaUrban" || templateName == "GuestHouse")
+                {
+                    // item slot buildings (like Villa or Guesthouse)
+                    b.InfluenceRadius = Convert.ToInt32(influenceRadius);
+                }
             }
 
             #endregion
