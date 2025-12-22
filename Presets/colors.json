@@ -1759,7 +1759,7 @@
 					}
 				}, {
 					"TargetTemplate": "SlotFactoryBuilding7",
-					"TargetIdentifiers": ["River_colony02_01 (Clay Harvester)", "River_colony02_02 (Paper Mill)", "Production River Roman Clay", "Production Ingredient Roman Flour", "Production Heavy Roman Glass"],
+					"TargetIdentifiers": ["River_colony02_01 (Clay Harvester)", "River_colony02_02 (Paper Mill)", "Production River Roman Clay", "Production Ingredient Roman Flour", "Production Heavy Roman Glass", "Production River Roman Sturgeon", "Production River Roman Gold Ore"],
 					"Color": {
 						"A": 255,
 						"R": 70,
@@ -2695,7 +2695,7 @@
 					}
 				}, {
 					"TargetTemplate": "Production",
-					"TargetIdentifiers": ["Production Construction Roman Timber", "Production Construction Roman Celtic Timber", "Production Chemical Roman Leather", "Production Chemical Roman Fat", "Production Chemical Roman Celtic Fat", "Production Heavy Roman Iron", "Production Military Roman Weapons", "Production Military Roman Ropes", "Production Military Roman Sails", "Production Military Roman Armor", "Production Construction Roman Concrete", "Production Construction Roman Celtic Concrete", "Production Crafts Roman Cloth", "Production Chemical Roman Tyrian Purple", "Production Heavy Roman Celtic Silver", "Production Construction Roman Marble", "Production Ingredient Celtic Malt", "Production Heavy Celtic Bronze", "Production Chemical Celtic Lye", "Production Chemical Celtic Green", "Production Construction Celtic Granite", "Production Craft Celtic Chassis", "Production Craft Roman Celtic Wig Base"],
+					"TargetIdentifiers": ["Production Construction Roman Timber", "Production Construction Roman Celtic Timber", "Production Chemical Roman Leather", "Production Chemical Roman Fat", "Production Chemical Roman Celtic Fat", "Production Heavy Roman Iron", "Production Military Roman Weapons", "Production Military Roman Ropes", "Production Military Roman Sails", "Production Military Roman Armor", "Production Construction Roman Concrete", "Production Construction Roman Celtic Concrete", "Production Crafts Roman Cloth", "Production Chemical Roman Tyrian Purple", "Production Heavy Roman Celtic Silver", "Production Construction Roman Marble", "Production Ingredient Celtic Malt", "Production Heavy Celtic Bronze", "Production Chemical Celtic Lye", "Production Chemical Celtic Green", "Production Construction Celtic Granite", "Production Craft Celtic Chassis", "Production Craft Roman Celtic Wig Base", "Production Construction Roman Mosaics", "Production Ingredient Roman Caviar", "Production Heavy Roman Gold", "Production Crafts Roman Cushions", "Production Craft Roman Strings", "Production Crafts Roman Ornate Wood"],
 					"Color": {
 						"A": 255,
 						"R": 186,
@@ -2713,7 +2713,7 @@
 					}
 				}, {
 					"TargetTemplate": "Production",
-					"TargetIdentifiers": ["Production Coast Roman Sardines", "Production Coast Roman Mackerels", "Production Coast Roman Salt", "Production Coast Celtic Cockles", "Production Coast Roman Silica", "Production Coast Roman Sea Snails", "Production Coast Celtic Samphire", "Production Coast Roman Celtic Silica", "Production Coast Roman Celtic Sea Shells"],
+					"TargetIdentifiers": ["Production Coast Roman Sardines", "Production Coast Roman Mackerels", "Production Coast Roman Salt", "Production Coast Celtic Cockles", "Production Coast Roman Silica", "Production Coast Roman Sea Snails", "Production Coast Celtic Samphire", "Production Coast Roman Celtic Silica", "Production Coast Roman Celtic Sea Shells", "Production Coast Roman Oysters"],
 					"Color": {
 						"A": 255,
 						"R": 70,
@@ -2722,7 +2722,7 @@
 					}
 				}, {
 					"TargetTemplate": "Production",
-					"TargetIdentifiers": ["Production Food Roman Porridge", "Production Food Roman Bread", "Production Food Roman Garum", "Production Household Roman Olive Oil", "Production Food Roman Wine", "Production Food Roman Celtic Wine", "Production Food Celtic Beer", "Production Food Roman Celtic Sausages", "Production Food Celtic Roast Beef", "Production Food Roman Celtic Bird Tongues in Aspic"],
+					"TargetIdentifiers": ["Production Food Roman Porridge", "Production Food Roman Bread", "Production Food Roman Garum", "Production Household Roman Olive Oil", "Production Food Roman Wine", "Production Food Roman Celtic Wine", "Production Food Celtic Beer", "Production Food Roman Celtic Sausages", "Production Food Celtic Roast Beef", "Production Food Roman Celtic Bird Tongues in Aspic", "Production Food Roman Oysters with Caviar"],
 					"Color": {
 						"A": 255,
 						"R": 0,
@@ -2740,7 +2740,7 @@
 					}
 				}, {
 					"TargetTemplate": "Production",
-					"TargetIdentifiers": ["Production Fashion Roman Hats", "Production Fashion Roman Tunics", "Production Fashion Roman Sandals", "Production Fashion Roman Soap", "Production Household Roman Amphorae", "Production Household Roman Celtic Amphorae", "Production Fashion Celtic Reed Shoes", "Production Fashion Roman Celtic Tunics", "Production Fashion Roman Togas", "Production Fashion Roman Celtic Brooches", "Production Household Roman Wax Tablets", "Production Heavy Roman Pigments", "Production Household Roman Fine Glass", "Production Fashion Celtic Trousers", "Production Fashion Celtic Torcs", "Production Culture Celtic Drinking Horns", "Production Culture Celtic Clan Shield", "Production Fashion Celtic Cloak", "Production Fashion Celtic Pelt Hats", "Production Culture Celtic Chariots", "Production Fashion Roman Celtic Wigs", "Production Household Roman Celtic Mirrors"],
+					"TargetIdentifiers": ["Production Fashion Roman Hats", "Production Fashion Roman Tunics", "Production Fashion Roman Sandals", "Production Fashion Roman Soap", "Production Household Roman Amphorae", "Production Household Roman Celtic Amphorae", "Production Fashion Roman Celtic Tunics", "Production Fashion Roman Togas", "Production Fashion Roman Celtic Brooches", "Production Household Roman Wax Tablets", "Production Heavy Roman Pigments", "Production Household Roman Fine Glass", "Production Fashion Celtic Trousers", "Production Fashion Celtic Torcs", "Production Culture Celtic Drinking Horns", "Production Culture Celtic Clan Shield", "Production Fashion Celtic Cloak", "Production Fashion Celtic Pelt Hats", "Production Culture Celtic Chariots", "Production Fashion Roman Celtic Wigs", "Production Household Roman Celtic Mirrors", "Production Fashion Roman Necklace", "Production Household Roman Loungers", "Production Culture Roman Lyres"],
 					"Color": {
 						"A": 255,
 						"R": 106,
@@ -2794,7 +2794,16 @@
 					}
 				}, {
 					"TargetTemplate": "PublicServiceBuilding",
-					"TargetIdentifiers": ["Public Roman Market", "Public Roman Tavern", "Public Roman Sanctuary", "Public Roman Grammaticus", "Public Roman Celtic Grammaticus", "Public Roman Celtic Market", "Public Celtic Bardic Hall", "Public Roman Theater", "Public Roman Gambling House", "Wonder Roman Forum", "Wonder Roman Baths", "Public Celtic Sporting Grounds", "Public Roman Celtic Fanum", "Public Celtic Town Hall", "Public Roman Celtic Theater", "Public Roman Celtic Gambling House", "Wonder Celtic Barrow", "Wonder Celtic Sacred Grove", "Wonder Roman Celtic Temple", "Wonder Roman Celtic Baths"],
+					"TargetIdentifiers": ["Public Roman Market", "Public Roman Tavern", "Public Roman Sanctuary", "Public Roman Grammaticus", "Public Roman Celtic Grammaticus", "Public Roman Celtic Market", "Public Celtic Bardic Hall", "Public Roman Theater", "Public Roman Gambling House", "Wonder Roman Forum", "Wonder Roman Baths", "Public Celtic Sporting Grounds", "Public Roman Celtic Fanum", "Public Celtic Town Hall", "Public Roman Celtic Theater", "Public Roman Celtic Gambling House", "Wonder Celtic Barrow", "Wonder Celtic Sacred Grove", "Wonder Roman Celtic Temple", "Wonder Roman Celtic Baths", "Public Roman Temple", "Public Roman Library"],
+					"Color": {
+						"A": 255,
+						"R": 255,
+						"G": 218,
+						"B": 185
+					}
+				}, {
+					"TargetTemplate": "MonumentEventBuilding",
+					"TargetIdentifiers": ["Wonder Roman Colosseum"],
 					"Color": {
 						"A": 255,
 						"R": 255,

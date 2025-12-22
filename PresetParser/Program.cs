@@ -3762,6 +3762,16 @@ namespace PresetParser
                 return;
             }
 
+            // for monuments skip all but the final phasee
+            if (!string.IsNullOrEmpty(assetBuilding.GetValue("Monument/UpgradeTarget")))
+            {
+                oldColor = Console.ForegroundColor;
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                Console.WriteLine("--> Monument phase, skipping : " + guidName);
+                Console.ForegroundColor = oldColor;
+                return;
+            }
+
             if (!assetBuilding.TryGetValue("Standard/Name", out identifierName))
             {
                 oldColor = Console.ForegroundColor;
@@ -3906,7 +3916,7 @@ namespace PresetParser
             {
                 groupName = "Farm Buildings";
             }
-            else if (templateName == "PublicServiceBuilding")
+            else if (templateName == "PublicServiceBuilding" || templateName == "Monument" || templateName == "MonumentEventBuilding")
             {
                 groupName = "Public Buildings";
             }
@@ -3951,6 +3961,12 @@ namespace PresetParser
             // find icon node in values
             const string replaceName = "A8_";
             string pathIcon = assetBuilding.GetValue("Standard/IconFilename");
+
+            // icons for monuments are dummys, the actual icon is _0.png
+            if (templateName == "Monument" || templateName == "MonumentEventBuilding")
+            {
+                pathIcon = pathIcon.Replace(".png", "_0.png");
+            }
 
             if (!string.IsNullOrEmpty(pathIcon))
             {
@@ -4040,6 +4056,7 @@ namespace PresetParser
                 case "A8_cockles_goods.png": { b.Direction = GridDirection.Right; break; }
                 case "A8_samphire_goods.png": { b.Direction = GridDirection.Right; break; }
                 case "A8_seashells_goods.png": { b.Direction = GridDirection.Right; break; }
+                case "A8_oysters_goods.png": { b.Direction = GridDirection.Right; break; }
             }
 
             #endregion
@@ -4073,7 +4090,7 @@ namespace PresetParser
 
             if (assetBuilding.TryGetValue("EffectSource/StreetDistance", out influenceRadius))
             {
-                if (templateName == "PublicServiceBuilding" || templateName.Contains("InstitutionBuilding"))
+                if (templateName == "PublicServiceBuilding" || templateName.Contains("InstitutionBuilding") || templateName.StartsWith("Monument"))
                 {
                     // public service buildings
                     b.InfluenceRange = Convert.ToInt32(influenceRadius);
