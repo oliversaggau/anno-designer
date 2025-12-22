@@ -11,7 +11,6 @@ using AnnoDesigner.Core.Models;
 using AnnoDesigner.Core.Presets.Models;
 using PresetParser.Anno1404_Anno2070;
 using PresetParser.Anno1800;
-using PresetParser.Anno1800.Models;
 using PresetParser.Extensions;
 using PresetParser.Models;
 
@@ -110,7 +109,7 @@ namespace PresetParser
         /// <summary>
         /// I need the IncludeBuildingsTemplateNames to get Building information from, as it is also the Presets Template String or Template GUID
         /// </summary>
-        public static IList<FarmField> farmFieldList1800 = new List<FarmField>();
+        public static IList<ModuleInfo> farmFieldList1800 = new List<ModuleInfo>();
         // Removed IncludeBuildingsTemplate "CultureModule" (to must to handle and thus are replaced with the Zoo Module and Museum Module
         private static readonly List<string> IncludeBuildingsTemplateNames1800 = new List<string> { "ResidenceBuilding", "ResidenceBuilding7", "FarmBuilding", "FreeAreaBuilding", "FactoryBuilding7", "HeavyFactoryBuilding",
             "SlotFactoryBuilding7", "Farmfield", "OilPumpBuilding", "PublicServiceBuilding", "CityInstitutionBuilding", "CultureBuilding", "Market", "Warehouse", "PowerplantBuilding", "HarborOffice", "HarborWarehouse7",
@@ -3488,14 +3487,14 @@ namespace PresetParser
                         string fieldGuidValue = values["ModuleOwner"]["ConstructionOptions"]["Item"]["ModuleGUID"].InnerText;
                         string fieldAmountValue = null;
 
-                        FarmField fieldInfo = farmFieldList1800
-                            .Where(x => string.Equals(x.FieldGuid, fieldGuidValue, StringComparison.OrdinalIgnoreCase))
+                        ModuleInfo fieldInfo = farmFieldList1800
+                            .Where(x => string.Equals(x.ModuleGuid, fieldGuidValue, StringComparison.OrdinalIgnoreCase))
                             .Where(x => string.Equals(x.OwnerGuid, guidName, StringComparison.OrdinalIgnoreCase))
                             .SingleOrDefault();
 
                         if (fieldInfo != null)
                         {
-                            fieldAmountValue = fieldInfo.FieldAmount;
+                            fieldAmountValue = fieldInfo.ModuleAmount;
                             translation = translation + " - (" + fieldAmountValue + ")";
                         }
                     }
@@ -3504,8 +3503,8 @@ namespace PresetParser
                         string fieldGuidValue = values["Standard"]["GUID"].InnerText;
                         string fieldAmountValue = null;
 
-                        List<FarmField> fieldInfos = farmFieldList1800
-                            .Where(x => string.Equals(x.FieldGuid, fieldGuidValue, StringComparison.OrdinalIgnoreCase))
+                        List<ModuleInfo> fieldInfos = farmFieldList1800
+                            .Where(x => string.Equals(x.ModuleGuid, fieldGuidValue, StringComparison.OrdinalIgnoreCase))
                             .ToList();
 
                         if (fieldInfos.Count == 0)
@@ -3519,8 +3518,8 @@ namespace PresetParser
                         }
 
                         fieldAmountValue = string.Join("/", fieldInfos
-                            .OrderBy(x => Convert.ToInt32(x.FieldAmount))
-                            .Select(x => x.FieldAmount)
+                            .OrderBy(x => Convert.ToInt32(x.ModuleAmount))
+                            .Select(x => x.ModuleAmount)
                             .Distinct());
 
                         translation = translation + " - (" + fieldAmountValue + ")";
@@ -3689,7 +3688,7 @@ namespace PresetParser
 
                     if (fieldAmountValue != null)
                     {
-                        farmFieldList1800.Add(new FarmField() { FieldGuid = fieldGuidValue, FieldAmount = fieldAmountValue, OwnerGuid = guidValue });
+                        farmFieldList1800.Add(new ModuleInfo() { ModuleGuid = fieldGuidValue, ModuleAmount = fieldAmountValue, OwnerGuid = guidValue });
                     }
                 }
             }
