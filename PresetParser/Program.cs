@@ -181,6 +181,12 @@ namespace PresetParser
 
         #endregion
 
+        #region Anno 117
+
+        public static IList<ModuleInfo> modulesList117 = new List<ModuleInfo>();
+
+        #endregion
+
         #endregion
 
         static Program()
@@ -986,6 +992,10 @@ namespace PresetParser
 
                 Console.WriteLine("Preparing model...");
                 Anno117.Model model = new Anno117.Model(assetsDocument, templatesDocument);
+
+                // parse modules BEFORE buildings
+                Console.WriteLine("Parsing modules...");
+                ParseModules117(assetsDocument, templatesDocument);
 
                 Console.WriteLine("Parsing buildings...");
                 ParseAssets117(model, buildings);
@@ -3791,6 +3801,12 @@ namespace PresetParser
             identifierName = identifierName.FirstCharToUpper();
             string associatedRegion = assetBuilding.GetValue("Building/AssociatedRegions");
             Asset assetResidencePopulation = null;
+            ModuleInfo moduleInfo = null;
+
+            if (guidNumber == 31763)
+            {
+                identifierName = identifierName.Replace("Roman", "Celtic");
+            }
 
             if (templateName == "MilitaryWall")
             {
@@ -3901,6 +3917,17 @@ namespace PresetParser
                     factionName = model.ResolveFaction(ownerGuid, associatedRegion);
                     groupName = "Special Buildings";
                 }
+                else if (templateName == "Module Field" || templateName == "Module Polygon Field" || templateName == "Module Marsh Field")
+                {
+                    groupName = "Farm Fields";
+                    string fieldGuid = guidName;
+
+                    moduleInfo = modulesList117
+                        .Where(x => string.Equals(x.ModuleGuid, fieldGuid, StringComparison.OrdinalIgnoreCase))
+                        .SingleOrDefault();
+
+                    factionName = model.ResolveFaction(moduleInfo.OwnerGuid, associatedRegion);
+                }
                 else if (associatedRegion != null)
                 {
                     factionName = model.ResolveFaction(guidName, associatedRegion);
@@ -3914,6 +3941,12 @@ namespace PresetParser
             else if (templateName == "Production Field" || templateName == "Production Marsh Pasture")
             {
                 groupName = "Farm Buildings";
+                string fieldGuid = assetBuilding.GetValue("ModuleOwner/ConstructionOptions/Item/ModuleGUID");
+
+                moduleInfo = modulesList117
+                    .Where(x => string.Equals(x.ModuleGuid, fieldGuid, StringComparison.OrdinalIgnoreCase))
+                    .Where(x => string.Equals(x.OwnerGuid, guidName, StringComparison.OrdinalIgnoreCase))
+                    .SingleOrDefault();
             }
             else if (templateName == "PublicServiceBuilding" || templateName == "Monument" || templateName == "MonumentEventBuilding")
             {
@@ -3987,7 +4020,7 @@ namespace PresetParser
 
             #region Set BuildBlocker of buildings
 
-            if (templateName == "AqueductConnector" || templateName == "PolygonObject" || templateName == "Canal")
+            if (templateName == "AqueductConnector" || templateName == "PolygonObject" || templateName == "Canal" || templateName == "Module Polygon Field")
             {
                 b.BuildBlocker = _buildingBlockProvider.CreateBuildBlocker(1, 1);
             }
@@ -4197,6 +4230,15 @@ namespace PresetParser
                     }
 
                     #endregion
+
+                    #region Add limits on modules and module owners
+
+                    if (moduleInfo != null)
+                    {
+                        translation = translation + " - (" + moduleInfo.ModuleAmount + ")";
+                    }
+
+                    #endregion
                 }
 
                 b.Localization.Dict.Add(Language, translation);
@@ -4206,6 +4248,37 @@ namespace PresetParser
 
             if (!string.IsNullOrEmpty(b.IconFileName)) ValidateIconFile(b.IconFileName, Convert.ToString(b.Guid), b.Header);
             buildings.Add(b);
+        }
+
+        private static void ParseModules117(XmlDocument assetsDocument, XmlDocument templatesDocument)
+        {
+            List<XmlNode> assetNodes = assetsDocument.SelectNodes("//Asset[Values/ModuleOwner]")
+                .Cast<XmlNode>()
+                .ToList();
+
+            foreach (XmlNode assetNode in assetNodes)
+            {
+                try
+                {
+                    Asset asset = new Asset(assetNode, assetsDocument, templatesDocument);
+                    string ownerGuid = asset.GetValue("Standard/GUID");
+
+                    if (asset.SelectNode("ModuleOwner") != null)
+                    {
+                        string moduleLimit = asset.GetValue("ModuleOwner/ModuleLimits/Main/Limit");
+                        string moduleGuid = asset.GetValue("ModuleOwner/ConstructionOptions/Item/ModuleGUID");
+                        modulesList117.Add(new ModuleInfo() { ModuleGuid = moduleGuid, ModuleAmount = moduleLimit, OwnerGuid = ownerGuid });
+                    }
+                }
+                catch (BaseAssetMissingException)
+                {
+                    var oldColor = Console.ForegroundColor;
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("--> Base asset not found, Module is skipped");
+                    Console.ForegroundColor = oldColor;
+                    continue;
+                }
+            }
         }
 
         #endregion

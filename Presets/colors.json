@@ -2891,6 +2891,33 @@
 						"G": 0,
 						"B": 128
 					}
+				}, {
+					"TargetTemplate": "Module Polygon Field",
+					"TargetIdentifiers": ["Module Field Roman Oats", "Module Field Roman Hemp", "Module Field Roman Wheat", "Module Field Roman Grapes", "Module Field Roman Lavender", "Module Field Roman Olives", "Module Field Roman Flax", "Module Field Roman Sandarac Wood", "Module Field Roman Celtic Wheat Module Field Roman Celtic Grapes", "Module Field Roman Celtic Flax", "Module Field Celtic Hemp", "Module Field Roman Celtic Herbs", "Module Field Celtic Barley", "Module Field Celtic Dye", "Module Marsh Field Celtic Reed"],
+					"Color": {
+						"A": 255,
+						"R": 255,
+						"G": 165,
+						"B": 0
+					}
+				}, {
+					"TargetTemplate": "Module Field",
+					"TargetIdentifiers": ["Module Pasture Roman Wool", "Module Pasture Roman Pigs", "Module Pasture Roman Horses", "Module Pasture Roman Celtic Pigs", "Module Pasture Roman Celtic Horses", "Module Pasture Celtic Wool"],
+					"Color": {
+						"A": 255,
+						"R": 173,
+						"G": 255,
+						"B": 47
+					}
+				}, {
+					"TargetTemplate": "Module Marsh Field",
+					"TargetIdentifiers": ["Module Marsh Pasture Celtic Aurochs"],
+					"Color": {
+						"A": 255,
+						"R": 173,
+						"G": 255,
+						"B": 47
+					}
 				}
 			]
 		}
