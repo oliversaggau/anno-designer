@@ -1,6 +1,6 @@
 {
-	"version": "1.0.0.9",
-	"dateGenerated": "2025-09-19T12:11:37.340Z",
+	"version": "1.0.0.10",
+	"dateGenerated": "2025-12-26T14:05:12.45Z",
 	"languages": [{
 			"languageCode": "eng",
 			"language": "English",
@@ -427,6 +427,54 @@
 				}, {
 					"key": "(33)Scenario4:Pride&Peddlers",
 					"value": "(33) Scenario 4: Pride & Peddlers"
+				}, {
+					"key": "(1)Roman",
+					"value": "(1) Roman"
+				}, {
+					"key": "(2)Celtic",
+					"value": "(2) Celtic"
+				}, {
+					"key": "(3)Romano-Celtic",
+					"value": "(3) Romano-Celtic"
+				}, {
+					"key": "Warehouse",
+					"value": "Warehouse"
+				}, {
+					"key": "Aqueduct",
+					"value": "Aqueduct"
+				}, {
+					"key": "(1)Liberti",
+					"value": "(1) Liberti"
+				}, {
+					"key": "(2)Plebeians",
+					"value": "(2) Plebeians"
+				}, {
+					"key": "(3)Equites",
+					"value": "(3) Equites"
+				}, {
+					"key": "(4)Patricians",
+					"value": "(4) Patricians"
+				}, {
+					"key": "(5)Waders",
+					"value": "(5) Waders"
+				}, {
+					"key": "(6)Smiths",
+					"value": "(6) Smiths"
+				}, {
+					"key": "(7)Mercators",
+					"value": "(7) Mercators"
+				}, {
+					"key": "(8)Aldermen",
+					"value": "(8) Aldermen"
+				}, {
+					"key": "(9)Nobles",
+					"value": "(9) Nobles"
+				}, {
+					"key": "Shrines",
+					"value": "Shrines"
+				}, {
+					"key": "Drainage",
+					"value": "Drainage"
 				}
 			]
 		}, {
@@ -855,6 +903,54 @@
 				}, {
 					"key": "(33)Scenario4:Pride&Peddlers",
 					"value": "(33) Scenariusz 4: Duma i przedsiębiorczość"
+				}, {
+					"key": "(1)Roman",
+					"value": "(1) Rzymianin"
+				}, {
+					"key": "(2)Celtic",
+					"value": "(2) Celtycka"
+				}, {
+					"key": "(3)Romano-Celtic",
+					"value": "(3) Rzymsko-celtycka"
+				}, {
+					"key": "Warehouse",
+					"value": "Magazyn"
+				}, {
+					"key": "Aqueduct",
+					"value": "Akwedukt"
+				}, {
+					"key": "(1)Liberti",
+					"value": "(1) Wyzwoleńcy"
+				}, {
+					"key": "(2)Plebeians",
+					"value": "(2) Plebejusze"
+				}, {
+					"key": "(3)Equites",
+					"value": "(3) Ekwici"
+				}, {
+					"key": "(4)Patricians",
+					"value": "(4) Patrycjusze"
+				}, {
+					"key": "(5)Waders",
+					"value": "(5) Wędrowcy"
+				}, {
+					"key": "(6)Smiths",
+					"value": "(6) Rzemieślnicy"
+				}, {
+					"key": "(7)Mercators",
+					"value": "(7) Merkatorzy"
+				}, {
+					"key": "(8)Aldermen",
+					"value": "(8) Starsi"
+				}, {
+					"key": "(9)Nobles",
+					"value": "(9) Wielmożowie"
+				}, {
+					"key": "Shrines",
+					"value": "Kapliczki"
+				}, {
+					"key": "Drainage",
+					"value": "Osuszanie"
 				}
 			]
 		}, {
@@ -1283,6 +1379,54 @@
 				}, {
 					"key": "(33)Scenario4:Pride&Peddlers",
 					"value": "(33) Szenario 4: Stolz und Marktanteil"
+				}, {
+					"key": "(1)Roman",
+					"value": "(1) Römer"
+				}, {
+					"key": "(2)Celtic",
+					"value": "(2) Keltisch"
+				}, {
+					"key": "(3)Romano-Celtic",
+					"value": "(3) Römisch-keltisch"
+				}, {
+					"key": "Warehouse",
+					"value": "Lagerhaus"
+				}, {
+					"key": "Aqueduct",
+					"value": "Aquädukt"
+				}, {
+					"key": "(1)Liberti",
+					"value": "(1) Liberti"
+				}, {
+					"key": "(2)Plebeians",
+					"value": "(2) Plebejer"
+				}, {
+					"key": "(3)Equites",
+					"value": "(3) Equites"
+				}, {
+					"key": "(4)Patricians",
+					"value": "(4) Patrizier"
+				}, {
+					"key": "(5)Waders",
+					"value": "(5) Wanderer"
+				}, {
+					"key": "(6)Smiths",
+					"value": "(6) Schmiede"
+				}, {
+					"key": "(7)Mercators",
+					"value": "(7) Mercatoren"
+				}, {
+					"key": "(8)Aldermen",
+					"value": "(8) Älteste"
+				}, {
+					"key": "(9)Nobles",
+					"value": "(9) Edelmänner"
+				}, {
+					"key": "Shrines",
+					"value": "Schreine"
+				}, {
+					"key": "Drainage",
+					"value": "Drainage"
 				}
 			]
 		}, {
@@ -1711,6 +1855,54 @@
 				}, {
 					"key": "(33)Scenario4:Pride&Peddlers",
 					"value": "(33) Scénario 4 : Orgueil et parts de marché"
+				}, {
+					"key": "(1)Roman",
+					"value": "(1) Romain"
+				}, {
+					"key": "(2)Celtic",
+					"value": "(2) Celte"
+				}, {
+					"key": "(3)Romano-Celtic",
+					"value": "(3) Romano-Celte"
+				}, {
+					"key": "Warehouse",
+					"value": "Entrepôt"
+				}, {
+					"key": "Aqueduct",
+					"value": "Aqueduc"
+				}, {
+					"key": "(1)Liberti",
+					"value": "(1) Liberti"
+				}, {
+					"key": "(2)Plebeians",
+					"value": "(2) Plébéiens"
+				}, {
+					"key": "(3)Equites",
+					"value": "(3) Equites"
+				}, {
+					"key": "(4)Patricians",
+					"value": "(4) Patriciens"
+				}, {
+					"key": "(5)Waders",
+					"value": "(5) Tourbiers"
+				}, {
+					"key": "(6)Smiths",
+					"value": "(6) Forgerons"
+				}, {
+					"key": "(7)Mercators",
+					"value": "(7) Mercators"
+				}, {
+					"key": "(8)Aldermen",
+					"value": "(8) Aldermen"
+				}, {
+					"key": "(9)Nobles",
+					"value": "(9) Nobles"
+				}, {
+					"key": "Shrines",
+					"value": "Sanctuaires"
+				}, {
+					"key": "Drainage",
+					"value": "Drainage"
 				}
 			]
 		}, {
@@ -2139,6 +2331,54 @@
 				}, {
 					"key": "(33)Scenario4:Pride&Peddlers",
 					"value": "(33) Сценарий 4: Гордость и продажи"
+				}, {
+					"key": "(1)Roman",
+					"value": "(1) Romano"
+				}, {
+					"key": "(2)Celtic",
+					"value": "(2) Celtico"
+				}, {
+					"key": "(3)Romano-Celtic",
+					"value": "(3) Romano-celtico"
+				}, {
+					"key": "Warehouse",
+					"value": "Magazzino"
+				}, {
+					"key": "Aqueduct",
+					"value": "Acquedotto"
+				}, {
+					"key": "(1)Liberti",
+					"value": "(1) Liberti"
+				}, {
+					"key": "(2)Plebeians",
+					"value": "(2) Plebei"
+				}, {
+					"key": "(3)Equites",
+					"value": "(3) Equites"
+				}, {
+					"key": "(4)Patricians",
+					"value": "(4) Patrizi"
+				}, {
+					"key": "(5)Waders",
+					"value": "(5) Limicoli"
+				}, {
+					"key": "(6)Smiths",
+					"value": "(6) Fabbri"
+				}, {
+					"key": "(7)Mercators",
+					"value": "(7) Mercator"
+				}, {
+					"key": "(8)Aldermen",
+					"value": "(8) Aldermanni"
+				}, {
+					"key": "(9)Nobles",
+					"value": "(9) Nobili"
+				}, {
+					"key": "Shrines",
+					"value": "Sacrari"
+				}, {
+					"key": "Drainage",
+					"value": "Drenaggio"
 				}
 			]
 		}, {
@@ -2567,6 +2807,54 @@
 				}, {
 					"key": "(33)Scenario4:Pride&Peddlers",
 					"value": "(33) Escenario 4: Orgullo y beneficio"
+				}, {
+					"key": "(1)Roman",
+					"value": "(1) Рима"
+				}, {
+					"key": "(2)Celtic",
+					"value": "(2) Кельтский"
+				}, {
+					"key": "(3)Romano-Celtic",
+					"value": "(3) Римско-кельтский"
+				}, {
+					"key": "Warehouse",
+					"value": "Склад"
+				}, {
+					"key": "Aqueduct",
+					"value": "Акведук"
+				}, {
+					"key": "(1)Liberti",
+					"value": "(1) Либертины"
+				}, {
+					"key": "(2)Plebeians",
+					"value": "(2) Плебеи"
+				}, {
+					"key": "(3)Equites",
+					"value": "(3) Эквиты"
+				}, {
+					"key": "(4)Patricians",
+					"value": "(4) Патриции"
+				}, {
+					"key": "(5)Waders",
+					"value": "(5) Болотники"
+				}, {
+					"key": "(6)Smiths",
+					"value": "(6) Кузнецы"
+				}, {
+					"key": "(7)Mercators",
+					"value": "(7) Меркаторы"
+				}, {
+					"key": "(8)Aldermen",
+					"value": "(8) Олдермены"
+				}, {
+					"key": "(9)Nobles",
+					"value": "(9) Кельтская знать"
+				}, {
+					"key": "Shrines",
+					"value": "Святыни"
+				}, {
+					"key": "Drainage",
+					"value": "Осушение болот"
 				}
 			]
 		}, {
@@ -2995,6 +3283,54 @@
 				}, {
 					"key": "(33)Scenario4:Pride&Peddlers",
 					"value": "(33) Scenario 4: Pride & Peddlers"
+				}, {
+					"key": "(1)Roman",
+					"value": "(1) Romano"
+				}, {
+					"key": "(2)Celtic",
+					"value": "(2) Celta"
+				}, {
+					"key": "(3)Romano-Celtic",
+					"value": "(3) Celtorromano"
+				}, {
+					"key": "Warehouse",
+					"value": "Almacén"
+				}, {
+					"key": "Aqueduct",
+					"value": "Acueducto"
+				}, {
+					"key": "(1)Liberti",
+					"value": "(1) Libertos"
+				}, {
+					"key": "(2)Plebeians",
+					"value": "(2) Plebeyos"
+				}, {
+					"key": "(3)Equites",
+					"value": "(3) Équites"
+				}, {
+					"key": "(4)Patricians",
+					"value": "(4) Patricios"
+				}, {
+					"key": "(5)Waders",
+					"value": "(5) Légamos"
+				}, {
+					"key": "(6)Smiths",
+					"value": "(6) Forjeros"
+				}, {
+					"key": "(7)Mercators",
+					"value": "(7) Mercadores"
+				}, {
+					"key": "(8)Aldermen",
+					"value": "(8) Álderes"
+				}, {
+					"key": "(9)Nobles",
+					"value": "(9) Nobles"
+				}, {
+					"key": "Shrines",
+					"value": "Altares"
+				}, {
+					"key": "Drainage",
+					"value": "Drenaje"
 				}
 			]
 		}, {
@@ -3423,6 +3759,54 @@
 				}, {
 					"key": "(33)Scenario4:Pride&Peddlers",
 					"value": "(33) Scenario 4: Pride & Peddlers"
+				}, {
+					"key": "(1)Roman",
+					"value": "(1) ​罗马​人"
+				}, {
+					"key": "(2)Celtic",
+					"value": "(2) ​凯​尔​特​人"
+				}, {
+					"key": "(3)Romano-Celtic",
+					"value": "(3) ​罗马-​凯​尔​特"
+				}, {
+					"key": "Warehouse",
+					"value": "​仓库"
+				}, {
+					"key": "Aqueduct",
+					"value": "​水道"
+				}, {
+					"key": "(1)Liberti",
+					"value": "(1) ​自由​民"
+				}, {
+					"key": "(2)Plebeians",
+					"value": "(2) ​平民"
+				}, {
+					"key": "(3)Equites",
+					"value": "(3) ​骑士"
+				}, {
+					"key": "(4)Patricians",
+					"value": "(4) ​贵族"
+				}, {
+					"key": "(5)Waders",
+					"value": "(5) ​沼​人"
+				}, {
+					"key": "(6)Smiths",
+					"value": "(6) ​铁匠"
+				}, {
+					"key": "(7)Mercators",
+					"value": "(7) ​商人"
+				}, {
+					"key": "(8)Aldermen",
+					"value": "(8) ​长老"
+				}, {
+					"key": "(9)Nobles",
+					"value": "(9) ​领​主"
+				}, {
+					"key": "Shrines",
+					"value": "​圣坛"
+				}, {
+					"key": "Drainage",
+					"value": "​排水​系统"
 				}
 			]
 		}
