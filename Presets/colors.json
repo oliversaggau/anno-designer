@@ -2532,6 +2532,114 @@
 						"B": 235
 					}
 				}, {
+					"TargetTemplate": "Canal",
+					"TargetIdentifiers": [],
+					"Color": {
+						"A": 255,
+						"R": 70,
+						"G": 180,
+						"B": 170
+					}
+				}, {
+					"TargetTemplate": "IrrigationPropagationSource_Marsh",
+					"TargetIdentifiers": ["Marsh Drainage Roman Celtic Waterlock"],
+					"Color": {
+						"A": 255,
+						"R": 70,
+						"G": 180,
+						"B": 170
+					}
+				}, {
+					"TargetTemplate": "CityInstitutionBuilding",
+					"TargetIdentifiers": ["Institution Roman Fire"],
+					"Color": {
+						"A": 255,
+						"R": 255,
+						"G": 0,
+						"B": 0
+					}
+				}, {
+					"TargetTemplate": "CityInstitutionBuilding",
+					"TargetIdentifiers": ["Institution Roman Riot"],
+					"Color": {
+						"A": 255,
+						"R": 30,
+						"G": 144,
+						"B": 255
+					}
+				}, {
+					"TargetTemplate": "CityInstitutionBuilding",
+					"TargetIdentifiers": ["Institution Roman Illness"],
+					"Color": {
+						"A": 255,
+						"R": 154,
+						"G": 205,
+						"B": 50
+					}
+				}, {
+					"TargetTemplate": "CityInstitutionBuilding_Marsh",
+					"TargetIdentifiers": ["Institution Roman Celtic Fire"],
+					"Color": {
+						"A": 255,
+						"R": 255,
+						"G": 0,
+						"B": 0
+					}
+				}, {
+					"TargetTemplate": "CityInstitutionBuilding_Marsh",
+					"TargetIdentifiers": ["Institution Roman Celtic Riot"],
+					"Color": {
+						"A": 255,
+						"R": 30,
+						"G": 144,
+						"B": 255
+					}
+				}, {
+					"TargetTemplate": "CityInstitutionBuilding_Marsh",
+					"TargetIdentifiers": ["Institution Roman Celtic Illness"],
+					"Color": {
+						"A": 255,
+						"R": 154,
+						"G": 205,
+						"B": 50
+					}
+				}, {
+					"TargetTemplate": "MiniInstitutionBuilding",
+					"TargetIdentifiers": ["Institution Roman Fire Mini", "Institution Roman Celtic Fire Mini"],
+					"Color": {
+						"A": 255,
+						"R": 255,
+						"G": 0,
+						"B": 0
+					}
+				}, {
+					"TargetTemplate": "MiniInstitutionBuilding",
+					"TargetIdentifiers": ["Institution Roman Riot Mini", "Institution Roman Celtic Riot Mini"],
+					"Color": {
+						"A": 255,
+						"R": 30,
+						"G": 144,
+						"B": 255
+					}
+				}, {
+					"TargetTemplate": "MiniInstitutionBuilding",
+					"TargetIdentifiers": ["Institution Roman Illness Mini", "Institution Roman Celtic Illness Mini"],
+					"Color": {
+						"A": 255,
+						"R": 154,
+						"G": 205,
+						"B": 50
+					}
+				}, {
+					"TargetTemplate": "MiniInstitutionBuilding",
+					"TargetIdentifiers": ["Public Roman Shrine Mars", "Public Roman Shrine Ceres", "Public Roman Shrine Neptune", "Public Roman Shrine Mercuy-Lugus", "Public Roman Shrine Epona", "Public Roman Shrine Cernunnos", "Public Roman Shrine Minerva", "Public Roman Celtic Shrine Mars", "Public Roman Celtic Shrine Ceres", "Public Roman Celtic Shrine Neptune", "Public Roman Celtic Shrine Mercuy-Lugus", "Public Roman Celtic Shrine Epona", "Public Roman Celtic Shrine Cernunnos", "Public Roman Celtic Shrine Minerva"],
+					"Color": {
+						"A": 255,
+						"R": 255,
+						"G": 215,
+						"B": 0
+					}
+				}, {
 					"TargetTemplate": "PolygonObject",
 					"TargetIdentifiers": ["Quay Roman", "Quay Roman Celtic"],
 					"Color": {

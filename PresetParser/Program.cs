@@ -3862,6 +3862,19 @@ namespace PresetParser
                         identifierName = identifierName.Replace("Aqueduct MinGround Main", "").Trim();
                     }
                 }
+                else if (templateName == "IrrigationPropagationSource_Marsh" || templateName == "Canal")
+                {
+                    if (identifierName.Contains("Inactive")) return;
+                    identifierName = identifierName.Replace("Mesh Graph", "").Trim();
+                    factionName = "Drainage";
+                    groupName = null;
+                }
+                else if (templateName == "CityInstitutionBuilding" || templateName == "CityInstitutionBuilding_Marsh" || templateName == "MiniInstitutionBuilding")
+                {
+                    groupName = model.GetGroupByRegion(associatedRegion);
+                    if (identifierName.Contains("Shrine")) factionName = "Shrines";
+                    else factionName = "Public Buildings";
+                }
                 else if (associatedRegion != null)
                 {
                     factionName = model.ResolveFaction(guidName, associatedRegion);
@@ -3903,7 +3916,7 @@ namespace PresetParser
                 b.IconFileName = null;
             }
 
-            if (templateName == "AqueductConnector" || templateName == "PolygonObject")
+            if (templateName == "AqueductConnector" || templateName == "PolygonObject" || templateName == "Canal")
             {
                 b.IconFileName = null;
             }
@@ -3912,7 +3925,7 @@ namespace PresetParser
 
             #region Set BuildBlocker of buildings
 
-            if (templateName == "AqueductConnector" || templateName == "PolygonObject")
+            if (templateName == "AqueductConnector" || templateName == "PolygonObject" || templateName == "Canal")
             {
                 b.BuildBlocker = _buildingBlockProvider.CreateBuildBlocker(1, 1);
             }
@@ -3986,7 +3999,7 @@ namespace PresetParser
 
             if (assetBuilding.TryGetValue("EffectSource/StreetDistance", out influenceRadius))
             {
-                if (templateName == "PublicServiceBuilding")
+                if (templateName == "PublicServiceBuilding" || templateName.Contains("InstitutionBuilding"))
                 {
                     // public service buildings
                     b.InfluenceRange = Convert.ToInt32(influenceRadius);
