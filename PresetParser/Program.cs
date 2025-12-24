@@ -4119,6 +4119,7 @@ namespace PresetParser
                 case "A8_samphire_goods.png": { b.Direction = GridDirection.Right; break; }
                 case "A8_seashells_goods.png": { b.Direction = GridDirection.Right; break; }
                 case "A8_oysters_goods.png": { b.Direction = GridDirection.Right; break; }
+                case "A8_auroch_goods.png": { b.Direction = GridDirection.Right; break; }
             }
 
             #endregion
@@ -4134,6 +4135,8 @@ namespace PresetParser
             {
                 // farms and other module owners
                 b.InfluenceRadius = Convert.ToInt32(influenceRadius);
+                // in Anno 117 the ModuleBuildRadius starts from outside the building, so we need to add half the width
+                if (b.InfluenceRadius != 0) b.InfluenceRadius += (int)(b.BuildBlocker[b.Direction == GridDirection.Right ? "z" : "x"] / 2.0f);
             }
             else if (assetBuilding.TryGetValue("EffectSource/RadiusDistance", out influenceRadius))
             {
