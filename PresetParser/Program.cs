@@ -622,7 +622,9 @@ namespace PresetParser
                 "Residence_Africa_World", "Residence_colony02_tier02", "Residence_colony01_tier03", "Public Roman Celtic Fanum", "Military Roman Celtic Wall Wood",
                 "Military Roman Celtic Wall Wood Gate", "Military Roman Celtic Tower Wood Archer", "Military Roman Celtic Barracks", "Military Roman Celtic Training Grounds",
                 "Military Roman Celtic Siege Workshop", "Production Field Roman Celtic Grapes", "Production Meadow Roman Celtic Honycombs", "Production Food Roman Celtic Wine",
-                "Public Roman Celtic Theater", "Public Roman Celtic Gambling House", "Production Coast Roman Celtic Silica" };
+                "Public Roman Celtic Theater", "Public Roman Celtic Gambling House", "Production Coast Roman Celtic Silica", "Military Roman Celtic Wall Stone",
+                "Military Roman Celtic Wall Stone Gate", "Military Roman Celtic Tower Stone Archer", "Military Roman Celtic Tower Stone Ballista", "Module Silo Roman",
+                "Module Silo Roman Celtic" };
 
             var validator = new Validator();
             (bool isValid, List<string> duplicateIdentifiers) = validator.CheckForUniqueIdentifiers(buildingsToCheck, knownDuplicates);
@@ -3836,6 +3838,30 @@ namespace PresetParser
                     factionName = "Harbor";
                     groupName = "(2) Celtic";
                     break;
+                // religion and/or tech unlockable buildings are hard to categorize, since they can be more
+                // or less unlocked at any time and often are not tied to a specific population group in the
+                // assets.xml so we simply hard-code them here for now
+                case 77954: // Module Silo Roman
+                    factionName = "(1) Liberti";
+                    break;
+                case 27889: // Military Roman Wall Stone
+                case 27888: // Military Roman Wall Stone Gate
+                case 27890: // Military Roman Tower Stone Archer
+                case 50972: // Military Roman Tower Stone Ballista
+                    factionName = "(3) Equites";
+                    break;
+                case 77955: // Module Silo Roman Celtic
+                    factionName = "(7) Mercators";
+                    break;
+                case 29543: // Military Roman Celtic Wall Stone
+                case 29545: // Military Roman Celtic Wall Stone Gate
+                case 29546: // Military Roman Celtic Tower Stone Archer
+                case 50974: // Military Roman Celtic Tower Stone Ballista
+                    factionName = "(9) Nobles";
+                    break;
+                case 50280: // Production Mountain Roman Gold Ore
+                    factionName = "(4) Patricians";
+                    break;
             }
 
             if (string.IsNullOrEmpty(factionName))
@@ -3947,6 +3973,10 @@ namespace PresetParser
                     .Where(x => string.Equals(x.ModuleGuid, fieldGuid, StringComparison.OrdinalIgnoreCase))
                     .Where(x => string.Equals(x.OwnerGuid, guidName, StringComparison.OrdinalIgnoreCase))
                     .SingleOrDefault();
+            }
+            else if (templateName == "ProductionModuleSilo")
+            {
+                groupName = "Farm Fields";
             }
             else if (templateName == "PublicServiceBuilding" || templateName == "Monument" || templateName == "MonumentEventBuilding")
             {

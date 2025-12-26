@@ -2839,7 +2839,7 @@
 					}
 				}, {
 					"TargetTemplate": "MilitaryGate",
-					"TargetIdentifiers": ["Military Roman Wall Wood Gate", "Military Roman Celtic Wall Wood Gate"],
+					"TargetIdentifiers": ["Military Roman Wall Wood Gate", "Military Roman Wall Stone Gate", "Military Roman Celtic Wall Wood Gate", "Military Roman Celtic Wall Stone Gate"],
 					"Color": {
 						"A": 255,
 						"R": 184,
@@ -2848,7 +2848,7 @@
 					}
 				}, {
 					"TargetTemplate": "MilitaryWall",
-					"TargetIdentifiers": ["Military Roman Wall Wood", "Military Roman Celtic Wall Wood"],
+					"TargetIdentifiers": ["Military Roman Wall Wood", "Military Roman Wall Stone", "Military Roman Celtic Wall Wood", "Military Roman Celtic Wall Stone"],
 					"Color": {
 						"A": 255,
 						"R": 184,
@@ -2857,7 +2857,7 @@
 					}
 				}, {
 					"TargetTemplate": "MilitaryTowerUnit",
-					"TargetIdentifiers": ["Military Roman Tower Wood Archer", "Military Roman Celtic Tower Wood Archer"],
+					"TargetIdentifiers": ["Military Roman Tower Wood Archer", "Military Roman Tower Stone Archer", "Military Roman Tower Stone Ballista", "Military Roman Celtic Tower Wood Archer", "Military Roman Celtic Tower Stone Archer", "Military Roman Celtic Tower Stone Ballista"],
 					"Color": {
 						"A": 255,
 						"R": 184,
@@ -2912,6 +2912,15 @@
 				}, {
 					"TargetTemplate": "Module Marsh Field",
 					"TargetIdentifiers": ["Module Marsh Pasture Celtic Aurochs"],
+					"Color": {
+						"A": 255,
+						"R": 173,
+						"G": 255,
+						"B": 47
+					}
+				}, {
+					"TargetTemplate": "ProductionModuleSilo",
+					"TargetIdentifiers": ["Module Silo Roman", "Module Silo Roman Celtic"],
 					"Color": {
 						"A": 255,
 						"R": 173,
