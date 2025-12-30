@@ -22,6 +22,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PresetParser.Tests", "Tests
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnnoDesigner.Tests", "Tests\AnnoDesigner.Tests\AnnoDesigner.Tests.csproj", "{809FDE16-4864-4CD2-83A5-75315E970BFD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnnoDesigner.Importer", "AnnoDesigner.Importer\AnnoDesigner.Importer.csproj", "{1408FDAD-BBFD-4D77-8183-0E77F860038A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -52,6 +54,10 @@ Global
 		{809FDE16-4864-4CD2-83A5-75315E970BFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{809FDE16-4864-4CD2-83A5-75315E970BFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{809FDE16-4864-4CD2-83A5-75315E970BFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1408FDAD-BBFD-4D77-8183-0E77F860038A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1408FDAD-BBFD-4D77-8183-0E77F860038A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1408FDAD-BBFD-4D77-8183-0E77F860038A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1408FDAD-BBFD-4D77-8183-0E77F860038A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

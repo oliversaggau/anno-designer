@@ -33,6 +33,7 @@ using AnnoDesigner.Localization;
 using AnnoDesigner.Models;
 using AnnoDesigner.PreferencesPages;
 using AnnoDesigner.Undo.Operations;
+using AnnoDesigner.Importer;
 using Microsoft.Win32;
 using NLog;
 
@@ -779,7 +780,19 @@ namespace AnnoDesigner.ViewModels
         {
             try
             {
-                var layout = _layoutLoader.LoadLayout(filePath, forceLoad);
+                LayoutFile layout = null;
+                string extension = Path.GetExtension(filePath).ToLowerInvariant();
+
+                if (extension == ".ad")
+                {
+                    layout = _layoutLoader.LoadLayout(filePath, forceLoad);
+                }
+                else if (extension == ".a8s")
+                {
+                    Anno117.SavegameReader reader = new Anno117.SavegameReader();
+                    layout = reader.ImportLayout(filePath, AnnoCanvas.BuildingPresets);
+                }
+
                 if (layout != null)
                 {
                     OpenLayout(layout);

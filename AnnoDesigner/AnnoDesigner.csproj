@@ -74,6 +74,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AnnoDesigner.Core\AnnoDesigner.Core.csproj" />
+    <ProjectReference Include="..\AnnoDesigner.Importer\AnnoDesigner.Importer.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Extended.Wpf.Toolkit" Version="4.6.1" />

@@ -2870,7 +2870,7 @@ namespace AnnoDesigner
             var dialog = new OpenFileDialog
             {
                 DefaultExt = Constants.SavedLayoutExtension,
-                Filter = Constants.SaveOpenDialogFilter
+                Filter = "Anno Designer Files (*.ad)|*.ad|Anno 117 Savegame Files (*.a8s)|*.a8s|All Files (*.*)|*.*",
             };
 
             if (dialog.ShowDialog() == true)
