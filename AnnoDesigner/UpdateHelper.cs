@@ -402,7 +402,7 @@ namespace AnnoDesigner
             Release foundPrerelease = null;
             if (supportPrerelease)
             {
-                foundPrerelease = AllReleases.FirstOrDefault(x => !x.Draft && x.Prerelease && x.TagName.StartsWith(tagToCheck, StringComparison.OrdinalIgnoreCase));
+                foundPrerelease = AllReleases?.FirstOrDefault(x => !x.Draft && x.Prerelease && x.TagName.StartsWith(tagToCheck, StringComparison.OrdinalIgnoreCase));
             }
 
             Version versionPrerelease = default;
@@ -412,7 +412,7 @@ namespace AnnoDesigner
                 logger.Debug($"Found version (prerelease): {versionPrerelease}");
             }
 
-            var foundRelease = AllReleases.FirstOrDefault(x => !x.Draft && !x.Prerelease && x.TagName.StartsWith(tagToCheck, StringComparison.OrdinalIgnoreCase));
+            var foundRelease = AllReleases?.FirstOrDefault(x => !x.Draft && !x.Prerelease && x.TagName.StartsWith(tagToCheck, StringComparison.OrdinalIgnoreCase));
             Version versionRelease = default;
             if (foundRelease != null)
             {
