@@ -50,7 +50,7 @@ namespace AnnoDesigner.Core.Presets.Models
         /// The information of the required space of the building.
         /// </summary>
         [DataMember(Order = 5)]
-        public SerializableDictionary<int> BuildBlocker { get; set; }
+        public SerializableDictionary<double> BuildBlocker { get; set; }
 
         /// <summary>
         /// The template used for this building (currently for some checkers).
