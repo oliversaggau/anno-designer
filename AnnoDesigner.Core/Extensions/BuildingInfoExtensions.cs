@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using AnnoDesigner.Core.Models;
 using AnnoDesigner.Core.Presets.Models;
 
@@ -13,15 +8,16 @@ namespace AnnoDesigner
     {
         public static AnnoObject ToAnnoObject(this IBuildingInfo buildingInfo, string selectedLanguageCode)
         {
-            var labelLocalization = buildingInfo.Localization == null ? buildingInfo.Identifier : buildingInfo.Localization[selectedLanguageCode];
-            if (string.IsNullOrEmpty(labelLocalization))
-            {
-                labelLocalization = buildingInfo.Localization["eng"];
-            }
+            AnnoObject result = buildingInfo.ToAnnoObject();
+            result.Label = GetOrderParameter(buildingInfo, selectedLanguageCode);
+            return result;
+        }
 
+        public static AnnoObject ToAnnoObject(this IBuildingInfo buildingInfo)
+        {
             return new AnnoObject
             {
-                Label = labelLocalization,
+                Label = buildingInfo.Identifier,
                 Icon = buildingInfo.IconFileName,
                 Radius = buildingInfo.InfluenceRadius,
                 InfluenceRange = buildingInfo.InfluenceRange - 2,
