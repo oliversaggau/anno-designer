@@ -233,6 +233,16 @@ namespace AnnoDesigner.ViewModels
                     NewValue = e.NewValue as Version,
                 });
             }
+            else if (string.Equals(e.PropertyName, nameof(LayoutViewModel.SelectedSession), StringComparison.OrdinalIgnoreCase))
+            {
+                SessionLayout session = e.NewValue as SessionLayout;
+                if (session != null) LayoutViewModel.SelectedIsland = session.Islands[0];
+            }
+            else if (string.Equals(e.PropertyName, nameof(LayoutViewModel.SelectedIsland), StringComparison.OrdinalIgnoreCase))
+            {
+                IslandLayout layout = e.NewValue as IslandLayout;
+                if (layout != null) OpenLayout(layout.Objects);
+            }
         }
 
         private IconImage GenerateNoIconItem()
@@ -805,16 +815,30 @@ namespace AnnoDesigner.ViewModels
         /// </summary>
         public void OpenLayout(LayoutFile layout)
         {
+            LayoutViewModel.LayoutFile = layout;
+            LayoutViewModel.LayoutVersion = layout.LayoutVersion;
+
+            if (layout.Sessions != null)
+            {
+                LayoutViewModel.SelectedSession = layout.Sessions[0];
+            }
+            else
+            {
+                OpenLayout(layout.Objects);
+            }
+        }
+
+        private void OpenLayout(List<AnnoObject> objects)
+        {
             AnnoCanvas.SelectedObjects.Clear();
             AnnoCanvas.PlacedObjects.Clear();
             AnnoCanvas.UndoManager.Clear();
 
-            var layoutObjects = new List<LayoutObject>(layout.Objects.Count);
-            foreach (var curObj in layout.Objects)
+            var layoutObjects = new List<LayoutObject>(objects.Count);
+            foreach (var curObj in objects)
             {
                 layoutObjects.Add(new LayoutObject(curObj, _coordinateHelper, _brushCache, _penCache));
             }
-            LayoutViewModel.LayoutVersion = layout.LayoutVersion;
 
             AnnoCanvas.ComputeBoundingRect(layoutObjects);
             AnnoCanvas.PlacedObjects.AddRange(layoutObjects);

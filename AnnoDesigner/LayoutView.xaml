@@ -9,6 +9,10 @@
         <local:LayoutViewModel />
     </UserControl.DataContext>
     <Grid>
+        <TextBlock HorizontalAlignment="Left">
+            <Run Text="{Binding SelectedSession.Name, Mode=OneWay}"/>
+            <Run Text="{Binding SelectedIsland.Name, Mode=OneWay}"/>
+        </TextBlock>
         <TextBlock HorizontalAlignment="Right">
             <Run Text="Version: "/>
             <Run Text="{Binding LayoutVersionDisplayValue}"/>
