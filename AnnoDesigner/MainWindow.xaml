@@ -294,7 +294,7 @@
                             Height="23"
                             DockPanel.Dock="Right"
                             IsEnabled="True"
-                            Text="{Binding LayoutSettingsViewModel.LayoutVersionDisplayValue}" />
+                            Text="{Binding LayoutViewModel.LayoutVersionDisplayValue}" />
                     </DockPanel>
                 </GroupBox>
                 <GroupBox DockPanel.Dock="Top" Header="{l:Localize BuildingSettings}">

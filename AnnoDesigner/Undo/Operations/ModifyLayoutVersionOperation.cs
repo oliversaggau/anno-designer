@@ -5,7 +5,7 @@ namespace AnnoDesigner.Undo.Operations
 {
     public class ModifyLayoutVersionOperation : BaseOperation
     {
-        public LayoutSettingsViewModel LayoutSettingsViewModel { get; set; }
+        public LayoutViewModel LayoutViewModel { get; set; }
 
         public Version OldValue { get; set; }
 
@@ -13,12 +13,12 @@ namespace AnnoDesigner.Undo.Operations
 
         protected override void UndoOperation()
         {
-            LayoutSettingsViewModel.LayoutVersion = OldValue;
+            LayoutViewModel.LayoutVersion = OldValue;
         }
 
         protected override void RedoOperation()
         {
-            LayoutSettingsViewModel.LayoutVersion = NewValue;
+            LayoutViewModel.LayoutVersion = NewValue;
         }
     }
 }

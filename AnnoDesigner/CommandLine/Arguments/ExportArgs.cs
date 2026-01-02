@@ -25,7 +25,7 @@ namespace AnnoDesigner.CommandLine.Arguments
             private readonly Option<bool?> renderPanorama;
             private readonly Option<bool?> renderStatistics;
             private readonly Option<bool?> renderTrueInfluenceRange;
-            private readonly Option<bool?> renderVersion;
+            private readonly Option<bool?> renderLayoutInformation;
 
             public Binder(IFileSystem fileSystem)
             {
@@ -77,7 +77,7 @@ namespace AnnoDesigner.CommandLine.Arguments
                 renderPanorama = new("--renderPanorama");
                 renderStatistics = new("--renderStatistics", $"Defaults to true if not specified and {useUserSettings.Name} is not set");
                 renderTrueInfluenceRange = new("--renderTrueInfluenceRange");
-                renderVersion = new("--renderVersion", $"Defaults to true if not specified and {useUserSettings.Name} is not set");
+                renderLayoutInformation = new("--renderLayoutInformation", $"Defaults to true if not specified and {useUserSettings.Name} is not set");
 
                 command = new Command("export", "Exports the specified layout file to an image and closes immediately")
                 {
@@ -94,7 +94,7 @@ namespace AnnoDesigner.CommandLine.Arguments
                     renderPanorama,
                     renderStatistics,
                     renderTrueInfluenceRange,
-                    renderVersion
+                    renderLayoutInformation
                 };
             }
 
@@ -115,7 +115,7 @@ namespace AnnoDesigner.CommandLine.Arguments
                     RenderPanorama = bindingContext.ParseResult.GetValueForOption(renderPanorama),
                     RenderStatistics = bindingContext.ParseResult.GetValueForOption(renderStatistics),
                     RenderTrueInfluenceRange = bindingContext.ParseResult.GetValueForOption(renderTrueInfluenceRange),
-                    RenderVersion = bindingContext.ParseResult.GetValueForOption(renderVersion)
+                    RenderLayoutInformation = bindingContext.ParseResult.GetValueForOption(renderLayoutInformation)
                 };
             }
         }
@@ -133,6 +133,6 @@ namespace AnnoDesigner.CommandLine.Arguments
         public bool? RenderPanorama { get; set; }
         public bool? RenderStatistics { get; set; }
         public bool? RenderTrueInfluenceRange { get; set; }
-        public bool? RenderVersion { get; set; }
+        public bool? RenderLayoutInformation { get; set; }
     }
 }

@@ -3,9 +3,9 @@ using AnnoDesigner.Core.Models;
 
 namespace AnnoDesigner.ViewModels
 {
-    public class LayoutSettingsViewModel : Notify
+    public class LayoutViewModel : Notify
     {
-        public LayoutSettingsViewModel()
+        public LayoutViewModel()
         {
             _layoutVersion = new Version(1, 0, 0, 0);
         }

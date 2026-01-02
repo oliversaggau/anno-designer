@@ -244,7 +244,7 @@ namespace AnnoDesigner.Tests
             Assert.Null(exportArgs.RenderPanorama);
             Assert.Null(exportArgs.RenderStatistics);
             Assert.Null(exportArgs.RenderTrueInfluenceRange);
-            Assert.Null(exportArgs.RenderVersion);
+            Assert.Null(exportArgs.RenderLayoutInformation);
             Assert.False(exportArgs.UseUserSettings);
         }
 

@@ -1105,7 +1105,7 @@ namespace AnnoDesigner.Tests
                 .Callback<LayoutFile, string>((layout, filePath) => layoutFileUsedToSave = layout);
 
             var viewModel = GetViewModel(layoutLoaderToUse: mockedLayoutLoader.Object);
-            viewModel.LayoutSettingsViewModel.LayoutVersion = versionToSave;
+            viewModel.LayoutViewModel.LayoutVersion = versionToSave;
 
             // Act
             viewModel.SaveFile("dummy");
@@ -1161,7 +1161,7 @@ namespace AnnoDesigner.Tests
         #region 
 
         [Fact]
-        public void LayoutSettingsViewModel_SettingLayoutVersion_ShouldBeConsideredUnsavedChange()
+        public void LayoutViewModel_SettingLayoutVersion_ShouldBeConsideredUnsavedChange()
         {
             // Arrange
             var versionToSave = new Version(42, 42, 42, 42);
@@ -1173,7 +1173,7 @@ namespace AnnoDesigner.Tests
             var viewModel = GetViewModel(annoCanvasToUse: mockedAnnoCanvas.Object);
 
             // Act
-            viewModel.LayoutSettingsViewModel.LayoutVersion = versionToSave;
+            viewModel.LayoutViewModel.LayoutVersion = versionToSave;
 
             // Assert
             mockedUndoManager.Verify(x => x.RegisterOperation(It.Is<ModifyLayoutVersionOperation>(y => y.NewValue == new Version(42, 42, 42, 42))));
