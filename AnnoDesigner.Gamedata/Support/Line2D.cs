@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Numerics;
 
-namespace AnnoDesigner.Importer
+namespace AnnoDesigner.Gamedata
 {
     internal readonly struct Line2D<T> where T : struct, INumber<T>
     {

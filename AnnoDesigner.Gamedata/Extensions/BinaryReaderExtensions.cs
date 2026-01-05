@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Numerics;
 
-namespace AnnoDesigner.Importer
+namespace AnnoDesigner.Gamedata
 {
     internal static class BinaryReaderExtensions
     {

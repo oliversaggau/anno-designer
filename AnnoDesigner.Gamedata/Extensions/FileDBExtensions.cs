@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using FileDBSerializing;
 
-namespace AnnoDesigner.Importer
+namespace AnnoDesigner.Gamedata
 {
     internal static class FileDBExtensions
     {
@@ -69,6 +69,11 @@ namespace AnnoDesigner.Importer
         internal static IEnumerable<Tag> Tags(this IFileDBDocument document, string name, StringComparison comparison = StringComparison.OrdinalIgnoreCase)
         {
             return document.Roots.FindAll<Tag>(name, comparison);
+        }
+
+        internal static bool ToBoolean(this Attrib attrib)
+        {
+            return Convert.ToBoolean(attrib.Content.Single());
         }
 
         internal static Dictionary<TKey, Tag> ToDictionary<TKey>(this Tag parent) where TKey : struct, INumber<TKey>

@@ -6,7 +6,7 @@ using System.Linq;
 using FileDBSerializing;
 using RDAExplorer;
 
-namespace AnnoDesigner.Importer
+namespace AnnoDesigner.Gamedata
 {
     internal static class RDAReaderExtensions
     {

@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Numerics;
 
-namespace AnnoDesigner.Importer
+namespace AnnoDesigner.Gamedata
 {
     internal static class SupportExtensions
     {
-        public static Point2D<int> Round<T>(this Point2D<T> input)
+        internal static Point2D<int> Round<T>(this Point2D<T> input)
             where T : struct, IFloatingPoint<T>
         {
             int X = int.CreateChecked(T.Round(input.X));
@@ -13,7 +13,7 @@ namespace AnnoDesigner.Importer
             return new Point2D<int>(X, Y);
         }
 
-        public static Point2D<int> Round<T>(this Point2D<T> input, MidpointRounding mode)
+        internal static Point2D<int> Round<T>(this Point2D<T> input, MidpointRounding mode)
             where T : struct, IFloatingPoint<T>
         {
             int X = int.CreateChecked(T.Round(input.X, mode));
@@ -21,7 +21,7 @@ namespace AnnoDesigner.Importer
             return new Point2D<int>(X, Y);
         }
 
-        public static Point2D<R> Scale<T, R>(this Point2D<T> input, R factor)
+        internal static Point2D<R> Scale<T, R>(this Point2D<T> input, R factor)
             where T : struct, INumber<T>
             where R : struct, INumber<R>
         {

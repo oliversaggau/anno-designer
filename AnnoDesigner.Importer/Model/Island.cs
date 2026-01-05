@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Numerics;
 using AnnoDesigner.Core.Models;
+using AnnoDesigner.Gamedata;
 
 namespace AnnoDesigner.Importer.Model
 {

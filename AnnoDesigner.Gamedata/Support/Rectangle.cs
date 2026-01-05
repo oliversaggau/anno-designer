@@ -1,12 +1,10 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Numerics;
 
-namespace AnnoDesigner.Importer
+namespace AnnoDesigner.Gamedata
 {
     internal readonly struct Rectangle<T> where T : struct, INumber<T>
     {
-        [JsonConstructor]
         public Rectangle(T x, T y, T width, T height)
         {
             this.X = x;

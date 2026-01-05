@@ -1,6 +1,6 @@
 ﻿using System.Numerics;
 
-namespace AnnoDesigner.Importer
+namespace AnnoDesigner.Gamedata
 {
     internal readonly struct Point3D<T> where T : struct, INumber<T>
     {
