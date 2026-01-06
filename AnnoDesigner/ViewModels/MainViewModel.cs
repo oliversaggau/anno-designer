@@ -33,7 +33,7 @@ using AnnoDesigner.Localization;
 using AnnoDesigner.Models;
 using AnnoDesigner.PreferencesPages;
 using AnnoDesigner.Undo.Operations;
-using AnnoDesigner.Importer;
+using AnnoDesigner.Import;
 using Microsoft.Win32;
 using NLog;
 

@@ -2,7 +2,7 @@
 using AnnoDesigner.Core.Presets.Models;
 using AnnoDesigner.Gamedata;
 
-namespace AnnoDesigner.Importer.Model
+namespace AnnoDesigner.Import.Model
 {
     internal class RoadObject : TileObject
     {

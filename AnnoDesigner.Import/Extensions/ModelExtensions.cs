@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using AnnoDesigner.Gamedata;
 using FileDBSerializing;
 
-namespace AnnoDesigner.Importer
+namespace AnnoDesigner.Import
 {
     internal static class ModelExtensions
     {

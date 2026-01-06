@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using AnnoDesigner.Core.Models;
 
-namespace AnnoDesigner.Importer.Model
+namespace AnnoDesigner.Import.Model
 {
     internal static class Modules
     {

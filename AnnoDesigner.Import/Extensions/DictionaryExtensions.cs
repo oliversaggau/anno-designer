@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace AnnoDesigner.Importer
+namespace AnnoDesigner.Import
 {
     internal static class DictionaryExtensions
     {

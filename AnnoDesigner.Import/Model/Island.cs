@@ -3,7 +3,7 @@ using System.Numerics;
 using AnnoDesigner.Core.Models;
 using AnnoDesigner.Gamedata;
 
-namespace AnnoDesigner.Importer.Model
+namespace AnnoDesigner.Import.Model
 {
     internal class Island
     {

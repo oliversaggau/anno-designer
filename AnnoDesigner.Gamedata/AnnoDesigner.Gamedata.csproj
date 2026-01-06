@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <InternalsVisibleTo Include="AnnoDesigner.Importer" />
+    <InternalsVisibleTo Include="AnnoDesigner.Import" />
   </ItemGroup>
 
 </Project>

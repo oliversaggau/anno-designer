@@ -7,11 +7,11 @@ using AnnoDesigner.Core.Layout.Models;
 using AnnoDesigner.Core.Models;
 using AnnoDesigner.Core.Presets.Models;
 using AnnoDesigner.Gamedata;
-using AnnoDesigner.Importer.Model;
+using AnnoDesigner.Import.Model;
 using FileDBSerializing;
 using RDAExplorer;
 
-namespace AnnoDesigner.Importer
+namespace AnnoDesigner.Import
 {
     public static class Anno117
     {
