@@ -29,5 +29,52 @@ namespace AnnoDesigner.Gamedata
             R Y = R.CreateChecked(input.Y) * factor;
             return new Point2D<R>(X, Y);
         }
+
+        internal static Grid2D<bool> Intersect(this Grid2D<bool> input, Grid2D<bool> other)
+        {
+            if (input.Width != other.Width || input.Height != other.Height) throw new ArgumentException("Grid sizes do not match.");
+            return new Grid2D<bool>(input.Width, input.Height, (x, y) => input[x, y] && other[x, y]);
+        }
+
+        internal static Grid2D<bool> Subtract(this Grid2D<bool> input, Grid2D<bool> other)
+        {
+            if (input.Width != other.Width || input.Height != other.Height) throw new ArgumentException("Grid sizes do not match.");
+            return new Grid2D<bool>(input.Width, input.Height, (x, y) => input[x, y] && !other[x, y]);
+        }
+
+        internal static Grid2D<bool> ToBoolean<T>(this Grid2D<T> input, Predicate<T> predicate)
+        {
+            return new Grid2D<bool>(input.Width, input.Height, (x, y) => predicate(input[x, y]));
+        }
+
+        internal static Grid2D<bool> ToOutline(this Grid2D<bool> input)
+        {
+            Grid2D<bool> result = new Grid2D<bool>(input.Width, input.Height);
+
+            for (int y = 0; y < input.Height; y++)
+            {
+                for (int x = 0; x < input.Width; x++)
+                {
+                    if (input[x, y])
+                    {
+                        for (int ny = y - 1; ny <= y + 1; ny++)
+                        {
+                            for (int nx = x - 1; nx <= x + 1; nx++)
+                            {
+                                if (nx >= 0 && nx < input.Width && ny >= 0 && ny < input.Height)
+                                {
+                                    if (!input[nx, ny])
+                                    {
+                                        result[nx, ny] = true;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            return result;
+        }
     }
 }

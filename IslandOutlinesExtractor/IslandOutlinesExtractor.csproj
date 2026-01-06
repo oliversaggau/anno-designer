@@ -1,10 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0-windows</TargetFramework>
     <ImplicitUsings>disable</ImplicitUsings>
     <Nullable>disable</Nullable>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AnnoDesigner.Core\AnnoDesigner.Core.csproj" />
+    <ProjectReference Include="..\AnnoDesigner.Gamedata\AnnoDesigner.Gamedata.csproj" />
+  </ItemGroup>
 
   <ItemGroup>
     <Reference Include="FileDBSerializer"> <!-- Version 2.3 because newer versions have problems parsing .a7s files (need to check with the authors why) -->
@@ -13,11 +19,6 @@
     <Reference Include="RDAExplorer">
       <HintPath>..\Libs\RDAExplorer.dll</HintPath>
     </Reference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <InternalsVisibleTo Include="AnnoDesigner.Import" />
-    <InternalsVisibleTo Include="IslandOutlinesExtractor" />
   </ItemGroup>
 
 </Project>
