@@ -24,7 +24,7 @@ namespace AnnoDesigner.Import
         {
             public LayoutFile ImportLayout(string path, BuildingPresets presets)
             {
-                RDAReader reader = new RDAReader() { FileName = path };
+                using RDAReader reader = new RDAReader() { FileName = path };
                 IFileDBDocument gamedata = reader.File("data.a7s").GetFileDBDocumentInflated(); // interestingly the actual data file inside the .a8s is still named .a7s
                 using ZipArchive outlines = OutlinesLoader.LoadArchive(nameof(Anno117));
 
