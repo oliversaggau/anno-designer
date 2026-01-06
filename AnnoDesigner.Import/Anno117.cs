@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using AnnoDesigner.Core.Layout.Models;
 using AnnoDesigner.Core.Models;
 using AnnoDesigner.Core.Presets.Models;
 using AnnoDesigner.Gamedata;
 using AnnoDesigner.Import.Model;
+using AnnoDesigner.Import.Outlines;
 using FileDBSerializing;
 using RDAExplorer;
 
@@ -24,6 +26,7 @@ namespace AnnoDesigner.Import
             {
                 RDAReader reader = new RDAReader() { FileName = path };
                 IFileDBDocument gamedata = reader.File("data.a7s").GetFileDBDocumentInflated(); // interestingly the actual data file inside the .a8s is still named .a7s
+                using ZipArchive outlines = OutlinesLoader.LoadArchive(nameof(Anno117));
 
                 Tag metaGameManager = gamedata.Tag("MetaGameManager");
                 Tag gameSessions = metaGameManager.Tag("GameSessions");
@@ -73,7 +76,7 @@ namespace AnnoDesigner.Import
                         Debug.WriteLine($"Processing island '{cityName}'...");
                         IEnumerable<Tag> polygonObjects = areaManager.Tag("AreaPolygonObjectManager").Tag("Polygons").Tags();
                         IEnumerable<Tag> gameObjects = areaManager.Tag("AreaObjectManager").Tag("GameObject").Tag("Objects").Tags();
-                        Island island = CreateIsland(cityName, gameObjects, mapTemplates);
+                        Island island = CreateIsland(cityName, gameObjects, mapTemplates, outlines);
 
                         Tag streetGraph = areaManager.Tag("AreaStreetManager").Tag("Graph");
                         Tag aqueductGraph = areaManager.Tag("AreaAqueductManager").Tag("Graph");
@@ -554,7 +557,7 @@ namespace AnnoDesigner.Import
         /// <summary>
         /// Searchs within the <paramref name="templateElements"/> for the island that contains the <paramref name="gameObjects"/> based on their position.
         /// </summary>
-        private static Island CreateIsland(string cityName, IEnumerable<Tag> gameObjects, IEnumerable<Tag> templateElements)
+        private static Island CreateIsland(string cityName, IEnumerable<Tag> gameObjects, IEnumerable<Tag> templateElements, ZipArchive outlines)
         {
             foreach (Tag element in templateElements)
             {
@@ -568,7 +571,7 @@ namespace AnnoDesigner.Import
 
                     if (islandRectangle.ContainsAll(gameObjects))
                     {
-                        var island = new Island(cityName, islandTemplate, islandPosition, islandRotation, islandSize);
+                        var island = new Island(cityName, islandTemplate, islandPosition, islandRotation, islandSize, outlines.GetEntry(islandTemplate + ".ad"));
                         List<Tag> ownerObjects = gameObjects.Where(o => o.Tag("ModuleOwner") != null)
                             .DistinctBy(o => o.Attribute("ID").ToNumber<long>())
                             .ToList();

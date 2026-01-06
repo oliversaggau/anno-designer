@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Outlines\Anno117.zip" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\AnnoDesigner.Core\AnnoDesigner.Core.csproj" />
     <ProjectReference Include="..\AnnoDesigner.Gamedata\AnnoDesigner.Gamedata.csproj" />
   </ItemGroup>
