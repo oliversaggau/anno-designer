@@ -391,7 +391,9 @@ namespace AnnoDesigner.ViewModels
                 Template = BuildingSettingsViewModel.BuildingTemplate,
                 BlockedAreaLength = BuildingSettingsViewModel.BuildingBlockedAreaLength,
                 BlockedAreaWidth = BuildingSettingsViewModel.BuildingBlockedAreaWidth,
-                Direction = BuildingSettingsViewModel.BuildingDirection
+                Direction = BuildingSettingsViewModel.BuildingDirection,
+                RotationCenter = new Point(BuildingSettingsViewModel.BuildingWidth / 2.0, BuildingSettingsViewModel.BuildingHeight / 2.0), // TODO
+                Rotation = 0.0f, // TODO
             };
 
             var objIconFileName = "";

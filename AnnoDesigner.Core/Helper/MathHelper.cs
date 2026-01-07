@@ -8,6 +8,8 @@ namespace AnnoDesigner.Core.Helper
 {
     public static class MathHelper
     {
+        private static readonly double subTileSize = 1 / Math.Sqrt(2);
+
         /// <summary>
         /// Return the fractional value of a <see cref="double"/>.
         /// This value will always be between -0.99 recurring and 0.99 recurring.
@@ -27,5 +29,20 @@ namespace AnnoDesigner.Core.Helper
         /// <returns></returns>
         public static double NthRoot(double A, double N) => Math.Pow(A, 1.0 / N);
 
+        /// <summary>
+        /// Replicates the logic described in the Anno 117 DevBlog for calculating the size of buildings in a diagonal grid.<br/>
+        /// <i>Since the single tiles of the 90 degrees grid are now divided into 4 sub-tiles each, we have to make buildings fit this more detailed grid-structure when turning them by 45 degrees. This can mean slightly increasing or decreasing their size - whatever value in the grid is closer.</i>
+        /// </summary>
+        /// <remarks>
+        /// https://www.anno-union.com/devblog-roads-building-in-the-grid/
+        /// </remarks>
+        /// <param name="size"></param>
+        /// <returns></returns>
+        public static double GetDiagonalSize(double size)
+        {
+            double sizeShrink = (int)Math.Floor(size / subTileSize) * subTileSize;
+            double sizeExpand = (int)Math.Ceiling(size / subTileSize) * subTileSize;
+            return Math.Abs(size - sizeShrink) < Math.Abs(size - sizeExpand) ? sizeShrink : sizeExpand;
+        }
     }
 }

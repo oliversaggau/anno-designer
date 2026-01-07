@@ -505,6 +505,11 @@ namespace AnnoDesigner
         /// </summary>
         private Pen _gridLinePen;
 
+        /// <summary>
+        /// Used for diagonal grid lines.
+        /// </summary>
+        private Pen _gridDiagonalLinePen;
+
         public double LinePenThickness
         {
             get { return _linePen.Thickness; }
@@ -870,6 +875,24 @@ namespace AnnoDesigner
                     var context = _drawingGroupGridLines.Open();
                     context.PushGuidelineSet(_guidelineSet);
 
+                    //diagonal lines (top-left to bottom-right)
+                    for (var x = _viewport.HorizontalAlignmentValue * _gridSize; x < width; x += _gridSize)
+                    {
+                        for (var y = _viewport.VerticalAlignmentValue * _gridSize; y < height; y += _gridSize)
+                        {
+                            context.DrawLine(_gridDiagonalLinePen, new Point(x, y), new Point(x + _gridSize, y + _gridSize));
+                        }
+                    }
+
+                    //diagonal lines (top-right to bottom-left)
+                    for (var x = _viewport.HorizontalAlignmentValue * _gridSize; x < width; x += _gridSize)
+                    {
+                        for (var y = _viewport.VerticalAlignmentValue * _gridSize; y < height; y += _gridSize)
+                        {
+                            context.DrawLine(_gridDiagonalLinePen, new Point(x + _gridSize, y), new Point(x, y + _gridSize));
+                        }
+                    }
+
                     //vertical lines
                     for (var i = _viewport.HorizontalAlignmentValue * _gridSize; i < width; i += _gridSize)
                     {
@@ -1047,7 +1070,9 @@ namespace AnnoDesigner
                     var hoveredObj = GetObjectAt(_mousePosition);
                     if (hoveredObj != null)
                     {
+                        drawingContext.Push(hoveredObj, hoveredObj.GetScreenRectRotationCenterPoint(_gridSize));
                         drawingContext.DrawRectangle(null, _highlightPen, hoveredObj.CalculateScreenRect(_gridSize));
+                        drawingContext.Pop(hoveredObj);
                     }
                 }
             }
@@ -1392,6 +1417,7 @@ namespace AnnoDesigner
             foreach (var curLayoutObject in objects)
             {
                 var obj = curLayoutObject.WrappedAnnoObject;
+                drawingContext.Push(curLayoutObject, curLayoutObject.GetScreenRectRotationCenterPoint(_gridSize));
 
                 // draw object rectangle
                 var objRect = curLayoutObject.CalculateScreenRect(gridSize);
@@ -1488,6 +1514,8 @@ namespace AnnoDesigner
 
                     drawingContext.DrawText(text, textLocation);
                 }
+
+                drawingContext.Pop(curLayoutObject);
             }
         }
 
@@ -1522,7 +1550,9 @@ namespace AnnoDesigner
                 foreach (var curLayoutObject in objects)
                 {
                     // draw object rectangle                
+                    context.Push(curLayoutObject, curLayoutObject.GetScreenRectRotationCenterPoint(_gridSize));
                     context.DrawRectangle(null, _highlightPen, curLayoutObject.CalculateScreenRect(GridSize));
+                    context.Pop(curLayoutObject);
                 }
 
                 context.Close();
@@ -1912,8 +1942,10 @@ namespace AnnoDesigner
         /// <remarks>As this method can be called when AppSettings are updated, we make sure to not call anything that relies on the UI thread from here.</remarks>
         private void LoadGridLineColor()
         {
-            var colorFromJson = SerializationHelper.LoadFromJsonString<UserDefinedColor>(_appSettings.ColorGridLines);//explicit variable to make debugging easier
-            _gridLinePen = _penCache.GetPen(_brushCache.GetSolidBrush(colorFromJson.Color), DPI_FACTOR * 1);
+            var colorGridLines = SerializationHelper.LoadFromJsonString<UserDefinedColor>(_appSettings.ColorGridLines);//explicit variable to make debugging easier
+            var colorGridLinesDiagonal = new SerializableColor(60, colorGridLines.Color.R, colorGridLines.Color.G, colorGridLines.Color.B);
+            _gridDiagonalLinePen = _penCache.GetPen(_brushCache.GetSolidBrush(colorGridLinesDiagonal), DPI_FACTOR * 1);
+            _gridLinePen = _penCache.GetPen(_brushCache.GetSolidBrush(colorGridLines.Color), DPI_FACTOR * 1);
             var halfPenWidth = _gridLinePen.Thickness / 2;
             var guidelines = new GuidelineSet();
             guidelines.GuidelinesX.Add(halfPenWidth);

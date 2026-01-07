@@ -44,6 +44,8 @@ namespace AnnoDesigner.Core.Models
             BlockedAreaLength = obj.BlockedAreaLength;
             BlockedAreaWidth = obj.BlockedAreaWidth;
             Direction = obj.Direction;
+            Rotation = obj.Rotation;
+            RotationCenter = obj.RotationCenter;
         }
 
         #endregion
@@ -147,7 +149,20 @@ namespace AnnoDesigner.Core.Models
         /// <summary>
         /// Direction of blocked area
         /// </summary>
+        [System.Obsolete]
         [DataMember(Order = 14)]
         public GridDirection Direction { get; set; } = GridDirection.Down;
+
+        /// <summary>
+        /// Rotation in radians
+        /// </summary>
+        [DataMember(Order = 15)]
+        public double Rotation { get; set; } = 0;
+
+        /// <summary>
+        /// Center point for rotation (may or may NOT be [w/2, h/2])
+        /// </summary>
+        [DataMember(Order = 16)]
+        public Point RotationCenter { get; set; }
     }
 }
