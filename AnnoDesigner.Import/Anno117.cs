@@ -235,18 +235,19 @@ namespace AnnoDesigner.Import
             {
                 int rows = grid.Attribute("y").ToNumber<int>();
                 byte[] bits = grid.Attribute("bits").ToNibbles().ToArray();
-                int columns = bits.Length / rows; // actually we should use grid.Attribute("x") which as far as I can tell is the number of bits per rows, but sometimes for some reason the value is incorrect
-                ProcessTilesGrid(bits, columns, rows, origin, action);
+                int columns = grid.Attribute("x").ToNumber<int>() / 4; // x is bits per row and we need nibbles per row, so divide by 4
+                int stride = bits.Length / rows; // bits array is padded, get stride by dividing total length by number of rows
+                ProcessTilesGrid(bits, columns, rows, stride, origin, action);
             }
 
-            private static void ProcessTilesGrid(byte[] bits, int width, int height, Point2D<int> origin, Action<byte, Point2D<int>> action)
+            private static void ProcessTilesGrid(byte[] bits, int width, int height, int stride, Point2D<int> origin, Action<byte, Point2D<int>> action)
             {
                 for (int y = 0; y < height; y++)
                 {
                     for (int x = 0; x < width; x++)
                     {
-                        byte value = bits[y * width + x];
-                        action(value, new Point2D<int>(origin.X + x + 1, origin.Y + y)); // TODO check why we need X+1 to fix incorrect position
+                        byte value = bits[y * stride + x];
+                        if (value != 0) action(value, new Point2D<int>(origin.X + x + 1, origin.Y + y));
                     }
                 }
             }
