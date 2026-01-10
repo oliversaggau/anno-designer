@@ -128,24 +128,9 @@ namespace AnnoDesigner.Import
                             {
                                 ProcessTilesGrid(tilesGrid, (value, position) =>
                                 {
-                                    /*
-                                     * 0x6 (0110) for a ◢ tile
-                                     * 0xC (1100) for a ◥ tile
-                                     * 0x3 (0011) for a ◣ tile
-                                     * 0x9 (1001) for a ◤ tile
-                                     * 0xF (1111) for a ■ tile
-                                     */
-
-                                    if (value == 0xF)
-                                    {
-                                        TileObject tile = new TileObject(template, island.ToLocalCoordinates(position));
-                                        if (color.HasValue) tile.Color = color.Value;
-                                        island.Objects.Add(tile.CreateObject());
-                                    }
-                                    else
-                                    {
-                                        // TODO sub-triangle handling
-                                    }
+                                    TileObject tile = new TileObject(template, island.ToLocalCoordinates(position), value);
+                                    if (color.HasValue) tile.Color = color.Value;
+                                    island.Objects.Add(tile.CreateObject());
                                 });
                             }
 #if DEBUG
@@ -187,7 +172,7 @@ namespace AnnoDesigner.Import
                                 }
 #endif
 
-                                TileObject tile = new TileObject(template, island.ToLocalCoordinates(position));
+                                TileObject tile = new TileObject(template, island.ToLocalCoordinates(position), 0b1111); // TODO sub-triangle handling
                                 island.Objects.Add(tile.CreateObject());
                             });
                         }

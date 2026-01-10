@@ -1,4 +1,4 @@
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Runtime.Serialization;
 using System.Windows;
 
@@ -46,6 +46,7 @@ namespace AnnoDesigner.Core.Models
             Direction = obj.Direction;
             Rotation = obj.Rotation;
             RotationCenter = obj.RotationCenter;
+            TileQuadrants = obj.TileQuadrants;
         }
 
         #endregion
@@ -164,5 +165,16 @@ namespace AnnoDesigner.Core.Models
         /// </summary>
         [DataMember(Order = 16)]
         public Point RotationCenter { get; set; }
+
+        /// <summary>
+        /// Tile quadrants in bits (4-bit value), for example<br/>
+        /// 0x6 (0110) for a ◢ tile<br/>
+        /// 0xC (1100) for a ◥ tile<br/>
+        /// 0x3 (0011) for a ◣ tile<br/>
+        /// 0x9 (1001) for a ◤ tile<br/>
+        /// 0xF (1111) for a ■ tile<br/>
+        /// </summary>
+        [DataMember(Order = 17)]
+        public byte? TileQuadrants { get; set; }
     }
 }

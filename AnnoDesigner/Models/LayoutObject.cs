@@ -6,6 +6,7 @@ using System.Windows;
 using System.Windows.Media;
 using AnnoDesigner.Core.Helper;
 using AnnoDesigner.Core.Models;
+using AnnoDesigner.Helper;
 
 namespace AnnoDesigner.Models
 {
@@ -254,6 +255,16 @@ namespace AnnoDesigner.Models
         public bool IsDiagonal
         {
             get => Math.Round(RotationDegrees + 45) % 90 == 0;
+        }
+
+        public bool IsTile
+        {
+            get => WrappedAnnoObject.TileQuadrants.HasValue;
+        }
+
+        public bool IsRectTile
+        {
+            get => WrappedAnnoObject.TileQuadrants.HasValue && TileHelper.IsRect(WrappedAnnoObject.TileQuadrants.Value);
         }
 
         private Point ScaleDiagonal(Point point)

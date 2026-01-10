@@ -1071,7 +1071,7 @@ namespace AnnoDesigner
                     if (hoveredObj != null)
                     {
                         drawingContext.Push(hoveredObj, hoveredObj.GetScreenRectRotationCenterPoint(_gridSize));
-                        drawingContext.DrawRectangle(null, _highlightPen, hoveredObj.CalculateScreenRect(_gridSize));
+                        drawingContext.DrawObjectShape(hoveredObj, null, _highlightPen, hoveredObj.CalculateScreenRect(_gridSize));
                         drawingContext.Pop(hoveredObj);
                     }
                 }
@@ -1419,14 +1419,14 @@ namespace AnnoDesigner
                 var obj = curLayoutObject.WrappedAnnoObject;
                 drawingContext.Push(curLayoutObject, curLayoutObject.GetScreenRectRotationCenterPoint(_gridSize));
 
-                // draw object rectangle
+                // draw object shape
                 var objRect = curLayoutObject.CalculateScreenRect(gridSize);
-
                 var brush = useTransparency ? curLayoutObject.TransparentBrush : curLayoutObject.RenderBrush;
-
                 var borderPen = obj.Borderless ? curLayoutObject.GetBorderlessPen(brush, linePenThickness) : _linePen;
-                drawingContext.DrawRectangle(brush, borderPen, objRect);
-                if (renderHarborBlockedArea)
+                drawingContext.DrawObjectShape(curLayoutObject, brush, borderPen, objRect);
+
+                // draw blocked area
+                if (renderHarborBlockedArea && !curLayoutObject.IsTile)
                 {
                     var objBlockedRect = curLayoutObject.CalculateBlockedScreenRect(gridSize);
                     if (objBlockedRect.HasValue)
@@ -1437,7 +1437,7 @@ namespace AnnoDesigner
 
                 // draw object icon if it is at least 2x2 cells
                 var iconRendered = false;
-                if (renderIcon && !string.IsNullOrEmpty(obj.Icon))
+                if (renderIcon && !string.IsNullOrEmpty(obj.Icon) && (!curLayoutObject.IsTile || curLayoutObject.IsRectTile))
                 {
                     var iconFound = false;
 
@@ -1476,7 +1476,7 @@ namespace AnnoDesigner
                 }
 
                 // draw object label
-                if (renderLabel && !string.IsNullOrEmpty(obj.Label))
+                if (renderLabel && !string.IsNullOrEmpty(obj.Label) && !curLayoutObject.IsTile)
                 {
                     var textAlignment = iconRendered ? TextAlignment.Left : TextAlignment.Center;
                     var text = curLayoutObject.GetFormattedText(textAlignment, Thread.CurrentThread.CurrentCulture,
@@ -1551,7 +1551,7 @@ namespace AnnoDesigner
                 {
                     // draw object rectangle                
                     context.Push(curLayoutObject, curLayoutObject.GetScreenRectRotationCenterPoint(_gridSize));
-                    context.DrawRectangle(null, _highlightPen, curLayoutObject.CalculateScreenRect(GridSize));
+                    context.DrawObjectShape(curLayoutObject, null, _highlightPen, curLayoutObject.CalculateScreenRect(GridSize));
                     context.Pop(curLayoutObject);
                 }
 

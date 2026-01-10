@@ -7,7 +7,7 @@ namespace AnnoDesigner.Import.Model
     internal class RoadObject : TileObject
     {
         public RoadObject(BuildingInfo template, Point2D<float> position)
-            : base(template, position)
+            : base(template, position, 0b1111)
         {
         }
 
