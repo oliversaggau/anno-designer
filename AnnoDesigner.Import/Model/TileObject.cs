@@ -20,7 +20,12 @@ namespace AnnoDesigner.Import.Model
         private readonly byte quadrants;
 
         public TileObject(BuildingInfo template, Point2D<float> position, byte quadrants)
-            : base(template, position)
+            : this(template, position, 0.0, quadrants)
+        {
+        }
+
+        protected TileObject(BuildingInfo template, Point2D<float> position, double rotation, byte quadrants)
+            : base(template, rotation, position)
         {
             this.quadrants = quadrants;
         }
@@ -30,6 +35,8 @@ namespace AnnoDesigner.Import.Model
             AnnoObject result = BuildTemplate();
             result.Color = Color ?? ColorPresetsHelper.Instance.GetPredefinedColor(result) ?? Colors.Red;
             result.Position = new Point(Round(Position.X), Round(Position.Y));
+            result.RotationCenter = new Point(0, 0);
+            result.Rotation = Rotation;
             result.TileQuadrants = quadrants;
             result.Size = new Size(1, 1);
             result.Label = Label;

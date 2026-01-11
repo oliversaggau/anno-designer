@@ -16,24 +16,21 @@ namespace AnnoDesigner.Import.Model
         private const string Width = "x";
         private const string Height = "z";
 
-        public GameObject(BuildingInfo template, double direction, Point2D<float> position)
-            : base(template, position)
+        public GameObject(BuildingInfo template, double rotation, Point2D<float> position)
+            : base(template, rotation, position)
         {
             this.BuildBlocker = new Rectangle<double>(template.BuildBlocker[X], template.BuildBlocker[Y], template.BuildBlocker[Width], template.BuildBlocker[Height]);
-            this.Direction = direction;
         }
 
         public Rectangle<double> BuildBlocker { get; }
 
-        public double Direction { get; }
-
         public override AnnoObject CreateObject()
         {
             AnnoObject result = Template.ToAnnoObject();
-            int rotationDegrees = Round(Direction * 180 / Math.PI);
+            int rotationDegrees = Round(Rotation * 180 / Math.PI);
             result.Color = Color ?? ColorPresetsHelper.Instance.GetPredefinedColor(result) ?? Colors.Red;
-            result.Direction = (GridDirection)(Round(Direction / Math.PI * 2) % 4);
-            result.Rotation = Direction;
+            result.Direction = (GridDirection)(Round(Rotation / Math.PI * 2) % 4);
+            result.Rotation = Rotation;
 
             // the position in-game is cx/cy, but Anno-Designer uses top-left coordinates,
             // so we need to convert all coordinates below

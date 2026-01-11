@@ -7,12 +7,13 @@ namespace AnnoDesigner.Import.Model
 {
     internal abstract class BaseObject
     {
-        protected BaseObject(BuildingInfo template, Point2D<float> position)
+        protected BaseObject(BuildingInfo template, double rotation, Point2D<float> position)
         {
             this.Color = null;
             this.Template = template;
             this.Label = string.Empty;
             this.Position = position;
+            this.Rotation = rotation;
         }
 
         public BuildingInfo Template { get; }
@@ -20,6 +21,7 @@ namespace AnnoDesigner.Import.Model
         public string Label { get; set; }
 
         public Point2D<float> Position { get; }
+        public double Rotation { get; }
 
         public abstract AnnoObject CreateObject();
 
