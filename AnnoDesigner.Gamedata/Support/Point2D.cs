@@ -12,5 +12,10 @@ namespace AnnoDesigner.Gamedata
 
         public T X { get; }
         public T Y { get; }
+
+        public override string ToString()
+        {
+            return $"{X}, {Y}";
+        }
     }
 }

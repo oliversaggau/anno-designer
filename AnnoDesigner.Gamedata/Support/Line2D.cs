@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Numerics;
 
 namespace AnnoDesigner.Gamedata
@@ -13,6 +14,11 @@ namespace AnnoDesigner.Gamedata
             this.Y1 = Y1;
             this.X2 = X2;
             this.Y2 = Y2;
+
+            T dx = X2 - X1;
+            T dy = Y2 - Y1;
+            this.Angle = Math.Atan2(double.CreateChecked(dy), double.CreateChecked(dx));
+            this.Length = Math.Sqrt(double.CreateChecked(dx * dx + dy * dy));
         }
 
         public Line2D(Point2D<T> start, Point2D<T> end)
@@ -24,6 +30,9 @@ namespace AnnoDesigner.Gamedata
         public T Y1 { get; }
         public T X2 { get; }
         public T Y2 { get; }
+
+        public double Angle { get; }
+        public double Length { get; }
 
         public IEnumerable<Point2D<T>> Rasterize()
         {

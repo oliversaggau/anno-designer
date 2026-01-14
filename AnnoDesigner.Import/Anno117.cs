@@ -128,9 +128,9 @@ namespace AnnoDesigner.Import
                             {
                                 ProcessTilesGrid(tilesGrid, (value, position) =>
                                 {
-                                    TileObject tile = new TileObject(template, island.ToLocalCoordinates(position), value);
-                                    if (color.HasValue) tile.Color = color.Value;
-                                    island.Objects.Add(tile.CreateObject());
+                                    TileObject result = new TileObject(template, island.ToLocalCoordinates(position), value);
+                                    if (color.HasValue) result.Color = color.Value;
+                                    island.Objects.Add(result.CreateObject());
                                 });
                             }
 #if DEBUG
@@ -143,37 +143,49 @@ namespace AnnoDesigner.Import
 
                         if (streetGraph != null)
                         {
-                            ProcessGraph(streetGraph, (guid, position) =>
+                            ProcessGraph(streetGraph, tile =>
                             {
-                                var template = FindBuildingByGuid(presets, guid);
+                                var template = FindBuildingByGuid(presets, tile.Guid);
 
 #if DEBUG
-                                if (template == null && missingPresets.Add(guid))
+                                if (template == null && missingPresets.Add(tile.Guid))
                                 {
-                                    Debug.WriteLine($"Street object {guid} not found!");
+                                    Debug.WriteLine($"Street object {tile.Guid} not found!");
                                 }
 #endif
 
-                                RoadObject road = new RoadObject(template, island.ToLocalCoordinates(position));
-                                island.Objects.Add(road.CreateObject());
+                                RoadObject result = new RoadObject(template, island.ToLocalCoordinates(tile.Position), tile.Rotation, tile.Quadrants);
+
+#if DEBUG
+                                if (tile.Color.HasValue) result.Color = tile.Color.Value;
+                                result.Label = tile.Label;
+#endif
+
+                                island.Objects.Add(result.CreateObject());
                             });
                         }
 
                         if (aqueductGraph != null)
                         {
-                            ProcessGraph(aqueductGraph, (guid, position) =>
+                            ProcessGraph(aqueductGraph, tile =>
                             {
-                                var template = FindBuildingByGuid(presets, guid);
+                                var template = FindBuildingByGuid(presets, tile.Guid);
 
 #if DEBUG
-                                if (template == null && missingPresets.Add(guid))
+                                if (template == null && missingPresets.Add(tile.Guid))
                                 {
-                                    Debug.WriteLine($"Aqueduct object {guid} not found!");
+                                    Debug.WriteLine($"Aqueduct object {tile.Guid} not found!");
                                 }
 #endif
 
-                                TileObject tile = new TileObject(template, island.ToLocalCoordinates(position), 0b1111); // TODO sub-triangle handling
-                                island.Objects.Add(tile.CreateObject());
+                                TileObject result = new TileObject(template, island.ToLocalCoordinates(tile.Position), tile.Rotation, tile.Quadrants);
+
+#if DEBUG
+                                if (tile.Color.HasValue) result.Color = tile.Color.Value;
+                                result.Label = tile.Label;
+#endif
+
+                                island.Objects.Add(result.CreateObject());
                             });
                         }
 
@@ -192,46 +204,49 @@ namespace AnnoDesigner.Import
 
             #region Graph Section
 
-            private static void ProcessGraph(Tag graph, Action<int, Point2D<int>> action)
+            private static void ProcessGraph(Tag graph, Action<TileGraph.Tile> action)
             {
                 IEnumerable<Point2D<int>> nodes = graph.Tag("Nodes").Attributes().Select(node => node.ToPoint2D<int>()); // TODO can we simply ignore the nodes?
                 IEnumerable<Tag> edges = graph.Tag("Edges").Tags();
+                ProcessEdges(edges, action);
+            }
+
+            private static void ProcessEdges(IEnumerable<Tag> edges, Action<TileGraph.Tile> action)
+            {
+                TileGraph graph = new TileGraph();
 
                 foreach (Tag edge in edges)
                 {
                     int guid = edge.Attribute("guid").ToNumber<int>();
-                    ProcessEdge(guid, edge.Tag("Edge"), action);
+                    ProcessEdge(guid, graph, edge.Tag("Edge"));
+                }
+
+                foreach (var tile in graph.Merge())
+                {
+                    action(tile);
                 }
             }
 
-            private static void ProcessEdge(int guid, Tag edge, Action<int, Point2D<int>> action)
+            private static void ProcessEdge(int guid, TileGraph graph, Tag edge)
             {
                 // for some reason the positions in a graph in Anno 117 are scaled by a factor of 2 so we need to scale them down
-                Point2D<int> start = edge.Attribute("PosMin").ToPoint2D<int>().Scale(0.5f).Round(MidpointRounding.ToPositiveInfinity);
-                Point2D<int> end = edge.Attribute("PosMax").ToPoint2D<int>().Scale(0.5f).Round(MidpointRounding.ToPositiveInfinity);
-                ProcessEdge(guid, new Line2D<int>(start, end), action);
-            }
-
-            private static void ProcessEdge(int guid, Line2D<int> edge, Action<int, Point2D<int>> action)
-            {
-                foreach (Point2D<int> point in edge.Rasterize())
-                {
-                    action(guid, new Point2D<int>(point.X, point.Y - 1)); // TODO check why we need Y-1 to fix incorrect position
-                }
+                Point2D<float> start = edge.Attribute("PosMin").ToPoint2D<int>().Scale(0.5f);
+                Point2D<float> end = edge.Attribute("PosMax").ToPoint2D<int>().Scale(0.5f);
+                graph.AddEdge(guid, new Line2D<float>(start, end));
             }
 
             #endregion
 
             #region Tiles Grid Section
 
-            private static void ProcessTilesGrid(Tag tilesGrid, Action<byte, Point2D<int>> action)
+            private static void ProcessTilesGrid(Tag tilesGrid, Action<byte, Point2D<float>> action)
             {
                 Tag grid = tilesGrid.Tag("Grid").Tags().Single();
                 Point2D<int> origin = tilesGrid.Attribute("GridOriginWS").ToPoint2D<int>();
                 ProcessTilesGrid(grid, origin, action);
             }
 
-            private static void ProcessTilesGrid(Tag grid, Point2D<int> origin, Action<byte, Point2D<int>> action)
+            private static void ProcessTilesGrid(Tag grid, Point2D<int> origin, Action<byte, Point2D<float>> action)
             {
                 int rows = grid.Attribute("y").ToNumber<int>();
                 byte[] bits = grid.Attribute("bits").ToNibbles().ToArray();
@@ -240,14 +255,14 @@ namespace AnnoDesigner.Import
                 ProcessTilesGrid(bits, columns, rows, stride, origin, action);
             }
 
-            private static void ProcessTilesGrid(byte[] bits, int width, int height, int stride, Point2D<int> origin, Action<byte, Point2D<int>> action)
+            private static void ProcessTilesGrid(byte[] bits, int width, int height, int stride, Point2D<int> origin, Action<byte, Point2D<float>> action)
             {
                 for (int y = 0; y < height; y++)
                 {
                     for (int x = 0; x < width; x++)
                     {
                         byte value = bits[y * stride + x];
-                        if (value != 0) action(value, new Point2D<int>(origin.X + x + 1, origin.Y + y));
+                        if (value != 0) action(value, new Point2D<float>(x + origin.X + (TileObject.Size / 2), y + origin.Y + (TileObject.Size / 2)));
                     }
                 }
             }

@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Media;
 
 namespace AnnoDesigner.Helper
@@ -11,30 +12,57 @@ namespace AnnoDesigner.Helper
             var TR = rect.TopRight;
             var BR = rect.BottomRight;
             var BL = rect.BottomLeft;
-            var C = new Point(rect.X + rect.Width / 2, rect.Y + rect.Height / 2);
 
-            return (quadrants & 0b1111) switch
+            if ((quadrants & 0x80) == 0x80)
             {
-                // single sub-tile triangle (1 bit)
-                0b0001 => CreateTriangle(TL, C, BL),
-                0b0010 => CreateTriangle(BL, C, BR),
-                0b0100 => CreateTriangle(BR, C, TR),
-                0b1000 => CreateTriangle(TR, C, TL),
-                // half-quad - diagonal triangle (2 bits)
-                0b0011 => CreateTriangle(TL, BL, BR),
-                0b0110 => CreateTriangle(BL, BR, TR),
-                0b1001 => CreateTriangle(BL, TL, TR),
-                0b1100 => CreateTriangle(TL, TR, BR),
-                // quad missing a single sub-tile triangle (3 bits)
-                0b0111 => CreatePentagon(TL, BL, BR, TR, C),
-                0b1011 => CreatePentagon(TL, BL, BR, C, TR),
-                0b1101 => CreatePentagon(TL, C, BL, BR, TR),
-                0b1110 => CreatePentagon(C, TL, TR, BR, BL),
-                // full quad (all 4 bits)
-                0b1111 => CreateQuad(TL, TR, BR, BL),
-                // combination not allowed
-                _ => null
-            };
+                // unofficial quadrants not used by the game
+                var TC = new Point(rect.X + rect.Width / 2, rect.Y);
+                var BC = new Point(rect.X + rect.Width / 2, rect.Y + rect.Height);
+                var LC = new Point(rect.X, rect.Y + rect.Height / 2);
+                var RC = new Point(rect.X + rect.Width, rect.Y + rect.Height / 2);
+
+                return (quadrants & 0b1111) switch
+                {
+                    // quad missing two corner triangles (2 bits)
+                    0b0011 => CreatePentagon(TL, BL, BC, RC, TC), // Top-Right and Bottom-Right corners missing
+                    0b1100 => CreatePentagon(BR, TR, TC, LC, BC), // Top-Left and Bottom-Left corners missing
+                    // quad missing a single corner triangle (3 bits)
+                    0b1110 => CreatePentagon(TL, LC, BC, BR, TR), // Bottom-Left corner missing
+                    0b1101 => CreatePentagon(TL, BL, BC, RC, TR), // Bottom-Right corner missing
+                    0b1011 => CreatePentagon(TL, BL, BR, RC, TC), // Top-Right corner missing
+                    0b0111 => CreatePentagon(LC, BL, BR, TR, TC), // Top-Left corner missing
+                    // combination not allowed
+                    _ => throw new NotSupportedException()
+                };
+            }
+            else
+            {
+                // official quadrants used by the game
+                var C = new Point(rect.X + rect.Width / 2, rect.Y + rect.Height / 2);
+
+                return (quadrants & 0b1111) switch
+                {
+                    // single sub-tile triangle (1 bit)
+                    0b0001 => CreateTriangle(TL, C, BL),
+                    0b0010 => CreateTriangle(BL, C, BR),
+                    0b0100 => CreateTriangle(BR, C, TR),
+                    0b1000 => CreateTriangle(TR, C, TL),
+                    // half-quad - diagonal triangle (2 bits)
+                    0b0011 => CreateTriangle(TL, BL, BR),
+                    0b0110 => CreateTriangle(BL, BR, TR),
+                    0b1001 => CreateTriangle(BL, TL, TR),
+                    0b1100 => CreateTriangle(TL, TR, BR),
+                    // quad missing a single sub-tile triangle (3 bits)
+                    0b0111 => CreatePentagon(TL, BL, BR, TR, C),
+                    0b1011 => CreatePentagon(TL, BL, BR, C, TR),
+                    0b1101 => CreatePentagon(TL, BL, C, BR, TR),
+                    0b1110 => CreatePentagon(TL, C, BL, BR, TR),
+                    // full quad (all 4 bits)
+                    0b1111 => CreateQuad(TL, TR, BR, BL),
+                    // combination not allowed
+                    _ => throw new NotSupportedException()
+                };
+            }
         }
 
         public static bool IsRect(byte quadrants)

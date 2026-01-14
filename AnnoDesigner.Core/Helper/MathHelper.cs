@@ -8,7 +8,8 @@ namespace AnnoDesigner.Core.Helper
 {
     public static class MathHelper
     {
-        private static readonly double subTileSize = 1 / Math.Sqrt(2);
+        private static readonly double sqrt2 = Math.Sqrt(2);
+        private static readonly double subTileSize = 1 / sqrt2;
 
         /// <summary>
         /// Return the fractional value of a <see cref="double"/>.
@@ -40,6 +41,7 @@ namespace AnnoDesigner.Core.Helper
         /// <returns></returns>
         public static double GetDiagonalSize(double size)
         {
+            if (size == 1) return sqrt2;
             double sizeShrink = (int)Math.Floor(size / subTileSize) * subTileSize;
             double sizeExpand = (int)Math.Ceiling(size / subTileSize) * subTileSize;
             return Math.Abs(size - sizeShrink) < Math.Abs(size - sizeExpand) ? sizeShrink : sizeExpand;
