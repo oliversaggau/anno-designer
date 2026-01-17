@@ -11,7 +11,6 @@ using AnnoDesigner.Core.Models;
 using AnnoDesigner.Core.Presets.Models;
 using PresetParser.Anno1404_Anno2070;
 using PresetParser.Anno1800;
-using PresetParser.Anno1800.Models;
 using PresetParser.Extensions;
 using PresetParser.Models;
 
@@ -25,6 +24,7 @@ namespace PresetParser
         private static string BASE_PATH_2070 { get; set; }
         private static string BASE_PATH_2205 { get; set; }
         private static string BASE_PATH_1800 { get; set; }
+        private static string BASE_PATH_117 { get; set; }
 
         public static bool isExcludedName = false;
         public static bool isExcludeIconName = false; /*Only for Anno 1800*/
@@ -32,11 +32,12 @@ namespace PresetParser
         public static bool isExcludedGUID = false; /*only for Anno 1800 */
 
         private static Dictionary<string, Dictionary<string, PathRef[]>> VersionSpecificPaths { get; set; }
-        private const string BUILDING_PRESETS_VERSION = "5.3";
+        private const string BUILDING_PRESETS_VERSION = "6.0";
         // Initializing Language Directory's and Filenames
         private static readonly string[] Languages = new[] { "eng", "ger", "fra", "pol", "rus", "esp" };
         private static readonly string[] LanguagesFiles2205 = new[] { "english", "german", "french", "polish", "russian", "spanish" };
         private static readonly string[] LanguagesFiles1800 = new[] { "english", "german", "french", "polish", "russian", "spanish" };
+        private static readonly string[] LanguagesFiles117 = new[] { "english", "german", "french", "polish", "russian", "spanish" };
         // Internal Program Buildings Lists to skip double buildings
         public static List<string> annoBuildingLists = new List<string>();
         public static List<string> anno1800IconNameLists = new List<string>();
@@ -108,7 +109,7 @@ namespace PresetParser
         /// <summary>
         /// I need the IncludeBuildingsTemplateNames to get Building information from, as it is also the Presets Template String or Template GUID
         /// </summary>
-        public static IList<FarmField> farmFieldList1800 = new List<FarmField>();
+        public static IList<ModuleInfo> farmFieldList1800 = new List<ModuleInfo>();
         // Removed IncludeBuildingsTemplate "CultureModule" (to must to handle and thus are replaced with the Zoo Module and Museum Module
         private static readonly List<string> IncludeBuildingsTemplateNames1800 = new List<string> { "ResidenceBuilding", "ResidenceBuilding7", "FarmBuilding", "FreeAreaBuilding", "FactoryBuilding7", "HeavyFactoryBuilding",
             "SlotFactoryBuilding7", "Farmfield", "OilPumpBuilding", "PublicServiceBuilding", "CityInstitutionBuilding", "CultureBuilding", "Market", "Warehouse", "PowerplantBuilding", "HarborOffice", "HarborWarehouse7",
@@ -180,6 +181,12 @@ namespace PresetParser
 
         #endregion
 
+        #region Anno 117
+
+        public static IList<ModuleInfo> modulesList117 = new List<ModuleInfo>();
+
+        #endregion
+
         #endregion
 
         static Program()
@@ -202,14 +209,14 @@ namespace PresetParser
             bool validVersion = false;
             while (!validVersion)
             {
-                Console.Write("Please enter an Anno version (1 of: {0} {1} {2} {3}):", Constants.ANNO_VERSION_1404, Constants.ANNO_VERSION_2070, Constants.ANNO_VERSION_2205, Constants.ANNO_VERSION_1800);
+                Console.Write("Please enter an Anno version (1 of: {0} {1} {2} {3} {4}):", Constants.ANNO_VERSION_1404, Constants.ANNO_VERSION_2070, Constants.ANNO_VERSION_2205, Constants.ANNO_VERSION_1800, Constants.ANNO_VERSION_117);
                 annoVersion = Console.ReadLine();
                 if (annoVersion == "quit")
                 {
                     Environment.Exit(0);
                 }
 
-                if (annoVersion == Constants.ANNO_VERSION_1404 || annoVersion == Constants.ANNO_VERSION_2070 || annoVersion == Constants.ANNO_VERSION_2205 || annoVersion == Constants.ANNO_VERSION_1800 || annoVersion == "-ALL")
+                if (annoVersion == Constants.ANNO_VERSION_1404 || annoVersion == Constants.ANNO_VERSION_2070 || annoVersion == Constants.ANNO_VERSION_2205 || annoVersion == Constants.ANNO_VERSION_1800 || annoVersion == Constants.ANNO_VERSION_117 || annoVersion == "-ALL")
                 {
                     validVersion = true;
                 }
@@ -217,7 +224,7 @@ namespace PresetParser
                 {
                     Console.Write("Please enter an Anno version:");
                     annoVersion = Console.ReadLine();
-                    if (annoVersion == Constants.ANNO_VERSION_1404 || annoVersion == Constants.ANNO_VERSION_2070 || annoVersion == Constants.ANNO_VERSION_2205 || annoVersion == Constants.ANNO_VERSION_1800)
+                    if (annoVersion == Constants.ANNO_VERSION_1404 || annoVersion == Constants.ANNO_VERSION_2070 || annoVersion == Constants.ANNO_VERSION_2205 || annoVersion == Constants.ANNO_VERSION_1800 || annoVersion == Constants.ANNO_VERSION_117)
                     {
                         validVersion = true;
                         testVersion = true;
@@ -280,6 +287,7 @@ namespace PresetParser
                 BASE_PATH_2070 = GetBASE_PATH(Constants.ANNO_VERSION_2070);
                 BASE_PATH_2205 = GetBASE_PATH(Constants.ANNO_VERSION_2205);
                 BASE_PATH_1800 = GetBASE_PATH(Constants.ANNO_VERSION_1800);
+                BASE_PATH_117 = GetBASE_PATH(Constants.ANNO_VERSION_117);
             }
 
             if (!testVersion)
@@ -458,6 +466,25 @@ namespace PresetParser
             }
             #endregion
 
+            #region Anno 117 xPaths
+
+            if (annoVersion == Constants.ANNO_VERSION_117 || annoVersion == "-ALL")
+            {
+                Console.WriteLine();
+                Console.WriteLine("Trying to read Buildings Data from the assets.xml of Anno 117");
+                VersionSpecificPaths.Add(Constants.ANNO_VERSION_117, new Dictionary<string, PathRef[]>());
+                VersionSpecificPaths[Constants.ANNO_VERSION_117].Add("assets", new PathRef[]
+                {
+                    new PathRef("data/base/config/export/assets.xml"),
+                });
+                VersionSpecificPaths[Constants.ANNO_VERSION_117].Add("templates", new PathRef[]
+                {
+                    new PathRef("data/base/config/export/templates.xml"),
+                });
+            }
+
+            #endregion
+
             #endregion
 
             #region Prepare JSON Files
@@ -494,6 +521,12 @@ namespace PresetParser
                 Console.WriteLine("Reading RDA data from {0} for anno version {1}.", BASE_PATH_1800, Constants.ANNO_VERSION_1800);
                 BASE_PATH = BASE_PATH_1800;
                 DoAnnoPreset(Constants.ANNO_VERSION_1800, addRoads: true);
+                annoBuildingLists.Clear();
+                Console.WriteLine();
+                Console.WriteLine("----------------------------------------------");
+                Console.WriteLine("Reading RDA data from {0} for anno version {1}.", BASE_PATH_117, Constants.ANNO_VERSION_117);
+                BASE_PATH = BASE_PATH_117;
+                DoAnnoPreset(Constants.ANNO_VERSION_117, addRoads: false);
                 annoBuildingLists.Clear();
             }
             #endregion
@@ -586,7 +619,12 @@ namespace PresetParser
             // This list contains identifiers which are duplicated on purpose (on various places inside the preset tree) and known to not cause any errors (e.g. translation or statistics).
             var knownDuplicates = new List<string> { "Logistic_02 (Warehouse I)", "Residence_Old_World", "Residence_tier02", "Residence_tier03", "Residence_tier04",
                 "Residence_tier05", "Residence_tier05b", "Residence_New_World", "Residence_colony01_tier02", "Residence_Arctic_World", "Residence_arctic_tier02",
-                "Residence_Africa_World", "Residence_colony02_tier02", "Residence_colony01_tier03" };
+                "Residence_Africa_World", "Residence_colony02_tier02", "Residence_colony01_tier03", "Public Roman Celtic Fanum", "Military Roman Celtic Wall Wood",
+                "Military Roman Celtic Wall Wood Gate", "Military Roman Celtic Tower Wood Archer", "Military Roman Celtic Barracks", "Military Roman Celtic Training Grounds",
+                "Military Roman Celtic Siege Workshop", "Production Field Roman Celtic Grapes", "Production Meadow Roman Celtic Honycombs", "Production Food Roman Celtic Wine",
+                "Public Roman Celtic Theater", "Public Roman Celtic Gambling House", "Production Coast Roman Celtic Silica", "Military Roman Celtic Wall Stone",
+                "Military Roman Celtic Wall Stone Gate", "Military Roman Celtic Tower Stone Archer", "Military Roman Celtic Tower Stone Ballista", "Module Silo Roman",
+                "Module Silo Roman Celtic" };
 
             var validator = new Validator();
             (bool isValid, List<string> duplicateIdentifiers) = validator.CheckForUniqueIdentifiers(buildingsToCheck, knownDuplicates);
@@ -911,6 +949,63 @@ namespace PresetParser
                     AddBlockingTiles(buildings);
                 }
             }
+            #endregion
+
+            #region Start prepare Anno 117
+
+            else if (annoVersion == Constants.ANNO_VERSION_117)
+            {
+                #region Read in Language Files
+                Console.WriteLine("Parsing language files....");
+                string languageFilePath = "data/base/config/gui/";
+                string languageFileStart = "texts_";
+
+                if (Languages.Length != LanguagesFiles117.Length)
+                {
+                    throw new InvalidOperationException("Language arrays for Anno 117 do not match!");
+                }
+
+                for (int i = 0; i < Languages.Length; i++)
+                {
+                    string languageFileName = BASE_PATH + languageFilePath + languageFileStart + LanguagesFiles117[i] + ".xml";
+                    XmlDocument langDocument = new XmlDocument();
+                    langDocument.Load(languageFileName);
+
+                    switch (Languages[i])
+                    {
+                        case "eng": { langDocument_english = langDocument; break; }
+                        case "ger": { langDocument_german = langDocument; break; }
+                        case "fra": { langDocument_french = langDocument; break; }
+                        case "pol": { langDocument_polish = langDocument; break; }
+                        case "rus": { langDocument_russian = langDocument; break; }
+                        case "esp": { langDocument_spanish = langDocument; break; }
+                    }
+                }
+                #endregion
+
+                Console.WriteLine("Loading files...");
+                PathRef assets = VersionSpecificPaths[annoVersion]["assets"].SingleOrDefault();
+                XmlDocument assetsDocument = new XmlDocument();
+                assetsDocument.Load(BASE_PATH + assets.Path);
+
+                PathRef templates = VersionSpecificPaths[annoVersion]["templates"].SingleOrDefault();
+                XmlDocument templatesDocument = new XmlDocument();
+                templatesDocument.Load(BASE_PATH + templates.Path);
+
+                Console.WriteLine("Preparing model...");
+                Anno117.Model model = new Anno117.Model(assetsDocument, templatesDocument);
+
+                // parse modules BEFORE buildings
+                Console.WriteLine("Parsing modules...");
+                ParseModules117(assetsDocument, templatesDocument);
+
+                Console.WriteLine("Parsing buildings...");
+                ParseAssets117(model, buildings);
+
+                // Add extra buildings to the anno version preset file
+                AddExtraPreset(annoVersion, buildings);
+            }
+
             #endregion
         }
 
@@ -3404,14 +3499,14 @@ namespace PresetParser
                         string fieldGuidValue = values["ModuleOwner"]["ConstructionOptions"]["Item"]["ModuleGUID"].InnerText;
                         string fieldAmountValue = null;
 
-                        FarmField fieldInfo = farmFieldList1800
-                            .Where(x => string.Equals(x.FieldGuid, fieldGuidValue, StringComparison.OrdinalIgnoreCase))
+                        ModuleInfo fieldInfo = farmFieldList1800
+                            .Where(x => string.Equals(x.ModuleGuid, fieldGuidValue, StringComparison.OrdinalIgnoreCase))
                             .Where(x => string.Equals(x.OwnerGuid, guidName, StringComparison.OrdinalIgnoreCase))
                             .SingleOrDefault();
 
                         if (fieldInfo != null)
                         {
-                            fieldAmountValue = fieldInfo.FieldAmount;
+                            fieldAmountValue = fieldInfo.ModuleAmount;
                             translation = translation + " - (" + fieldAmountValue + ")";
                         }
                     }
@@ -3420,8 +3515,8 @@ namespace PresetParser
                         string fieldGuidValue = values["Standard"]["GUID"].InnerText;
                         string fieldAmountValue = null;
 
-                        List<FarmField> fieldInfos = farmFieldList1800
-                            .Where(x => string.Equals(x.FieldGuid, fieldGuidValue, StringComparison.OrdinalIgnoreCase))
+                        List<ModuleInfo> fieldInfos = farmFieldList1800
+                            .Where(x => string.Equals(x.ModuleGuid, fieldGuidValue, StringComparison.OrdinalIgnoreCase))
                             .ToList();
 
                         if (fieldInfos.Count == 0)
@@ -3435,8 +3530,8 @@ namespace PresetParser
                         }
 
                         fieldAmountValue = string.Join("/", fieldInfos
-                            .OrderBy(x => Convert.ToInt32(x.FieldAmount))
-                            .Select(x => x.FieldAmount)
+                            .OrderBy(x => Convert.ToInt32(x.ModuleAmount))
+                            .Select(x => x.ModuleAmount)
                             .Distinct());
 
                         translation = translation + " - (" + fieldAmountValue + ")";
@@ -3605,7 +3700,7 @@ namespace PresetParser
 
                     if (fieldAmountValue != null)
                     {
-                        farmFieldList1800.Add(new FarmField() { FieldGuid = fieldGuidValue, FieldAmount = fieldAmountValue, OwnerGuid = guidValue });
+                        farmFieldList1800.Add(new ModuleInfo() { ModuleGuid = fieldGuidValue, ModuleAmount = fieldAmountValue, OwnerGuid = guidValue });
                     }
                 }
             }
@@ -3613,5 +3708,612 @@ namespace PresetParser
 
         #endregion
 
+        #region Parsing Buildings for Anno 117
+
+        private static void ParseAssets117(Anno117.Model model, List<IBuildingInfo> buildings)
+        {
+            for (int i = 0; i < model.BuildingCount; i++)
+            {
+                try
+                {
+                    Asset assetBuilding = model.GetBuilding(i);
+                    ParseBuilding117(model, assetBuilding, buildings);
+                }
+                catch (BaseAssetMissingException)
+                {
+                    var oldColor = Console.ForegroundColor;
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("--> Base asset not found, Building is skipped");
+                    Console.ForegroundColor = oldColor;
+                }
+            }
+        }
+
+        private static void ParseBuilding117(Anno117.Model model, Asset assetBuilding, List<IBuildingInfo> buildings)
+        {
+            string headerName = "(A8) Anno " + Constants.ANNO_VERSION_117;
+            string templateName = assetBuilding.TemplateName;
+            string identifierName = "";
+            string factionName = "";
+            string groupName = "";
+            int guidNumber = 0;
+
+            var oldColor = Console.ForegroundColor;
+            string guidName = assetBuilding.GetValue("Standard/GUID");
+            string profile = assetBuilding.GetValue("Object/DefaultProfile");
+
+            if (!string.IsNullOrEmpty(guidName))
+            {
+                guidNumber = Convert.ToInt32(guidName);
+            }
+
+            if (guidNumber == 0)
+            {
+                return;
+            }
+
+            if (!string.IsNullOrEmpty(profile) && profile != "0")
+            {
+                // skip third-party buildings
+                return;
+            }
+            else if (templateName.Contains("NPC") || templateName == "QuestLighthouse" || templateName.StartsWith("Pirate"))
+            {
+                // skip NPC buildings
+                return;
+            }
+            else if (templateName.Contains("ProvinceStory"))
+            {
+                // skip story buildings
+                return;
+            }
+            else if (templateName.Contains("PropObject") || templateName == "UnitCamp" || templateName == "WorkAreaSlot")
+            {
+                // skip unecessary buildings
+                return;
+            }
+
+            // for monuments skip all but the final phasee
+            if (!string.IsNullOrEmpty(assetBuilding.GetValue("Monument/UpgradeTarget")))
+            {
+                oldColor = Console.ForegroundColor;
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                Console.WriteLine("--> Monument phase, skipping : " + guidName);
+                Console.ForegroundColor = oldColor;
+                return;
+            }
+
+            if (!assetBuilding.TryGetValue("Standard/Name", out identifierName))
+            {
+                oldColor = Console.ForegroundColor;
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("--> Missing Identifier Name : " + guidName + " >> " + templateName);
+                Console.ForegroundColor = oldColor;
+                return;
+            }
+            else if (identifierName.Contains("DEPRECATED"))
+            {
+                oldColor = Console.ForegroundColor;
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.WriteLine("--> Building deprecated, skipping : " + guidName);
+                Console.ForegroundColor = oldColor;
+                return;
+            }
+
+            identifierName = identifierName.FirstCharToUpper();
+            string associatedRegion = assetBuilding.GetValue("Building/AssociatedRegions");
+            Asset assetResidencePopulation = null;
+            ModuleInfo moduleInfo = null;
+
+            if (guidNumber == 31763)
+            {
+                identifierName = identifierName.Replace("Roman", "Celtic");
+            }
+
+            if (templateName == "MilitaryWall")
+            {
+                if (identifierName.Contains("Bridge") || identifierName.Contains("Crossing"))
+                {
+                    return;
+                }
+            }
+
+            switch (guidNumber)
+            {
+                case 3402: // Harbor Warehouse Roman
+                case 41342: // ConstructionCategory 41369
+                case 6054:
+                case 31608:
+                case 4115:
+                case 38383:
+                    factionName = "Harbor";
+                    groupName = "(1) Roman";
+                    break;
+                case 7037: // Harbor Warehouse Roman Celtic
+                case 42436: // ConstructionCategory 41339
+                case 29340:
+                case 29663:
+                case 31611:
+                case 41581:
+                    factionName = "Harbor";
+                    groupName = "(2) Celtic";
+                    break;
+                // religion and/or tech unlockable buildings are hard to categorize, since they can be more
+                // or less unlocked at any time and often are not tied to a specific population group in the
+                // assets.xml so we simply hard-code them here for now
+                case 77954: // Module Silo Roman
+                    factionName = "(1) Liberti";
+                    break;
+                case 27889: // Military Roman Wall Stone
+                case 27888: // Military Roman Wall Stone Gate
+                case 27890: // Military Roman Tower Stone Archer
+                case 50972: // Military Roman Tower Stone Ballista
+                    factionName = "(3) Equites";
+                    break;
+                case 77955: // Module Silo Roman Celtic
+                    factionName = "(7) Mercators";
+                    break;
+                case 29543: // Military Roman Celtic Wall Stone
+                case 29545: // Military Roman Celtic Wall Stone Gate
+                case 29546: // Military Roman Celtic Tower Stone Archer
+                case 50974: // Military Roman Celtic Tower Stone Ballista
+                    factionName = "(9) Nobles";
+                    break;
+                case 50280: // Production Mountain Roman Gold Ore
+                    factionName = "(4) Patricians";
+                    break;
+            }
+
+            if (string.IsNullOrEmpty(factionName))
+            {
+                if (templateName == "ResidenceBuilding")
+                {
+                    factionName = "Residences";
+
+                    switch (guidNumber)
+                    {
+                        case 3087:
+                        case 3141:
+                        case 3142:
+                        case 3145:
+                            groupName = "(1) Roman";
+                            break;
+                        case 6414:
+                        case 6471:
+                        case 6472:
+                            groupName = "(2) Celtic";
+                            break;
+                        case 6475:
+                        case 6514:
+                            groupName = "(3) Romano-Celtic";
+                            break;
+                    }
+
+                    if (string.IsNullOrEmpty(groupName))
+                    {
+                        oldColor = Console.ForegroundColor;
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("--> Missing Residence Group Name : " + guidName + " >> " + templateName + ".");
+                        Console.ForegroundColor = oldColor;
+                        return;
+                    }
+
+                    if (assetBuilding.TryGetValue("Residence7/PopulationLevel", out string populationGuid))
+                    {
+                        assetResidencePopulation = model.FindAsset($"//Asset[Template[text()='PopulationLevel'] and Values/Standard/GUID[text()='{populationGuid}']]");
+                    }
+                }
+                else if (templateName == "Warehouse" || templateName == "Warehouse_Marsh")
+                {
+                    groupName = model.GetGroupByRegion(associatedRegion);
+                    factionName = "Warehouse";
+                }
+                else if (templateName == "AqueductProducer" || templateName == "AqueductConnector" || templateName == "AqueductDistributor")
+                {
+                    if (associatedRegion == "Roman") factionName = "(3) Equites";
+                    else if (associatedRegion == "Celtic") factionName = "(9) Nobles";
+                    groupName = "Aqueduct";
+
+                    if (templateName == "AqueductConnector")
+                    {
+                        if (!identifierName.Contains("Main"))
+                        {
+                            return;
+                        }
+
+                        identifierName = identifierName.Replace("Aqueduct MinGround Main", "").Trim();
+                    }
+                }
+                else if (templateName == "IrrigationPropagationSource_Marsh" || templateName == "Canal")
+                {
+                    if (identifierName.Contains("Inactive")) return;
+                    identifierName = identifierName.Replace("Mesh Graph", "").Trim();
+                    factionName = "Drainage";
+                    groupName = null;
+                }
+                else if (templateName == "CityInstitutionBuilding" || templateName == "CityInstitutionBuilding_Marsh" || templateName == "MiniInstitutionBuilding")
+                {
+                    groupName = model.GetGroupByRegion(associatedRegion);
+                    if (identifierName.Contains("Shrine")) factionName = "Shrines";
+                    else factionName = "Public Buildings";
+                }
+                else if (templateName == "GuestHouse")
+                {
+                    string ownerGuid = model.FindAsset($"//Asset[Values/Villa/GuestHouse[text()='{guidNumber}']]").GetValue("Standard/GUID");
+                    factionName = model.ResolveFaction(ownerGuid, associatedRegion);
+                    groupName = "Special Buildings";
+                }
+                else if (templateName == "Module Field" || templateName == "Module Polygon Field" || templateName == "Module Marsh Field")
+                {
+                    groupName = "Farm Fields";
+                    string fieldGuid = guidName;
+
+                    moduleInfo = modulesList117
+                        .Where(x => string.Equals(x.ModuleGuid, fieldGuid, StringComparison.OrdinalIgnoreCase))
+                        .SingleOrDefault();
+
+                    factionName = model.ResolveFaction(moduleInfo.OwnerGuid, associatedRegion);
+                }
+                else if (associatedRegion != null)
+                {
+                    factionName = model.ResolveFaction(guidName, associatedRegion);
+                }
+            }
+
+            if (templateName == "Production" || templateName == "Production Area" || templateName == "Production Marsh" || templateName == "Production Marsh Area")
+            {
+                groupName = "Production Buildings";
+            }
+            else if (templateName == "Production Field" || templateName == "Production Marsh Pasture")
+            {
+                groupName = "Farm Buildings";
+                string fieldGuid = assetBuilding.GetValue("ModuleOwner/ConstructionOptions/Item/ModuleGUID");
+
+                moduleInfo = modulesList117
+                    .Where(x => string.Equals(x.ModuleGuid, fieldGuid, StringComparison.OrdinalIgnoreCase))
+                    .Where(x => string.Equals(x.OwnerGuid, guidName, StringComparison.OrdinalIgnoreCase))
+                    .SingleOrDefault();
+            }
+            else if (templateName == "ProductionModuleSilo")
+            {
+                groupName = "Farm Fields";
+            }
+            else if (templateName == "PublicServiceBuilding" || templateName == "Monument" || templateName == "MonumentEventBuilding")
+            {
+                groupName = "Public Buildings";
+            }
+            else if (templateName == "SlotFactoryBuilding7")
+            {
+                if (identifierName.Contains("Mountain")) groupName = "Mining Buildings";
+                else groupName = "River Buildings";
+            }
+            else if (templateName == "RecruitmentBuilding")
+            {
+                if (identifierName.Contains("Military")) groupName = "Military";
+            }
+            else if (templateName == "MilitaryGate" || templateName == "MilitaryWall" || templateName == "MilitaryTowerUnit")
+            {
+                groupName = "Military";
+            }
+            else if (templateName == "VillaUrban")
+            {
+                groupName = "Special Buildings";
+            }
+
+            IBuildingInfo b = new BuildingInfo
+            {
+                Header = headerName,
+                Faction = factionName,
+                Group = groupName,
+                Template = templateName,
+                Identifier = identifierName,
+                Guid = guidNumber,
+            };
+
+            // print progress
+            Console.WriteLine(b.Identifier + " - " + b.Guid);
+
+            if (string.IsNullOrEmpty(factionName))
+            {
+                return; // TODO remove
+            }
+
+            #region Set IconFileName of buildings
+
+            // find icon node in values
+            const string replaceName = "A8_";
+            string pathIcon = assetBuilding.GetValue("Standard/IconFilename");
+
+            // icons for monuments are dummys, the actual icon is _0.png
+            if (templateName == "Monument" || templateName == "MonumentEventBuilding")
+            {
+                pathIcon = pathIcon.Replace(".png", "_0.png");
+            }
+
+            if (!string.IsNullOrEmpty(pathIcon))
+            {
+                string filename = Path.GetFileName(pathIcon);
+                if (filename.StartsWith("icon_3d_")) b.IconFileName = filename.Replace("icon_3d_", replaceName);
+                else b.IconFileName = replaceName + filename;
+            }
+            else
+            {
+                b.IconFileName = null;
+            }
+
+            if (templateName == "AqueductConnector" || templateName == "PolygonObject" || templateName == "Canal")
+            {
+                b.IconFileName = null;
+            }
+
+            #endregion
+
+            #region Set BuildBlocker of buildings
+
+            if (templateName == "AqueductConnector" || templateName == "PolygonObject" || templateName == "Canal" || templateName == "Module Polygon Field")
+            {
+                b.BuildBlocker = _buildingBlockProvider.CreateBuildBlocker(1, 1);
+            }
+            // Set the BuildBlocker for walls and gates by hand, as automatically is not an option for now,
+            // as the .ifo file are messy to get the <BuildBlocker> for walls and gates. Read here for the complete
+            // story why https://discord.com/channels/571011757317947406/571011757317947410/1452402060988256499
+            else if (templateName == "MilitaryGate")
+            {
+                b.BuildBlocker = _buildingBlockProvider.CreateBuildBlocker(3, 1);
+            }
+            else if (templateName == "MilitaryWall")
+            {
+                b.BuildBlocker = _buildingBlockProvider.CreateBuildBlocker(1, 1);
+            }
+            else if (assetBuilding.SelectNode("Object") != null)
+            {
+                XmlNode variations = assetBuilding.SelectNode("Object/Variations");
+                string filename = variations?.FirstChild["Filename"]?.InnerText;
+
+                if (!string.IsNullOrEmpty(filename))
+                {
+                    if (!_buildingBlockProvider.GetBuildingBlocker(BASE_PATH, b, filename, Constants.ANNO_VERSION_117))
+                    {
+                        return;
+                    }
+                }
+                else
+                {
+                    oldColor = Console.ForegroundColor;
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("- BuildBlocker not found, skipping: Missing Object File (B)");
+                    Console.ForegroundColor = oldColor;
+                    return;
+                }
+            }
+            else
+            {
+                oldColor = Console.ForegroundColor;
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("- BuildBlocker not found, skipping: Object Information not found (A)");
+                Console.ForegroundColor = oldColor;
+                return;
+            }
+
+            #endregion
+
+            #region Set BlockedArea and Direction for coastal buildings
+
+            // Set the BlockedArea and Direction for Coastal buildings that have a blocked area
+            // we do this by hand, as automatically is not an option for now, as the .ifo file are messy
+            // to get the <QuayArea> blocks from. Read here for the complete story why
+            // https://discord.com/channels/571011757317947406/571064812042321927/885817431136817162
+
+            switch (b.IconFileName) // via icon we can match multiple buildings with one case
+            {
+                case "A8_harbour_depot.png": { b.Direction = GridDirection.Right; break; }
+                case "A8_harbour_shipyard.png": { b.BlockedAreaLength = 4; b.Direction = GridDirection.Right; break; }
+                case "A8_harbour_trading_pier.png": { b.BlockedAreaLength = 4; b.Direction = GridDirection.Right; break; }
+                case "A8_harbour_kontor.png": { b.BlockedAreaLength = 18; b.Direction = GridDirection.Right; break; }
+                case "A8_sardines_goods.png": { b.Direction = GridDirection.Right; break; }
+                case "A8_mackerels_goods.png": { b.Direction = GridDirection.Right; break; }
+                case "A8_salt_goods.png": { b.Direction = GridDirection.Right; break; }
+                case "A8_silica_goods.png": { b.Direction = GridDirection.Right; break; }
+                case "A8_murex_snails_goods.png": { b.Direction = GridDirection.Right; break; }
+                case "A8_cockles_goods.png": { b.Direction = GridDirection.Right; break; }
+                case "A8_samphire_goods.png": { b.Direction = GridDirection.Right; break; }
+                case "A8_seashells_goods.png": { b.Direction = GridDirection.Right; break; }
+                case "A8_oysters_goods.png": { b.Direction = GridDirection.Right; break; }
+                case "A8_auroch_goods.png": { b.Direction = GridDirection.Right; break; }
+            }
+
+            #endregion
+
+            #region Set InfluenceRadius of buildings
+
+            if (assetBuilding.TryGetValue("FreeAreaProductivity/InfluenceRadius", out string influenceRadius))
+            {
+                // production building with free area influence radius
+                b.InfluenceRadius = Convert.ToInt32(influenceRadius);
+            }
+            else if (assetBuilding.TryGetValue("ModuleOwner/ModuleBuildRadius", out influenceRadius))
+            {
+                // farms and other module owners
+                b.InfluenceRadius = Convert.ToInt32(influenceRadius);
+                // in Anno 117 the ModuleBuildRadius starts from outside the building, so we need to add half the width
+                if (b.InfluenceRadius != 0) b.InfluenceRadius += (int)(b.BuildBlocker[b.Direction == GridDirection.Right ? "z" : "x"] / 2.0f);
+            }
+            else if (assetBuilding.TryGetValue("EffectSource/RadiusDistance", out influenceRadius))
+            {
+                if (templateName == "VillaUrban" || templateName == "GuestHouse")
+                {
+                    // item slot buildings (like Villa or Guesthouse)
+                    b.InfluenceRadius = Convert.ToInt32(influenceRadius);
+                }
+            }
+
+            #endregion
+
+            #region Set InfluenceRange of buildings
+
+            b.InfluenceRange = 0;
+
+            if (assetBuilding.TryGetValue("EffectSource/StreetDistance", out influenceRadius))
+            {
+                if (templateName == "PublicServiceBuilding" || templateName.Contains("InstitutionBuilding") || templateName.StartsWith("Monument"))
+                {
+                    // public service buildings
+                    b.InfluenceRange = Convert.ToInt32(influenceRadius);
+                }
+            }
+
+            #endregion
+
+            #region Set Localization
+
+            string lineId = assetBuilding.GetValue("Text/OasisId");
+
+            // for residences use the population name rather than the building name
+            if (templateName == "ResidenceBuilding")
+            {
+                lineId = assetResidencePopulation.GetValue("Text/OasisId");
+            }
+
+            // manual override translations
+            if (b.Guid == 31611)
+            {
+                lineId = "-6902392568690598450";
+            }
+
+            if (string.IsNullOrEmpty(lineId))
+            {
+                oldColor = Console.ForegroundColor;
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("--> Error in translation : " + guidName + " >> " + templateName + ".");
+                Console.ForegroundColor = oldColor;
+                return;
+            }
+
+            //Initialize the dictionary
+            const string textNodesPath = "/TextExport/Texts/Text";
+            b.Localization = new SerializableDictionary<string>();
+
+            foreach (string Language in Languages)
+            {
+                XmlDocument langDocument = new XmlDocument();
+                switch (Language)
+                {
+                    case "eng": { langDocument = langDocument_english; break; }
+                    case "ger": { langDocument = langDocument_german; break; }
+                    case "fra": { langDocument = langDocument_french; break; }
+                    case "pol": { langDocument = langDocument_polish; break; }
+                    case "rus": { langDocument = langDocument_russian; break; }
+                    case "esp": { langDocument = langDocument_spanish; break; }
+                }
+
+                string translation = "";
+                XmlNode translationNodes = langDocument.SelectNodes(textNodesPath)
+                    .Cast<XmlNode>().SingleOrDefault(node => node["LineId"].InnerText == lineId);
+
+                if (translationNodes != null)
+                {
+                    translation = translationNodes?["Text"]?.InnerText;
+
+                    if (translation == null)
+                    {
+                        throw new InvalidOperationException("Cannot get translation, text node not found");
+                    }
+
+                    #region Add tier numbers on residence buildings
+
+                    // Tier numbers 1 (all regions)
+                    if (b.Guid == 3087 || b.Guid == 6414)
+                    {
+                        translation = "(1) " + translation;
+                    }
+                    // Tier numbers 2 (all regions)
+                    if (b.Guid == 3141 || b.Guid == 6471 || b.Guid == 6475)
+                    {
+                        translation = "(2) " + translation;
+                    }
+                    // Tier numbers 3 (all regions)
+                    if (b.Guid == 3142 || b.Guid == 6472 || b.Guid == 6514)
+                    {
+                        translation = "(3) " + translation;
+                    }
+                    // Tier numbers 4 (Roman only)
+                    if (b.Guid == 3145)
+                    {
+                        translation = "(4) " + translation;
+                    }
+
+                    #endregion
+
+                    #region Add tier numbers on warehouses
+
+                    // Tier numbers 1 (all regions)
+                    if (b.Guid == 3310 || b.Guid == 7055)
+                    {
+                        translation = "(1) " + translation;
+                    }
+                    // Tier numbers 2 (all regions)
+                    if (b.Guid == 3311 || b.Guid == 7056)
+                    {
+                        translation = "(2) " + translation;
+                    }
+                    // Tier numbers 3 (all regions)
+                    if (b.Guid == 3312 || b.Guid == 7057)
+                    {
+                        translation = "(3) " + translation;
+                    }
+
+                    #endregion
+
+                    #region Add limits on modules and module owners
+
+                    if (moduleInfo != null)
+                    {
+                        translation = translation + " - (" + moduleInfo.ModuleAmount + ")";
+                    }
+
+                    #endregion
+                }
+
+                b.Localization.Dict.Add(Language, translation);
+            }
+
+            #endregion
+
+            if (!string.IsNullOrEmpty(b.IconFileName)) ValidateIconFile(b.IconFileName, Convert.ToString(b.Guid), b.Header);
+            buildings.Add(b);
+        }
+
+        private static void ParseModules117(XmlDocument assetsDocument, XmlDocument templatesDocument)
+        {
+            List<XmlNode> assetNodes = assetsDocument.SelectNodes("//Asset[Values/ModuleOwner]")
+                .Cast<XmlNode>()
+                .ToList();
+
+            foreach (XmlNode assetNode in assetNodes)
+            {
+                try
+                {
+                    Asset asset = new Asset(assetNode, assetsDocument, templatesDocument);
+                    string ownerGuid = asset.GetValue("Standard/GUID");
+
+                    if (asset.SelectNode("ModuleOwner") != null)
+                    {
+                        string moduleLimit = asset.GetValue("ModuleOwner/ModuleLimits/Main/Limit");
+                        string moduleGuid = asset.GetValue("ModuleOwner/ConstructionOptions/Item/ModuleGUID");
+                        modulesList117.Add(new ModuleInfo() { ModuleGuid = moduleGuid, ModuleAmount = moduleLimit, OwnerGuid = ownerGuid });
+                    }
+                }
+                catch (BaseAssetMissingException)
+                {
+                    var oldColor = Console.ForegroundColor;
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("--> Base asset not found, Module is skipped");
+                    Console.ForegroundColor = oldColor;
+                    continue;
+                }
+            }
+        }
+
+        #endregion
     }
 }

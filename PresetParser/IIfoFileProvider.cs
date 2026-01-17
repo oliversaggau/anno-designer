@@ -4,6 +4,6 @@ namespace PresetParser
 {
     public interface IIfoFileProvider
     {
-        XmlDocument GetIfoFileContent(string basePath, string variationFilename);
+        XmlDocument GetIfoFileContent(string basePath, string variationFilename, string annoVersion);
     }
 }
