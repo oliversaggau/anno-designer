@@ -30,4 +30,8 @@
     </Reference>
   </ItemGroup>
 
+  <ItemGroup>
+    <InternalsVisibleTo Include="AnnoDesigner.Import.Tests" />
+  </ItemGroup>
+
 </Project>

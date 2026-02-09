@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <InternalsVisibleTo Include="AnnoDesigner.Import" />
+    <InternalsVisibleTo Include="AnnoDesigner.Import.Tests" />
     <InternalsVisibleTo Include="IslandOutlinesExtractor" />
   </ItemGroup>
 

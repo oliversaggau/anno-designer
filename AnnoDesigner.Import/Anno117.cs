@@ -204,14 +204,14 @@ namespace AnnoDesigner.Import
 
             #region Graph Section
 
-            private static void ProcessGraph(Tag graph, Action<TileGraph.Tile> action)
+            private static void ProcessGraph(Tag graph, Action<TileGraph.TileResult> action)
             {
                 IEnumerable<Point2D<int>> nodes = graph.Tag("Nodes").Attributes().Select(node => node.ToPoint2D<int>()); // TODO can we simply ignore the nodes?
                 IEnumerable<Tag> edges = graph.Tag("Edges").Tags();
                 ProcessEdges(edges, action);
             }
 
-            private static void ProcessEdges(IEnumerable<Tag> edges, Action<TileGraph.Tile> action)
+            private static void ProcessEdges(IEnumerable<Tag> edges, Action<TileGraph.TileResult> action)
             {
                 TileGraph graph = new TileGraph();
 
