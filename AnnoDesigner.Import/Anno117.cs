@@ -93,6 +93,7 @@ namespace AnnoDesigner.Import
 
                             if (template != null)
                             {
+                                if (template.Template == "AqueductConnector") continue; // will be added later via aqueductGraph
                                 var position = gameObject.Attribute("Position").ToPoint3D<float>();
                                 float direction = gameObject.Attribute("Direction")?.ToNumber<float>() ?? 0;
                                 GameObject building = new GameObject(template, direction, island.ToLocalCoordinates<float>(position));
