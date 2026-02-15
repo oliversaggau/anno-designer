@@ -249,7 +249,7 @@ namespace AnnoDesigner.Models
 
         public double RotationDegrees
         {
-            get => Rotation * (180 / Math.PI);
+            get => Math.Round(Rotation * (180 / Math.PI));
         }
 
         public bool IsDiagonal

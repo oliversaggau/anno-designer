@@ -1070,9 +1070,9 @@ namespace AnnoDesigner
                     var hoveredObj = GetObjectAt(_mousePosition);
                     if (hoveredObj != null)
                     {
-                        drawingContext.Push(hoveredObj, hoveredObj.GetScreenRectRotationCenterPoint(_gridSize));
+                        drawingContext.PushTransform(hoveredObj, hoveredObj.GetScreenRectRotationCenterPoint(_gridSize));
                         drawingContext.DrawObjectShape(hoveredObj, null, _highlightPen, hoveredObj.CalculateScreenRect(_gridSize));
-                        drawingContext.Pop(hoveredObj);
+                        drawingContext.PopTransform(hoveredObj);
                     }
                 }
             }
@@ -1417,7 +1417,7 @@ namespace AnnoDesigner
             foreach (var curLayoutObject in objects)
             {
                 var obj = curLayoutObject.WrappedAnnoObject;
-                drawingContext.Push(curLayoutObject, curLayoutObject.GetScreenRectRotationCenterPoint(_gridSize));
+                drawingContext.PushTransform(curLayoutObject, curLayoutObject.GetScreenRectRotationCenterPoint(gridSize));
 
                 // draw object shape
                 var objRect = curLayoutObject.CalculateScreenRect(gridSize);
@@ -1434,6 +1434,9 @@ namespace AnnoDesigner
                         drawingContext.DrawRectangle(curLayoutObject.BlockedAreaBrush, borderPen, objBlockedRect.Value);
                     }
                 }
+
+                // push transform for text and icon
+                drawingContext.PushTextTransform(curLayoutObject, ref objRect);
 
                 // draw object icon if it is at least 2x2 cells
                 var iconRendered = false;
@@ -1515,7 +1518,8 @@ namespace AnnoDesigner
                     drawingContext.DrawText(text, textLocation);
                 }
 
-                drawingContext.Pop(curLayoutObject);
+                drawingContext.PopTextTransform(curLayoutObject);
+                drawingContext.PopTransform(curLayoutObject);
             }
         }
 
@@ -1550,9 +1554,9 @@ namespace AnnoDesigner
                 foreach (var curLayoutObject in objects)
                 {
                     // draw object rectangle                
-                    context.Push(curLayoutObject, curLayoutObject.GetScreenRectRotationCenterPoint(_gridSize));
+                    context.PushTransform(curLayoutObject, curLayoutObject.GetScreenRectRotationCenterPoint(_gridSize));
                     context.DrawObjectShape(curLayoutObject, null, _highlightPen, curLayoutObject.CalculateScreenRect(GridSize));
-                    context.Pop(curLayoutObject);
+                    context.PopTransform(curLayoutObject);
                 }
 
                 context.Close();
