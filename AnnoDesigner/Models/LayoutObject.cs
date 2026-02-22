@@ -354,6 +354,25 @@ namespace AnnoDesigner.Models
         }
 
         /// <summary>
+        /// Indicates whether the object contains the specified point. For diagonal
+        /// objects the geometry uses the same transform that is applied during rendering.
+        /// </summary>
+        public bool Contains(Point gridPosition)
+        {
+            if (!IsDiagonal)
+            {
+                return GridRect.Contains(gridPosition);
+            }
+
+            Point offset = ScaleDiagonal(WrappedAnnoObject.RotationCenter);
+            Point rotationCenter = new Point(Position.X + offset.X, Position.Y + offset.Y);
+
+            Geometry gemotry = WrappedAnnoObject.TileQuadrants.HasValue ? TileHelper.CreateGeometry(GridRect, WrappedAnnoObject.TileQuadrants.Value) : new RectangleGeometry(GridRect);
+            gemotry.Transform = new RotateTransform(-RotationDegrees, rotationCenter.X, rotationCenter.Y);
+            return gemotry.FillContains(gridPosition);
+        }
+
+        /// <summary>
         /// Gets the rect which is used for collision detection for the given object.
         /// Prevents undesired collisions which occur when using GetObjectScreenRect().
         /// </summary>        
@@ -442,13 +461,30 @@ namespace AnnoDesigner.Models
             }
         }
 
+        private Rect CalculateBounds()
+        {
+            Rect bounds = new Rect(Position, Size);
+
+            if (IsDiagonal)
+            {
+                Point offset = ScaleDiagonal(WrappedAnnoObject.RotationCenter);
+                Point rotationCenter = new Point(Position.X + offset.X, Position.Y + offset.Y);
+
+                Geometry geometry = new RectangleGeometry(bounds);
+                geometry.Transform = new RotateTransform(-RotationDegrees, rotationCenter.X, rotationCenter.Y);
+                bounds = geometry.Bounds;
+            }
+
+            return bounds;
+        }
+
         public Rect Bounds
         {
             get
             {
                 if (_bounds is null)
                 {
-                    _bounds = new Rect(Position, Size);
+                    _bounds = CalculateBounds();
                 }
 
                 return _bounds.Value;

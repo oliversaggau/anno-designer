@@ -2665,7 +2665,7 @@ namespace AnnoDesigner
             var possibleItems = PlacedObjects.GetItemsIntersecting(new Rect(gridPosition, _intersectingRectSize));
             foreach (var curItem in possibleItems)
             {
-                if (curItem.GridRect.Contains(gridPosition))
+                if (curItem.Contains(gridPosition))
                 {
                     return curItem;
                 }
