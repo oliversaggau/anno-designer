@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="AnnoDesigner.VersionView"
+﻿<UserControl x:Class="AnnoDesigner.LayoutView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,9 +6,13 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d"  Background="White">
     <UserControl.DataContext>
-        <local:LayoutSettingsViewModel />
+        <local:LayoutViewModel />
     </UserControl.DataContext>
     <Grid>
+        <TextBlock HorizontalAlignment="Left">
+            <Run Text="{Binding SelectedSession.Name, Mode=OneWay}"/>
+            <Run Text="{Binding SelectedIsland.Name, Mode=OneWay}"/>
+        </TextBlock>
         <TextBlock HorizontalAlignment="Right">
             <Run Text="Version: "/>
             <Run Text="{Binding LayoutVersionDisplayValue}"/>

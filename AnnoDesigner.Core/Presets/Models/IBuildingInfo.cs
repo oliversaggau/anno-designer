@@ -9,7 +9,7 @@ namespace AnnoDesigner.Core.Presets.Models
         string Group { get; set; }
         string Identifier { get; set; }
         string IconFileName { get; set; }
-        SerializableDictionary<int> BuildBlocker { get; set; }
+        SerializableDictionary<double> BuildBlocker { get; set; }
         string Template { get; set; }
         double InfluenceRange { get; set; }
         double  InfluenceRadius { get; set; }

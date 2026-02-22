@@ -8,11 +8,11 @@ using Xunit;
 
 namespace AnnoDesigner.Tests
 {
-    public class LayoutSettingsViewModelTests
+    public class LayoutViewModelTests
     {
-        private LayoutSettingsViewModel GetViewModel(Version layoutVersionToUse = null)
+        private LayoutViewModel GetViewModel(Version layoutVersionToUse = null)
         {
-            return new LayoutSettingsViewModel
+            return new LayoutViewModel
             {
                 LayoutVersion = layoutVersionToUse ?? new Version(99, 99, 99, 99)
             };
@@ -24,7 +24,7 @@ namespace AnnoDesigner.Tests
         public void Ctor_ShouldSetDefaultValues()
         {
             // Arrange/Act
-            var viewModel = new LayoutSettingsViewModel();
+            var viewModel = new LayoutViewModel();
 
             // Assert
             Assert.Equal(new Version(1, 0, 0, 0), viewModel.LayoutVersion);

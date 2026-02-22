@@ -22,6 +22,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PresetParser.Tests", "Tests
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnnoDesigner.Tests", "Tests\AnnoDesigner.Tests\AnnoDesigner.Tests.csproj", "{809FDE16-4864-4CD2-83A5-75315E970BFD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnnoDesigner.Import", "AnnoDesigner.Import\AnnoDesigner.Import.csproj", "{1408FDAD-BBFD-4D77-8183-0E77F860038A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnnoDesigner.Gamedata", "AnnoDesigner.Gamedata\AnnoDesigner.Gamedata.csproj", "{BC8E5EBF-54D6-4A94-9278-7120DF9BB8B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IslandOutlinesExtractor", "IslandOutlinesExtractor\IslandOutlinesExtractor.csproj", "{3D95146D-8797-62DE-D35D-C8D6028B6E5B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnnoDesigner.Import.Tests", "Tests\AnnoDesigner.Import.Tests\AnnoDesigner.Import.Tests.csproj", "{2DB42ABC-77BF-A42C-E0FA-97F86917A2C8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -52,6 +60,22 @@ Global
 		{809FDE16-4864-4CD2-83A5-75315E970BFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{809FDE16-4864-4CD2-83A5-75315E970BFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{809FDE16-4864-4CD2-83A5-75315E970BFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1408FDAD-BBFD-4D77-8183-0E77F860038A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1408FDAD-BBFD-4D77-8183-0E77F860038A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1408FDAD-BBFD-4D77-8183-0E77F860038A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1408FDAD-BBFD-4D77-8183-0E77F860038A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC8E5EBF-54D6-4A94-9278-7120DF9BB8B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC8E5EBF-54D6-4A94-9278-7120DF9BB8B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC8E5EBF-54D6-4A94-9278-7120DF9BB8B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC8E5EBF-54D6-4A94-9278-7120DF9BB8B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D95146D-8797-62DE-D35D-C8D6028B6E5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D95146D-8797-62DE-D35D-C8D6028B6E5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D95146D-8797-62DE-D35D-C8D6028B6E5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D95146D-8797-62DE-D35D-C8D6028B6E5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DB42ABC-77BF-A42C-E0FA-97F86917A2C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DB42ABC-77BF-A42C-E0FA-97F86917A2C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DB42ABC-77BF-A42C-E0FA-97F86917A2C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DB42ABC-77BF-A42C-E0FA-97F86917A2C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,6 +84,7 @@ Global
 		{82097B68-D1A8-4091-A5AE-D4F65138D933} = {97F1FB7F-39A2-48F8-BA71-9AA5D077F0C9}
 		{D49B557D-320C-425E-8822-051AC5A1A26F} = {97F1FB7F-39A2-48F8-BA71-9AA5D077F0C9}
 		{809FDE16-4864-4CD2-83A5-75315E970BFD} = {97F1FB7F-39A2-48F8-BA71-9AA5D077F0C9}
+		{2DB42ABC-77BF-A42C-E0FA-97F86917A2C8} = {97F1FB7F-39A2-48F8-BA71-9AA5D077F0C9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {39A81E7F-D35A-4B00-94CC-1D29CF9A80E6}

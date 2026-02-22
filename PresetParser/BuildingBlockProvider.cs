@@ -34,11 +34,18 @@ namespace PresetParser
             _ifoFileProvider = ifoFileProviderToUse ?? throw new ArgumentNullException(nameof(ifoFileProviderToUse));
         }
 
-        public SerializableDictionary<int> CreateBuildBlocker(int x, int z)
+        public SerializableDictionary<double> CreateBuildBlocker(double width, double height)
         {
-            var result = new SerializableDictionary<int>();
-            result[X] = x;
-            result[Z] = z;
+            return CreateBuildBlocker(0, 0, width, height);
+        }
+
+        public SerializableDictionary<double> CreateBuildBlocker(double x0, double z0, double width, double height)
+        {
+            var result = new SerializableDictionary<double>();
+            result["x0"] = x0;
+            result["z0"] = z0;
+            result[X] = width;
+            result[Z] = height;
             return result;
         }
 
@@ -98,7 +105,7 @@ namespace PresetParser
             PointF topRight = new PointF(points.Max(p => p.X), points.Max(p => p.Y));
             PointF bottomLeft = new PointF(points.Min(p => p.X), points.Min(p => p.Y));
             RectangleF bounds = new RectangleF(bottomLeft.X, bottomLeft.Y, topRight.X - bottomLeft.X, topRight.Y - bottomLeft.Y);
-            building.BuildBlocker = CreateBuildBlocker((int)bounds.Width, (int)bounds.Height);
+            building.BuildBlocker = CreateBuildBlocker(bounds.X, bounds.Y, bounds.Width, bounds.Height);
             return true;
         }
 
@@ -140,7 +147,7 @@ namespace PresetParser
                     return false;
                 }
 
-                building.BuildBlocker = new SerializableDictionary<int>();
+                building.BuildBlocker = new SerializableDictionary<double>();
 
                 //Convert the strings to a Variable and replace the "." for a "," to keep calculatable numbers
                 var xfNormal1 = double.Parse(node1["xf"].InnerText, NumberStyles.Any, CultureInfo.InvariantCulture);
@@ -267,7 +274,7 @@ namespace PresetParser
             try
             {
                 XmlNode node = ifoDocument.FirstChild[BUILDBLOCKER]?.FirstChild;
-                building.BuildBlocker = new SerializableDictionary<int>();
+                building.BuildBlocker = new SerializableDictionary<double>();
 
                 var x = 0;
                 var z = 0;

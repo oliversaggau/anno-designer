@@ -13,10 +13,10 @@ namespace AnnoDesigner.Tests.Undo
         public void Undo_LayoutVersion_ShouldBeUpdated()
         {
             // Arrange
-            var viewModel = new LayoutSettingsViewModel();
+            var viewModel = new LayoutViewModel();
             var operation = new ModifyLayoutVersionOperation()
             {
-                LayoutSettingsViewModel = viewModel,
+                LayoutViewModel = viewModel,
                 OldValue = new Version(1, 0, 0, 0),
                 NewValue = new Version(42, 42, 42, 42)
             };
@@ -36,10 +36,10 @@ namespace AnnoDesigner.Tests.Undo
         public void Rodo_LayoutVersion_ShouldBeUpdated()
         {
             // Arrange
-            var viewModel = new LayoutSettingsViewModel();
+            var viewModel = new LayoutViewModel();
             var operation = new ModifyLayoutVersionOperation()
             {
-                LayoutSettingsViewModel = viewModel,
+                LayoutViewModel = viewModel,
                 OldValue = new Version(1, 0, 0, 0),
                 NewValue = new Version(42, 42, 42, 42)
             };

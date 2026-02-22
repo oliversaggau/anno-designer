@@ -5,7 +5,7 @@
         public int? GridSize { get; set; }
 
         public bool RenderStatistics { get; set; }
-        public bool RenderVersion { get; set; }
+        public bool RenderLayoutInformation { get; set; }
         public bool RenderGrid { get; set; }
         public bool RenderIcon { get; set; }
         public bool RenderLabel { get; set; }

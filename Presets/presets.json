@@ -54312,8 +54312,10 @@
 			"Identifier": "Aqueduct Roman",
 			"IconFileName": null,
 			"BuildBlocker": {
-				"x": 1,
-				"z": 1
+				"x0": 0.0,
+				"z0": 0.0,
+				"x": 1.0,
+				"z": 1.0
 			},
 			"Template": "AqueductConnector",
 			"InfluenceRange": 0.0,
@@ -54339,8 +54341,10 @@
 			"Identifier": "Military Roman Wall Stone Gate",
 			"IconFileName": "A8_stone_gate.png",
 			"BuildBlocker": {
-				"x": 3,
-				"z": 1
+				"x0": 0.0,
+				"z0": 0.0,
+				"x": 3.0,
+				"z": 1.0
 			},
 			"Template": "MilitaryGate",
 			"InfluenceRange": 0.0,
@@ -54366,8 +54370,10 @@
 			"Identifier": "Military Roman Wall Stone",
 			"IconFileName": "A8_stone_wall.png",
 			"BuildBlocker": {
-				"x": 1,
-				"z": 1
+				"x0": 0.0,
+				"z0": 0.0,
+				"x": 1.0,
+				"z": 1.0
 			},
 			"Template": "MilitaryWall",
 			"InfluenceRange": 0.0,
@@ -54393,8 +54399,10 @@
 			"Identifier": "Military Roman Tower Stone Archer",
 			"IconFileName": "A8_stone_archer_tower.png",
 			"BuildBlocker": {
-				"x": 2,
-				"z": 2
+				"x0": -1.0,
+				"z0": -1.0,
+				"x": 2.0,
+				"z": 2.0
 			},
 			"Template": "MilitaryTowerUnit",
 			"InfluenceRange": 0.0,
@@ -54420,8 +54428,10 @@
 			"Identifier": "Aqueduct Roman Celtic",
 			"IconFileName": null,
 			"BuildBlocker": {
-				"x": 1,
-				"z": 1
+				"x0": 0.0,
+				"z0": 0.0,
+				"x": 1.0,
+				"z": 1.0
 			},
 			"Template": "AqueductConnector",
 			"InfluenceRange": 0.0,
@@ -54447,8 +54457,10 @@
 			"Identifier": "Villa 01 Roman",
 			"IconFileName": "A8_base_villa.png",
 			"BuildBlocker": {
-				"x": 9,
-				"z": 11
+				"x0": -4.5,
+				"z0": -5.5,
+				"x": 9.0,
+				"z": 11.0
 			},
 			"Template": "VillaUrban",
 			"InfluenceRange": 0.0,
@@ -54474,8 +54486,10 @@
 			"Identifier": "Harbor Warehouse Roman 01",
 			"IconFileName": "A8_harbour_kontor.png",
 			"BuildBlocker": {
-				"x": 14,
-				"z": 7
+				"x0": -1.0,
+				"z0": -3.5,
+				"x": 14.0,
+				"z": 7.0
 			},
 			"Template": "HarborWarehouse",
 			"InfluenceRange": 0.0,
@@ -54501,8 +54515,10 @@
 			"Identifier": "Military Roman Tower Stone Ballista",
 			"IconFileName": "A8_stone_ballista_tower.png",
 			"BuildBlocker": {
-				"x": 2,
-				"z": 2
+				"x0": -1.0,
+				"z0": -1.0,
+				"x": 2.0,
+				"z": 2.0
 			},
 			"Template": "MilitaryTowerUnit",
 			"InfluenceRange": 0.0,
@@ -54528,8 +54544,10 @@
 			"Identifier": "Military Roman Wall Wood Gate",
 			"IconFileName": "A8_wood_gate.png",
 			"BuildBlocker": {
-				"x": 3,
-				"z": 1
+				"x0": 0.0,
+				"z0": 0.0,
+				"x": 3.0,
+				"z": 1.0
 			},
 			"Template": "MilitaryGate",
 			"InfluenceRange": 0.0,
@@ -54555,8 +54573,10 @@
 			"Identifier": "Military Roman Tower Wood Archer",
 			"IconFileName": "A8_wood_archer_tower.png",
 			"BuildBlocker": {
-				"x": 2,
-				"z": 2
+				"x0": -1.0,
+				"z0": -1.0,
+				"x": 2.0,
+				"z": 2.0
 			},
 			"Template": "MilitaryTowerUnit",
 			"InfluenceRange": 0.0,
@@ -54582,8 +54602,10 @@
 			"Identifier": "Harbor Depot Roman",
 			"IconFileName": "A8_harbour_depot.png",
 			"BuildBlocker": {
-				"x": 11,
-				"z": 4
+				"x0": -1.0,
+				"z0": -2.0,
+				"x": 11.0,
+				"z": 4.0
 			},
 			"Template": "HarborDepot",
 			"InfluenceRange": 0.0,
@@ -54609,8 +54631,10 @@
 			"Identifier": "Harbor Shipyard Roman",
 			"IconFileName": "A8_harbour_shipyard.png",
 			"BuildBlocker": {
-				"x": 12,
-				"z": 8
+				"x0": -1.0,
+				"z0": -4.0,
+				"x": 12.0,
+				"z": 8.0
 			},
 			"Template": "RecruitmentBuilding",
 			"InfluenceRange": 0.0,
@@ -54636,8 +54660,10 @@
 			"Identifier": "Harbor Pier Roman",
 			"IconFileName": "A8_harbour_trading_pier.png",
 			"BuildBlocker": {
-				"x": 9,
-				"z": 6
+				"x0": -1.0,
+				"z0": -3.0,
+				"x": 9.0,
+				"z": 6.0
 			},
 			"Template": "TradeBuilding",
 			"InfluenceRange": 0.0,
@@ -54663,8 +54689,10 @@
 			"Identifier": "Harbor Repair Crane Roman",
 			"IconFileName": "A8_harbour_repair_crane.png",
 			"BuildBlocker": {
-				"x": 5,
-				"z": 5
+				"x0": -2.5,
+				"z0": -2.5,
+				"x": 5.0,
+				"z": 5.0
 			},
 			"Template": "RepairCrane",
 			"InfluenceRange": 0.0,
@@ -54690,8 +54718,10 @@
 			"Identifier": "Warehouse Roman 01",
 			"IconFileName": "A8_base_warehouse.png",
 			"BuildBlocker": {
-				"x": 6,
-				"z": 6
+				"x0": -3.0,
+				"z0": -3.0,
+				"x": 6.0,
+				"z": 6.0
 			},
 			"Template": "Warehouse",
 			"InfluenceRange": 0.0,
@@ -54717,8 +54747,10 @@
 			"Identifier": "Warehouse Roman 02",
 			"IconFileName": "A8_base_warehouse.png",
 			"BuildBlocker": {
-				"x": 6,
-				"z": 6
+				"x0": -3.0,
+				"z0": -3.0,
+				"x": 6.0,
+				"z": 6.0
 			},
 			"Template": "Warehouse",
 			"InfluenceRange": 0.0,
@@ -54744,8 +54776,10 @@
 			"Identifier": "Warehouse Roman 03",
 			"IconFileName": "A8_base_warehouse.png",
 			"BuildBlocker": {
-				"x": 6,
-				"z": 6
+				"x0": -3.0,
+				"z0": -3.0,
+				"x": 6.0,
+				"z": 6.0
 			},
 			"Template": "Warehouse",
 			"InfluenceRange": 0.0,
@@ -54771,8 +54805,10 @@
 			"Identifier": "Production Coast Roman Sardines",
 			"IconFileName": "A8_sardines_goods.png",
 			"BuildBlocker": {
-				"x": 8,
-				"z": 3
+				"x0": -1.0,
+				"z0": -1.5,
+				"x": 8.0,
+				"z": 3.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -54798,8 +54834,10 @@
 			"Identifier": "Production Coast Roman Mackerels",
 			"IconFileName": "A8_mackerels_goods.png",
 			"BuildBlocker": {
-				"x": 9,
-				"z": 4
+				"x0": -1.0,
+				"z0": -2.0,
+				"x": 9.0,
+				"z": 4.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -54825,8 +54863,10 @@
 			"Identifier": "Production Coast Roman Salt",
 			"IconFileName": "A8_salt_goods.png",
 			"BuildBlocker": {
-				"x": 9,
-				"z": 5
+				"x0": -1.0,
+				"z0": -2.5,
+				"x": 9.0,
+				"z": 5.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -54852,8 +54892,10 @@
 			"Identifier": "Production Coast Roman Sea Snails",
 			"IconFileName": "A8_murex_snails_goods.png",
 			"BuildBlocker": {
-				"x": 11,
-				"z": 5
+				"x0": -1.0,
+				"z0": -2.5,
+				"x": 11.0,
+				"z": 5.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -54879,8 +54921,10 @@
 			"Identifier": "Production Coast Roman Silica",
 			"IconFileName": "A8_silica_goods.png",
 			"BuildBlocker": {
-				"x": 7,
-				"z": 6
+				"x0": -1.0,
+				"z0": -3.0,
+				"x": 7.0,
+				"z": 6.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -54906,8 +54950,10 @@
 			"Identifier": "Production Coast Roman Oysters",
 			"IconFileName": "A8_oysters_goods.png",
 			"BuildBlocker": {
-				"x": 12,
-				"z": 6
+				"x0": -1.0,
+				"z0": -3.0,
+				"x": 12.0,
+				"z": 6.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -54933,8 +54979,10 @@
 			"Identifier": "Module Field Roman Oats",
 			"IconFileName": "A8_farm_fields.png",
 			"BuildBlocker": {
-				"x": 1,
-				"z": 1
+				"x0": 0.0,
+				"z0": 0.0,
+				"x": 1.0,
+				"z": 1.0
 			},
 			"Template": "Module Polygon Field",
 			"InfluenceRange": 0.0,
@@ -54960,8 +55008,10 @@
 			"Identifier": "Module Field Roman Hemp",
 			"IconFileName": "A8_farm_fields.png",
 			"BuildBlocker": {
-				"x": 1,
-				"z": 1
+				"x0": 0.0,
+				"z0": 0.0,
+				"x": 1.0,
+				"z": 1.0
 			},
 			"Template": "Module Polygon Field",
 			"InfluenceRange": 0.0,
@@ -54987,8 +55037,10 @@
 			"Identifier": "Module Field Roman Wheat",
 			"IconFileName": "A8_farm_fields.png",
 			"BuildBlocker": {
-				"x": 1,
-				"z": 1
+				"x0": 0.0,
+				"z0": 0.0,
+				"x": 1.0,
+				"z": 1.0
 			},
 			"Template": "Module Polygon Field",
 			"InfluenceRange": 0.0,
@@ -55014,8 +55066,10 @@
 			"Identifier": "Module Field Roman Grapes",
 			"IconFileName": "A8_farm_fields.png",
 			"BuildBlocker": {
-				"x": 1,
-				"z": 1
+				"x0": 0.0,
+				"z0": 0.0,
+				"x": 1.0,
+				"z": 1.0
 			},
 			"Template": "Module Polygon Field",
 			"InfluenceRange": 0.0,
@@ -55041,8 +55095,10 @@
 			"Identifier": "Module Field Roman Lavender",
 			"IconFileName": "A8_farm_fields.png",
 			"BuildBlocker": {
-				"x": 1,
-				"z": 1
+				"x0": 0.0,
+				"z0": 0.0,
+				"x": 1.0,
+				"z": 1.0
 			},
 			"Template": "Module Polygon Field",
 			"InfluenceRange": 0.0,
@@ -55068,8 +55124,10 @@
 			"Identifier": "Module Field Roman Olives",
 			"IconFileName": "A8_farm_fields.png",
 			"BuildBlocker": {
-				"x": 1,
-				"z": 1
+				"x0": 0.0,
+				"z0": 0.0,
+				"x": 1.0,
+				"z": 1.0
 			},
 			"Template": "Module Polygon Field",
 			"InfluenceRange": 0.0,
@@ -55095,8 +55153,10 @@
 			"Identifier": "Module Field Roman Flax",
 			"IconFileName": "A8_farm_fields.png",
 			"BuildBlocker": {
-				"x": 1,
-				"z": 1
+				"x0": 0.0,
+				"z0": 0.0,
+				"x": 1.0,
+				"z": 1.0
 			},
 			"Template": "Module Polygon Field",
 			"InfluenceRange": 0.0,
@@ -55122,8 +55182,10 @@
 			"Identifier": "Module Field Roman Sandarac Wood",
 			"IconFileName": "A8_farm_fields.png",
 			"BuildBlocker": {
-				"x": 1,
-				"z": 1
+				"x0": 0.0,
+				"z0": 0.0,
+				"x": 1.0,
+				"z": 1.0
 			},
 			"Template": "Module Polygon Field",
 			"InfluenceRange": 0.0,
@@ -55149,8 +55211,10 @@
 			"Identifier": "Production Field Roman Oats",
 			"IconFileName": "A8_oats_goods.png",
 			"BuildBlocker": {
-				"x": 4,
-				"z": 4
+				"x0": -2.0,
+				"z0": -2.0,
+				"x": 4.0,
+				"z": 4.0
 			},
 			"Template": "Production Field",
 			"InfluenceRange": 0.0,
@@ -55176,8 +55240,10 @@
 			"Identifier": "Production Field Roman Hemp",
 			"IconFileName": "A8_hemp_goods.png",
 			"BuildBlocker": {
-				"x": 4,
-				"z": 3
+				"x0": -2.0,
+				"z0": -1.5,
+				"x": 4.0,
+				"z": 3.0
 			},
 			"Template": "Production Field",
 			"InfluenceRange": 0.0,
@@ -55203,8 +55269,10 @@
 			"Identifier": "Production Field Roman Wheat",
 			"IconFileName": "A8_wheat_goods.png",
 			"BuildBlocker": {
-				"x": 4,
-				"z": 3
+				"x0": -2.0,
+				"z0": -1.5,
+				"x": 4.0,
+				"z": 3.0
 			},
 			"Template": "Production Field",
 			"InfluenceRange": 0.0,
@@ -55230,8 +55298,10 @@
 			"Identifier": "Production Field Roman Grapes",
 			"IconFileName": "A8_grapes_goods.png",
 			"BuildBlocker": {
-				"x": 5,
-				"z": 4
+				"x0": -2.5,
+				"z0": -2.0,
+				"x": 5.0,
+				"z": 4.0
 			},
 			"Template": "Production Field",
 			"InfluenceRange": 0.0,
@@ -55257,8 +55327,10 @@
 			"Identifier": "Production Field Roman Lavender",
 			"IconFileName": "A8_lavender_goods.png",
 			"BuildBlocker": {
-				"x": 5,
-				"z": 4
+				"x0": -2.5,
+				"z0": -2.0,
+				"x": 5.0,
+				"z": 4.0
 			},
 			"Template": "Production Field",
 			"InfluenceRange": 0.0,
@@ -55284,8 +55356,10 @@
 			"Identifier": "Production Field Roman Olives",
 			"IconFileName": "A8_olives_goods.png",
 			"BuildBlocker": {
-				"x": 4,
-				"z": 4
+				"x0": -2.0,
+				"z0": -2.0,
+				"x": 4.0,
+				"z": 4.0
 			},
 			"Template": "Production Field",
 			"InfluenceRange": 0.0,
@@ -55311,8 +55385,10 @@
 			"Identifier": "Production Field Roman Flax",
 			"IconFileName": "A8_flax_goods.png",
 			"BuildBlocker": {
-				"x": 5,
-				"z": 4
+				"x0": -2.5,
+				"z0": -2.0,
+				"x": 5.0,
+				"z": 4.0
 			},
 			"Template": "Production Field",
 			"InfluenceRange": 0.0,
@@ -55338,8 +55414,10 @@
 			"Identifier": "Production Field Roman Sandarac Wood",
 			"IconFileName": "A8_cypress_wood_goods.png",
 			"BuildBlocker": {
-				"x": 5,
-				"z": 4
+				"x0": -2.5,
+				"z0": -2.0,
+				"x": 5.0,
+				"z": 4.0
 			},
 			"Template": "Production Field",
 			"InfluenceRange": 0.0,
@@ -55365,8 +55443,10 @@
 			"Identifier": "Production Forest Roman Wood",
 			"IconFileName": "A8_wood_goods.png",
 			"BuildBlocker": {
-				"x": 4,
-				"z": 4
+				"x0": -2.0,
+				"z0": -2.0,
+				"x": 4.0,
+				"z": 4.0
 			},
 			"Template": "Production Area",
 			"InfluenceRange": 0.0,
@@ -55392,8 +55472,10 @@
 			"Identifier": "Production Forest Roman Charcoal",
 			"IconFileName": "A8_charcoal_goods.png",
 			"BuildBlocker": {
-				"x": 6,
-				"z": 5
+				"x0": -3.0,
+				"z0": -2.5,
+				"x": 6.0,
+				"z": 5.0
 			},
 			"Template": "Production Area",
 			"InfluenceRange": 0.0,
@@ -55419,8 +55501,10 @@
 			"Identifier": "Production Forest Roman Resin",
 			"IconFileName": "A8_resin_goods.png",
 			"BuildBlocker": {
-				"x": 5,
-				"z": 5
+				"x0": -2.5,
+				"z0": -2.5,
+				"x": 5.0,
+				"z": 5.0
 			},
 			"Template": "Production Area",
 			"InfluenceRange": 0.0,
@@ -55446,8 +55530,10 @@
 			"Identifier": "Production Meadow Roman Honycombs",
 			"IconFileName": "A8_honeycombs_goods.png",
 			"BuildBlocker": {
-				"x": 5,
-				"z": 5
+				"x0": -2.5,
+				"z0": -2.5,
+				"x": 5.0,
+				"z": 5.0
 			},
 			"Template": "Production Area",
 			"InfluenceRange": 0.0,
@@ -55473,8 +55559,10 @@
 			"Identifier": "Production Mountain Roman Iron Ore",
 			"IconFileName": "A8_iron_ore_goods.png",
 			"BuildBlocker": {
-				"x": 8,
-				"z": 3
+				"x0": -1.5,
+				"z0": -1.5,
+				"x": 8.0,
+				"z": 3.0
 			},
 			"Template": "SlotFactoryBuilding7",
 			"InfluenceRange": 0.0,
@@ -55500,8 +55588,10 @@
 			"Identifier": "Production Mountain Roman Limestone Blocks",
 			"IconFileName": "A8_limestone_goods.png",
 			"BuildBlocker": {
-				"x": 8,
-				"z": 3
+				"x0": -1.5,
+				"z0": -1.5,
+				"x": 8.0,
+				"z": 3.0
 			},
 			"Template": "SlotFactoryBuilding7",
 			"InfluenceRange": 0.0,
@@ -55527,8 +55617,10 @@
 			"Identifier": "Production Mountain Roman Marble Blocks",
 			"IconFileName": "A8_marble_goods.png",
 			"BuildBlocker": {
-				"x": 8,
-				"z": 3
+				"x0": -1.5,
+				"z0": -1.5,
+				"x": 8.0,
+				"z": 3.0
 			},
 			"Template": "SlotFactoryBuilding7",
 			"InfluenceRange": 0.0,
@@ -55554,8 +55646,10 @@
 			"Identifier": "Production Mountain Roman Minerals",
 			"IconFileName": "A8_minerals_goods.png",
 			"BuildBlocker": {
-				"x": 8,
-				"z": 3
+				"x0": -1.5,
+				"z0": -1.5,
+				"x": 8.0,
+				"z": 3.0
 			},
 			"Template": "SlotFactoryBuilding7",
 			"InfluenceRange": 0.0,
@@ -55581,8 +55675,10 @@
 			"Identifier": "Production Mountain Roman Gold Ore",
 			"IconFileName": "A8_gold_ore_goods.png",
 			"BuildBlocker": {
-				"x": 8,
-				"z": 3
+				"x0": -1.5,
+				"z0": -1.5,
+				"x": 8.0,
+				"z": 3.0
 			},
 			"Template": "SlotFactoryBuilding7",
 			"InfluenceRange": 0.0,
@@ -55608,8 +55704,10 @@
 			"Identifier": "Module Pasture Roman Wool",
 			"IconFileName": "A8_animal_compound.png",
 			"BuildBlocker": {
-				"x": 3,
-				"z": 3
+				"x0": -1.5,
+				"z0": -1.5,
+				"x": 3.0,
+				"z": 3.0
 			},
 			"Template": "Module Field",
 			"InfluenceRange": 0.0,
@@ -55635,8 +55733,10 @@
 			"Identifier": "Module Pasture Roman Pigs",
 			"IconFileName": "A8_animal_compound.png",
 			"BuildBlocker": {
-				"x": 3,
-				"z": 2
+				"x0": -1.5,
+				"z0": -1.0,
+				"x": 3.0,
+				"z": 2.0
 			},
 			"Template": "Module Field",
 			"InfluenceRange": 0.0,
@@ -55662,8 +55762,10 @@
 			"Identifier": "Module Pasture Roman Horses",
 			"IconFileName": "A8_animal_compound.png",
 			"BuildBlocker": {
-				"x": 3,
-				"z": 4
+				"x0": -1.5,
+				"z0": -2.0,
+				"x": 3.0,
+				"z": 4.0
 			},
 			"Template": "Module Field",
 			"InfluenceRange": 0.0,
@@ -55689,8 +55791,10 @@
 			"Identifier": "Production Pasture Roman Sheep",
 			"IconFileName": "A8_sheep_goods.png",
 			"BuildBlocker": {
-				"x": 3,
-				"z": 3
+				"x0": -1.5,
+				"z0": -1.5,
+				"x": 3.0,
+				"z": 3.0
 			},
 			"Template": "Production Field",
 			"InfluenceRange": 0.0,
@@ -55716,8 +55820,10 @@
 			"Identifier": "Production Pasture Roman Pigs",
 			"IconFileName": "A8_pigs_goods.png",
 			"BuildBlocker": {
-				"x": 3,
-				"z": 4
+				"x0": -1.5,
+				"z0": -2.0,
+				"x": 3.0,
+				"z": 4.0
 			},
 			"Template": "Production Field",
 			"InfluenceRange": 0.0,
@@ -55743,8 +55849,10 @@
 			"Identifier": "Production Pasture Roman Horses",
 			"IconFileName": "A8_horses_goods.png",
 			"BuildBlocker": {
-				"x": 5,
-				"z": 4
+				"x0": -2.5,
+				"z0": -2.0,
+				"x": 5.0,
+				"z": 4.0
 			},
 			"Template": "Production Field",
 			"InfluenceRange": 0.0,
@@ -55770,8 +55878,10 @@
 			"Identifier": "Production River Roman Clay",
 			"IconFileName": "A8_clay_goods.png",
 			"BuildBlocker": {
-				"x": 4,
-				"z": 6
+				"x0": -2.0,
+				"z0": -4.0,
+				"x": 4.0,
+				"z": 6.0
 			},
 			"Template": "SlotFactoryBuilding7",
 			"InfluenceRange": 0.0,
@@ -55797,8 +55907,10 @@
 			"Identifier": "Production River Roman Sturgeon",
 			"IconFileName": "A8_sturgeons_goods.png",
 			"BuildBlocker": {
-				"x": 4,
-				"z": 6
+				"x0": -2.0,
+				"z0": -4.0,
+				"x": 4.0,
+				"z": 6.0
 			},
 			"Template": "SlotFactoryBuilding7",
 			"InfluenceRange": 0.0,
@@ -55824,8 +55936,10 @@
 			"Identifier": "Production River Roman Gold Ore",
 			"IconFileName": "A8_gold_ore_goods.png",
 			"BuildBlocker": {
-				"x": 4,
-				"z": 6
+				"x0": -2.0,
+				"z0": -4.0,
+				"x": 4.0,
+				"z": 6.0
 			},
 			"Template": "SlotFactoryBuilding7",
 			"InfluenceRange": 0.0,
@@ -55851,8 +55965,10 @@
 			"Identifier": "Production Chemical Roman Leather",
 			"IconFileName": "A8_leather_goods.png",
 			"BuildBlocker": {
-				"x": 3,
-				"z": 4
+				"x0": -1.5,
+				"z0": -2.0,
+				"x": 3.0,
+				"z": 4.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -55878,8 +55994,10 @@
 			"Identifier": "Production Chemical Roman Tyrian Purple",
 			"IconFileName": "A8_tyrian_purple_goods.png",
 			"BuildBlocker": {
-				"x": 5,
-				"z": 5
+				"x0": -2.5,
+				"z0": -2.5,
+				"x": 5.0,
+				"z": 5.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -55905,8 +56023,10 @@
 			"Identifier": "Production Chemical Roman Fat",
 			"IconFileName": "A8_pig_lard_goods.png",
 			"BuildBlocker": {
-				"x": 3,
-				"z": 3
+				"x0": -1.5,
+				"z0": -1.5,
+				"x": 3.0,
+				"z": 3.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -55932,8 +56052,10 @@
 			"Identifier": "Production Crafts Roman Cloth",
 			"IconFileName": "A8_cloth_goods.png",
 			"BuildBlocker": {
-				"x": 6,
-				"z": 5
+				"x0": -3.0,
+				"z0": -2.5,
+				"x": 6.0,
+				"z": 5.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -55959,8 +56081,10 @@
 			"Identifier": "Production Crafts Roman Ornate Wood",
 			"IconFileName": "A8_ornamented_wood_goods.png",
 			"BuildBlocker": {
-				"x": 5,
-				"z": 5
+				"x0": -2.5,
+				"z0": -2.5,
+				"x": 5.0,
+				"z": 5.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -55986,8 +56110,10 @@
 			"Identifier": "Production Crafts Roman Cushions",
 			"IconFileName": "A8_cushion_goods.png",
 			"BuildBlocker": {
-				"x": 5,
-				"z": 3
+				"x0": -2.5,
+				"z0": -1.5,
+				"x": 5.0,
+				"z": 3.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -56013,8 +56139,10 @@
 			"Identifier": "Production Craft Roman Strings",
 			"IconFileName": "A8_strings_goods.png",
 			"BuildBlocker": {
-				"x": 5,
-				"z": 4
+				"x0": -2.5,
+				"z0": -2.0,
+				"x": 5.0,
+				"z": 4.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -56040,8 +56168,10 @@
 			"Identifier": "Production Heavy Roman Glass",
 			"IconFileName": "A8_glass_goods.png",
 			"BuildBlocker": {
-				"x": 4,
-				"z": 6
+				"x0": -2.0,
+				"z0": -4.0,
+				"x": 4.0,
+				"z": 6.0
 			},
 			"Template": "SlotFactoryBuilding7",
 			"InfluenceRange": 0.0,
@@ -56067,8 +56197,10 @@
 			"Identifier": "Production Heavy Roman Iron",
 			"IconFileName": "A8_iron_goods.png",
 			"BuildBlocker": {
-				"x": 4,
-				"z": 6
+				"x0": -2.0,
+				"z0": -3.0,
+				"x": 4.0,
+				"z": 6.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -56094,8 +56226,10 @@
 			"Identifier": "Production Heavy Roman Pigments",
 			"IconFileName": "A8_pigments_goods.png",
 			"BuildBlocker": {
-				"x": 5,
-				"z": 8
+				"x0": -2.5,
+				"z0": -4.0,
+				"x": 5.0,
+				"z": 8.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -56121,8 +56255,10 @@
 			"Identifier": "Production Heavy Roman Gold",
 			"IconFileName": "A8_gold_goods.png",
 			"BuildBlocker": {
-				"x": 6,
-				"z": 4
+				"x0": -3.0,
+				"z0": -2.0,
+				"x": 6.0,
+				"z": 4.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -56148,8 +56284,10 @@
 			"Identifier": "Production Ingredient Roman Flour",
 			"IconFileName": "A8_flour_goods.png",
 			"BuildBlocker": {
-				"x": 4,
-				"z": 6
+				"x0": -2.0,
+				"z0": -4.0,
+				"x": 4.0,
+				"z": 6.0
 			},
 			"Template": "SlotFactoryBuilding7",
 			"InfluenceRange": 0.0,
@@ -56175,8 +56313,10 @@
 			"Identifier": "Production Ingredient Roman Caviar",
 			"IconFileName": "A8_caviar_goods.png",
 			"BuildBlocker": {
-				"x": 4,
-				"z": 4
+				"x0": -2.0,
+				"z0": -2.0,
+				"x": 4.0,
+				"z": 4.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -56202,8 +56342,10 @@
 			"Identifier": "Production Food Roman Porridge",
 			"IconFileName": "A8_porridge_goods.png",
 			"BuildBlocker": {
-				"x": 3,
-				"z": 3
+				"x0": -1.5,
+				"z0": -1.5,
+				"x": 3.0,
+				"z": 3.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -56229,8 +56371,10 @@
 			"Identifier": "Production Food Roman Bread",
 			"IconFileName": "A8_bread_goods.png",
 			"BuildBlocker": {
-				"x": 4,
-				"z": 5
+				"x0": -2.0,
+				"z0": -2.5,
+				"x": 4.0,
+				"z": 5.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -56256,8 +56400,10 @@
 			"Identifier": "Production Food Roman Garum",
 			"IconFileName": "A8_garum_goods.png",
 			"BuildBlocker": {
-				"x": 6,
-				"z": 4
+				"x0": -3.0,
+				"z0": -2.0,
+				"x": 6.0,
+				"z": 4.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -56283,8 +56429,10 @@
 			"Identifier": "Production Food Roman Wine",
 			"IconFileName": "A8_wine_goods.png",
 			"BuildBlocker": {
-				"x": 9,
-				"z": 6
+				"x0": -4.5,
+				"z0": -3.0,
+				"x": 9.0,
+				"z": 6.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -56310,8 +56458,10 @@
 			"Identifier": "Production Food Roman Oysters with Caviar",
 			"IconFileName": "A8_oysters_and_caviar_goods.png",
 			"BuildBlocker": {
-				"x": 6,
-				"z": 6
+				"x0": -3.0,
+				"z0": -3.0,
+				"x": 6.0,
+				"z": 6.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -56337,8 +56487,10 @@
 			"Identifier": "Production Fashion Roman Tunics",
 			"IconFileName": "A8_tunics_goods.png",
 			"BuildBlocker": {
-				"x": 3,
-				"z": 4
+				"x0": -1.5,
+				"z0": -2.0,
+				"x": 3.0,
+				"z": 4.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -56364,8 +56516,10 @@
 			"Identifier": "Production Fashion Roman Hats",
 			"IconFileName": "A8_farmer_hat_goods.png",
 			"BuildBlocker": {
-				"x": 3,
-				"z": 4
+				"x0": -1.5,
+				"z0": -2.0,
+				"x": 3.0,
+				"z": 4.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -56391,8 +56545,10 @@
 			"Identifier": "Production Fashion Roman Soap",
 			"IconFileName": "A8_lavender_soap_goods.png",
 			"BuildBlocker": {
-				"x": 4,
-				"z": 3
+				"x0": -2.0,
+				"z0": -1.5,
+				"x": 4.0,
+				"z": 3.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -56418,8 +56574,10 @@
 			"Identifier": "Production Fashion Roman Sandals",
 			"IconFileName": "A8_sandals_goods.png",
 			"BuildBlocker": {
-				"x": 4,
-				"z": 3
+				"x0": -2.0,
+				"z0": -1.5,
+				"x": 4.0,
+				"z": 3.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -56445,8 +56603,10 @@
 			"Identifier": "Production Fashion Roman Togas",
 			"IconFileName": "A8_togas_goods.png",
 			"BuildBlocker": {
-				"x": 4,
-				"z": 5
+				"x0": -2.0,
+				"z0": -2.5,
+				"x": 4.0,
+				"z": 5.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -56472,8 +56632,10 @@
 			"Identifier": "Production Fashion Roman Necklace",
 			"IconFileName": "A8_necklaces_goods.png",
 			"BuildBlocker": {
-				"x": 4,
-				"z": 4
+				"x0": -2.0,
+				"z0": -2.0,
+				"x": 4.0,
+				"z": 4.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -56499,8 +56661,10 @@
 			"Identifier": "Production Household Roman Amphorae",
 			"IconFileName": "A8_amphorae_goods.png",
 			"BuildBlocker": {
-				"x": 4,
-				"z": 5
+				"x0": -2.0,
+				"z0": -2.5,
+				"x": 4.0,
+				"z": 5.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -56526,8 +56690,10 @@
 			"Identifier": "Production Household Roman Olive Oil",
 			"IconFileName": "A8_olive_oil_goods.png",
 			"BuildBlocker": {
-				"x": 5,
-				"z": 6
+				"x0": -2.5,
+				"z0": -3.0,
+				"x": 5.0,
+				"z": 6.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -56553,8 +56719,10 @@
 			"Identifier": "Production Household Roman Wax Tablets",
 			"IconFileName": "A8_wax_tablets_goods.png",
 			"BuildBlocker": {
-				"x": 4,
-				"z": 6
+				"x0": -2.0,
+				"z0": -3.0,
+				"x": 4.0,
+				"z": 6.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -56580,8 +56748,10 @@
 			"Identifier": "Production Household Roman Fine Glass",
 			"IconFileName": "A8_fine_glass_goods.png",
 			"BuildBlocker": {
-				"x": 6,
-				"z": 7
+				"x0": -3.0,
+				"z0": -3.5,
+				"x": 6.0,
+				"z": 7.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -56607,8 +56777,10 @@
 			"Identifier": "Production Household Roman Loungers",
 			"IconFileName": "A8_lounger_goods.png",
 			"BuildBlocker": {
-				"x": 7,
-				"z": 5
+				"x0": -3.5,
+				"z0": -2.5,
+				"x": 7.0,
+				"z": 5.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -56634,8 +56806,10 @@
 			"Identifier": "Production Culture Roman Lyres",
 			"IconFileName": "A8_string_instrument_goods.png",
 			"BuildBlocker": {
-				"x": 5,
-				"z": 5
+				"x0": -2.5,
+				"z0": -2.5,
+				"x": 5.0,
+				"z": 5.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -56661,8 +56835,10 @@
 			"Identifier": "Production Construction Roman Timber",
 			"IconFileName": "A8_timber_goods.png",
 			"BuildBlocker": {
-				"x": 4,
-				"z": 6
+				"x0": -2.0,
+				"z0": -3.0,
+				"x": 4.0,
+				"z": 6.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -56688,8 +56864,10 @@
 			"Identifier": "Production Construction Roman Tiles",
 			"IconFileName": "A8_tiles_goods.png",
 			"BuildBlocker": {
-				"x": 5,
-				"z": 4
+				"x0": -2.5,
+				"z0": -2.0,
+				"x": 5.0,
+				"z": 4.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -56715,8 +56893,10 @@
 			"Identifier": "Production Construction Roman Concrete",
 			"IconFileName": "A8_concrete_goods.png",
 			"BuildBlocker": {
-				"x": 5,
-				"z": 6
+				"x0": -2.5,
+				"z0": -3.0,
+				"x": 5.0,
+				"z": 6.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -56742,8 +56922,10 @@
 			"Identifier": "Production Construction Roman Marble",
 			"IconFileName": "A8_marble_blocks_goods.png",
 			"BuildBlocker": {
-				"x": 5,
-				"z": 7
+				"x0": -2.0,
+				"z0": -4.0,
+				"x": 5.0,
+				"z": 7.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -56769,8 +56951,10 @@
 			"Identifier": "Production Construction Roman Mosaics",
 			"IconFileName": "A8_mosaics_goods.png",
 			"BuildBlocker": {
-				"x": 8,
-				"z": 8
+				"x0": -4.0,
+				"z0": -4.0,
+				"x": 8.0,
+				"z": 8.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -56796,8 +56980,10 @@
 			"Identifier": "Production Military Roman Ropes",
 			"IconFileName": "A8_ropes_goods.png",
 			"BuildBlocker": {
-				"x": 4,
-				"z": 8
+				"x0": -2.0,
+				"z0": -4.0,
+				"x": 4.0,
+				"z": 8.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -56823,8 +57009,10 @@
 			"Identifier": "Production Military Roman Sails",
 			"IconFileName": "A8_sails_goods.png",
 			"BuildBlocker": {
-				"x": 6,
-				"z": 7
+				"x0": -3.0,
+				"z0": -3.5,
+				"x": 6.0,
+				"z": 7.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -56850,8 +57038,10 @@
 			"Identifier": "Production Military Roman Weapons",
 			"IconFileName": "A8_weapons_goods.png",
 			"BuildBlocker": {
-				"x": 4,
-				"z": 4
+				"x0": -2.0,
+				"z0": -2.0,
+				"x": 4.0,
+				"z": 4.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -56877,8 +57067,10 @@
 			"Identifier": "Production Military Roman Armor",
 			"IconFileName": "A8_armory_goods.png",
 			"BuildBlocker": {
-				"x": 5,
-				"z": 6
+				"x0": -2.5,
+				"z0": -3.0,
+				"x": 5.0,
+				"z": 6.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -56904,8 +57096,10 @@
 			"Identifier": "Module Silo Roman",
 			"IconFileName": "A8_silos.png",
 			"BuildBlocker": {
-				"x": 2,
-				"z": 3
+				"x0": -1.0,
+				"z0": -1.5,
+				"x": 2.0,
+				"z": 3.0
 			},
 			"Template": "ProductionModuleSilo",
 			"InfluenceRange": 0.0,
@@ -56931,8 +57125,10 @@
 			"Identifier": "Institution Roman Fire",
 			"IconFileName": "A8_institution_roman_vigiles.png",
 			"BuildBlocker": {
-				"x": 4,
-				"z": 5
+				"x0": -2.0,
+				"z0": -2.5,
+				"x": 4.0,
+				"z": 5.0
 			},
 			"Template": "CityInstitutionBuilding",
 			"InfluenceRange": 30.0,
@@ -56958,8 +57154,10 @@
 			"Identifier": "Institution Roman Riot",
 			"IconFileName": "A8_institution_roman_cohortes.png",
 			"BuildBlocker": {
-				"x": 4,
-				"z": 4
+				"x0": -2.0,
+				"z0": -2.0,
+				"x": 4.0,
+				"z": 4.0
 			},
 			"Template": "CityInstitutionBuilding",
 			"InfluenceRange": 34.0,
@@ -56985,8 +57183,10 @@
 			"Identifier": "Institution Roman Illness",
 			"IconFileName": "A8_institution_roman_medici.png",
 			"BuildBlocker": {
-				"x": 5,
-				"z": 6
+				"x0": -2.5,
+				"z0": -3.0,
+				"x": 5.0,
+				"z": 6.0
 			},
 			"Template": "CityInstitutionBuilding",
 			"InfluenceRange": 38.0,
@@ -57012,8 +57212,10 @@
 			"Identifier": "Institution Roman Fire Mini",
 			"IconFileName": "A8_institution_well.png",
 			"BuildBlocker": {
-				"x": 2,
-				"z": 2
+				"x0": -1.0,
+				"z0": -1.0,
+				"x": 2.0,
+				"z": 2.0
 			},
 			"Template": "MiniInstitutionBuilding",
 			"InfluenceRange": 20.0,
@@ -57039,8 +57241,10 @@
 			"Identifier": "Institution Roman Riot Mini",
 			"IconFileName": "A8_institution_watch_tower.png",
 			"BuildBlocker": {
-				"x": 2,
-				"z": 2
+				"x0": -1.0,
+				"z0": -1.0,
+				"x": 2.0,
+				"z": 2.0
 			},
 			"Template": "MiniInstitutionBuilding",
 			"InfluenceRange": 20.0,
@@ -57066,8 +57270,10 @@
 			"Identifier": "Institution Roman Illness Mini",
 			"IconFileName": "A8_institution_latrine.png",
 			"BuildBlocker": {
-				"x": 3,
-				"z": 2
+				"x0": -1.5,
+				"z0": -1.0,
+				"x": 3.0,
+				"z": 2.0
 			},
 			"Template": "MiniInstitutionBuilding",
 			"InfluenceRange": 24.0,
@@ -57093,8 +57299,10 @@
 			"Identifier": "Public Roman Shrine Mars",
 			"IconFileName": "A8_shrine_mars.png",
 			"BuildBlocker": {
-				"x": 3,
-				"z": 3
+				"x0": -1.5,
+				"z0": -1.5,
+				"x": 3.0,
+				"z": 3.0
 			},
 			"Template": "MiniInstitutionBuilding",
 			"InfluenceRange": 20.0,
@@ -57120,8 +57328,10 @@
 			"Identifier": "Public Roman Shrine Ceres",
 			"IconFileName": "A8_shrine_ceres.png",
 			"BuildBlocker": {
-				"x": 3,
-				"z": 3
+				"x0": -1.5,
+				"z0": -1.5,
+				"x": 3.0,
+				"z": 3.0
 			},
 			"Template": "MiniInstitutionBuilding",
 			"InfluenceRange": 20.0,
@@ -57147,8 +57357,10 @@
 			"Identifier": "Public Roman Shrine Neptune",
 			"IconFileName": "A8_shrine_neptune.png",
 			"BuildBlocker": {
-				"x": 3,
-				"z": 3
+				"x0": -1.5,
+				"z0": -1.5,
+				"x": 3.0,
+				"z": 3.0
 			},
 			"Template": "MiniInstitutionBuilding",
 			"InfluenceRange": 20.0,
@@ -57174,8 +57386,10 @@
 			"Identifier": "Public Roman Shrine Mercuy-Lugus",
 			"IconFileName": "A8_shrine_mercury.png",
 			"BuildBlocker": {
-				"x": 3,
-				"z": 3
+				"x0": -1.5,
+				"z0": -1.5,
+				"x": 3.0,
+				"z": 3.0
 			},
 			"Template": "MiniInstitutionBuilding",
 			"InfluenceRange": 18.0,
@@ -57201,8 +57415,10 @@
 			"Identifier": "Public Roman Shrine Epona",
 			"IconFileName": "A8_shrine_epona.png",
 			"BuildBlocker": {
-				"x": 3,
-				"z": 3
+				"x0": -1.5,
+				"z0": -1.5,
+				"x": 3.0,
+				"z": 3.0
 			},
 			"Template": "MiniInstitutionBuilding",
 			"InfluenceRange": 20.0,
@@ -57228,8 +57444,10 @@
 			"Identifier": "Public Roman Shrine Cernunnos",
 			"IconFileName": "A8_shrine_cernunnos.png",
 			"BuildBlocker": {
-				"x": 3,
-				"z": 3
+				"x0": -1.5,
+				"z0": -1.5,
+				"x": 3.0,
+				"z": 3.0
 			},
 			"Template": "MiniInstitutionBuilding",
 			"InfluenceRange": 22.0,
@@ -57255,8 +57473,10 @@
 			"Identifier": "Public Roman Shrine Minerva",
 			"IconFileName": "A8_shrine_minerva.png",
 			"BuildBlocker": {
-				"x": 3,
-				"z": 3
+				"x0": -1.5,
+				"z0": -1.5,
+				"x": 3.0,
+				"z": 3.0
 			},
 			"Template": "MiniInstitutionBuilding",
 			"InfluenceRange": 22.0,
@@ -57282,8 +57502,10 @@
 			"Identifier": "Public Roman Market",
 			"IconFileName": "A8_public_roman_marketplace.png",
 			"BuildBlocker": {
-				"x": 5,
-				"z": 6
+				"x0": -2.5,
+				"z0": -3.0,
+				"x": 5.0,
+				"z": 6.0
 			},
 			"Template": "PublicServiceBuilding",
 			"InfluenceRange": 28.0,
@@ -57309,8 +57531,10 @@
 			"Identifier": "Public Roman Tavern",
 			"IconFileName": "A8_public_roman_tavern.png",
 			"BuildBlocker": {
-				"x": 4,
-				"z": 6
+				"x0": -2.0,
+				"z0": -3.0,
+				"x": 4.0,
+				"z": 6.0
 			},
 			"Template": "PublicServiceBuilding",
 			"InfluenceRange": 26.0,
@@ -57336,8 +57560,10 @@
 			"Identifier": "Public Roman Sanctuary",
 			"IconFileName": "A8_public_roman_sanctuary.png",
 			"BuildBlocker": {
-				"x": 6,
-				"z": 10
+				"x0": -3.0,
+				"z0": -5.0,
+				"x": 6.0,
+				"z": 10.0
 			},
 			"Template": "PublicServiceBuilding",
 			"InfluenceRange": 38.0,
@@ -57363,8 +57589,10 @@
 			"Identifier": "Public Roman Grammaticus",
 			"IconFileName": "A8_public_roman_grammaticus.png",
 			"BuildBlocker": {
-				"x": 6,
-				"z": 8
+				"x0": -3.0,
+				"z0": -4.0,
+				"x": 6.0,
+				"z": 8.0
 			},
 			"Template": "PublicServiceBuilding",
 			"InfluenceRange": 26.0,
@@ -57390,8 +57618,10 @@
 			"Identifier": "Public Roman Theater",
 			"IconFileName": "A8_public_roman_theatre.png",
 			"BuildBlocker": {
-				"x": 14,
-				"z": 11
+				"x0": -7.0,
+				"z0": -5.0,
+				"x": 14.0,
+				"z": 11.0
 			},
 			"Template": "PublicServiceBuilding",
 			"InfluenceRange": 50.0,
@@ -57417,8 +57647,10 @@
 			"Identifier": "Public Roman Gambling House",
 			"IconFileName": "A8_public_roman_gambling_house.png",
 			"BuildBlocker": {
-				"x": 10,
-				"z": 10
+				"x0": -5.0,
+				"z0": -5.0,
+				"x": 10.0,
+				"z": 10.0
 			},
 			"Template": "PublicServiceBuilding",
 			"InfluenceRange": 42.0,
@@ -57444,8 +57676,10 @@
 			"Identifier": "Public Roman Temple",
 			"IconFileName": "A8_public_roman_temple.png",
 			"BuildBlocker": {
-				"x": 19,
-				"z": 11
+				"x0": -9.5,
+				"z0": -5.5,
+				"x": 19.0,
+				"z": 11.0
 			},
 			"Template": "PublicServiceBuilding",
 			"InfluenceRange": 68.0,
@@ -57471,8 +57705,10 @@
 			"Identifier": "Public Roman Library",
 			"IconFileName": "A8_public_roman_library.png",
 			"BuildBlocker": {
-				"x": 12,
-				"z": 12
+				"x0": -6.0,
+				"z0": -6.0,
+				"x": 12.0,
+				"z": 12.0
 			},
 			"Template": "PublicServiceBuilding",
 			"InfluenceRange": 62.0,
@@ -57498,8 +57734,10 @@
 			"Identifier": "Residence Roman 01 Peasants",
 			"IconFileName": "A8_base_residence.png",
 			"BuildBlocker": {
-				"x": 3,
-				"z": 3
+				"x0": -1.5,
+				"z0": -1.5,
+				"x": 3.0,
+				"z": 3.0
 			},
 			"Template": "ResidenceBuilding",
 			"InfluenceRange": 0.0,
@@ -57525,8 +57763,10 @@
 			"Identifier": "Residence Roman 02 Plebeians",
 			"IconFileName": "A8_base_residence.png",
 			"BuildBlocker": {
-				"x": 3,
-				"z": 3
+				"x0": -1.5,
+				"z0": -1.5,
+				"x": 3.0,
+				"z": 3.0
 			},
 			"Template": "ResidenceBuilding",
 			"InfluenceRange": 0.0,
@@ -57552,8 +57792,10 @@
 			"Identifier": "Residence Roman 03 Equites",
 			"IconFileName": "A8_base_residence.png",
 			"BuildBlocker": {
-				"x": 3,
-				"z": 3
+				"x0": -1.5,
+				"z0": -1.5,
+				"x": 3.0,
+				"z": 3.0
 			},
 			"Template": "ResidenceBuilding",
 			"InfluenceRange": 0.0,
@@ -57579,8 +57821,10 @@
 			"Identifier": "Residence Roman 04 Patricians",
 			"IconFileName": "A8_base_residence.png",
 			"BuildBlocker": {
-				"x": 3,
-				"z": 3
+				"x0": -1.5,
+				"z0": -1.5,
+				"x": 3.0,
+				"z": 3.0
 			},
 			"Template": "ResidenceBuilding",
 			"InfluenceRange": 0.0,
@@ -57606,8 +57850,10 @@
 			"Identifier": "Wonder Roman Forum",
 			"IconFileName": "A8_wonder_celtic_forum.png",
 			"BuildBlocker": {
-				"x": 17,
-				"z": 12
+				"x0": -8.5,
+				"z0": -6.0,
+				"x": 17.0,
+				"z": 12.0
 			},
 			"Template": "PublicServiceBuilding",
 			"InfluenceRange": 70.0,
@@ -57633,8 +57879,10 @@
 			"Identifier": "Wonder Roman Colosseum",
 			"IconFileName": "A8_colosseum_0.png",
 			"BuildBlocker": {
-				"x": 30,
-				"z": 26
+				"x0": -15.0,
+				"z0": -13.0,
+				"x": 30.0,
+				"z": 26.0
 			},
 			"Template": "MonumentEventBuilding",
 			"InfluenceRange": 250.0,
@@ -57660,8 +57908,10 @@
 			"Identifier": "Wonder Roman Baths",
 			"IconFileName": "A8_wonder_roman_bathhouse.png",
 			"BuildBlocker": {
-				"x": 11,
-				"z": 20
+				"x0": -5.5,
+				"z0": -10.0,
+				"x": 11.0,
+				"z": 20.0
 			},
 			"Template": "PublicServiceBuilding",
 			"InfluenceRange": 66.0,
@@ -57687,8 +57937,10 @@
 			"Identifier": "Villa 01 Roman Guesthouse",
 			"IconFileName": "A8_base_guesthouse.png",
 			"BuildBlocker": {
-				"x": 4,
-				"z": 6
+				"x0": -2.0,
+				"z0": -3.0,
+				"x": 4.0,
+				"z": 6.0
 			},
 			"Template": "GuestHouse",
 			"InfluenceRange": 0.0,
@@ -57714,8 +57966,10 @@
 			"Identifier": "Military Roman Wall Wood",
 			"IconFileName": "A8_wood_wall.png",
 			"BuildBlocker": {
-				"x": 1,
-				"z": 1
+				"x0": 0.0,
+				"z0": 0.0,
+				"x": 1.0,
+				"z": 1.0
 			},
 			"Template": "MilitaryWall",
 			"InfluenceRange": 0.0,
@@ -57741,8 +57995,10 @@
 			"Identifier": "Military Roman Barracks",
 			"IconFileName": "A8_military_barracks.png",
 			"BuildBlocker": {
-				"x": 8,
-				"z": 8
+				"x0": -4.0,
+				"z0": -4.0,
+				"x": 8.0,
+				"z": 8.0
 			},
 			"Template": "RecruitmentBuilding",
 			"InfluenceRange": 0.0,
@@ -57768,8 +58024,10 @@
 			"Identifier": "Military Roman Training Grounds",
 			"IconFileName": "A8_military_training_grounds.png",
 			"BuildBlocker": {
-				"x": 10,
-				"z": 8
+				"x0": -5.0,
+				"z0": -4.0,
+				"x": 10.0,
+				"z": 8.0
 			},
 			"Template": "RecruitmentBuilding",
 			"InfluenceRange": 0.0,
@@ -57795,8 +58053,10 @@
 			"Identifier": "Military Roman Siege Workshop",
 			"IconFileName": "A8_military_siege_workshop.png",
 			"BuildBlocker": {
-				"x": 7,
-				"z": 10
+				"x0": -3.5,
+				"z0": -5.0,
+				"x": 7.0,
+				"z": 10.0
 			},
 			"Template": "RecruitmentBuilding",
 			"InfluenceRange": 0.0,
@@ -57822,8 +58082,10 @@
 			"Identifier": "Aqueduct Roman Basin",
 			"IconFileName": "A8_aqueduct_source.png",
 			"BuildBlocker": {
-				"x": 8,
-				"z": 3
+				"x0": -1.5,
+				"z0": -1.5,
+				"x": 8.0,
+				"z": 3.0
 			},
 			"Template": "AqueductProducer",
 			"InfluenceRange": 0.0,
@@ -57849,8 +58111,10 @@
 			"Identifier": "Aqueduct Roman Distribution",
 			"IconFileName": "A8_aqueduct_cistern.png",
 			"BuildBlocker": {
-				"x": 3,
-				"z": 3
+				"x0": -1.5,
+				"z0": -1.5,
+				"x": 3.0,
+				"z": 3.0
 			},
 			"Template": "AqueductDistributor",
 			"InfluenceRange": 0.0,
@@ -57876,8 +58140,10 @@
 			"Identifier": "Quay Roman",
 			"IconFileName": null,
 			"BuildBlocker": {
-				"x": 1,
-				"z": 1
+				"x0": 0.0,
+				"z0": 0.0,
+				"x": 1.0,
+				"z": 1.0
 			},
 			"Template": "PolygonObject",
 			"InfluenceRange": 0.0,
@@ -57903,8 +58169,10 @@
 			"Identifier": "Harbor Warehouse Roman Celtic 01",
 			"IconFileName": "A8_harbour_kontor.png",
 			"BuildBlocker": {
-				"x": 14,
-				"z": 7
+				"x0": -1.0,
+				"z0": -3.5,
+				"x": 14.0,
+				"z": 7.0
 			},
 			"Template": "HarborWarehouse",
 			"InfluenceRange": 0.0,
@@ -57930,8 +58198,10 @@
 			"Identifier": "Harbor Depot Roman Celtic",
 			"IconFileName": "A8_harbour_depot.png",
 			"BuildBlocker": {
-				"x": 11,
-				"z": 4
+				"x0": -1.0,
+				"z0": -2.0,
+				"x": 11.0,
+				"z": 4.0
 			},
 			"Template": "HarborDepot",
 			"InfluenceRange": 0.0,
@@ -57957,8 +58227,10 @@
 			"Identifier": "Harbor Shipyard Roman Celtic",
 			"IconFileName": "A8_harbour_shipyard.png",
 			"BuildBlocker": {
-				"x": 12,
-				"z": 8
+				"x0": -1.0,
+				"z0": -4.0,
+				"x": 12.0,
+				"z": 8.0
 			},
 			"Template": "RecruitmentBuilding",
 			"InfluenceRange": 0.0,
@@ -57984,8 +58256,10 @@
 			"Identifier": "Harbor Pier Roman Celtic",
 			"IconFileName": "A8_harbour_trading_pier.png",
 			"BuildBlocker": {
-				"x": 9,
-				"z": 6
+				"x0": -1.0,
+				"z0": -3.0,
+				"x": 9.0,
+				"z": 6.0
 			},
 			"Template": "TradeBuilding",
 			"InfluenceRange": 0.0,
@@ -58011,8 +58285,10 @@
 			"Identifier": "Harbor Repair Crane Roman Celtic",
 			"IconFileName": "A8_harbour_repair_crane.png",
 			"BuildBlocker": {
-				"x": 5,
-				"z": 5
+				"x0": -2.5,
+				"z0": -2.5,
+				"x": 5.0,
+				"z": 5.0
 			},
 			"Template": "RepairCrane",
 			"InfluenceRange": 0.0,
@@ -58038,8 +58314,10 @@
 			"Identifier": "Warehouse Roman Celtic 01",
 			"IconFileName": "A8_base_warehouse.png",
 			"BuildBlocker": {
-				"x": 6,
-				"z": 6
+				"x0": -3.0,
+				"z0": -3.0,
+				"x": 6.0,
+				"z": 6.0
 			},
 			"Template": "Warehouse_Marsh",
 			"InfluenceRange": 0.0,
@@ -58065,8 +58343,10 @@
 			"Identifier": "Warehouse Roman Celtic 02",
 			"IconFileName": "A8_base_warehouse.png",
 			"BuildBlocker": {
-				"x": 6,
-				"z": 6
+				"x0": -3.0,
+				"z0": -3.0,
+				"x": 6.0,
+				"z": 6.0
 			},
 			"Template": "Warehouse_Marsh",
 			"InfluenceRange": 0.0,
@@ -58092,8 +58372,10 @@
 			"Identifier": "Warehouse Roman Celtic 03",
 			"IconFileName": "A8_base_warehouse.png",
 			"BuildBlocker": {
-				"x": 6,
-				"z": 6
+				"x0": -3.0,
+				"z0": -3.0,
+				"x": 6.0,
+				"z": 6.0
 			},
 			"Template": "Warehouse_Marsh",
 			"InfluenceRange": 0.0,
@@ -58119,8 +58401,10 @@
 			"Identifier": "Production Coast Roman Celtic Sea Shells",
 			"IconFileName": "A8_seashells_goods.png",
 			"BuildBlocker": {
-				"x": 9,
-				"z": 6
+				"x0": -1.0,
+				"z0": -3.0,
+				"x": 9.0,
+				"z": 6.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -58146,8 +58430,10 @@
 			"Identifier": "Production Coast Roman Celtic Silica",
 			"IconFileName": "A8_silica_goods.png",
 			"BuildBlocker": {
-				"x": 7,
-				"z": 6
+				"x0": -1.0,
+				"z0": -3.0,
+				"x": 7.0,
+				"z": 6.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -58173,8 +58459,10 @@
 			"Identifier": "Module Field Roman Celtic Wheat",
 			"IconFileName": "A8_farm_fields.png",
 			"BuildBlocker": {
-				"x": 1,
-				"z": 1
+				"x0": 0.0,
+				"z0": 0.0,
+				"x": 1.0,
+				"z": 1.0
 			},
 			"Template": "Module Polygon Field",
 			"InfluenceRange": 0.0,
@@ -58200,8 +58488,10 @@
 			"Identifier": "Module Field Roman Celtic Grapes",
 			"IconFileName": "A8_farm_fields.png",
 			"BuildBlocker": {
-				"x": 1,
-				"z": 1
+				"x0": 0.0,
+				"z0": 0.0,
+				"x": 1.0,
+				"z": 1.0
 			},
 			"Template": "Module Polygon Field",
 			"InfluenceRange": 0.0,
@@ -58227,8 +58517,10 @@
 			"Identifier": "Module Field Roman Celtic Flax",
 			"IconFileName": "A8_farm_fields.png",
 			"BuildBlocker": {
-				"x": 1,
-				"z": 1
+				"x0": 0.0,
+				"z0": 0.0,
+				"x": 1.0,
+				"z": 1.0
 			},
 			"Template": "Module Polygon Field",
 			"InfluenceRange": 0.0,
@@ -58254,8 +58546,10 @@
 			"Identifier": "Module Field Celtic Hemp",
 			"IconFileName": "A8_farm_fields.png",
 			"BuildBlocker": {
-				"x": 1,
-				"z": 1
+				"x0": 0.0,
+				"z0": 0.0,
+				"x": 1.0,
+				"z": 1.0
 			},
 			"Template": "Module Polygon Field",
 			"InfluenceRange": 0.0,
@@ -58281,8 +58575,10 @@
 			"Identifier": "Module Field Roman Celtic Herbs",
 			"IconFileName": "A8_farm_fields.png",
 			"BuildBlocker": {
-				"x": 1,
-				"z": 1
+				"x0": 0.0,
+				"z0": 0.0,
+				"x": 1.0,
+				"z": 1.0
 			},
 			"Template": "Module Polygon Field",
 			"InfluenceRange": 0.0,
@@ -58308,8 +58604,10 @@
 			"Identifier": "Production Field Roman Celtic Grapes",
 			"IconFileName": "A8_grapes_goods.png",
 			"BuildBlocker": {
-				"x": 5,
-				"z": 4
+				"x0": -2.5,
+				"z0": -2.0,
+				"x": 5.0,
+				"z": 4.0
 			},
 			"Template": "Production Field",
 			"InfluenceRange": 0.0,
@@ -58335,8 +58633,10 @@
 			"Identifier": "Production Field Roman Celtic Flax",
 			"IconFileName": "A8_flax_goods.png",
 			"BuildBlocker": {
-				"x": 5,
-				"z": 4
+				"x0": -2.5,
+				"z0": -2.0,
+				"x": 5.0,
+				"z": 4.0
 			},
 			"Template": "Production Field",
 			"InfluenceRange": 0.0,
@@ -58362,8 +58662,10 @@
 			"Identifier": "Production Field Roman Celtic Wheat",
 			"IconFileName": "A8_wheat_goods.png",
 			"BuildBlocker": {
-				"x": 4,
-				"z": 3
+				"x0": -2.0,
+				"z0": -1.5,
+				"x": 4.0,
+				"z": 3.0
 			},
 			"Template": "Production Field",
 			"InfluenceRange": 0.0,
@@ -58389,8 +58691,10 @@
 			"Identifier": "Production Field Roman Celtic Hemp",
 			"IconFileName": "A8_hemp_goods.png",
 			"BuildBlocker": {
-				"x": 4,
-				"z": 3
+				"x0": -2.0,
+				"z0": -1.5,
+				"x": 4.0,
+				"z": 3.0
 			},
 			"Template": "Production Field",
 			"InfluenceRange": 0.0,
@@ -58416,8 +58720,10 @@
 			"Identifier": "Production Field Roman Celtic Herbs",
 			"IconFileName": "A8_herbs_goods.png",
 			"BuildBlocker": {
-				"x": 3,
-				"z": 4
+				"x0": -1.5,
+				"z0": -2.0,
+				"x": 3.0,
+				"z": 4.0
 			},
 			"Template": "Production Field",
 			"InfluenceRange": 0.0,
@@ -58443,8 +58749,10 @@
 			"Identifier": "Production Forest Roman Celtic Wood",
 			"IconFileName": "A8_wood_goods.png",
 			"BuildBlocker": {
-				"x": 4,
-				"z": 4
+				"x0": -2.0,
+				"z0": -2.0,
+				"x": 4.0,
+				"z": 4.0
 			},
 			"Template": "Production Area",
 			"InfluenceRange": 0.0,
@@ -58470,8 +58778,10 @@
 			"Identifier": "Production Forest Roman Celtic Charcoal",
 			"IconFileName": "A8_charcoal_goods.png",
 			"BuildBlocker": {
-				"x": 6,
-				"z": 5
+				"x0": -3.0,
+				"z0": -2.5,
+				"x": 6.0,
+				"z": 5.0
 			},
 			"Template": "Production Area",
 			"InfluenceRange": 0.0,
@@ -58497,8 +58807,10 @@
 			"Identifier": "Production Forest Roman Celtic Resin",
 			"IconFileName": "A8_resin_goods.png",
 			"BuildBlocker": {
-				"x": 5,
-				"z": 5
+				"x0": -2.5,
+				"z0": -2.5,
+				"x": 5.0,
+				"z": 5.0
 			},
 			"Template": "Production Area",
 			"InfluenceRange": 0.0,
@@ -58524,8 +58836,10 @@
 			"Identifier": "Production Marsh Roman Celtic Eels",
 			"IconFileName": "A8_eels_goods.png",
 			"BuildBlocker": {
-				"x": 3,
-				"z": 3
+				"x0": -1.5,
+				"z0": -1.5,
+				"x": 3.0,
+				"z": 3.0
 			},
 			"Template": "Production Marsh Area",
 			"InfluenceRange": 0.0,
@@ -58551,8 +58865,10 @@
 			"Identifier": "Production Marsh Roman Celtic Birds",
 			"IconFileName": "A8_marsh_birds_goods.png",
 			"BuildBlocker": {
-				"x": 3,
-				"z": 3
+				"x0": -1.5,
+				"z0": -1.5,
+				"x": 3.0,
+				"z": 3.0
 			},
 			"Template": "Production Marsh Area",
 			"InfluenceRange": 0.0,
@@ -58578,8 +58894,10 @@
 			"Identifier": "Production Meadow Roman Celtic Honycombs",
 			"IconFileName": "A8_honeycombs_goods.png",
 			"BuildBlocker": {
-				"x": 5,
-				"z": 5
+				"x0": -2.5,
+				"z0": -2.5,
+				"x": 5.0,
+				"z": 5.0
 			},
 			"Template": "Production Area",
 			"InfluenceRange": 0.0,
@@ -58605,8 +58923,10 @@
 			"Identifier": "Production Mountain Roman Celtic Limestone Blocks",
 			"IconFileName": "A8_limestone_goods.png",
 			"BuildBlocker": {
-				"x": 8,
-				"z": 3
+				"x0": -1.5,
+				"z0": -1.5,
+				"x": 8.0,
+				"z": 3.0
 			},
 			"Template": "SlotFactoryBuilding7",
 			"InfluenceRange": 0.0,
@@ -58632,8 +58952,10 @@
 			"Identifier": "Production Mountain Roman Celtic Silver Ore",
 			"IconFileName": "A8_silver_ore_goods.png",
 			"BuildBlocker": {
-				"x": 8,
-				"z": 3
+				"x0": -1.5,
+				"z0": -1.5,
+				"x": 8.0,
+				"z": 3.0
 			},
 			"Template": "SlotFactoryBuilding7",
 			"InfluenceRange": 0.0,
@@ -58659,8 +58981,10 @@
 			"Identifier": "Production Mountain Roman Celtic Iron Ore",
 			"IconFileName": "A8_iron_ore_goods.png",
 			"BuildBlocker": {
-				"x": 8,
-				"z": 3
+				"x0": -1.5,
+				"z0": -1.5,
+				"x": 8.0,
+				"z": 3.0
 			},
 			"Template": "SlotFactoryBuilding7",
 			"InfluenceRange": 0.0,
@@ -58686,8 +59010,10 @@
 			"Identifier": "Module Pasture Roman Celtic Pigs",
 			"IconFileName": "A8_animal_compound.png",
 			"BuildBlocker": {
-				"x": 3,
-				"z": 2
+				"x0": -1.5,
+				"z0": -1.0,
+				"x": 3.0,
+				"z": 2.0
 			},
 			"Template": "Module Field",
 			"InfluenceRange": 0.0,
@@ -58713,8 +59039,10 @@
 			"Identifier": "Module Pasture Roman Celtic Horses",
 			"IconFileName": "A8_animal_compound.png",
 			"BuildBlocker": {
-				"x": 3,
-				"z": 4
+				"x0": -1.5,
+				"z0": -2.0,
+				"x": 3.0,
+				"z": 4.0
 			},
 			"Template": "Module Field",
 			"InfluenceRange": 0.0,
@@ -58740,8 +59068,10 @@
 			"Identifier": "Production Pasture Roman Celtic Pigs",
 			"IconFileName": "A8_pigs_goods.png",
 			"BuildBlocker": {
-				"x": 3,
-				"z": 4
+				"x0": -1.5,
+				"z0": -2.0,
+				"x": 3.0,
+				"z": 4.0
 			},
 			"Template": "Production Field",
 			"InfluenceRange": 0.0,
@@ -58767,8 +59097,10 @@
 			"Identifier": "Production Pasture Roman Celtic Horses",
 			"IconFileName": "A8_horses_goods.png",
 			"BuildBlocker": {
-				"x": 5,
-				"z": 4
+				"x0": -2.5,
+				"z0": -2.0,
+				"x": 5.0,
+				"z": 4.0
 			},
 			"Template": "Production Field",
 			"InfluenceRange": 0.0,
@@ -58794,8 +59126,10 @@
 			"Identifier": "Production Chemical Roman Celtic Fat",
 			"IconFileName": "A8_pig_lard_goods.png",
 			"BuildBlocker": {
-				"x": 3,
-				"z": 3
+				"x0": -1.5,
+				"z0": -1.5,
+				"x": 3.0,
+				"z": 3.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -58821,8 +59155,10 @@
 			"Identifier": "Production Craft Roman Celtic Wig Base",
 			"IconFileName": "A8_wig_base_goods.png",
 			"BuildBlocker": {
-				"x": 5,
-				"z": 4
+				"x0": -2.5,
+				"z0": -2.0,
+				"x": 5.0,
+				"z": 4.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -58848,8 +59184,10 @@
 			"Identifier": "Production Heavy Roman Celtic Iron",
 			"IconFileName": "A8_iron_goods.png",
 			"BuildBlocker": {
-				"x": 4,
-				"z": 6
+				"x0": -2.0,
+				"z0": -3.0,
+				"x": 4.0,
+				"z": 6.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -58875,8 +59213,10 @@
 			"Identifier": "Production Heavy Roman Celtic Silver",
 			"IconFileName": "A8_silver_goods.png",
 			"BuildBlocker": {
-				"x": 5,
-				"z": 5
+				"x0": -2.5,
+				"z0": -2.5,
+				"x": 5.0,
+				"z": 5.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -58902,8 +59242,10 @@
 			"Identifier": "Production Ingredient Roman Celtic Flour",
 			"IconFileName": "A8_flour_goods.png",
 			"BuildBlocker": {
-				"x": 3,
-				"z": 3
+				"x0": -1.5,
+				"z0": -1.5,
+				"x": 3.0,
+				"z": 3.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -58929,8 +59271,10 @@
 			"Identifier": "Production Ingredient Roman Celtic Bird Tongues",
 			"IconFileName": "A8_bird_tongue_goods.png",
 			"BuildBlocker": {
-				"x": 3,
-				"z": 4
+				"x0": -1.5,
+				"z0": -2.0,
+				"x": 3.0,
+				"z": 4.0
 			},
 			"Template": "Production Marsh",
 			"InfluenceRange": 0.0,
@@ -58956,8 +59300,10 @@
 			"Identifier": "Production Food Roman Celtic Bread",
 			"IconFileName": "A8_bread_goods.png",
 			"BuildBlocker": {
-				"x": 4,
-				"z": 5
+				"x0": -2.0,
+				"z0": -2.5,
+				"x": 4.0,
+				"z": 5.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -58983,8 +59329,10 @@
 			"Identifier": "Production Food Roman Celtic Sausages",
 			"IconFileName": "A8_sausages_goods.png",
 			"BuildBlocker": {
-				"x": 4,
-				"z": 4
+				"x0": -2.0,
+				"z0": -2.0,
+				"x": 4.0,
+				"z": 4.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -59010,8 +59358,10 @@
 			"Identifier": "Production Food Roman Celtic Bird Tongues in Aspic",
 			"IconFileName": "A8_tongue_in_aspic_goods.png",
 			"BuildBlocker": {
-				"x": 5,
-				"z": 6
+				"x0": -2.5,
+				"z0": -3.0,
+				"x": 5.0,
+				"z": 6.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -59037,8 +59387,10 @@
 			"Identifier": "Production Food Roman Celtic Wine",
 			"IconFileName": "A8_wine_goods.png",
 			"BuildBlocker": {
-				"x": 9,
-				"z": 6
+				"x0": -4.5,
+				"z0": -3.0,
+				"x": 9.0,
+				"z": 6.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -59064,8 +59416,10 @@
 			"Identifier": "Production Fashion Roman Celtic Tunics",
 			"IconFileName": "A8_tunics_goods.png",
 			"BuildBlocker": {
-				"x": 3,
-				"z": 4
+				"x0": -1.5,
+				"z0": -2.0,
+				"x": 3.0,
+				"z": 4.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -59091,8 +59445,10 @@
 			"Identifier": "Production Fashion Roman Celtic Brooches",
 			"IconFileName": "A8_brooch_goods.png",
 			"BuildBlocker": {
-				"x": 5,
-				"z": 5
+				"x0": -2.5,
+				"z0": -2.5,
+				"x": 5.0,
+				"z": 5.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -59118,8 +59474,10 @@
 			"Identifier": "Production Fashion Roman Celtic Wigs",
 			"IconFileName": "A8_wig_goods.png",
 			"BuildBlocker": {
-				"x": 4,
-				"z": 4
+				"x0": -2.0,
+				"z0": -2.0,
+				"x": 4.0,
+				"z": 4.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -59145,8 +59503,10 @@
 			"Identifier": "Production Household Roman Celtic Amphorae",
 			"IconFileName": "A8_amphorae_goods.png",
 			"BuildBlocker": {
-				"x": 4,
-				"z": 5
+				"x0": -2.0,
+				"z0": -2.5,
+				"x": 4.0,
+				"z": 5.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -59172,8 +59532,10 @@
 			"Identifier": "Production Household Roman Celtic Mirrors",
 			"IconFileName": "A8_handmirros_goods.png",
 			"BuildBlocker": {
-				"x": 5,
-				"z": 5
+				"x0": -2.5,
+				"z0": -2.5,
+				"x": 5.0,
+				"z": 5.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -59199,8 +59561,10 @@
 			"Identifier": "Production Construction Roman Celtic Timber",
 			"IconFileName": "A8_timber_goods.png",
 			"BuildBlocker": {
-				"x": 4,
-				"z": 6
+				"x0": -2.0,
+				"z0": -3.0,
+				"x": 4.0,
+				"z": 6.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -59226,8 +59590,10 @@
 			"Identifier": "Production Construction Roman Celtic Tiles",
 			"IconFileName": "A8_tiles_goods.png",
 			"BuildBlocker": {
-				"x": 5,
-				"z": 4
+				"x0": -2.5,
+				"z0": -2.0,
+				"x": 5.0,
+				"z": 4.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -59253,8 +59619,10 @@
 			"Identifier": "Production Construction Roman Celtic Concrete",
 			"IconFileName": "A8_concrete_goods.png",
 			"BuildBlocker": {
-				"x": 5,
-				"z": 6
+				"x0": -2.5,
+				"z0": -3.0,
+				"x": 5.0,
+				"z": 6.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -59280,8 +59648,10 @@
 			"Identifier": "Production Military Roman Celtic Sails",
 			"IconFileName": "A8_sails_goods.png",
 			"BuildBlocker": {
-				"x": 5,
-				"z": 6
+				"x0": -2.5,
+				"z0": -3.0,
+				"x": 5.0,
+				"z": 6.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -59307,8 +59677,10 @@
 			"Identifier": "Production Military Roman Celtic Ropes",
 			"IconFileName": "A8_ropes_goods.png",
 			"BuildBlocker": {
-				"x": 4,
-				"z": 8
+				"x0": -2.0,
+				"z0": -4.0,
+				"x": 4.0,
+				"z": 8.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -59334,8 +59706,10 @@
 			"Identifier": "Production Military Roman Celtic Weapons",
 			"IconFileName": "A8_weapons_goods.png",
 			"BuildBlocker": {
-				"x": 4,
-				"z": 4
+				"x0": -2.0,
+				"z0": -2.0,
+				"x": 4.0,
+				"z": 4.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -59361,8 +59735,10 @@
 			"Identifier": "Module Silo Roman Celtic",
 			"IconFileName": "A8_silos.png",
 			"BuildBlocker": {
-				"x": 2,
-				"z": 3
+				"x0": -1.0,
+				"z0": -1.5,
+				"x": 2.0,
+				"z": 3.0
 			},
 			"Template": "ProductionModuleSilo",
 			"InfluenceRange": 0.0,
@@ -59388,8 +59764,10 @@
 			"Identifier": "Institution Roman Celtic Fire",
 			"IconFileName": "A8_institution_roman_vigiles.png",
 			"BuildBlocker": {
-				"x": 4,
-				"z": 5
+				"x0": -2.0,
+				"z0": -2.5,
+				"x": 4.0,
+				"z": 5.0
 			},
 			"Template": "CityInstitutionBuilding_Marsh",
 			"InfluenceRange": 30.0,
@@ -59415,8 +59793,10 @@
 			"Identifier": "Institution Roman Celtic Riot",
 			"IconFileName": "A8_institution_roman_cohortes.png",
 			"BuildBlocker": {
-				"x": 4,
-				"z": 4
+				"x0": -2.0,
+				"z0": -2.0,
+				"x": 4.0,
+				"z": 4.0
 			},
 			"Template": "CityInstitutionBuilding_Marsh",
 			"InfluenceRange": 34.0,
@@ -59442,8 +59822,10 @@
 			"Identifier": "Institution Roman Celtic Illness",
 			"IconFileName": "A8_institution_roman_medici.png",
 			"BuildBlocker": {
-				"x": 5,
-				"z": 6
+				"x0": -2.5,
+				"z0": -3.0,
+				"x": 5.0,
+				"z": 6.0
 			},
 			"Template": "CityInstitutionBuilding_Marsh",
 			"InfluenceRange": 38.0,
@@ -59469,8 +59851,10 @@
 			"Identifier": "Institution Roman Celtic Fire Mini",
 			"IconFileName": "A8_institution_well.png",
 			"BuildBlocker": {
-				"x": 2,
-				"z": 2
+				"x0": -1.0,
+				"z0": -1.0,
+				"x": 2.0,
+				"z": 2.0
 			},
 			"Template": "MiniInstitutionBuilding",
 			"InfluenceRange": 20.0,
@@ -59496,8 +59880,10 @@
 			"Identifier": "Institution Roman Celtic Riot Mini",
 			"IconFileName": "A8_institution_watch_tower.png",
 			"BuildBlocker": {
-				"x": 2,
-				"z": 2
+				"x0": -1.0,
+				"z0": -1.0,
+				"x": 2.0,
+				"z": 2.0
 			},
 			"Template": "MiniInstitutionBuilding",
 			"InfluenceRange": 20.0,
@@ -59523,8 +59909,10 @@
 			"Identifier": "Institution Roman Celtic Illness Mini",
 			"IconFileName": "A8_institution_latrine.png",
 			"BuildBlocker": {
-				"x": 3,
-				"z": 2
+				"x0": -1.5,
+				"z0": -1.0,
+				"x": 3.0,
+				"z": 2.0
 			},
 			"Template": "MiniInstitutionBuilding",
 			"InfluenceRange": 24.0,
@@ -59550,8 +59938,10 @@
 			"Identifier": "Public Roman Celtic Shrine Mars",
 			"IconFileName": "A8_shrine_mars.png",
 			"BuildBlocker": {
-				"x": 3,
-				"z": 3
+				"x0": -1.5,
+				"z0": -1.5,
+				"x": 3.0,
+				"z": 3.0
 			},
 			"Template": "MiniInstitutionBuilding",
 			"InfluenceRange": 22.0,
@@ -59577,8 +59967,10 @@
 			"Identifier": "Public Roman Celtic Shrine Ceres",
 			"IconFileName": "A8_shrine_ceres.png",
 			"BuildBlocker": {
-				"x": 3,
-				"z": 3
+				"x0": -1.5,
+				"z0": -1.5,
+				"x": 3.0,
+				"z": 3.0
 			},
 			"Template": "MiniInstitutionBuilding",
 			"InfluenceRange": 20.0,
@@ -59604,8 +59996,10 @@
 			"Identifier": "Public Roman Celtic Shrine Neptune",
 			"IconFileName": "A8_shrine_neptune.png",
 			"BuildBlocker": {
-				"x": 3,
-				"z": 3
+				"x0": -1.5,
+				"z0": -1.5,
+				"x": 3.0,
+				"z": 3.0
 			},
 			"Template": "MiniInstitutionBuilding",
 			"InfluenceRange": 20.0,
@@ -59631,8 +60025,10 @@
 			"Identifier": "Public Roman Celtic Shrine Mercuy-Lugus",
 			"IconFileName": "A8_shrine_mercury.png",
 			"BuildBlocker": {
-				"x": 3,
-				"z": 3
+				"x0": -1.5,
+				"z0": -1.5,
+				"x": 3.0,
+				"z": 3.0
 			},
 			"Template": "MiniInstitutionBuilding",
 			"InfluenceRange": 16.0,
@@ -59658,8 +60054,10 @@
 			"Identifier": "Public Roman Celtic Shrine Epona",
 			"IconFileName": "A8_shrine_epona.png",
 			"BuildBlocker": {
-				"x": 3,
-				"z": 3
+				"x0": -1.5,
+				"z0": -1.5,
+				"x": 3.0,
+				"z": 3.0
 			},
 			"Template": "MiniInstitutionBuilding",
 			"InfluenceRange": 20.0,
@@ -59685,8 +60083,10 @@
 			"Identifier": "Public Roman Celtic Shrine Cernunnos",
 			"IconFileName": "A8_shrine_cernunnos.png",
 			"BuildBlocker": {
-				"x": 3,
-				"z": 3
+				"x0": -1.5,
+				"z0": -1.5,
+				"x": 3.0,
+				"z": 3.0
 			},
 			"Template": "MiniInstitutionBuilding",
 			"InfluenceRange": 24.0,
@@ -59712,8 +60112,10 @@
 			"Identifier": "Public Roman Celtic Shrine Minerva",
 			"IconFileName": "A8_shrine_minerva.png",
 			"BuildBlocker": {
-				"x": 3,
-				"z": 3
+				"x0": -1.5,
+				"z0": -1.5,
+				"x": 3.0,
+				"z": 3.0
 			},
 			"Template": "MiniInstitutionBuilding",
 			"InfluenceRange": 20.0,
@@ -59739,8 +60141,10 @@
 			"Identifier": "Public Roman Celtic Market",
 			"IconFileName": "A8_public_celtic_marketplace.png",
 			"BuildBlocker": {
-				"x": 6,
-				"z": 5
+				"x0": -3.0,
+				"z0": -2.5,
+				"x": 6.0,
+				"z": 5.0
 			},
 			"Template": "PublicServiceBuilding",
 			"InfluenceRange": 28.0,
@@ -59766,8 +60170,10 @@
 			"Identifier": "Public Roman Celtic Grammaticus",
 			"IconFileName": "A8_public_celtic_grammaticus.png",
 			"BuildBlocker": {
-				"x": 6,
-				"z": 8
+				"x0": -3.0,
+				"z0": -4.0,
+				"x": 6.0,
+				"z": 8.0
 			},
 			"Template": "PublicServiceBuilding",
 			"InfluenceRange": 26.0,
@@ -59793,8 +60199,10 @@
 			"Identifier": "Public Roman Celtic Fanum",
 			"IconFileName": "A8_public_celtic_fanum.png",
 			"BuildBlocker": {
-				"x": 7,
-				"z": 7
+				"x0": -3.5,
+				"z0": -3.5,
+				"x": 7.0,
+				"z": 7.0
 			},
 			"Template": "PublicServiceBuilding",
 			"InfluenceRange": 36.0,
@@ -59820,8 +60228,10 @@
 			"Identifier": "Public Roman Celtic Gambling House",
 			"IconFileName": "A8_public_roman_gambling_house.png",
 			"BuildBlocker": {
-				"x": 10,
-				"z": 10
+				"x0": -5.0,
+				"z0": -5.0,
+				"x": 10.0,
+				"z": 10.0
 			},
 			"Template": "PublicServiceBuilding",
 			"InfluenceRange": 42.0,
@@ -59847,8 +60257,10 @@
 			"Identifier": "Public Roman Celtic Theater",
 			"IconFileName": "A8_public_roman_theatre.png",
 			"BuildBlocker": {
-				"x": 14,
-				"z": 11
+				"x0": -7.0,
+				"z0": -5.0,
+				"x": 14.0,
+				"z": 11.0
 			},
 			"Template": "PublicServiceBuilding",
 			"InfluenceRange": 50.0,
@@ -59874,8 +60286,10 @@
 			"Identifier": "Residence Roman Celtic 02 Merchants",
 			"IconFileName": "A8_base_residence.png",
 			"BuildBlocker": {
-				"x": 3,
-				"z": 3
+				"x0": -1.5,
+				"z0": -1.5,
+				"x": 3.0,
+				"z": 3.0
 			},
 			"Template": "ResidenceBuilding",
 			"InfluenceRange": 0.0,
@@ -59901,8 +60315,10 @@
 			"Identifier": "Residence Roman Celtic 03 Nobles",
 			"IconFileName": "A8_base_residence.png",
 			"BuildBlocker": {
-				"x": 3,
-				"z": 3
+				"x0": -1.5,
+				"z0": -1.5,
+				"x": 3.0,
+				"z": 3.0
 			},
 			"Template": "ResidenceBuilding",
 			"InfluenceRange": 0.0,
@@ -59928,8 +60344,10 @@
 			"Identifier": "Wonder Roman Celtic Temple",
 			"IconFileName": "A8_public_roman_temple.png",
 			"BuildBlocker": {
-				"x": 19,
-				"z": 11
+				"x0": -9.5,
+				"z0": -5.5,
+				"x": 19.0,
+				"z": 11.0
 			},
 			"Template": "PublicServiceBuilding",
 			"InfluenceRange": 68.0,
@@ -59955,8 +60373,10 @@
 			"Identifier": "Wonder Roman Celtic Baths",
 			"IconFileName": "A8_wonder_celtic_bathhouse.png",
 			"BuildBlocker": {
-				"x": 11,
-				"z": 20
+				"x0": -5.5,
+				"z0": -10.0,
+				"x": 11.0,
+				"z": 20.0
 			},
 			"Template": "PublicServiceBuilding",
 			"InfluenceRange": 66.0,
@@ -59982,8 +60402,10 @@
 			"Identifier": "Villa 01 Roman Celtic",
 			"IconFileName": "A8_base_villa.png",
 			"BuildBlocker": {
-				"x": 9,
-				"z": 11
+				"x0": -4.5,
+				"z0": -5.5,
+				"x": 9.0,
+				"z": 11.0
 			},
 			"Template": "VillaUrban",
 			"InfluenceRange": 0.0,
@@ -60009,8 +60431,10 @@
 			"Identifier": "Villa 01 Roman Celtic Guesthouse",
 			"IconFileName": "A8_base_guesthouse.png",
 			"BuildBlocker": {
-				"x": 4,
-				"z": 6
+				"x0": -2.0,
+				"z0": -3.0,
+				"x": 4.0,
+				"z": 6.0
 			},
 			"Template": "GuestHouse",
 			"InfluenceRange": 0.0,
@@ -60036,8 +60460,10 @@
 			"Identifier": "Military Roman Celtic Wall Wood",
 			"IconFileName": "A8_wood_wall.png",
 			"BuildBlocker": {
-				"x": 1,
-				"z": 1
+				"x0": 0.0,
+				"z0": 0.0,
+				"x": 1.0,
+				"z": 1.0
 			},
 			"Template": "MilitaryWall",
 			"InfluenceRange": 0.0,
@@ -60063,8 +60489,10 @@
 			"Identifier": "Military Roman Celtic Wall Wood Gate",
 			"IconFileName": "A8_wood_gate.png",
 			"BuildBlocker": {
-				"x": 3,
-				"z": 1
+				"x0": 0.0,
+				"z0": 0.0,
+				"x": 3.0,
+				"z": 1.0
 			},
 			"Template": "MilitaryGate",
 			"InfluenceRange": 0.0,
@@ -60090,8 +60518,10 @@
 			"Identifier": "Military Roman Celtic Wall Stone",
 			"IconFileName": "A8_stone_wall.png",
 			"BuildBlocker": {
-				"x": 1,
-				"z": 1
+				"x0": 0.0,
+				"z0": 0.0,
+				"x": 1.0,
+				"z": 1.0
 			},
 			"Template": "MilitaryWall",
 			"InfluenceRange": 0.0,
@@ -60117,8 +60547,10 @@
 			"Identifier": "Military Roman Celtic Wall Stone Gate",
 			"IconFileName": "A8_stone_gate.png",
 			"BuildBlocker": {
-				"x": 3,
-				"z": 1
+				"x0": 0.0,
+				"z0": 0.0,
+				"x": 3.0,
+				"z": 1.0
 			},
 			"Template": "MilitaryGate",
 			"InfluenceRange": 0.0,
@@ -60144,8 +60576,10 @@
 			"Identifier": "Military Roman Celtic Tower Wood Archer",
 			"IconFileName": "A8_wood_archer_tower.png",
 			"BuildBlocker": {
-				"x": 2,
-				"z": 2
+				"x0": -1.0,
+				"z0": -1.0,
+				"x": 2.0,
+				"z": 2.0
 			},
 			"Template": "MilitaryTowerUnit",
 			"InfluenceRange": 0.0,
@@ -60171,8 +60605,10 @@
 			"Identifier": "Military Roman Celtic Tower Stone Archer",
 			"IconFileName": "A8_stone_archer_tower.png",
 			"BuildBlocker": {
-				"x": 2,
-				"z": 2
+				"x0": -1.0,
+				"z0": -1.0,
+				"x": 2.0,
+				"z": 2.0
 			},
 			"Template": "MilitaryTowerUnit",
 			"InfluenceRange": 0.0,
@@ -60198,8 +60634,10 @@
 			"Identifier": "Military Roman Celtic Tower Stone Ballista",
 			"IconFileName": "A8_stone_ballista_tower.png",
 			"BuildBlocker": {
-				"x": 2,
-				"z": 2
+				"x0": -1.0,
+				"z0": -1.0,
+				"x": 2.0,
+				"z": 2.0
 			},
 			"Template": "MilitaryTowerUnit",
 			"InfluenceRange": 0.0,
@@ -60225,8 +60663,10 @@
 			"Identifier": "Military Roman Celtic Barracks",
 			"IconFileName": "A8_military_barracks.png",
 			"BuildBlocker": {
-				"x": 8,
-				"z": 8
+				"x0": -4.0,
+				"z0": -4.0,
+				"x": 8.0,
+				"z": 8.0
 			},
 			"Template": "RecruitmentBuilding",
 			"InfluenceRange": 0.0,
@@ -60252,8 +60692,10 @@
 			"Identifier": "Military Roman Celtic Training Grounds",
 			"IconFileName": "A8_military_training_grounds.png",
 			"BuildBlocker": {
-				"x": 10,
-				"z": 8
+				"x0": -5.0,
+				"z0": -4.0,
+				"x": 10.0,
+				"z": 8.0
 			},
 			"Template": "RecruitmentBuilding",
 			"InfluenceRange": 0.0,
@@ -60279,8 +60721,10 @@
 			"Identifier": "Military Roman Celtic Siege Workshop",
 			"IconFileName": "A8_military_siege_workshop.png",
 			"BuildBlocker": {
-				"x": 7,
-				"z": 10
+				"x0": -3.5,
+				"z0": -5.0,
+				"x": 7.0,
+				"z": 10.0
 			},
 			"Template": "RecruitmentBuilding",
 			"InfluenceRange": 0.0,
@@ -60306,8 +60750,10 @@
 			"Identifier": "Marsh Drainage Roman Celtic Waterlock",
 			"IconFileName": "A8_marsh_drainage_gate.png",
 			"BuildBlocker": {
-				"x": 3,
-				"z": 3
+				"x0": -1.5,
+				"z0": -1.5,
+				"x": 3.0,
+				"z": 3.0
 			},
 			"Template": "IrrigationPropagationSource_Marsh",
 			"InfluenceRange": 0.0,
@@ -60333,8 +60779,10 @@
 			"Identifier": "Marsh Canal",
 			"IconFileName": null,
 			"BuildBlocker": {
-				"x": 1,
-				"z": 1
+				"x0": 0.0,
+				"z0": 0.0,
+				"x": 1.0,
+				"z": 1.0
 			},
 			"Template": "Canal",
 			"InfluenceRange": 0.0,
@@ -60360,8 +60808,10 @@
 			"Identifier": "Aqueduct Roman Celtic Basin",
 			"IconFileName": "A8_aqueduct_source.png",
 			"BuildBlocker": {
-				"x": 8,
-				"z": 3
+				"x0": -1.5,
+				"z0": -1.5,
+				"x": 8.0,
+				"z": 3.0
 			},
 			"Template": "AqueductProducer",
 			"InfluenceRange": 0.0,
@@ -60387,8 +60837,10 @@
 			"Identifier": "Aqueduct Roman Celtic Distribution",
 			"IconFileName": "A8_aqueduct_cistern.png",
 			"BuildBlocker": {
-				"x": 3,
-				"z": 3
+				"x0": -1.5,
+				"z0": -1.5,
+				"x": 3.0,
+				"z": 3.0
 			},
 			"Template": "AqueductDistributor",
 			"InfluenceRange": 0.0,
@@ -60414,8 +60866,10 @@
 			"Identifier": "Quay Roman Celtic",
 			"IconFileName": null,
 			"BuildBlocker": {
-				"x": 1,
-				"z": 1
+				"x0": 0.0,
+				"z0": 0.0,
+				"x": 1.0,
+				"z": 1.0
 			},
 			"Template": "PolygonObject",
 			"InfluenceRange": 0.0,
@@ -60441,8 +60895,10 @@
 			"Identifier": "Production Coast Celtic Samphire",
 			"IconFileName": "A8_samphire_goods.png",
 			"BuildBlocker": {
-				"x": 8,
-				"z": 4
+				"x0": -1.0,
+				"z0": -2.0,
+				"x": 8.0,
+				"z": 4.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -60468,8 +60924,10 @@
 			"Identifier": "Production Coast Celtic Cockles",
 			"IconFileName": "A8_cockles_goods.png",
 			"BuildBlocker": {
-				"x": 9,
-				"z": 7
+				"x0": -1.0,
+				"z0": -3.5,
+				"x": 9.0,
+				"z": 7.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -60495,8 +60953,10 @@
 			"Identifier": "Module Field Celtic Barley",
 			"IconFileName": "A8_farm_fields.png",
 			"BuildBlocker": {
-				"x": 1,
-				"z": 1
+				"x0": 0.0,
+				"z0": 0.0,
+				"x": 1.0,
+				"z": 1.0
 			},
 			"Template": "Module Polygon Field",
 			"InfluenceRange": 0.0,
@@ -60522,8 +60982,10 @@
 			"Identifier": "Module Field Celtic Dye",
 			"IconFileName": "A8_farm_fields.png",
 			"BuildBlocker": {
-				"x": 1,
-				"z": 1
+				"x0": 0.0,
+				"z0": 0.0,
+				"x": 1.0,
+				"z": 1.0
 			},
 			"Template": "Module Polygon Field",
 			"InfluenceRange": 0.0,
@@ -60549,8 +61011,10 @@
 			"Identifier": "Production Field Celtic Barley",
 			"IconFileName": "A8_barley_goods.png",
 			"BuildBlocker": {
-				"x": 5,
-				"z": 5
+				"x0": -2.5,
+				"z0": -2.5,
+				"x": 5.0,
+				"z": 5.0
 			},
 			"Template": "Production Field",
 			"InfluenceRange": 0.0,
@@ -60576,8 +61040,10 @@
 			"Identifier": "Production Field Celtic Dye Plants",
 			"IconFileName": "A8_dye_plants_goods.png",
 			"BuildBlocker": {
-				"x": 4,
-				"z": 4
+				"x0": -2.0,
+				"z0": -2.0,
+				"x": 4.0,
+				"z": 4.0
 			},
 			"Template": "Production Field",
 			"InfluenceRange": 0.0,
@@ -60603,8 +61069,10 @@
 			"Identifier": "Module Marsh Pasture Celtic Aurochs",
 			"IconFileName": "A8_animal_compound.png",
 			"BuildBlocker": {
-				"x": 5,
-				"z": 3
+				"x0": -2.5,
+				"z0": -1.5,
+				"x": 5.0,
+				"z": 3.0
 			},
 			"Template": "Module Marsh Field",
 			"InfluenceRange": 0.0,
@@ -60630,8 +61098,10 @@
 			"Identifier": "Module Marsh Field Celtic Reed",
 			"IconFileName": "A8_animal_compound.png",
 			"BuildBlocker": {
-				"x": 1,
-				"z": 1
+				"x0": 0.0,
+				"z0": 0.0,
+				"x": 1.0,
+				"z": 1.0
 			},
 			"Template": "Module Polygon Field",
 			"InfluenceRange": 0.0,
@@ -60657,8 +61127,10 @@
 			"Identifier": "Production Marsh Celtic Reed",
 			"IconFileName": "A8_reed_goods.png",
 			"BuildBlocker": {
-				"x": 4,
-				"z": 4
+				"x0": -2.0,
+				"z0": -2.0,
+				"x": 4.0,
+				"z": 4.0
 			},
 			"Template": "Production Marsh Pasture",
 			"InfluenceRange": 0.0,
@@ -60684,8 +61156,10 @@
 			"Identifier": "Production Marsh Celtic Mud",
 			"IconFileName": "A8_mud_goods.png",
 			"BuildBlocker": {
-				"x": 7,
-				"z": 7
+				"x0": -3.5,
+				"z0": -3.5,
+				"x": 7.0,
+				"z": 7.0
 			},
 			"Template": "Production Marsh",
 			"InfluenceRange": 0.0,
@@ -60711,8 +61185,10 @@
 			"Identifier": "Production Marsh Celtic Aurochs",
 			"IconFileName": "A8_auroch_goods.png",
 			"BuildBlocker": {
-				"x": 7,
-				"z": 5
+				"x0": -3.5,
+				"z0": -2.5,
+				"x": 7.0,
+				"z": 5.0
 			},
 			"Template": "Production Marsh Pasture",
 			"InfluenceRange": 0.0,
@@ -60738,8 +61214,10 @@
 			"Identifier": "Production Marsh Celtic Beaver",
 			"IconFileName": "A8_beaver_goods.png",
 			"BuildBlocker": {
-				"x": 3,
-				"z": 3
+				"x0": -1.5,
+				"z0": -1.5,
+				"x": 3.0,
+				"z": 3.0
 			},
 			"Template": "Production Marsh Area",
 			"InfluenceRange": 0.0,
@@ -60765,8 +61243,10 @@
 			"Identifier": "Production Meadow Celtic Dartmoor Ponies",
 			"IconFileName": "A8_ponies_goods.png",
 			"BuildBlocker": {
-				"x": 5,
-				"z": 5
+				"x0": -2.5,
+				"z0": -2.5,
+				"x": 5.0,
+				"z": 5.0
 			},
 			"Template": "Production Area",
 			"InfluenceRange": 0.0,
@@ -60792,8 +61272,10 @@
 			"Identifier": "Production Mountain Celtic Tin Ore",
 			"IconFileName": "A8_tin_ore_goods.png",
 			"BuildBlocker": {
-				"x": 8,
-				"z": 3
+				"x0": -1.5,
+				"z0": -1.5,
+				"x": 8.0,
+				"z": 3.0
 			},
 			"Template": "SlotFactoryBuilding7",
 			"InfluenceRange": 0.0,
@@ -60819,8 +61301,10 @@
 			"Identifier": "Production Mountain Celtic Copper Ore",
 			"IconFileName": "A8_copper_ore_goods.png",
 			"BuildBlocker": {
-				"x": 8,
-				"z": 3
+				"x0": -1.5,
+				"z0": -1.5,
+				"x": 8.0,
+				"z": 3.0
 			},
 			"Template": "SlotFactoryBuilding7",
 			"InfluenceRange": 0.0,
@@ -60846,8 +61330,10 @@
 			"Identifier": "Production Mountain Celtic Granite Blocks",
 			"IconFileName": "A8_granite_goods.png",
 			"BuildBlocker": {
-				"x": 8,
-				"z": 3
+				"x0": -1.5,
+				"z0": -1.5,
+				"x": 8.0,
+				"z": 3.0
 			},
 			"Template": "SlotFactoryBuilding7",
 			"InfluenceRange": 0.0,
@@ -60873,8 +61359,10 @@
 			"Identifier": "Module Pasture Celtic Wool",
 			"IconFileName": "A8_animal_compound.png",
 			"BuildBlocker": {
-				"x": 3,
-				"z": 3
+				"x0": -1.5,
+				"z0": -1.5,
+				"x": 3.0,
+				"z": 3.0
 			},
 			"Template": "Module Field",
 			"InfluenceRange": 0.0,
@@ -60900,8 +61388,10 @@
 			"Identifier": "Production Pasture Celtic Sheep",
 			"IconFileName": "A8_sheep_goods.png",
 			"BuildBlocker": {
-				"x": 3,
-				"z": 3
+				"x0": -1.5,
+				"z0": -1.5,
+				"x": 3.0,
+				"z": 3.0
 			},
 			"Template": "Production Field",
 			"InfluenceRange": 0.0,
@@ -60927,8 +61417,10 @@
 			"Identifier": "Production Chemical Celtic Green",
 			"IconFileName": "A8_celtic_green_goods.png",
 			"BuildBlocker": {
-				"x": 4,
-				"z": 4
+				"x0": -2.0,
+				"z0": -2.0,
+				"x": 4.0,
+				"z": 4.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -60954,8 +61446,10 @@
 			"Identifier": "Production Chemical Celtic Lye",
 			"IconFileName": "A8_lye_goods.png",
 			"BuildBlocker": {
-				"x": 4,
-				"z": 3
+				"x0": -2.0,
+				"z0": -1.5,
+				"x": 4.0,
+				"z": 3.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -60981,8 +61475,10 @@
 			"Identifier": "Production Craft Celtic Chassis",
 			"IconFileName": "A8_chassis_goods.png",
 			"BuildBlocker": {
-				"x": 5,
-				"z": 4
+				"x0": -2.5,
+				"z0": -2.0,
+				"x": 5.0,
+				"z": 4.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -61008,8 +61504,10 @@
 			"Identifier": "Production Heavy Celtic Bronze",
 			"IconFileName": "A8_bronze_goods.png",
 			"BuildBlocker": {
-				"x": 4,
-				"z": 5
+				"x0": -2.0,
+				"z0": -2.5,
+				"x": 4.0,
+				"z": 5.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -61035,8 +61533,10 @@
 			"Identifier": "Production Ingredient Celtic Malt",
 			"IconFileName": "A8_malt_goods.png",
 			"BuildBlocker": {
-				"x": 5,
-				"z": 5
+				"x0": -2.5,
+				"z0": -2.5,
+				"x": 5.0,
+				"z": 5.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -61062,8 +61562,10 @@
 			"Identifier": "Production Food Celtic Cheese",
 			"IconFileName": "A8_cheese_goods.png",
 			"BuildBlocker": {
-				"x": 5,
-				"z": 4
+				"x0": -2.5,
+				"z0": -2.0,
+				"x": 5.0,
+				"z": 4.0
 			},
 			"Template": "Production Marsh",
 			"InfluenceRange": 0.0,
@@ -61089,8 +61591,10 @@
 			"Identifier": "Production Food Celtic Beer",
 			"IconFileName": "A8_beer_goods.png",
 			"BuildBlocker": {
-				"x": 5,
-				"z": 4
+				"x0": -2.5,
+				"z0": -2.0,
+				"x": 5.0,
+				"z": 4.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -61116,8 +61620,10 @@
 			"Identifier": "Production Food Celtic Roast Beef",
 			"IconFileName": "A8_roast_goods.png",
 			"BuildBlocker": {
-				"x": 4,
-				"z": 4
+				"x0": -2.0,
+				"z0": -2.0,
+				"x": 4.0,
+				"z": 4.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -61143,8 +61649,10 @@
 			"Identifier": "Production Fashion Celtic Reed Shoes",
 			"IconFileName": "A8_reed_shoes_goods.png",
 			"BuildBlocker": {
-				"x": 4,
-				"z": 3
+				"x0": -2.0,
+				"z0": -1.5,
+				"x": 4.0,
+				"z": 3.0
 			},
 			"Template": "Production Marsh",
 			"InfluenceRange": 0.0,
@@ -61170,8 +61678,10 @@
 			"Identifier": "Production Fashion Celtic Trousers",
 			"IconFileName": "A8_trouser_goods.png",
 			"BuildBlocker": {
-				"x": 5,
-				"z": 5
+				"x0": -2.5,
+				"z0": -2.5,
+				"x": 5.0,
+				"z": 5.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -61197,8 +61707,10 @@
 			"Identifier": "Production Fashion Celtic Torcs",
 			"IconFileName": "A8_torcs_goods.png",
 			"BuildBlocker": {
-				"x": 4,
-				"z": 4
+				"x0": -2.0,
+				"z0": -2.0,
+				"x": 4.0,
+				"z": 4.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -61224,8 +61736,10 @@
 			"Identifier": "Production Fashion Celtic Cloak",
 			"IconFileName": "A8_cloak_goods.png",
 			"BuildBlocker": {
-				"x": 5,
-				"z": 4
+				"x0": -2.5,
+				"z0": -2.0,
+				"x": 5.0,
+				"z": 4.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -61251,8 +61765,10 @@
 			"Identifier": "Production Fashion Celtic Pelt Hats",
 			"IconFileName": "A8_pelt_hat_goods.png",
 			"BuildBlocker": {
-				"x": 3,
-				"z": 4
+				"x0": -1.5,
+				"z0": -2.0,
+				"x": 3.0,
+				"z": 4.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -61278,8 +61794,10 @@
 			"Identifier": "Production Culture Celtic Drinking Horns",
 			"IconFileName": "A8_drinkhorns_goods.png",
 			"BuildBlocker": {
-				"x": 3,
-				"z": 5
+				"x0": -1.5,
+				"z0": -2.5,
+				"x": 3.0,
+				"z": 5.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -61305,8 +61823,10 @@
 			"Identifier": "Production Culture Celtic Clan Shield",
 			"IconFileName": "A8_clan_shields_goods.png",
 			"BuildBlocker": {
-				"x": 4,
-				"z": 4
+				"x0": -2.0,
+				"z0": -2.0,
+				"x": 4.0,
+				"z": 4.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -61332,8 +61852,10 @@
 			"Identifier": "Production Culture Celtic Chariots",
 			"IconFileName": "A8_chariot_goods.png",
 			"BuildBlocker": {
-				"x": 6,
-				"z": 7
+				"x0": -3.0,
+				"z0": -3.5,
+				"x": 6.0,
+				"z": 7.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -61359,8 +61881,10 @@
 			"Identifier": "Production Construction Celtic Wattle and Daub",
 			"IconFileName": "A8_wattle_daub_goods.png",
 			"BuildBlocker": {
-				"x": 7,
-				"z": 5
+				"x0": -3.5,
+				"z0": -2.5,
+				"x": 7.0,
+				"z": 5.0
 			},
 			"Template": "Production Marsh",
 			"InfluenceRange": 0.0,
@@ -61386,8 +61910,10 @@
 			"Identifier": "Production Construction Celtic Granite",
 			"IconFileName": "A8_granite_block_goods.png",
 			"BuildBlocker": {
-				"x": 5,
-				"z": 8
+				"x0": -2.5,
+				"z0": -4.0,
+				"x": 5.0,
+				"z": 8.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -61413,8 +61939,10 @@
 			"Identifier": "Public Celtic Bardic Hall",
 			"IconFileName": "A8_public_celtic_bardic_hall.png",
 			"BuildBlocker": {
-				"x": 5,
-				"z": 5
+				"x0": -2.5,
+				"z0": -2.5,
+				"x": 5.0,
+				"z": 5.0
 			},
 			"Template": "PublicServiceBuilding",
 			"InfluenceRange": 26.0,
@@ -61440,8 +61968,10 @@
 			"Identifier": "Public Celtic Sporting Grounds",
 			"IconFileName": "A8_public_celtic_sportsfield.png",
 			"BuildBlocker": {
-				"x": 7,
-				"z": 9
+				"x0": -3.5,
+				"z0": -4.5,
+				"x": 7.0,
+				"z": 9.0
 			},
 			"Template": "PublicServiceBuilding",
 			"InfluenceRange": 38.0,
@@ -61467,8 +61997,10 @@
 			"Identifier": "Public Celtic Town Hall",
 			"IconFileName": "A8_public_celtic_town_hall.png",
 			"BuildBlocker": {
-				"x": 7,
-				"z": 12
+				"x0": -3.5,
+				"z0": -6.0,
+				"x": 7.0,
+				"z": 12.0
 			},
 			"Template": "PublicServiceBuilding",
 			"InfluenceRange": 46.0,
@@ -61494,8 +62026,10 @@
 			"Identifier": "Residence Celtic 01 Tribesmen",
 			"IconFileName": "A8_base_residence.png",
 			"BuildBlocker": {
-				"x": 3,
-				"z": 3
+				"x0": -1.5,
+				"z0": -1.5,
+				"x": 3.0,
+				"z": 3.0
 			},
 			"Template": "ResidenceBuilding",
 			"InfluenceRange": 0.0,
@@ -61521,8 +62055,10 @@
 			"Identifier": "Residence Celtic 02 Smiths",
 			"IconFileName": "A8_base_residence.png",
 			"BuildBlocker": {
-				"x": 3,
-				"z": 3
+				"x0": -1.5,
+				"z0": -1.5,
+				"x": 3.0,
+				"z": 3.0
 			},
 			"Template": "ResidenceBuilding",
 			"InfluenceRange": 0.0,
@@ -61548,8 +62084,10 @@
 			"Identifier": "Residence Celtic 03 Alderman",
 			"IconFileName": "A8_base_residence.png",
 			"BuildBlocker": {
-				"x": 3,
-				"z": 3
+				"x0": -1.5,
+				"z0": -1.5,
+				"x": 3.0,
+				"z": 3.0
 			},
 			"Template": "ResidenceBuilding",
 			"InfluenceRange": 0.0,
@@ -61575,8 +62113,10 @@
 			"Identifier": "Wonder Celtic Barrow",
 			"IconFileName": "A8_public_celtic_barrows.png",
 			"BuildBlocker": {
-				"x": 14,
-				"z": 14
+				"x0": -7.0,
+				"z0": -7.0,
+				"x": 14.0,
+				"z": 14.0
 			},
 			"Template": "PublicServiceBuilding",
 			"InfluenceRange": 66.0,
@@ -61602,8 +62142,10 @@
 			"Identifier": "Wonder Celtic Sacred Grove",
 			"IconFileName": "A8_public_celtic_sacred_grove.png",
 			"BuildBlocker": {
-				"x": 20,
-				"z": 12
+				"x0": -10.0,
+				"z0": -6.0,
+				"x": 20.0,
+				"z": 12.0
 			},
 			"Template": "PublicServiceBuilding",
 			"InfluenceRange": 68.0,
@@ -61629,8 +62171,8 @@
 			"Identifier": "Military Roman Celtic Wall Wood",
 			"IconFileName": "A8_wood_wall.png",
 			"BuildBlocker": {
-				"x": 1,
-				"z": 1
+				"x": 1.0,
+				"z": 1.0
 			},
 			"Template": "MilitaryWall",
 			"InfluenceRange": 0.0,
@@ -61656,8 +62198,8 @@
 			"Identifier": "Military Roman Celtic Wall Wood Gate",
 			"IconFileName": "A8_wood_gate.png",
 			"BuildBlocker": {
-				"x": 3,
-				"z": 1
+				"x": 3.0,
+				"z": 1.0
 			},
 			"Template": "MilitaryGate",
 			"InfluenceRange": 0.0,
@@ -61683,8 +62225,8 @@
 			"Identifier": "Military Roman Celtic Tower Wood Archer",
 			"IconFileName": "A8_wood_archer_tower.png",
 			"BuildBlocker": {
-				"x": 2,
-				"z": 2
+				"x": 2.0,
+				"z": 2.0
 			},
 			"Template": "MilitaryTowerUnit",
 			"InfluenceRange": 0.0,
@@ -61710,8 +62252,8 @@
 			"Identifier": "Military Roman Celtic Barracks",
 			"IconFileName": "A8_military_barracks.png",
 			"BuildBlocker": {
-				"x": 8,
-				"z": 8
+				"x": 8.0,
+				"z": 8.0
 			},
 			"Template": "RecruitmentBuilding",
 			"InfluenceRange": 0.0,
@@ -61737,8 +62279,8 @@
 			"Identifier": "Public Roman Celtic Fanum",
 			"IconFileName": "A8_public_celtic_fanum.png",
 			"BuildBlocker": {
-				"x": 7,
-				"z": 7
+				"x": 7.0,
+				"z": 7.0
 			},
 			"Template": "PublicServiceBuilding",
 			"InfluenceRange": 36.0,
@@ -61764,8 +62306,8 @@
 			"Identifier": "Military Roman Celtic Wall Stone",
 			"IconFileName": "A8_stone_wall.png",
 			"BuildBlocker": {
-				"x": 1,
-				"z": 1
+				"x": 1.0,
+				"z": 1.0
 			},
 			"Template": "MilitaryWall",
 			"InfluenceRange": 0.0,
@@ -61791,8 +62333,8 @@
 			"Identifier": "Military Roman Celtic Wall Stone Gate",
 			"IconFileName": "A8_stone_gate.png",
 			"BuildBlocker": {
-				"x": 3,
-				"z": 1
+				"x": 3.0,
+				"z": 1.0
 			},
 			"Template": "MilitaryGate",
 			"InfluenceRange": 0.0,
@@ -61818,8 +62360,8 @@
 			"Identifier": "Military Roman Celtic Tower Stone Archer",
 			"IconFileName": "A8_stone_archer_tower.png",
 			"BuildBlocker": {
-				"x": 2,
-				"z": 2
+				"x": 2.0,
+				"z": 2.0
 			},
 			"Template": "MilitaryTowerUnit",
 			"InfluenceRange": 0.0,
@@ -61845,8 +62387,8 @@
 			"Identifier": "Military Roman Celtic Tower Stone Ballista",
 			"IconFileName": "A8_stone_ballista_tower.png",
 			"BuildBlocker": {
-				"x": 2,
-				"z": 2
+				"x": 2.0,
+				"z": 2.0
 			},
 			"Template": "MilitaryTowerUnit",
 			"InfluenceRange": 0.0,
@@ -61872,8 +62414,8 @@
 			"Identifier": "Military Roman Celtic Training Grounds",
 			"IconFileName": "A8_military_training_grounds.png",
 			"BuildBlocker": {
-				"x": 10,
-				"z": 8
+				"x": 10.0,
+				"z": 8.0
 			},
 			"Template": "RecruitmentBuilding",
 			"InfluenceRange": 0.0,
@@ -61899,8 +62441,8 @@
 			"Identifier": "Military Roman Celtic Siege Workshop",
 			"IconFileName": "A8_military_siege_workshop.png",
 			"BuildBlocker": {
-				"x": 7,
-				"z": 10
+				"x": 7.0,
+				"z": 10.0
 			},
 			"Template": "RecruitmentBuilding",
 			"InfluenceRange": 0.0,
@@ -61926,8 +62468,8 @@
 			"Identifier": "Production Field Roman Celtic Grapes",
 			"IconFileName": "A8_grapes_goods.png",
 			"BuildBlocker": {
-				"x": 5,
-				"z": 4
+				"x": 5.0,
+				"z": 4.0
 			},
 			"Template": "Production Field",
 			"InfluenceRange": 0.0,
@@ -61953,8 +62495,8 @@
 			"Identifier": "Production Meadow Roman Celtic Honycombs",
 			"IconFileName": "A8_honeycombs_goods.png",
 			"BuildBlocker": {
-				"x": 5,
-				"z": 5
+				"x": 5.0,
+				"z": 5.0
 			},
 			"Template": "Production Area",
 			"InfluenceRange": 0.0,
@@ -61980,8 +62522,8 @@
 			"Identifier": "Production Food Roman Celtic Wine",
 			"IconFileName": "A8_wine_goods.png",
 			"BuildBlocker": {
-				"x": 9,
-				"z": 6
+				"x": 9.0,
+				"z": 6.0
 			},
 			"Template": "Production",
 			"InfluenceRange": 0.0,
@@ -62007,8 +62549,8 @@
 			"Identifier": "Public Roman Celtic Theater",
 			"IconFileName": "A8_public_roman_theatre.png",
 			"BuildBlocker": {
-				"x": 14,
-				"z": 11
+				"x": 14.0,
+				"z": 11.0
 			},
 			"Template": "PublicServiceBuilding",
 			"InfluenceRange": 50.0,
@@ -62034,8 +62576,8 @@
 			"Identifier": "Public Roman Celtic Gambling House",
 			"IconFileName": "A8_public_roman_gambling_house.png",
 			"BuildBlocker": {
-				"x": 10,
-				"z": 10
+				"x": 10.0,
+				"z": 10.0
 			},
 			"Template": "PublicServiceBuilding",
 			"InfluenceRange": 42.0,
@@ -62061,8 +62603,8 @@
 			"Identifier": "Module Silo Roman",
 			"IconFileName": "A8_silos.png",
 			"BuildBlocker": {
-				"x": 2,
-				"z": 3
+				"x": 2.0,
+				"z": 3.0
 			},
 			"Template": "ProductionModuleSilo",
 			"InfluenceRange": 0.0,
@@ -62088,8 +62630,8 @@
 			"Identifier": "Module Silo Roman",
 			"IconFileName": "A8_silos.png",
 			"BuildBlocker": {
-				"x": 2,
-				"z": 3
+				"x": 2.0,
+				"z": 3.0
 			},
 			"Template": "ProductionModuleSilo",
 			"InfluenceRange": 0.0,
@@ -62115,8 +62657,8 @@
 			"Identifier": "Module Silo Roman Celtic",
 			"IconFileName": "A8_silos.png",
 			"BuildBlocker": {
-				"x": 2,
-				"z": 3
+				"x": 2.0,
+				"z": 3.0
 			},
 			"Template": "ProductionModuleSilo",
 			"InfluenceRange": 0.0,

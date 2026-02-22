@@ -1,11 +1,12 @@
 ﻿using System;
+using AnnoDesigner.Core.Layout.Models;
 using AnnoDesigner.Core.Models;
 
 namespace AnnoDesigner.ViewModels
 {
-    public class LayoutSettingsViewModel : Notify
+    public class LayoutViewModel : Notify
     {
-        public LayoutSettingsViewModel()
+        public LayoutViewModel()
         {
             _layoutVersion = new Version(1, 0, 0, 0);
         }
@@ -37,6 +38,30 @@ namespace AnnoDesigner.ViewModels
                     LayoutVersion = parsedVersion;
                 }
             }
+        }
+
+        private LayoutFile _layoutFile;
+
+        public LayoutFile LayoutFile
+        {
+            get { return _layoutFile; }
+            set { UpdateProperty(ref _layoutFile, value); }
+        }
+
+        private SessionLayout _selectedSession;
+
+        public SessionLayout SelectedSession
+        {
+            get { return _selectedSession; }
+            set { UpdateProperty(ref _selectedSession, value); }
+        }
+
+        private IslandLayout _selectedIsland;
+
+        public IslandLayout SelectedIsland
+        {
+            get { return _selectedIsland; }
+            set { UpdateProperty(ref _selectedIsland, value); }
         }
     }
 }

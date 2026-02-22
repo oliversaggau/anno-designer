@@ -505,6 +505,11 @@ namespace AnnoDesigner
         /// </summary>
         private Pen _gridLinePen;
 
+        /// <summary>
+        /// Used for diagonal grid lines.
+        /// </summary>
+        private Pen _gridDiagonalLinePen;
+
         public double LinePenThickness
         {
             get { return _linePen.Thickness; }
@@ -870,6 +875,24 @@ namespace AnnoDesigner
                     var context = _drawingGroupGridLines.Open();
                     context.PushGuidelineSet(_guidelineSet);
 
+                    //diagonal lines (top-left to bottom-right)
+                    for (var x = _viewport.HorizontalAlignmentValue * _gridSize; x < width; x += _gridSize)
+                    {
+                        for (var y = _viewport.VerticalAlignmentValue * _gridSize; y < height; y += _gridSize)
+                        {
+                            context.DrawLine(_gridDiagonalLinePen, new Point(x, y), new Point(x + _gridSize, y + _gridSize));
+                        }
+                    }
+
+                    //diagonal lines (top-right to bottom-left)
+                    for (var x = _viewport.HorizontalAlignmentValue * _gridSize; x < width; x += _gridSize)
+                    {
+                        for (var y = _viewport.VerticalAlignmentValue * _gridSize; y < height; y += _gridSize)
+                        {
+                            context.DrawLine(_gridDiagonalLinePen, new Point(x + _gridSize, y), new Point(x, y + _gridSize));
+                        }
+                    }
+
                     //vertical lines
                     for (var i = _viewport.HorizontalAlignmentValue * _gridSize; i < width; i += _gridSize)
                     {
@@ -1047,7 +1070,9 @@ namespace AnnoDesigner
                     var hoveredObj = GetObjectAt(_mousePosition);
                     if (hoveredObj != null)
                     {
-                        drawingContext.DrawRectangle(null, _highlightPen, hoveredObj.CalculateScreenRect(_gridSize));
+                        drawingContext.PushTransform(hoveredObj, hoveredObj.GetScreenRectRotationCenterPoint(_gridSize));
+                        drawingContext.DrawObjectShape(hoveredObj, null, _highlightPen, hoveredObj.CalculateScreenRect(_gridSize));
+                        drawingContext.PopTransform(hoveredObj);
                     }
                 }
             }
@@ -1392,15 +1417,16 @@ namespace AnnoDesigner
             foreach (var curLayoutObject in objects)
             {
                 var obj = curLayoutObject.WrappedAnnoObject;
+                drawingContext.PushTransform(curLayoutObject, curLayoutObject.GetScreenRectRotationCenterPoint(gridSize));
 
-                // draw object rectangle
+                // draw object shape
                 var objRect = curLayoutObject.CalculateScreenRect(gridSize);
-
                 var brush = useTransparency ? curLayoutObject.TransparentBrush : curLayoutObject.RenderBrush;
-
                 var borderPen = obj.Borderless ? curLayoutObject.GetBorderlessPen(brush, linePenThickness) : _linePen;
-                drawingContext.DrawRectangle(brush, borderPen, objRect);
-                if (renderHarborBlockedArea)
+                drawingContext.DrawObjectShape(curLayoutObject, brush, borderPen, objRect);
+
+                // draw blocked area
+                if (renderHarborBlockedArea && !curLayoutObject.IsTile)
                 {
                     var objBlockedRect = curLayoutObject.CalculateBlockedScreenRect(gridSize);
                     if (objBlockedRect.HasValue)
@@ -1409,9 +1435,12 @@ namespace AnnoDesigner
                     }
                 }
 
+                // push transform for text and icon
+                drawingContext.PushTextTransform(curLayoutObject, ref objRect);
+
                 // draw object icon if it is at least 2x2 cells
                 var iconRendered = false;
-                if (renderIcon && !string.IsNullOrEmpty(obj.Icon))
+                if (renderIcon && !string.IsNullOrEmpty(obj.Icon) && (!curLayoutObject.IsTile || curLayoutObject.IsRectTile))
                 {
                     var iconFound = false;
 
@@ -1450,7 +1479,7 @@ namespace AnnoDesigner
                 }
 
                 // draw object label
-                if (renderLabel && !string.IsNullOrEmpty(obj.Label))
+                if (renderLabel && !string.IsNullOrEmpty(obj.Label) && !curLayoutObject.IsTile)
                 {
                     var textAlignment = iconRendered ? TextAlignment.Left : TextAlignment.Center;
                     var text = curLayoutObject.GetFormattedText(textAlignment, Thread.CurrentThread.CurrentCulture,
@@ -1488,6 +1517,9 @@ namespace AnnoDesigner
 
                     drawingContext.DrawText(text, textLocation);
                 }
+
+                drawingContext.PopTextTransform(curLayoutObject);
+                drawingContext.PopTransform(curLayoutObject);
             }
         }
 
@@ -1522,7 +1554,9 @@ namespace AnnoDesigner
                 foreach (var curLayoutObject in objects)
                 {
                     // draw object rectangle                
-                    context.DrawRectangle(null, _highlightPen, curLayoutObject.CalculateScreenRect(GridSize));
+                    context.PushTransform(curLayoutObject, curLayoutObject.GetScreenRectRotationCenterPoint(_gridSize));
+                    context.DrawObjectShape(curLayoutObject, null, _highlightPen, curLayoutObject.CalculateScreenRect(GridSize));
+                    context.PopTransform(curLayoutObject);
                 }
 
                 context.Close();
@@ -1912,8 +1946,10 @@ namespace AnnoDesigner
         /// <remarks>As this method can be called when AppSettings are updated, we make sure to not call anything that relies on the UI thread from here.</remarks>
         private void LoadGridLineColor()
         {
-            var colorFromJson = SerializationHelper.LoadFromJsonString<UserDefinedColor>(_appSettings.ColorGridLines);//explicit variable to make debugging easier
-            _gridLinePen = _penCache.GetPen(_brushCache.GetSolidBrush(colorFromJson.Color), DPI_FACTOR * 1);
+            var colorGridLines = SerializationHelper.LoadFromJsonString<UserDefinedColor>(_appSettings.ColorGridLines);//explicit variable to make debugging easier
+            var colorGridLinesDiagonal = new SerializableColor(60, colorGridLines.Color.R, colorGridLines.Color.G, colorGridLines.Color.B);
+            _gridDiagonalLinePen = _penCache.GetPen(_brushCache.GetSolidBrush(colorGridLinesDiagonal), DPI_FACTOR * 1);
+            _gridLinePen = _penCache.GetPen(_brushCache.GetSolidBrush(colorGridLines.Color), DPI_FACTOR * 1);
             var halfPenWidth = _gridLinePen.Thickness / 2;
             var guidelines = new GuidelineSet();
             guidelines.GuidelinesX.Add(halfPenWidth);
@@ -2629,7 +2665,7 @@ namespace AnnoDesigner
             var possibleItems = PlacedObjects.GetItemsIntersecting(new Rect(gridPosition, _intersectingRectSize));
             foreach (var curItem in possibleItems)
             {
-                if (curItem.GridRect.Contains(gridPosition))
+                if (curItem.Contains(gridPosition))
                 {
                     return curItem;
                 }
@@ -2870,7 +2906,7 @@ namespace AnnoDesigner
             var dialog = new OpenFileDialog
             {
                 DefaultExt = Constants.SavedLayoutExtension,
-                Filter = Constants.SaveOpenDialogFilter
+                Filter = "Anno Designer Files (*.ad)|*.ad|Anno 117 Savegame Files (*.a8s)|*.a8s|All Files (*.*)|*.*",
             };
 
             if (dialog.ShowDialog() == true)

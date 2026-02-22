@@ -33,6 +33,7 @@ using AnnoDesigner.Localization;
 using AnnoDesigner.Models;
 using AnnoDesigner.PreferencesPages;
 using AnnoDesigner.Undo.Operations;
+using AnnoDesigner.Import;
 using Microsoft.Win32;
 using NLog;
 
@@ -154,8 +155,8 @@ namespace AnnoDesigner.ViewModels
             PreferencesKeyBindingsViewModel = new ManageKeybindingsViewModel(HotkeyCommandManager, _commons, _messageBoxService, _localizationHelper);
             PreferencesGeneralViewModel = new GeneralSettingsViewModel(_appSettings, _commons, _recentFilesHelper);
 
-            LayoutSettingsViewModel = new LayoutSettingsViewModel();
-            LayoutSettingsViewModel.PropertyChangedWithValues += LayoutSettingsViewModel_PropertyChangedWithValues;
+            LayoutViewModel = new LayoutViewModel();
+            LayoutViewModel.PropertyChangedWithValues += LayoutViewModel_PropertyChangedWithValues;
 
             OpenProjectHomepageCommand = new RelayCommand(OpenProjectHomepage);
             CloseWindowCommand = new RelayCommand<ICloseable>(CloseWindow);
@@ -222,16 +223,26 @@ namespace AnnoDesigner.ViewModels
             RecentFilesHelper_Updated(this, EventArgs.Empty);
         }
 
-        private void LayoutSettingsViewModel_PropertyChangedWithValues(object sender, PropertyChangedWithValuesEventArgs<object> e)
+        private void LayoutViewModel_PropertyChangedWithValues(object sender, PropertyChangedWithValuesEventArgs<object> e)
         {
-            if (string.Equals(e.PropertyName, nameof(LayoutSettingsViewModel.LayoutVersion), StringComparison.OrdinalIgnoreCase))
+            if (string.Equals(e.PropertyName, nameof(LayoutViewModel.LayoutVersion), StringComparison.OrdinalIgnoreCase))
             {
                 AnnoCanvas.UndoManager.RegisterOperation(new ModifyLayoutVersionOperation()
                 {
-                    LayoutSettingsViewModel = sender as LayoutSettingsViewModel,
+                    LayoutViewModel = sender as LayoutViewModel,
                     OldValue = e.OldValue as Version,
                     NewValue = e.NewValue as Version,
                 });
+            }
+            else if (string.Equals(e.PropertyName, nameof(LayoutViewModel.SelectedSession), StringComparison.OrdinalIgnoreCase))
+            {
+                SessionLayout session = e.NewValue as SessionLayout;
+                if (session != null) LayoutViewModel.SelectedIsland = session.Islands[0];
+            }
+            else if (string.Equals(e.PropertyName, nameof(LayoutViewModel.SelectedIsland), StringComparison.OrdinalIgnoreCase))
+            {
+                IslandLayout layout = e.NewValue as IslandLayout;
+                if (layout != null) OpenLayout(layout.Objects);
             }
         }
 
@@ -380,7 +391,9 @@ namespace AnnoDesigner.ViewModels
                 Template = BuildingSettingsViewModel.BuildingTemplate,
                 BlockedAreaLength = BuildingSettingsViewModel.BuildingBlockedAreaLength,
                 BlockedAreaWidth = BuildingSettingsViewModel.BuildingBlockedAreaWidth,
-                Direction = BuildingSettingsViewModel.BuildingDirection
+                Direction = BuildingSettingsViewModel.BuildingDirection,
+                RotationCenter = new Point(BuildingSettingsViewModel.BuildingWidth / 2.0, BuildingSettingsViewModel.BuildingHeight / 2.0), // TODO
+                Rotation = 0.0f, // TODO
             };
 
             var objIconFileName = "";
@@ -544,11 +557,11 @@ namespace AnnoDesigner.ViewModels
         private void AnnoCanvas_LoadedFileChanged(object sender, FileLoadedEventArgs args)
         {
             var fileName = string.Empty;
-            var layoutVersion = args.Layout?.LayoutVersion ?? LayoutSettingsViewModel.LayoutVersion;
+            var layoutVersion = args.Layout?.LayoutVersion ?? LayoutViewModel.LayoutVersion;
             if (!string.IsNullOrWhiteSpace(args.FilePath) && layoutVersion != default)
             {
                 fileName = $"{Path.GetFileName(args.FilePath)} ({layoutVersion})";
-                LayoutSettingsViewModel.LayoutVersion = layoutVersion;
+                LayoutViewModel.LayoutVersion = layoutVersion;
             }
             else if (!string.IsNullOrWhiteSpace(args.FilePath))
             {
@@ -769,7 +782,19 @@ namespace AnnoDesigner.ViewModels
         {
             try
             {
-                var layout = _layoutLoader.LoadLayout(filePath, forceLoad);
+                LayoutFile layout = null;
+                string extension = Path.GetExtension(filePath).ToLowerInvariant();
+
+                if (extension == ".ad")
+                {
+                    layout = _layoutLoader.LoadLayout(filePath, forceLoad);
+                }
+                else if (extension == ".a8s")
+                {
+                    Anno117.SavegameReader reader = new Anno117.SavegameReader();
+                    layout = reader.ImportLayout(filePath, AnnoCanvas.BuildingPresets);
+                }
+
                 if (layout != null)
                 {
                     OpenLayout(layout);
@@ -805,16 +830,30 @@ namespace AnnoDesigner.ViewModels
         /// </summary>
         public void OpenLayout(LayoutFile layout)
         {
+            LayoutViewModel.LayoutFile = layout;
+            LayoutViewModel.LayoutVersion = layout.LayoutVersion;
+
+            if (layout.Sessions != null)
+            {
+                LayoutViewModel.SelectedSession = layout.Sessions[0];
+            }
+            else
+            {
+                OpenLayout(layout.Objects);
+            }
+        }
+
+        private void OpenLayout(List<AnnoObject> objects)
+        {
             AnnoCanvas.SelectedObjects.Clear();
             AnnoCanvas.PlacedObjects.Clear();
             AnnoCanvas.UndoManager.Clear();
 
-            var layoutObjects = new List<LayoutObject>(layout.Objects.Count);
-            foreach (var curObj in layout.Objects)
+            var layoutObjects = new List<LayoutObject>(objects.Count);
+            foreach (var curObj in objects)
             {
                 layoutObjects.Add(new LayoutObject(curObj, _coordinateHelper, _brushCache, _penCache));
             }
-            LayoutSettingsViewModel.LayoutVersion = layout.LayoutVersion;
 
             AnnoCanvas.ComputeBoundingRect(layoutObjects);
             AnnoCanvas.PlacedObjects.AddRange(layoutObjects);
@@ -836,7 +875,7 @@ namespace AnnoDesigner.ViewModels
             {
                 AnnoCanvas.Normalize(1);
                 var layoutToSave = new LayoutFile(AnnoCanvas.PlacedObjects.Select(x => x.WrappedAnnoObject));
-                layoutToSave.LayoutVersion = LayoutSettingsViewModel.LayoutVersion;
+                layoutToSave.LayoutVersion = LayoutViewModel.LayoutVersion;
                 _layoutLoader.SaveLayout(layoutToSave, filePath);
                 AnnoCanvas.UndoManager.IsDirty = false;
             }
@@ -1358,7 +1397,7 @@ namespace AnnoDesigner.ViewModels
         /// <param name="border">normalization value used prior to exporting</param>
         /// <param name="exportZoom">indicates whether the current zoom level should be applied, if false the default zoom is used</param>
         /// <param name="exportSelection">indicates whether selection and influence highlights should be rendered</param>
-        private void RenderToFile(string filename, int border, bool exportZoom, bool exportSelection, bool renderStatistics, bool renderVersion)
+        private void RenderToFile(string filename, int border, bool exportZoom, bool exportSelection, bool renderStatistics, bool renderLayoutInformation)
         {
             if (AnnoCanvas.PlacedObjects.Count() == 0)
             {
@@ -1383,7 +1422,7 @@ namespace AnnoDesigner.ViewModels
                         RenderPanorama = AnnoCanvas.RenderPanorama,
                         RenderTrueInfluenceRange = AnnoCanvas.RenderTrueInfluenceRange,
                         RenderStatistics = renderStatistics,
-                        RenderVersion = renderVersion
+                        RenderLayoutInformation = renderLayoutInformation
                     }
                 );
 
@@ -1456,19 +1495,19 @@ namespace AnnoDesigner.ViewModels
             var width = _coordinateHelper.GridToScreen(target.PlacedObjects.Max(_ => _.Position.X + _.Size.Width) + border, target.GridSize);//if +1 then there are weird black lines next to the statistics view
             var height = _coordinateHelper.GridToScreen(target.PlacedObjects.Max(_ => _.Position.Y + _.Size.Height) + border, target.GridSize) + 1;//+1 for black grid line at bottom
 
-            if (renderSettings.RenderVersion)
+            if (renderSettings.RenderLayoutInformation)
             {
-                var versionView = new VersionView()
+                var layoutView = new LayoutView()
                 {
-                    Context = LayoutSettingsViewModel
+                    Context = LayoutViewModel
                 };
 
-                target.DockPanel.Children.Insert(0, versionView);
-                DockPanel.SetDock(versionView, Dock.Bottom);
+                target.DockPanel.Children.Insert(0, layoutView);
+                DockPanel.SetDock(layoutView, Dock.Bottom);
 
-                versionView.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
+                layoutView.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
 
-                height += versionView.DesiredSize.Height;
+                height += layoutView.DesiredSize.Height;
             }
 
             if (renderSettings.RenderStatistics)
@@ -1723,7 +1762,7 @@ namespace AnnoDesigner.ViewModels
 
         public GeneralSettingsViewModel PreferencesGeneralViewModel { get; set; }
 
-        public LayoutSettingsViewModel LayoutSettingsViewModel { get; set; }
+        public LayoutViewModel LayoutViewModel { get; set; }
 
         #endregion    
     }

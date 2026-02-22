@@ -246,19 +246,32 @@
                         Width="Auto"
                         MinWidth="100" />
                 </Grid.ColumnDefinitions>
-                <!--
-                    ScrollViewer steals focus (all key events) unless `Focusable` is set to false. Scrolling via arrow keys and page up/down stil works
-                    as the event will still bubble up to the scroll viewer as its not handled in AnnoCanvas
-                -->
-                <ScrollViewer
+                <Grid
                     Grid.Column="0"
-                    Grid.ColumnSpan="2"
-                    CanContentScroll="True"
-                    Focusable="False"
-                    HorizontalScrollBarVisibility="{Binding ShowScrollbars}"
-                    VerticalScrollBarVisibility="{Binding ShowScrollbars}">
-                    <my:AnnoCanvas x:Name="annoCanvas" />
-                </ScrollViewer>
+                    Grid.ColumnSpan="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Width="80" Content="Session" />
+                        <ComboBox Width="200" Height="23" IsEnabled="True" DisplayMemberPath="Name" ItemsSource="{Binding LayoutViewModel.LayoutFile.Sessions}" SelectedItem="{Binding LayoutViewModel.SelectedSession}" />
+                        <Label Width="80" Content="Island" />
+                        <ComboBox Width="200" Height="23" IsEnabled="True" DisplayMemberPath="Name" ItemsSource="{Binding LayoutViewModel.SelectedSession.Islands}" SelectedItem="{Binding LayoutViewModel.SelectedIsland}" />
+                    </StackPanel>
+                    <!--
+                        ScrollViewer steals focus (all key events) unless `Focusable` is set to false. Scrolling via arrow keys and page up/down stil works
+                        as the event will still bubble up to the scroll viewer as its not handled in AnnoCanvas
+                    -->
+                    <ScrollViewer
+                        Grid.Row="1"
+                        CanContentScroll="True"
+                        Focusable="False"
+                        HorizontalScrollBarVisibility="{Binding ShowScrollbars}"
+                        VerticalScrollBarVisibility="{Binding ShowScrollbars}">
+                        <my:AnnoCanvas x:Name="annoCanvas" />
+                    </ScrollViewer>
+                </Grid>
 
                 <GridSplitter
                     x:Name="splitterStatisticsView"
@@ -294,7 +307,7 @@
                             Height="23"
                             DockPanel.Dock="Right"
                             IsEnabled="True"
-                            Text="{Binding LayoutSettingsViewModel.LayoutVersionDisplayValue}" />
+                            Text="{Binding LayoutViewModel.LayoutVersionDisplayValue}" />
                     </DockPanel>
                 </GroupBox>
                 <GroupBox DockPanel.Dock="Top" Header="{l:Localize BuildingSettings}">

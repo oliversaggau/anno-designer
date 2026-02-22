@@ -6,6 +6,7 @@ using System.Windows;
 using System.Windows.Media;
 using AnnoDesigner.Core.Helper;
 using AnnoDesigner.Core.Models;
+using AnnoDesigner.Helper;
 
 namespace AnnoDesigner.Models
 {
@@ -44,10 +45,13 @@ namespace AnnoDesigner.Models
         private int _gridSizeIconRect;
         private Rect _lastScreenRectForIcon;
         private Point _screenRectCenterPoint;
+        private Point _screenRectRotationCenterPoint;
         private EllipseGeometry _influenceCircle;
         private double _influenceCircleRadius;
         private Rect _lastScreenRectForCenterPoint;
+        private Rect _lastScreenRectForRotationCenterPoint;
         private int _gridSizeScreenRectForCenterPoint;
+        private int _gridSizeScreenRectForRotationCenterPoint;
         private double _screenRadius;
         private int _lastGridSizeForScreenRadius;
         private SerializableColor _color;
@@ -199,8 +203,10 @@ namespace AnnoDesigner.Models
                 _influenceCircle = null;
                 _iconRect = null;
                 _screenRectCenterPoint = default;
+                _screenRectRotationCenterPoint = default;
                 _lastScreenRectForIcon = default;
                 _lastScreenRectForCenterPoint = default;
+                _lastScreenRectForRotationCenterPoint = default;
                 _gridRect = default;
                 _gridInfluenceRadiusRect = default;
                 _gridInfluenceRangeRect = default;
@@ -233,6 +239,39 @@ namespace AnnoDesigner.Models
         {
             get => WrappedAnnoObject.Direction;
             set => WrappedAnnoObject.Direction = value;
+        }
+
+        public double Rotation
+        {
+            get => WrappedAnnoObject.Rotation;
+            set => WrappedAnnoObject.Rotation = value;
+        }
+
+        public double RotationDegrees
+        {
+            get => Math.Round(Rotation * (180 / Math.PI));
+        }
+
+        public bool IsDiagonal
+        {
+            get => Math.Round(RotationDegrees + 45) % 90 == 0;
+        }
+
+        public bool IsTile
+        {
+            get => WrappedAnnoObject.TileQuadrants.HasValue;
+        }
+
+        public bool IsRectTile
+        {
+            get => WrappedAnnoObject.TileQuadrants.HasValue && TileHelper.IsRect(WrappedAnnoObject.TileQuadrants.Value);
+        }
+
+        private Point ScaleDiagonal(Point point)
+        {
+            double scaleX = Size.Width / WrappedAnnoObject.Size.Width;
+            double scaleY = Size.Height / WrappedAnnoObject.Size.Height;
+            return new Point(point.X * scaleX, point.Y * scaleY);
         }
 
         /// <summary>
@@ -315,6 +354,25 @@ namespace AnnoDesigner.Models
         }
 
         /// <summary>
+        /// Indicates whether the object contains the specified point. For diagonal
+        /// objects the geometry uses the same transform that is applied during rendering.
+        /// </summary>
+        public bool Contains(Point gridPosition)
+        {
+            if (!IsDiagonal)
+            {
+                return GridRect.Contains(gridPosition);
+            }
+
+            Point offset = ScaleDiagonal(WrappedAnnoObject.RotationCenter);
+            Point rotationCenter = new Point(Position.X + offset.X, Position.Y + offset.Y);
+
+            Geometry gemotry = WrappedAnnoObject.TileQuadrants.HasValue ? TileHelper.CreateGeometry(GridRect, WrappedAnnoObject.TileQuadrants.Value) : new RectangleGeometry(GridRect);
+            gemotry.Transform = new RotateTransform(-RotationDegrees, rotationCenter.X, rotationCenter.Y);
+            return gemotry.FillContains(gridPosition);
+        }
+
+        /// <summary>
         /// Gets the rect which is used for collision detection for the given object.
         /// Prevents undesired collisions which occur when using GetObjectScreenRect().
         /// </summary>        
@@ -383,7 +441,7 @@ namespace AnnoDesigner.Models
             {
                 if (_size == default)
                 {
-                    _size = WrappedAnnoObject.Size;
+                    Size = WrappedAnnoObject.Size; // use setter instead of variable to initialize all dependent values
                 }
 
                 return _size;
@@ -391,7 +449,7 @@ namespace AnnoDesigner.Models
             set
             {
                 WrappedAnnoObject.Size = value;
-                _size = value;
+                _size = IsDiagonal ? new Size(MathHelper.GetDiagonalSize(value.Width), MathHelper.GetDiagonalSize(value.Height)) : value;
 
                 _collisionSize = default;
                 _screenRect = null;
@@ -403,13 +461,30 @@ namespace AnnoDesigner.Models
             }
         }
 
+        private Rect CalculateBounds()
+        {
+            Rect bounds = new Rect(Position, Size);
+
+            if (IsDiagonal)
+            {
+                Point offset = ScaleDiagonal(WrappedAnnoObject.RotationCenter);
+                Point rotationCenter = new Point(Position.X + offset.X, Position.Y + offset.Y);
+
+                Geometry geometry = new RectangleGeometry(bounds);
+                geometry.Transform = new RotateTransform(-RotationDegrees, rotationCenter.X, rotationCenter.Y);
+                bounds = geometry.Bounds;
+            }
+
+            return bounds;
+        }
+
         public Rect Bounds
         {
             get
             {
                 if (_bounds is null)
                 {
-                    _bounds = new Rect(Position, Size);
+                    _bounds = CalculateBounds();
                 }
 
                 return _bounds.Value;
@@ -495,6 +570,26 @@ namespace AnnoDesigner.Models
             }
 
             return _screenRectCenterPoint;
+        }
+
+        public Point GetScreenRectRotationCenterPoint(int gridSize)
+        {
+            if (_screenRectRotationCenterPoint == default || _gridSizeScreenRectForRotationCenterPoint != gridSize)
+            {
+                var objRect = CalculateScreenRect(gridSize);
+                if (_lastScreenRectForRotationCenterPoint != objRect)
+                {
+                    // some buildings are off-center, so we can't just use _screenRectCenterPoint to get the
+                    // rotation center but instead use the actual rotation center stored in the WrappedAnnoObject (in grid units)
+                    Point offset = _coordinateHelper.GridToScreen(IsDiagonal ? ScaleDiagonal(WrappedAnnoObject.RotationCenter) : WrappedAnnoObject.RotationCenter, gridSize);
+                    _screenRectRotationCenterPoint = new Point(objRect.Left + offset.X, objRect.Top + offset.Y);
+
+                    _gridSizeScreenRectForRotationCenterPoint = gridSize;
+                    _lastScreenRectForRotationCenterPoint = objRect;
+                }
+            }
+
+            return _screenRectRotationCenterPoint;
         }
 
         public EllipseGeometry GetInfluenceCircle(int gridSize, double radius)
